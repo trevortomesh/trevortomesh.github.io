@@ -1,0 +1,19 @@
+var DATABASE = `
+
+TREVOR MICHAEL TOMESH'S MEMEX
+  PERS : Trevor M. Tomesh
+  TYPE : note
+  NOTE : Welcome to my memex. Thank you for visiting. A memex is a personal knowledge base (see first link below). The idea goes back to VANNEVAR BUSH's original conception in his essay entitled "As We May Think" (quoted below). The software that runs this page is cited in the link above. Consult the index to the left to find the information that is relevant. I have decided to write my website in this manner because it is more conducive to the way that I think. I hope that you find some inspiration here! 
+  QOTE : “Consider a future device …  in which an individual stores all his books, records, and communications, and which is mechanized so that it may be consulted with exceeding speed and flexibility. It is an enlarged intimate supplement to his memory.”
+  LINK : https://github.com/kormyen/memex
+  TAGS : website, about, me
+  DONE : true
+  REVI : true
+
+ABOUT ME
+  TYPE : note
+  NOTE : I am a PhD student and a sessional lecturer in computer science at the University of Regina (Canada). I have BSc in physics and mathematics from the University of Wisconsin - River Falls. My research interests include interactive hardware systems, constrained systems. simulation, analogous systems, games development, open source software, complex systems and general systems theory.
+  FILE : profilepic.jpg
+  DONE : true
+  TAGS : about, me
+`
