@@ -17,9 +17,58 @@ ABOUT ME
   DONE : true
   TAGS : about, me
 
+FACEBOOK
+  TYPE : link
+  NOTE : Follow me on facebook!
+  LINK : https://www.facebook.com/TSquar3d
+  FILE : facebook.png
+  DONE : true
+  TAGS : social, me
+
+TWITTER
+  TYPE : link
+  NOTE : Follow me on twitter!
+  LINK : https://twitter.com/@tsquar3d
+  FILE : twitter.png
+  DONE : true
+  TAGS : social, me
+  
+
+LINKEDIN
+  TYPE : link
+  NOTE : Add me on linkedin!
+  LINK : https://ca.linkedin.com/pub/trevor-tomesh/51/724/5ab/
+  FILE : linkedin.png
+  DONE : true
+  TAGS : social, me 
+
+ LINKEDIN
+  TYPE : link
+  NOTE : Fork me!
+  LINK : github.com/trevortomesh
+  FILE : github.png
+  DONE : true
+  TAGS : social, me  
+
 ACADEMIC HACKING
   TYPE : NOTE
   NOTE : HACKER (n.) A hacker is one who enjoys the intellectual challenge of creatively overcoming and circumventing limitations of programming systems and who tries to extend their capabilities. ACADEMIC (adj.) relating to education and scholarship. Hacking has its roots deep within academia. The first documented group of adherents to the "hacker culture" were the members of the Tech Model Railroad Club at MIT back in the early 20th century. An academic hacker is someone who seeks to close the rift which has formed between hacker culture and academic culture over the years. In my research and in my teaching, I try to emphasize the value in creative solutions to problems, no matter how inelegant or bizarre they may seem. In the end, it's all about having fun through discovery. For more information read Steven Levey's book "Hackers: Heroes of the Computer revolution".
   DONE : true 
   TAGS : philosophy, hacking, history
+
+CNC LECTURE
+  TYPE : lecture
+  LINK : https://docs.google.com/presentation/d/1gLWWMLXCt5wgE3wvqwF1U05FG3RnNggC1lM4K9ssGtg/edit?usp=sharing
+  NOTE : Lecture slides on CNC machines. Warning: Graphic Content!
+  DONE : true
+  TAGS : lectures, technology
+
+COURSES TAUGHT
+  TYPE : note
+  NOTE : CS 207 - BUILDING INTERACTIVE GADGETS. An introduction to building and controlling interactive devices for multimedia art and DIY projects. Build robots, new musical instruments, wearable computers and more. Learn about sensors and actuators: WiFi, Bluetooth, GPS; hardware platforms such as the Arduino; and software platforms such as Processing.; CS 290AJ - INTERACTIVE SIMULATION METHODS In this course students will use the Blender 3D modelling suite to develop visually stimulating - yet physically accurate - models in domains such as classical mechanics, chaos theory, and complex systems and bring learning to life in interactive 3D simulations.; CS 290AK - TOPICS IN DATA ACQUISITION AND ANALYSIS Students are introduced to data collection techniques by developing their own sensor modules, running experiments and verifying the results. Students will learn microcontroller programming for data collection as well as regression techniques and error analysis for calibration and verification. Potential modules developed range from simple light sensors to fully functioning geiger counters.; CS 427/827 - COMPUTER AUDIO The purpose of this course is to provide a broad overview of many areas of computer audio, including: Digital representation and compression; Psychoacoustics; Surround Sound; Speech recognition and Music Information Retrieval; MIDI and New interfaces for music; and video game sound. We will also explore modular interactive software environments such as Max/MSP and PD.; CS 807 - INTERACTIVE HARDWARE AND EMBEDDED COMPUTING Hardware design for physical and pervasive computing systems. Wired and wireless communication protocols; sensors and actuators; resource constraints; location- and context-awareness. Applications include: wearable computing, wireless sensor networks, robotics and automation, internet of things. Embedded hardware platforms such as ARM (raspberry Pi) and AVR (Arduino).
+  DONE : true
+  TAGS : lectures, teaching, about
+
+
+
 `
