@@ -11,7 +11,7 @@
 			"file": "content/data.ndtl",
 			"settings":
 			{
-				"buffer_size": 1430,
+				"buffer_size": 4996,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -118,7 +118,7 @@
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -259,15 +259,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1430,
+						"buffer_size": 4996,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1408,
-								1408
+								0,
+								0
 							]
 						],
 						"settings":
@@ -277,7 +277,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 611.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -288,7 +288,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 44.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -325,7 +325,7 @@
 	"project": "website.sublime-project",
 	"replace":
 	{
-		"height": 84.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
