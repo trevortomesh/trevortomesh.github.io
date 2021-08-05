@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>api - Tag - Huka&#39;s Garden</title>
+        <link>https://hukacode.github.io/tags/api/</link>
+        <description>api - Tag - Huka&#39;s Garden</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>mr.kharhums@gmail.com (Huka)</managingEditor>
+            <webMaster>mr.kharhums@gmail.com (Huka)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 12 Apr 2021 20:53:02 &#43;0700</lastBuildDate><atom:link href="https://hukacode.github.io/tags/api/" rel="self" type="application/rss+xml" /><item>
+    <title>GraphQL</title>
+    <link>https://hukacode.github.io/note/graphql/</link>
+    <pubDate>Mon, 12 Apr 2021 20:53:02 &#43;0700</pubDate>
+    <author>Author</author>
+    <guid>https://hukacode.github.io/note/graphql/</guid>
+    <description><![CDATA[What is GraphQL? GraphQL là một specification của một query language cho APIs.
+Thường được nhắc đến như là một declarative data-fetching language. Có nghĩa là client hoặc API consumer sẽ gửi một request trong một query language chứa những fields mà nó yêu cầu thay vì toàn bộ payload.
+Chỉ có một endpoint để mà consumer gửi những queries khác nhau dựa trên data of interest.
+ <a title="" class="wikilink" href="/note/graph-theory">Graph Theory</a>]]></description>
+</item></channel>
+</rss>
