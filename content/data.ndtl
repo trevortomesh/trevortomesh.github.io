@@ -64,15 +64,58 @@ CNC LECTURE
   NOTE : Lecture slides on CNC machines. Warning: Graphic Content!
   TAGS : lectures, technology
 
-COURSES TAUGHT
+CS 207 - BUILDING INTERACTIVE GADGETS
   TYPE : note
-  NOTE : CS 207 - BUILDING INTERACTIVE GADGETS. An introduction to building and controlling interactive devices for multimedia art and DIY projects. Build robots, new musical instruments, wearable computers and more. Learn about sensors and actuators: WiFi, Bluetooth, GPS; hardware platforms such as the Arduino; and software platforms such as Processing.; CS 290AJ - INTERACTIVE SIMULATION METHODS In this course students will use the Blender 3D modelling suite to develop visually stimulating - yet physically accurate - models in domains such as classical mechanics, chaos theory, and complex systems and bring learning to life in interactive 3D simulations.; CS 290AK - TOPICS IN DATA ACQUISITION AND ANALYSIS Students are introduced to data collection techniques by developing their own sensor modules, running experiments and verifying the results. Students will learn microcontroller programming for data collection as well as regression techniques and error analysis for calibration and verification. Potential modules developed range from simple light sensors to fully functioning geiger counters.; CS 427/827 - COMPUTER AUDIO The purpose of this course is to provide a broad overview of many areas of computer audio, including: Digital representation and compression; Psychoacoustics; Surround Sound; Speech recognition and Music Information Retrieval; MIDI and New interfaces for music; and video game sound. We will also explore modular interactive software environments such as Max/MSP and PD.; CS 807 - INTERACTIVE HARDWARE AND EMBEDDED COMPUTING Hardware design for physical and pervasive computing systems. Wired and wireless communication protocols; sensors and actuators; resource constraints; location- and context-awareness. Applications include: wearable computing, wireless sensor networks, robotics and automation, internet of things. Embedded hardware platforms such as ARM (raspberry Pi) and AVR (Arduino).
-  TAGS : lectures, teaching, about
+  NOTE : An introduction to building and controlling interactive devices for multimedia art and DIY projects. Build robots, new musical instruments, wearable computers and more. Learn about sensors and actuators: WiFi, Bluetooth, GPS; hardware platforms such as the Arduino; and software platforms such as Processing.
+  TAGS : classes
+
+CS 290AJ - INTERACTIVE SIMULATION METHODS
+  TYPE : note
+  NOTE : In this course students will use the Blender 3D modelling suite to develop visually stimulating - yet physically accurate - models in domains such as classical mechanics, chaos theory, and complex systems and bring learning to life in interactive 3D simulations.
+  TAGS : classes
+
+CS 290AK - TOPICS IN DATA ACQUISITION AND ANALYSIS 
+  TYPE : note
+  NOTE : Students are introduced to data collection techniques by developing their own sensor modules, running experiments and verifying the results. Students will learn microcontroller programming for data collection as well as regression techniques and error analysis for calibration and verification. Potential modules developed range from simple light sensors to fully functioning geiger counters. 
+  TAGS : classes
+  
+CS 455 - Mobile Computing
+  TYPE : note
+  NOTE : Mobile Computing focuses on the design and implementation of software in a networked mobile environment. The primary topics to be covered in the course include software development practices, network computing, graphics programming, and human-computer interaction, all focused on the challenges and opportunities afforded by modern mobile computing devices. 
+  TAGS : classes
+  
+CS 280 - Risk and Reward in the Information Society
+  TYPE : note
+  NOTE : Social context of computing. Case study: human-computer interfaces and their evaluation. Methods and tools of analysis. Professional and ethical responsibilities. Risks and liabilities of computer-based systems. Intellectual property, privacy and civil liberties. Professional communication. Sustainability. Cybercrime. 
+  TAGS : classes  
+  
+CS 807 - INTERACTIVE HARDWARE AND EMBEDDED COMPUTING 
+  TYPE : note
+  NOTE : Hardware design for physical and pervasive computing systems. Wired and wireless communication protocols; sensors and actuators; resource constraints; location- and context-awareness. Applications include: wearable computing, wireless sensor networks, robotics and automation, internet of things. Embedded hardware platforms such as ARM (raspberry Pi) and AVR (Arduino).
+  TAGS : classes
+  
+CS 855 - Mobile Computing
+  TYPE : note
+  NOTE : Mobile Computing focuses on conducting research in the design, development, and evaluation of software in a networked mobile environment. The primary topics to be covered in the course include network computing, graphics programming, human-computer interaction, and evaluation methods, all focused on the challenges and opportunities afforded by modern mobile computing devices.
+  TAGS : classes
+  
+CS 890AC - Data Analysis from the Internet
+  TYPE : note
+  NOTE : Data Analysis from the Internet: Language, indexing and classification; extracting and abstracting by computer; stylistic analysis, statistical models and the entropy of English; hidden Markov models; probablistic context-free grammars; data analysis via data mining and rule induction.
+  TAGS : classes
+  
+CTCH 310AD - Introduction to Computer Game and VR Design
+  TYPE : note
+  NOTE : This course introduces computer game design using Unity and other industry standard software, through concept, pre-production, production and post-production; includes storyboarding and distribution. For game design, and virtual reality composition towards experimental art applications. Open to beginners and advanced students.   
+
 
 LATEX REPORT TEMPLATE
   TYPE : FILE
-  LINK : https://www.overleaf.com/project/5d0d63b94899751b03adbc9d
+  LINK : https://www.overleaf.com/project/5ef4c72fe2f433000152ebdf
   NOTE : My standard template for writing reports in LATEX
   TAGS : files
+  
+  
+  
 
 `
