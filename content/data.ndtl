@@ -14,6 +14,13 @@ ABOUT ME
   FILE : profilepic.jpg
   TAGS : about, me
 
+LECTURER
+  TYPE : link
+  NOTE : I am currently a lecturer in Computer Science at the University of Regina in Regina, SK Canada. 
+  LINK : https://www.uregina.ca/science/cs/people/faculty/tomesh-trevor.html
+  FILE : uofr.png
+  TAGS : about, me
+
 TWITTER
   TYPE : link
   NOTE : Follow me on twitter!
