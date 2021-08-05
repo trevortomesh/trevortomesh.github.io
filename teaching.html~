@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Trevor Tomesh</title>
+  <meta name="The Homepage of Trevor Tomesh: Hacker. " content="The HTML5 Herald">
+  <meta name="Trevor Tomesh" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+  body {background-color: #2C3E50}
+  h1   {size:100; color: #E74C3C; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+  h2 {size:80; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+  h3 {size:40; color: #E74C3C; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+a {
+ color: #3498DB;
+ -webkit-transition: color 1s ease-in; /*safari and chrome */
+ -o-transition: color 1s ease-in; /* opera */
+  text-decoration: none;
+}
+
+a:hover {
+ color: #ECF0F1;
+ text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+<h1>TREVOR TOMESH</h1>
+<h3>TAUGHT COURSES</h3>
+<h2> 
+<a href=" ">CS 207 - BUILDING INTERACTIVE GADGETS.</a><br>
+</h2>
+<h3>
+  An introduction to building and controlling interactive devices for multimedia <br>
+  art and DIY projects. Build robots, new musical instruments, wearable computers <br>
+   and more. Learn about sensors and actuators: WiFi, Bluetooth, GPS; hardware <br>
+   platforms such as the Arduino; and software platforms such as Processing.
+</h3>
+
+<h2> CS 290AJ - INTERACTIVE SIMULATION METHODS </h2>
+<h3>
+  In this course students will use the Blender 3D modelling suite to develop visually <br>
+  stimulating - yet physically accurate - models in domains such as classical mechanics, <br>
+   chaos theory, and complex systems and bring learning to life in interactive 3D simulations.
+</h3>
+</body>
+
+</html>

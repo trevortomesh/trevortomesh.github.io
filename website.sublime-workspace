@@ -1,0 +1,375 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "content/data.ndtl",
+			"settings":
+			{
+				"buffer_size": 4996,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"latex",
+				"Set Syntax: LaTeX"
+			],
+			[
+				"fold",
+				"Code Folding: Fold Tag Attributes"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 231.0,
+		"history":
+		[
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": true,
+		"show_open_files": true,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": true
+	},
+	"expanded_folders":
+	[
+		"/home/trevor/github/trevortomesh.github.io",
+		"/home/trevor/github/trevortomesh.github.io/content"
+	],
+	"file_history":
+	[
+		"/home/trevor/github/trevortomesh.github.com/index.html",
+		"/home/trevor/github/trevortomesh.github.com/content/data.ndtl",
+		"/home/trevor/memex/content/data.ndtl",
+		"/home/trevor/Desktop/springSummer2019/infoTheory/assignments/a3a4/main.tex",
+		"/home/trevor/Documents/thesis/chapter5.tex",
+		"/home/trevor/.minetest/worlds/NoWorld/map_meta.txt",
+		"/home/trevor/Documents/thesis/main.tex",
+		"/home/trevor/Documents/thesis/chapter1.tex",
+		"/home/trevor/Documents/thesis/chapter2.tex",
+		"/home/trevor/Documents/thesis/chapter6.tex",
+		"/home/trevor/Documents/thesis/chapter4.tex",
+		"/home/trevor/Documents/thesis/chapter3.tex",
+		"/home/trevor/.minetest/worlds/NoWorld/env_meta.txt",
+		"/home/trevor/Documents/thesis/thesis.bib",
+		"/home/trevor/Documents/thesis/glossary.tex",
+		"/home/trevor/Documents/thesis/appendixA.tex",
+		"/home/trevor/Documents/thesis/urthesis.sty",
+		"/home/trevor/Documents/thesis/preamble.tex",
+		"/home/trevor/Documents/thesis/appendixB.tex",
+		"/home/trevor/Documents/thesis/dedication.tex",
+		"/home/trevor/Documents/thesis/acknowledgements.tex",
+		"/home/trevor/Documents/thesis/abstract.tex",
+		"/home/trevor/Documents/thesis/library.bib",
+		"/home/trevor/Documents/thesis/chapter2.aux",
+		"/home/trevor/Documents/thesis/title.tex",
+		"/home/trevor/Documents/thesis/thesisStatement.txt",
+		"/home/trevor/Documents/thesis/thesis.tex",
+		"/home/trevor/Documents/thesis/cSysts.tex",
+		"/home/trevor/setup.sh",
+		"/home/trevor/commands.txt",
+		"/home/trevor/core",
+		"/etc/hosts",
+		"/etc/hosts.deny",
+		"/home/trevor/Desktop/test.txt",
+		"/home/trevor/.config/i3status/config",
+		"/home/trevor/.config/i3/config",
+		"/etc/i3status.conf",
+		"/home/trevor/Desktop/SpringSummer2019/DataAnalysis/assignments/a2/main.tex",
+		"/home/trevor/.config/i3status.conf",
+		"/home/trevor/Desktop/SpringSummer2019/DataAnalysis/assignments/a2/main."
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 180.0,
+		"where_history":
+		[
+			"",
+			"thesis"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fig:entire",
+			"human",
+			"section",
+			"the the",
+			"may",
+			"piezzo",
+			"Figure",
+			"0.8",
+			"0.5",
+			"0.",
+			"assumed",
+			"arguably",
+			"chapter",
+			"Gerhard",
+			"dissertation",
+			"thesis",
+			"dissertation",
+			"thesis",
+			"hobbyist",
+			"figure",
+			"General",
+			"Maker",
+			"\\textit",
+			"General",
+			"Maker",
+			"/",
+			"fig",
+			"figure",
+			"\\textit",
+			"/",
+			"General",
+			"maker",
+			"\\textit",
+			"fig",
+			"figure",
+			"or",
+			"/",
+			"General Systems Theory",
+			"\\textit",
+			"fig",
+			"figure",
+			"cite",
+			"Maker",
+			"General Systems",
+			"/",
+			"\\textit",
+			"fig",
+			"figure",
+			"Maker ",
+			"Maker Movement",
+			"Maker",
+			"\\textit",
+			"figure",
+			"where",
+			"human-computer",
+			"definition of a system",
+			"system",
+			"klir",
+			"/",
+			"Project",
+			"fig",
+			"figure",
+			"\\textit",
+			"commun",
+			"microcontroller",
+			"microcon",
+			"Maker Movement",
+			"While the maker",
+			"General Systems Theory",
+			".}",
+			"\\section",
+			"Systems Engineering",
+			"general systems",
+			"General Systems Theory",
+			"dog",
+			"bo",
+			"label",
+			"comment"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"piezo",
+			"0.6",
+			"0.8",
+			"Chapter",
+			"thesis",
+			"\\emph",
+			"or",
+			"general systems theory",
+			"\\emph",
+			"and",
+			"\\emph",
+			"",
+			"and",
+			"Figure",
+			"\\emph",
+			"micro-controller",
+			"maker movement",
+			"general systems theory",
+			"\\section*",
+			"systems engineering",
+			"general systems theory"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "content/data.ndtl",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4996,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 59.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "website.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/.minetest/worlds/NoWorld/minetest.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 218.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
