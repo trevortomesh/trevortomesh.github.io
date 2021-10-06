@@ -3,18 +3,53 @@
 	{
 		"selected_items":
 		[
+			[
+				"N",
+				"NOTES"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"contents": "var DATABASE = `\n\nDR. TREVOR MICHAEL TOMESH'S MEMEX\n  PERS : Trevor M. Tomesh\n  TYPE : note\n  NOTE : Welcome to my memex. Thank you for visiting. A memex is a personal knowledge base (see first link below). The idea goes back to VANNEVAR BUSH's original conception in his essay entitled \"As We May Think\" (quoted below). The software that runs this page is cited in the link above. Consult the index to the left to find the information that is relevant. I have decided to write my website in this manner because it is more conducive to the way that I think. I hope that you find some inspiration here! \n  QOTE : “Consider a future device …  in which an individual stores all his books, records, and communications, and which is mechanized so that it may be consulted with exceeding speed and flexibility. It is an enlarged intimate supplement to his memory.”\n  LINK : https://github.com/kormyen/memex\n  TAGS : website, about, me\n\nABOUT ME\n  TYPE : note\n  NOTE : I am a researcher, lecturer, and an academic hacker. I have BSc in physics and mathematics from the University of Wisconsin - River Falls and a PhD from the University of Regina (Canada) in computer science. My research interests include interactive hardware systems, constrained systems. simulation, analogous systems, games development, open source software, complex systems and general systems theory.\n  FILE : profilepic.jpg\n  TAGS : about, me\n\nLECTURER\n  TYPE : link\n  NOTE : I am currently a lecturer in Computer Science at the University of Regina in Regina, SK Canada. \n  LINK : https://www.uregina.ca/science/cs/people/faculty/tomesh-trevor.html\n  FILE : uofr.png\n  TAGS : about, me\n\nTWITTER\n  TYPE : link\n  NOTE : Follow me on twitter!\n  LINK : https://twitter.com/TrevorTomesh\n  FILE : twitter.png\n  TAGS : social, me\n\nLINKEDIN\n  TYPE : link\n  NOTE : Add me on linkedin!\n  LINK : https://ca.linkedin.com/pub/trevor-tomesh/51/724/5ab/\n  FILE : linkedin.png\n  TAGS : social, me \n\nGITHUB\n  TYPE : link\n  NOTE : Fork me!\n  LINK : http://www.github.com/trevortomesh\n  FILE : github.png\n  TAGS : social, me  \n\nACADEMIC HACKING\n  TYPE : NOTE\n  NOTE : HACKER (n.) A hacker is one who enjoys the intellectual challenge of creatively overcoming and circumventing limitations of programming systems and who tries to extend their capabilities. ACADEMIC (adj.) relating to education and scholarship. Hacking has its roots deep within academia. The first documented group of adherents to the \"hacker culture\" were the members of the Tech Model Railroad Club at MIT back in the early 20th century. An academic hacker is someone who seeks to close the rift which has formed between hacker culture and academic culture over the years. In my research and in my teaching, I try to emphasize the value in creative solutions to problems, no matter how inelegant or bizarre they may seem. In the end, it's all about having fun through discovery. For more information read Steven Levey's book \"Hackers: Heroes of the Computer revolution\".\n  TAGS : philosophy, hacking, history\n  \nFREE AS IN FREEDOM\n  TYPE : NOTE\n  NOTE : Free People, Free Markets, Free Software. \n  TAGS : philosophy\n\nA SLACKER'S GUIDE TO GETTING INTO GRAD SCHOOL\n  TYPE : FILE\n  NOTE : An essay that I wrote a while back on my experience getting into graduate school.\n  LINK : https://github.com/trevortomesh/trevortomesh.github.io/blob/master/grad.pdf  \n  TAGS : writing\n\nCNC LECTURE\n  TYPE : lecture\n  LINK : https://docs.google.com/presentation/d/1gLWWMLXCt5wgE3wvqwF1U05FG3RnNggC1lM4K9ssGtg/edit?usp=sharing\n  NOTE : Lecture slides on CNC machines. Warning: Graphic Content!\n  TAGS : lectures, technology\n\nCS 207 - BUILDING INTERACTIVE GADGETS\n  TYPE : note\n  NOTE : An introduction to building and controlling interactive devices for multimedia art and DIY projects. Build robots, new musical instruments, wearable computers and more. Learn about sensors and actuators: WiFi, Bluetooth, GPS; hardware platforms such as the Arduino; and software platforms such as Processing.\n  TAGS : classes\n\nCS 290AJ - INTERACTIVE SIMULATION METHODS\n  TYPE : note\n  NOTE : In this course students will use the Blender 3D modelling suite to develop visually stimulating - yet physically accurate - models in domains such as classical mechanics, chaos theory, and complex systems and bring learning to life in interactive 3D simulations.\n  TAGS : classes\n\nCS 290AK - TOPICS IN DATA ACQUISITION AND ANALYSIS \n  TYPE : note\n  NOTE : Students are introduced to data collection techniques by developing their own sensor modules, running experiments and verifying the results. Students will learn microcontroller programming for data collection as well as regression techniques and error analysis for calibration and verification. Potential modules developed range from simple light sensors to fully functioning geiger counters. \n  TAGS : classes\n  \nCS 455 - Mobile Computing\n  TYPE : note\n  NOTE : Mobile Computing focuses on the design and implementation of software in a networked mobile environment. The primary topics to be covered in the course include software development practices, network computing, graphics programming, and human-computer interaction, all focused on the challenges and opportunities afforded by modern mobile computing devices. \n  TAGS : classes\n  \nCS 280 - Risk and Reward in the Information Society\n  TYPE : note\n  NOTE : Social context of computing. Case study: human-computer interfaces and their evaluation. Methods and tools of analysis. Professional and ethical responsibilities. Risks and liabilities of computer-based systems. Intellectual property, privacy and civil liberties. Professional communication. Sustainability. Cybercrime. \n  TAGS : classes  \n  \nCS 807 - INTERACTIVE HARDWARE AND EMBEDDED COMPUTING \n  TYPE : note\n  NOTE : Hardware design for physical and pervasive computing systems. Wired and wireless communication protocols; sensors and actuators; resource constraints; location- and context-awareness. Applications include: wearable computing, wireless sensor networks, robotics and automation, internet of things. Embedded hardware platforms such as ARM (raspberry Pi) and AVR (Arduino).\n  TAGS : classes\n  \nCS 855 - Mobile Computing\n  TYPE : note\n  NOTE : Mobile Computing focuses on conducting research in the design, development, and evaluation of software in a networked mobile environment. The primary topics to be covered in the course include network computing, graphics programming, human-computer interaction, and evaluation methods, all focused on the challenges and opportunities afforded by modern mobile computing devices.\n  TAGS : classes\n  \nCS 890AC - Data Analysis from the Internet\n  TYPE : note\n  NOTE : Data Analysis from the Internet: Language, indexing and classification; extracting and abstracting by computer; stylistic analysis, statistical models and the entropy of English; hidden Markov models; probablistic context-free grammars; data analysis via data mining and rule induction.\n  TAGS : classes\n  \nCTCH 310AD - Introduction to Computer Game and VR Design\n  TYPE : note\n  NOTE : This course introduces computer game design using Unity and other industry standard software, through concept, pre-production, production and post-production; includes storyboarding and distribution. For game design, and virtual reality composition towards experimental art applications. Open to beginners and advanced students.   \n\n\nLATEX REPORT TEMPLATE\n  TYPE : FILE\n  LINK : https://www.overleaf.com/project/5ef4c72fe2f433000152ebdf\n  NOTE : My standard template for writing reports in LATEX\n  TAGS : files\n\n`\n",
 			"file": "content/data.ndtl",
+			"file_size": 7596,
+			"file_write_time": 132726789297642454,
 			"settings":
 			{
-				"buffer_size": 4996,
-				"encoding": "UTF-8",
+				"buffer_size": 7581,
 				"line_ending": "Unix"
-			}
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					1,
+					"insert",
+					{
+						"characters": "9"
+					},
+					"AQAAAJkdAAAAAAAAmh0AAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACZHQAAAAAAAJkdAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					4,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJkdAAAAAAAAmR0AAAAAAAABAAAAOQ",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACaHQAAAAAAAJodAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					6,
+					6,
+					"left_delete",
+					null,
+					"BgAAAKAdAAAAAAAAoB0AAAAAAAACAAAAICCfHQAAAAAAAJ8dAAAAAAAAAQAAAAqdHQAAAAAAAJ0dAAAAAAAAAgAAACAgnB0AAAAAAACcHQAAAAAAAAEAAAAKmh0AAAAAAACaHQAAAAAAAAIAAAAgIJkdAAAAAAAAmR0AAAAAAAABAAAACg",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACiHQAAAAAAAKIdAAAAAAAAAAAAAACAb0A"
+				]
+			]
 		}
 	],
 	"build_system": "",
@@ -30,43 +65,42 @@
 		[
 			[
 				"Package Control: ",
-				"Package Control: Install Package"
-			],
-			[
-				"pack",
-				"Package Control: Install Package"
+				"Package Control: Discover Packages"
 			],
 			[
 				"package",
-				"Package Control: Remove Package"
+				"Package Control: Install Package"
 			],
 			[
-				"latex",
-				"Set Syntax: LaTeX"
+				"Package Control: install",
+				"Package Control: Install Package"
 			],
 			[
-				"fold",
-				"Code Folding: Fold Tag Attributes"
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Insta",
+				"Package Control: Install Package"
 			]
 		],
 		"width": 0.0
 	},
 	"console":
 	{
-		"height": 231.0,
+		"height": 298.0,
 		"history":
 		[
-			"ls"
 		]
 	},
 	"distraction_free":
 	{
 		"menu_visible": true,
-		"show_minimap": true,
-		"show_open_files": true,
+		"show_minimap": false,
+		"show_open_files": false,
 		"show_tabs": false,
 		"side_bar_visible": false,
-		"status_bar_visible": true
+		"status_bar_visible": false
 	},
 	"expanded_folders":
 	[
@@ -75,58 +109,35 @@
 	],
 	"file_history":
 	[
-		"/home/trevor/github/trevortomesh.github.com/index.html",
-		"/home/trevor/github/trevortomesh.github.com/content/data.ndtl",
-		"/home/trevor/memex/content/data.ndtl",
-		"/home/trevor/Desktop/springSummer2019/infoTheory/assignments/a3a4/main.tex",
-		"/home/trevor/Documents/thesis/chapter5.tex",
-		"/home/trevor/.minetest/worlds/NoWorld/map_meta.txt",
-		"/home/trevor/Documents/thesis/main.tex",
-		"/home/trevor/Documents/thesis/chapter1.tex",
-		"/home/trevor/Documents/thesis/chapter2.tex",
-		"/home/trevor/Documents/thesis/chapter6.tex",
-		"/home/trevor/Documents/thesis/chapter4.tex",
-		"/home/trevor/Documents/thesis/chapter3.tex",
-		"/home/trevor/.minetest/worlds/NoWorld/env_meta.txt",
-		"/home/trevor/Documents/thesis/thesis.bib",
-		"/home/trevor/Documents/thesis/glossary.tex",
-		"/home/trevor/Documents/thesis/appendixA.tex",
-		"/home/trevor/Documents/thesis/urthesis.sty",
-		"/home/trevor/Documents/thesis/preamble.tex",
-		"/home/trevor/Documents/thesis/appendixB.tex",
-		"/home/trevor/Documents/thesis/dedication.tex",
-		"/home/trevor/Documents/thesis/acknowledgements.tex",
-		"/home/trevor/Documents/thesis/abstract.tex",
-		"/home/trevor/Documents/thesis/library.bib",
-		"/home/trevor/Documents/thesis/chapter2.aux",
-		"/home/trevor/Documents/thesis/title.tex",
-		"/home/trevor/Documents/thesis/thesisStatement.txt",
-		"/home/trevor/Documents/thesis/thesis.tex",
-		"/home/trevor/Documents/thesis/cSysts.tex",
-		"/home/trevor/setup.sh",
-		"/home/trevor/commands.txt",
-		"/home/trevor/core",
-		"/etc/hosts",
-		"/etc/hosts.deny",
-		"/home/trevor/Desktop/test.txt",
-		"/home/trevor/.config/i3status/config",
-		"/home/trevor/.config/i3/config",
-		"/etc/i3status.conf",
-		"/home/trevor/Desktop/SpringSummer2019/DataAnalysis/assignments/a2/main.tex",
-		"/home/trevor/.config/i3status.conf",
-		"/home/trevor/Desktop/SpringSummer2019/DataAnalysis/assignments/a2/main."
+		"/home/trevor/Documents/project_specs.md",
+		"/home/trevor/memex/logic/main.js",
+		"/home/trevor/.config/sublime-text-3/Packages/User/untitled.sublime-syntax",
+		"/home/trevor/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/trevor/.config/sublime-text-3/Packages/Terminality/README.md",
+		"/home/trevor/github/latexFiles/CS372/LaTeX_syllabus_template/syllabus_template.tex",
+		"/home/trevor/.config/sublime-text-3/Packages/Terminality/Default (Linux).sublime-keymap",
+		"/home/trevor/github/latexFiles/CTCH310AD/LaTeX_syllabus_template/syllabus_template.tex",
+		"/home/trevor/github/latexFiles/CS207/LaTeX_syllabus_template/syllabus_template.tex",
+		"/home/trevor/github/thesis/chapter4.tex",
+		"/home/trevor/github/thesis/chapter5.tex",
+		"/home/trevor/github/curriculum-vitae/README.md",
+		"/home/trevor/github/thesis/chapter1.tex",
+		"/home/trevor/github/thesis/main.tex",
+		"/home/trevor/github/thesis/abstract.tex",
+		"/home/trevor/github/thesis/chapter2.tex",
+		"/home/trevor/github/thesis/chapter3.tex",
+		"/home/trevor/.config/sublime-text-3/Packages/Fold Comments/foldcomments.sublime-settings",
+		"/home/trevor/eqn.wl"
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 65.0
 	},
 	"find_in_files":
 	{
-		"height": 180.0,
+		"height": 0.0,
 		"where_history":
 		[
-			"",
-			"thesis"
 		]
 	},
 	"find_state":
@@ -134,84 +145,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"fig:entire",
-			"human",
-			"section",
-			"the the",
-			"may",
-			"piezzo",
-			"Figure",
-			"0.8",
-			"0.5",
-			"0.",
-			"assumed",
-			"arguably",
-			"chapter",
-			"Gerhard",
-			"dissertation",
-			"thesis",
-			"dissertation",
-			"thesis",
-			"hobbyist",
-			"figure",
-			"General",
-			"Maker",
-			"\\textit",
-			"General",
-			"Maker",
-			"/",
-			"fig",
-			"figure",
-			"\\textit",
-			"/",
-			"General",
-			"maker",
-			"\\textit",
-			"fig",
-			"figure",
-			"or",
-			"/",
-			"General Systems Theory",
-			"\\textit",
-			"fig",
-			"figure",
-			"cite",
-			"Maker",
-			"General Systems",
-			"/",
-			"\\textit",
-			"fig",
-			"figure",
-			"Maker ",
-			"Maker Movement",
-			"Maker",
-			"\\textit",
-			"figure",
-			"where",
-			"human-computer",
-			"definition of a system",
-			"system",
-			"klir",
-			"/",
-			"Project",
-			"fig",
-			"figure",
-			"\\textit",
-			"commun",
-			"microcontroller",
-			"microcon",
-			"Maker Movement",
-			"While the maker",
-			"General Systems Theory",
-			".}",
-			"\\section",
-			"Systems Engineering",
-			"general systems",
-			"General Systems Theory",
-			"dog",
-			"bo",
-			"label",
-			"comment"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -219,68 +152,56 @@
 		"regex": false,
 		"replace_history":
 		[
-			"piezo",
-			"0.6",
-			"0.8",
-			"Chapter",
-			"thesis",
-			"\\emph",
-			"or",
-			"general systems theory",
-			"\\emph",
-			"and",
-			"\\emph",
-			"",
-			"and",
-			"Figure",
-			"\\emph",
-			"micro-controller",
-			"maker movement",
-			"general systems theory",
-			"\\section*",
-			"systems engineering",
-			"general systems theory"
 		],
 		"reverse": false,
+		"scrollbar_highlights": true,
 		"show_context": true,
 		"use_buffer2": true,
+		"use_gitignore": true,
 		"whole_word": false,
 		"wrap": true
 	},
+	"folders":
+	[
+		{
+			"path": "/home/trevor/github/trevortomesh.github.io"
+		}
+	],
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
 					"file": "content/data.ndtl",
+					"selected": true,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4996,
+						"buffer_size": 7581,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								7577,
+								7577
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"syntax": "Packages/User/indental.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3443.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"stack_multiselect": false,
 					"type": "text"
 				}
 			]
@@ -288,11 +209,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 65.0
 	},
 	"input":
 	{
-		"height": 59.0
+		"height": 0.0
 	},
 	"layout":
 	{
@@ -322,10 +243,10 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "website.sublime-project",
+	"project": "",
 	"replace":
 	{
-		"height": 44.0
+		"height": 126.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -339,25 +260,25 @@
 	},
 	"select_project":
 	{
-		"height": 500.0,
-		"last_filter": "",
-		"selected_items":
-		[
-			[
-				"",
-				"~/.minetest/worlds/NoWorld/minetest.sublime-project"
-			]
-		],
-		"width": 380.0
-	},
-	"select_symbol":
-	{
 		"height": 0.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "ls",
+		"selected_items":
+		[
+			[
+				"ls",
+				"likesubparagraphHead"
+			]
+		],
+		"width": 592.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -367,7 +288,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 218.0,
+	"side_bar_width": 252.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
