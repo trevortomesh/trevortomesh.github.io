@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>memex</title>
+  <link rel="stylesheet" href="asset/style.css">
+  <script src="logic/lib/theme.js"></script>
+</head>
+<body>
+  <script> let theme = new Theme(); theme.install(); theme.start(); </script>
+  <div class="loading-wave"><div></div><div></div><div></div><div></div><div></div></div>
+
+  <nav></nav>
+  <div class="container">
+    <main></main>
+  </div>
+
+  <!-- everything above here is for initial load (aka: display bg and pretty loading anim ASAP!) -->
+
+  <script src="logic/seer.js"></script>
+  <script>
+    var seer = new Seer();
+    seer.install(false, 1);
+  </script>
+
+  <div class="error"></div>
+  <div class="lightbox"></div>
+  <div class="page-overlay" id="overlay"></div>
+  
+  <link rel="stylesheet" property="stylesheet" href="asset/fontawesome/css/all.css">
+  <script src="logic/lib/imagesloaded.js"></script>
+  <script src="logic/lib/masonry.js"></script>
+  <script src="logic/lib/indental.js"></script>
+
+  <script src="content/data.ndtl"></script>
+  <script src="content/settings.js"></script>
+  <script src="logic/view/util.js"></script>
+  <script src="logic/view/grid.js"></script>
+  <script src="logic/view/nav.js"></script>
+  <script src="logic/wrap.js"></script>
+  <script src="logic/add.js"></script>
+  <script src="logic/main.js"></script>
+  <script src="logic/lightbox.js"></script>
+  <script>
+    window.onerror = function(error, url, line) {
+      document.querySelector('.loading-wave').style.display = 'none';
+      document.querySelector('.error').style.display = 'inline-block';
+    };
+
+    let lightbox = new Lightbox;
+    lightbox.install(document.querySelector('.lightbox'), 'lightbox');
+
+    var main = new Main();
+    main.install();
+    main.start();
+  </script>
+</body>
+</html>
