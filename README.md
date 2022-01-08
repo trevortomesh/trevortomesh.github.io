@@ -97,5 +97,3 @@ Stored in a human-readable, flat-file database called [Indental](https://wiki.xx
 Hamish MacDonald
 
 **[Twitter](https://twitter.com/kormyen)** &middot; **[Home](https://kor.nz)**
-
-test
