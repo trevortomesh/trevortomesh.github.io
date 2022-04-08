@@ -111,11 +111,11 @@ RESEARCH METHODS GITHUB REPO
   TYPE : link
   LINK : https://github.com/trevortomesh/research-methods-class
   NOTE : A github repo to help you learn to write a good README.
-  TAGS : files
+  TAGS : research-toolkit
 
 LATEX REPORT TEMPLATE
   TYPE : FILE
   LINK : https://www.overleaf.com/read/vfncjkmkwstr
   NOTE : My standard template for writing reports in LATEX
-  TAGS : files
+  TAGS : files, research-toolkit
 `
