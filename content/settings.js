@@ -20,7 +20,7 @@ const SETTINGS =
 	SHOWNOTE: true,
 	SHOWQOTE: true,
 	SHOWTERM: true,
-	SHOWDONE: true,
+	SHOWDONE: false,
 	SHOWPROG: true,
 	SHOWIMAG: true,
 	SHOWFILE: true,
