@@ -106,6 +106,7 @@ CS 890AC - Data Analysis from the Internet
 CTCH 310AD - Introduction to Computer Game and VR Design
   TYPE : note
   NOTE : This course introduces computer game design using Unity and other industry standard software, through concept, pre-production, production and post-production; includes storyboarding and distribution. For game design, and virtual reality composition towards experimental art applications. Open to beginners and advanced students.   
+  TAGS : classes
 
 RESEARCH METHODS GITHUB REPO
   TYPE : link
@@ -117,5 +118,5 @@ LATEX REPORT TEMPLATE
   TYPE : FILE
   LINK : https://www.overleaf.com/read/vfncjkmkwstr
   NOTE : My standard template for writing reports in LATEX
-  TAGS : files, research-toolkit
+  TAGS : research-toolkit
 `
