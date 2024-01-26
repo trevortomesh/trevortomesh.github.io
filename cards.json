@@ -1,0 +1,233 @@
+{
+    "about": {
+        "title": "Dr. Trevor M. Tomesh",
+        "image": "/images/myface.png",
+        "text": "Assistant Professor <br> University of Wisconsin - River Falls",
+        "tags": [
+            "about",
+            "all"
+        ]
+    },
+    "contact": {
+        "title": "Contact Information",
+        "text": "email me: <a href=mailto:trevor.tomesh@uwrf.edu>trevor.tomesh@uwrf.edu</a>",
+        "image": "/images/mail.png",
+        "tags": [
+            "contact",
+            "all"
+        ]
+    },
+    "education": {
+        "title": "Education",
+        "text": "<p>University of Regina\nPhD in Computer Science - Class of 2020\nThesis Title:<a href = https://ourspace.uregina.ca/handle/10294/9307> \"Toward a Theory of Interactive Hardware</a>\"\nSupervisor: Dr. Daryl Hepting</p><br><p>University of Wisconsin - River Falls: BSc Physics, Class of 2011",
+        "tags": [
+            "education",
+            "all"
+        ]
+    },
+    "research": {
+        "title": "Publications",
+        "text": "<br>- Tomesh, T. and Hepting, D. (2017). <br> Environmental sensing with recycled materials. [online] O'Reilly Media.<br>  Available <a href = https://www.oreilly.com/ideas/environmentalsensing-with-recycled-materials>Online</a><br><br>- Tomesh, Trevor Michael, and Daryl H. Hepting. \"DIY game console development.\" Proceedings of the first ACM SIGCHI annual symposium on Computer-human interaction in play. ACM, 2014.",
+        "tags": [
+            "research",
+            "all"
+        ]
+    },
+    "linkedin": {
+        "title": "LinkedIn",
+        "text": "<br><a href= https://ca.linkedin.com/pub/trevor-tomesh/51/724/5ab/>Add me on linkedin!</a>",
+        "tags": [
+            "social",
+            "about"
+        ],
+        "image": "/images/linkedin.png"
+    },
+    "github": {
+        "title": "GITHUB",
+        "text": "<a href = http://www.github.com/trevortomesh>Fork me!</a>",
+        "tags": [
+            "social",
+            "me"
+        ],
+        "image": "/images/github.png"
+    },
+    "latex": {
+        "title": "LATEX REPORT TEMPLATE",
+        "text": "My standard template for writing reports in <a href = https://www.overleaf.com/read/vfncjkmkwstr>LATEX</a>",
+        "image": "/images/Overleaf_Logo.svg",
+        "tags": [
+            "research-toolkit",
+            "files"
+        ]
+    },
+    "site": {
+        "title": "Site Design",
+        "text": "The design of this website is inspired by recipie card note-taking. Specifically, I have taken inspiration from the Zettelkasten notetaking method as well as the work of <a href = https://kormyen.github.io/memex/> Kormyen </a>. ",
+        "tags": [
+            "design",
+            "coding",
+            "research"
+        ],
+        "image": "/images/cards.jpg"
+    },
+    "json-gui": {
+        "title": "Python JSON GUI",
+        "text": "I have written a little GUI that allows a user to enter in text and it will translate the input and append to a JSON file. ",
+        "image": "",
+        "tags": [
+            "experiment",
+            "python",
+            "coding",
+            "tools"
+        ]
+    },
+    "Queen Lyrics": {
+        "title": "Queen Lyrics",
+        "text": "Is this the real life? Is this just fantasy?",
+        "image": "",
+        "tags": [
+            "test",
+            "lyrics"
+        ]
+    },
+    "JSONDex": {
+        "title": "JSONDex",
+        "text": "An experiment in rendering JSON as a rolodex. <a href = ./jsondex.html> Click Here </a>",
+        "image": "/images/dex.png",
+        "tags": [
+            "test",
+            "experiment",
+            "json",
+            "tools"
+        ]
+    },
+    "json-writer": {
+        "title": "JSON Card Writer",
+        "text": "A simple JSON formatting tool that allows me (and you) to create properly formatted json entries that can be rendered as cards for this website! Co-Authored by ChatGPT.\n\n<a href = \"https://tmtomesh.repl.co/json-writer.html\">JSON Card Writer</a>",
+        "tags": [
+            "json",
+            "experiment",
+            "coding",
+            "tools"
+        ],
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg"
+    },
+
+  
+  "chatgpt": {
+    "title": "Co-authored By ChatGPT",
+    "text": "The <a href = https://chat.openai.com>ChatGPT</a> LLM co-authored this site and many of the tools found here. ChatGPT was prompted with the general output I was trying to achieve, for example, \"write a web-based GUI that allows you to create a JSON file given the following output format\". The output was then tested and revised and additional prompts were provided as needed. The final product is tweaked by the human author to get it just right. Look for the \"Co authored by ChatGPT\" badge around this site to find where it was used.",
+    "tags": [
+      "ChatGPT",
+      "experiment",
+      "coding"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
+  
+},
+  
+  "json-viz": {
+    "title": "Textual JSON Viewer Tool",
+    "text": "The <a href= ./jsonviz.html>\"JSON Viewer\"</a> is a user-friendly web application that aids in comprehending the contents of JSON files by offering a simple interface. As part of an exploration into chatbot-assisted pair programming and serialization formatting tools, this program lets users input JSON data through a text area. Upon clicking the \"Visualize\" button, the application intelligently parses and structures the JSON data, presenting it in an organized format. Arrays are displayed as lists, with each item being a list element, and objects are represented by property-value pairs.",
+    "tags": [
+      "json",
+      "experiment",
+      "research"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg"
+  },
+
+  "translator": {
+    "title": "Data Format Converter",
+    "text": "<a href = ./translate.html>The Data Format Converter</a> is a user-friendly web tool that efficiently transforms data between JSON, YAML, and indented text formats. Users input JSON data and choose an output format, such as JSON, YAML, or indented text. Powered by JavaScript, the tool performs quick conversions and generates neatly formatted outputs for easy copying. Clear instructions enhance usability, streamlining the data conversion process. This project is the result of less than an hour of prompt engineering and fine-tuning with ChatGPT and showcases the potential of collaboration between developers and AI tools like ChatGPT in creating innovative serialization formatting tools.",
+    "tags": [
+      "chatgpt",
+      "json",
+      "experiment",
+      "tool"
+    ],
+    "image": ""
+},
+
+  
+  "ann": {
+    "title": "Arrow Notes Notation",
+    "text": "<a href = ./annspec.html>Arrow Notes Notation</a> (ANN) draws inspiration from the analog world of handwritten notes, infusing digital data representation with the familiarity and clarity of manual notation. Much like the visual hierarchy that emerges when taking notes on paper, ANN employs arrows with increasing dashes to mirror the indentation that naturally occurs in handwritten lists and outlines. This unique design choice enhances the understanding of data relationships, allowing users to intuitively grasp the nesting depth of elements. Furthermore, the use of pipes and precise alignment evokes the disciplined layout often found in handwritten notes, where each element's positioning contributes to a harmonious overall structure. By bridging the gap between the tactile experience of handwritten annotations and the digital realm, ANN introduces a sense of human touch and organization that resonates with the way we naturally organize and comprehend information on paper.",
+    "tags": [
+      "tools",
+      "programming",
+      "research",
+      "experiment"
+    ],
+    "image": ""
+  },
+
+
+
+  "repls": {
+    "title": "My Repl's",
+    "text": "All of my public repl's (including class code) can be found <a href=https://replit.com/@tmtomesh>here</>",
+    "tags": [
+      "coding",
+      "courses"
+    ],
+    "image": ""
+  },
+
+  "todo":{
+    "title": "Front-end Todo List POC",
+    "text": "<a href=https://front-end-todo-test.tmtomesh.repl.co>Todo list </a> built entirely from front-end technologies. The user can save and load json based todo items.",
+    "tags":[
+      "coding",
+      "tools",
+      "coding",
+      "experiment",
+      "research"
+    ],
+    "image":"" 
+    
+  },
+
+  
+    "CV": {
+      "title": "My CV",
+      "text": "My CV is hosted on github here:\n<a href=\"https://github.com/trevortomesh/curriculum-vitae/blob/master/README.md\">My CV</a>",
+      "tags": [
+        "about"
+      ],
+      "image": "/images/github.png"
+    },
+  
+  "FrontEndTech": {
+    "title": "Front End Tech",
+    "text": "This entire site was built with front-end web technologies only. JSON, Javascript, HTML and CSS are the only technologies used. This is because I want to be able to run everything without having to rely on server resources. As such, there is no way to save anything, so you have to copy and paste information to and from any of the utilities on here (assuming you want to save anything you've done).",
+    "tags": [
+      "programming",
+      "technology",
+      "experiment"
+    ],
+    "image": ""
+  },
+
+    "example-repo": {
+      "title": "CIDS Example Repo",
+      "text": "Here is an example repo that I created for my CIDS 162 class. Of course, it can be used generally.\n\n<a href = https://github.com/trevortomesh/162-summer2023>Repository Link</a>",
+      "tags": [
+        "programming",
+        "courses"
+      ],
+      "image": ""
+    },
+
+  "coding-guide": {
+    "title": "Dr.T's Coding Guide",
+    "text": "<a href = files/coding-guide.pdf>Coding Guide</a>",
+    "tags": [
+      "programming",
+      "courses"
+    ],
+    "image": ""
+  }
+
+  
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Card Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: #d0d0d0;
+        }
+
+      .badge {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: #37474F;
+    color: #ffffff;
+  }
+
+        .container {
+            max-width: 800px;
+            margin: 0px auto;
+            padding: 20px 40px 20px 30px;
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #333333;
+            color: #d0d0d0;
+            border: 1px solid #555;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007acc;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #005499;
+        }
+
+        #output {
+            white-space: pre;
+            border: 1px solid #555;
+            padding: 10px;
+            background-color: #2a2a2a;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            color: #d0d0d0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+
+        .modal h2 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: #f44336;
+        }
+
+        #copy-btn {
+            background-color: #4caf50;
+        }
+
+        #copy-btn:hover {
+            background-color: #45a049;
+        }
+      
+        #copyright{
+          text-align: right;
+          justify-content: right;
+          margin-bottom: 30px;
+          font-family: 'Courier New', Courier, monospace;
+      
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>JSON Card Creator</h1>
+        <form id="json-form">
+            <br>
+            <button type="button" id="instructions-btn">Instructions</button>
+            <br>
+            <br>
+            <label for="section">Section:</label>
+            <input type="text" id="section" required>
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+            <label for="text">Text:</label>
+            <textarea id="text" rows="4" required></textarea>
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" required>
+            <label for="image">Image URL:</label>
+            <input type="text" id="image">
+            <br><br>
+            <button type="button" id="add-btn">Add Section</button>
+            <button type="button" id="clear-btn">Clear</button>
+            <button type="button" id="copy-btn">Copy Output</button>
+        </form>
+        <div id="output"></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="instructions-modal">
+        <div class="modal-content">
+            <h2>Instructions</h2>
+            <p>Welcome to the JSON Card Writer!</p>
+            <p>This tool is a JSON builder that will automatically format input for use with my website.</p>
+          
+            <p>1. Fill in the form fields with the desired information.</p>
+            <p>2. Click the "Add Section" button to create a new JSON section.</p>
+            <p>3. The JSON result will appear in the output area.</p>
+            <p>4. Copy the results and paste them at the end of your cards.json file.</p>
+            <p>Note: You can clear the form fields and JSON result using the "Clear" button.</p>
+            <p>If you wish to append to an existing JSON file, omit the first and last brackets!</p>
+            <span class="close-button" id="close-modal">&times;</span>
+        </div>
+    </div>
+<div class="badge">
+  <p><a href="https://chat.openai.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Co_authored%20by-ChatPT-9cf?logo=openai&logoColor=white"
+         alt="Coauthored by ChatGPT"></a></p>
+  
+    <div id="copyright">
+      <b>&copy; 2023 Trevor M. Tomesh</b>
+    </div>
+
+</div>
+    <script>
+        const addButton = document.getElementById('add-btn');
+        const clearButton = document.getElementById('clear-btn');
+        const instructionsButton = document.getElementById('instructions-btn');
+        const copyButton = document.getElementById('copy-btn');
+        const jsonForm = document.getElementById('json-form');
+        const outputDiv = document.getElementById('output');
+        const modal = document.getElementById('instructions-modal');
+        const closeModalButton = document.getElementById('close-modal');
+
+        addButton.addEventListener('click', () => {
+            const section = document.getElementById('section').value;
+            const title = document.getElementById('title').value;
+            const text = document.getElementById('text').value;
+            const tags = document.getElementById('tags').value.split(',').map(tag => tag.trim());
+            const image = document.getElementById('image').value;
+
+            const newSection = {
+                [section]: {
+                    title,
+                    text,
+                    tags,
+                    image,
+                }
+            };
+
+            const existingOutput = JSON.parse(outputDiv.innerText || '{}');
+            const updatedOutput = { ...existingOutput, ...newSection };
+            outputDiv.innerText = JSON.stringify(updatedOutput, null, 2);
+
+            // Clear form fields
+            jsonForm.reset();
+        });
+
+        clearButton.addEventListener('click', () => {
+            // Clear JSON result
+            outputDiv.innerText = '';
+
+            // Clear form fields
+            jsonForm.reset();
+        });
+
+        instructionsButton.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        copyButton.addEventListener('click', () => {
+            const textToCopy = outputDiv.innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Copied to clipboard!');
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+  
+</body>
+</html>

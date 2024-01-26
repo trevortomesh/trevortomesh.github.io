@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #card-container {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            max-width: 600px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        #prev-btn, #next-btn {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+            color: #555;
+        }
+
+        #prev-btn {
+            align-self: flex-start;
+        }
+
+        #next-btn {
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <button id="prev-btn">&lt;</button>
+    <div id="card-container"></div>
+    <button id="next-btn">&gt;</button>
+
+    <script>
+        let currentIndex = 0;
+
+        // Fetch JSON data asynchronously
+        fetch('cards.json')
+            .then(response => response.json())
+            .then(data => {
+                const cardContainer = document.getElementById('card-container');
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+
+                // Render each card
+                Object.keys(data).forEach((key, index) => {
+                    const cardData = data[key];
+                    const cardElement = document.createElement('div');
+                    cardElement.classList.add('card');
+                    cardElement.style.transform = `translateX(${index * 100}%)`;
+
+                    // Add title
+                    const titleElement = document.createElement('h2');
+                    titleElement.textContent = cardData.title || key;
+                    cardElement.appendChild(titleElement);
+
+                    // Add image if available
+                    if (cardData.image) {
+                        const imageElement = document.createElement('img');
+                        imageElement.src = cardData.image;
+                        cardElement.appendChild(imageElement);
+                    }
+
+                    // Add text
+                    const textElement = document.createElement('p');
+                    textElement.innerHTML = cardData.text || '';
+                    cardElement.appendChild(textElement);
+
+                    // Append the card to the container
+                    cardContainer.appendChild(cardElement);
+                });
+
+                // Add event listeners for navigation
+                prevBtn.addEventListener('click', () => navigateCards(-1));
+                nextBtn.addEventListener('click', () => navigateCards(1));
+
+                // Function to navigate through cards
+                function navigateCards(direction) {
+                    currentIndex = (currentIndex + direction + data.length) % data.length;
+                    const translateValue = -currentIndex * 100;
+                    cardContainer.style.transform = `translateX(${translateValue}%)`;
+                }
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    </script>
+</body>
+</html>

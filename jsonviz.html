@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #jsonViewer {
+            border: 1px solid #555;
+            padding: 10px;
+            background-color: #444;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #jsonInput {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #visualization {
+            margin-top: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="jsonViewer">
+        <h2>JSON Viewer</h2>
+        <textarea id="jsonInput" rows="10" placeholder="Paste your JSON here"></textarea>
+        <button onclick="visualizeJSON()">Visualize</button>
+        <div id="visualization"></div>
+    </div>
+
+    <script>
+        function visualizeJSON() {
+            const jsonInput = document.getElementById('jsonInput').value;
+            const visualizationDiv = document.getElementById('visualization');
+            
+            try {
+                const jsonData = JSON.parse(jsonInput);
+                visualizationDiv.innerHTML = '';
+                visualizeData(jsonData, visualizationDiv);
+            } catch (error) {
+                visualizationDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+
+        function visualizeData(data, parentElement) {
+            if (typeof data === 'object') {
+                if (Array.isArray(data)) {
+                    const listElement = document.createElement('ul');
+                    parentElement.appendChild(listElement);
+
+                    for (const item of data) {
+                        const listItem = document.createElement('li');
+                        listElement.appendChild(listItem);
+                        visualizeData(item, listItem);
+                    }
+                } else {
+                    const objectElement = document.createElement('ul');
+                    parentElement.appendChild(objectElement);
+
+                    for (const key in data) {
+                        const propertyElement = document.createElement('li');
+                        propertyElement.innerHTML = `<strong>${key}:</strong> `;
+                        objectElement.appendChild(propertyElement);
+
+                        visualizeData(data[key], propertyElement);
+                    }
+                }
+            } else {
+                const textElement = document.createElement('span');
+                textElement.textContent = data;
+                parentElement.appendChild(textElement);
+            }
+        }
+    </script>
+</body>
+  <div class="badge">
+  <p><a href="https://chat.openai.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Co_authored%20by-ChatPT-9cf?logo=openai&logoColor=white"
+         alt="Coauthored by ChatGPT"></a></p>
+    <div id="copyright" style="font-family: 'Courier New', Courier, monospace;">
+      <b>&copy; 2023 Trevor M. Tomesh</b>
+    </div>
+</div>
+</html>

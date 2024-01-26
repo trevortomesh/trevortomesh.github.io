@@ -1,0 +1,81 @@
+{
+"nodes": [{
+    "id": "pokedex",
+    "label": "Pokédex",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_1",
+    "label": "Generation I",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_1_2",
+    "label": "Bulbasaur",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_1_3",
+    "label": "Charmander",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_1_4",
+    "label": "Squirtle",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_5",
+    "label": "Generation II",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_5_6",
+    "label": "Chikorita",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_5_7",
+    "label": "Cyndaquil",
+    "x": 0,
+    "y": 0,
+    "size": 10
+},{
+    "id": "pokedex_5_8",
+    "label": "Totodile",
+    "x": 0,
+    "y": 0,
+    "size": 10
+}], "links": [{
+    "source": "pokedex",
+    "target": "pokedex_1"
+},{
+    "source": "pokedex_1",
+    "target": "pokedex_1_2"
+},{
+    "source": "pokedex_1",
+    "target": "pokedex_1_3"
+},{
+    "source": "pokedex_1",
+    "target": "pokedex_1_4"
+},{
+    "source": "pokedex",
+    "target": "pokedex_5"
+},{
+    "source": "pokedex_5",
+    "target": "pokedex_5_6"
+},{
+    "source": "pokedex_5",
+    "target": "pokedex_5_7"
+},{
+    "source": "pokedex_5",
+    "target": "pokedex_5_8"
+}]
+}
