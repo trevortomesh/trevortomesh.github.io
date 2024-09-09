@@ -189,18 +189,6 @@
     "image":"" 
   },
 
-  "todo":{
-      "title": "Front-end Todo List POC",
-      "text": "<a href=https://front-end-todo-test.tmtomesh.repl.co>Todo list </a> built entirely from front-end technologies. The user can save and load json based todo items.",
-      "tags":[
-          "coding",
-          "tools",
-          "coding",
-          "experiment",
-          "research"
-      ],
-      "image":""
-  },
   "FrontEndTech": {
     "title": "Front End Tech",
     "text": "This entire site was built with front-end web technologies only. JSON, Javascript, HTML and CSS are the only technologies used. This is because I want to be able to run everything without having to rely on server resources. As such, there is no way to save anything, so you have to copy and paste information to and from any of the utilities on here (assuming you want to save anything you've done).",
