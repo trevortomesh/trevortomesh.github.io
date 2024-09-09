@@ -1,0 +1,20 @@
+{
+    "node1": {
+        "id": "node1",
+        "title": "Node 1",
+        "text": "Description of Node 1",
+        "keywords": ["keyword1", "keyword2"]
+    },
+    "node2": {
+        "id": "node2",
+        "title": "Node 2",
+        "text": "Description of Node 2",
+        "keywords": ["keyword2", "keyword3"]
+    },
+    "node3": {
+        "id": "node3",
+        "title": "Node 3",
+        "text": "Description of Node 3",
+        "keywords": ["keyword1", "keyword3"]
+    }
+}

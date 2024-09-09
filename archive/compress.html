@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Layout Compression</title>
+</head>
+<body>
+    <h1>JSON Layout Compression</h1>
+
+    <textarea id="inputJson" placeholder="Enter your JSON data here..." rows="10" cols="50"></textarea>
+    <br>
+    <button onclick="compressJson()">Compress JSON</button>
+
+    <h2>Compressed JSON:</h2>
+    <textarea id="compressedJson" rows="10" cols="50" readonly></textarea>
+
+    <script>
+        function compressJson() {
+            const inputJson = document.getElementById('inputJson').value;
+
+            try {
+                const jsonData = JSON.parse(inputJson);
+                const compressedJson = JSON.stringify(jsonData, null, 0);
+
+                document.getElementById('compressedJson').value = compressedJson;
+            } catch (error) {
+                console.error(`Error compressing JSON: ${error}`);
+                alert('Invalid JSON. Please enter valid JSON data.');
+            }
+        }
+    </script>
+</body>
+</html>

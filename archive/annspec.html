@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arrow Notes Notation (ANN) Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #222;
+      color: #ddd;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    h1 {
+      color: #fff;
+    }
+    h2 {
+      color: #ccc;
+    }
+    pre {
+      background-color: #333;
+      color: #ddd;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Arrow Notes Notation (ANN) Format Specification</h1>
+
+  <p>
+    Arrow Notes Notation (ANN) is a lightweight and human-readable 
+    serialization format designed to represent structured data intuitively. 
+    With its distinctive arrow-based syntax and increasing dashes for deeper 
+    nesting, ANN simplifies data representation for configuration files, 
+    documentation, and human-readable data exchange.
+
+    ANN is inspired by my own analog note-taking methodology. 
+  </p>
+
+  <h2>Basic Concepts</h2>
+
+  <h3>Arrows</h3>
+  <p>
+    Arrows (<code>-&gt;</code>) are the foundational elements of ANN. 
+    They mark the start of a new data element and visually convey 
+    its nesting depth. Arrows are accompanied by an increasing number 
+    of dashes (<code>-</code>) as you descend deeper into the data structure, 
+    providing a clear indication of hierarchy.
+  </p>
+
+  <h3>Indentation</h3>
+  <p>
+    Indentation in ANN visually depicts nested elements. 
+    It consists of a pipe (<code>|</code>) character followed 
+    by a dash (<code>-</code>), forming a consistent pattern 
+    (<code>|-&gt;</code>, <code>|--&gt;</code>, <code>|---&gt;</code>, 
+    and so on) that enhances readability. This is meant to signify a 
+    bent arrow ↳. 
+    Indentation is fundamental to recognizing the hierarchical 
+    relationships within the data.
+
+    A pipe must always line up with the first character of the parent
+    element. For example:
+  <pre>
+-> person
+   |-> name = "Alice"
+  </pre>
+  </p>
+
+  <h3>Key-Value Pairs</h3>
+  <p>
+    Key-value pairs form the core of ANN's data representation. They consist of a key and its associated value, separated by an equal sign (<code>=</code>). There are no spaces around the equal sign, preserving the format's clean and succinct nature.
+  </p>
+
+  <h2>Syntax Rules</h2>
+
+  <ol>
+    <li>Each line in the ANN format represents a distinct data element.</li>
+    <li>Arrows (<code>-&gt;</code>) signify the start of a new data element.</li>
+    <li>A pipe (|) indicates a nested element.</li>
+    <li>Indentation with an increasing number of dashes (<code>-</code>) indicates the nesting level of objects and values.</li>
+    <li>A child element's pipe must match up with the first character of the parent element.</li>
+    <li>Key-value pairs are denoted by the equal sign (<code>=</code>).</li>
+    <li>Strings are enclosed within double quotes (<code>" "</code>).</li>
+    <li>Boolean values are expressed as <code>true</code> or <code>false</code>.</li>
+  </ol>
+
+  <h2>Examples</h2>
+
+  <h3>Example 1: Simple Key-Value Pairs</h3>
+  <pre>
+-> name = "John"
+-> age = 30
+-> is_student = true
+  </pre>
+
+  <h3>Example 2: Nested Objects</h3>
+  <pre>
+-> person
+   |-> name = "Alice"
+   |-> age = 25
+   |-> address
+       |--> street = "123 Main St"
+       |--> city = "EONville"
+  </pre>
+
+  <h3>Example 3: Arrays</h3>
+  <pre>
+-> numbers = 1 2 3 4 5
+  </pre>
+
+  <h3>Example 4: Complex Nesting</h3>
+  <pre>
+-> data
+   |-> category
+       |--> type = "A"
+       |--> items = item1 item2 item3
+   |-> settings
+   |-> enable_feature = true
+   |-> threshold = 0.5
+  </pre>
+
+  <h2>Usage and Considerations</h2>
+
+  <ol>
+    <li>ANN excels in human-readable data representation. Although it can be programmatically parsed, it may not match the efficiency of formats like JSON or XML for machine communication.</li>
+    <li>ANN thrives in scenarios with relatively simple data structures, prioritizing readability.</li>
+    <li>For intricate and complex data scenarios, JSON, XML, or established serialization formats are more suitable.</li>
+    <li>Consistent indentation is pivotal for accurately conveying nesting hierarchy, with dashes' increasing count providing an additional visual cue.</li>
+  </ol>
+
+  <h2>Conclusion</h2>
+
+  <p>
+    Arrow Notes Notation (ANN) introduces an intuitive approach to structured data representation. Through its arrow-based syntax with increasing dashes, ANN enhances human comprehension, making it a valuable choice for situations demanding readability and quick data understanding.
+  </p>
+
+</body>
+  <div class="badge">
+  <p><a href="https://chat.openai.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Co_authored%20by-ChatPT-9cf?logo=openai&logoColor=white"
+         alt="Coauthored by ChatGPT"></a></p>
+    <div id="copyright" style="font-family: 'Courier New', Courier, monospace;">
+      <b>&copy; 2023 Trevor M. Tomesh</b>
+    </div>
+</div>
+</html>

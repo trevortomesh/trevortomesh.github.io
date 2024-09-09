@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Format Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        #converter {
+            border: 1px solid #555;
+            padding: 10px;
+            background-color: #444;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #dataInput, #outputFormat {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output {
+            margin-top: 10px;
+            background-color: #222;
+            padding: 10px;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+    <div id="converter">
+        <h2>Data Format Converter</h2>
+        <textarea id="dataInput" rows="10" placeholder="Enter JSON data here"></textarea>
+        <label for="outputFormat">Select output format:</label>
+        <select id="outputFormat">
+            <option value="json">JSON</option>
+            <option value="yaml">YAML</option>
+            <option value="indented">Indented Text</option>
+        </select>
+        <button onclick="convert()">Convert</button>
+        <button onclick="copyToClipboard()">Copy</button>
+        <button onclick="showInstructions()">Instructions</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function convert() {
+            const dataInput = document.getElementById('dataInput').value;
+            const outputFormat = document.getElementById('outputFormat').value;
+            const outputDiv = document.getElementById('output');
+
+            try {
+                let formattedOutput;
+                if (outputFormat === 'json') {
+                    formattedOutput = JSON.stringify(JSON.parse(dataInput), null, 2);
+                } else if (outputFormat === 'yaml') {
+                    formattedOutput = jsyaml.dump(JSON.parse(dataInput));
+                } else if (outputFormat === 'indented') {
+                    formattedOutput = getIndentedText(JSON.parse(dataInput), '');
+                }
+
+                outputDiv.innerHTML = `<pre>${formattedOutput}</pre>`;
+            } catch (error) {
+                outputDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+
+        function copyToClipboard() {
+            const outputText = document.getElementById('output').textContent;
+            const textArea = document.createElement('textarea');
+            textArea.value = outputText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
+
+        function showInstructions() {
+            alert("1. Enter your JSON data in the textarea.\n2. Select the desired output format from the dropdown.\n3. Click 'Convert' to see the converted output.\n4. Click 'Copy' to copy the output to your clipboard.");
+        }
+
+        function getIndentedText(obj, indent) {
+            let result = '';
+            for (const key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    result += `${indent}${key} = `;
+                    if (typeof obj[key] === 'object') {
+                        result += '\n' + getIndentedText(obj[key], indent + '    ');
+                    } else {
+                        result += obj[key] + '\n';
+                    }
+                }
+            }
+            return result;
+        }
+    </script>
+</body>
+    <div class="badge">
+  <p><a href="https://chat.openai.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Co_authored%20by-ChatPT-9cf?logo=openai&logoColor=white"
+         alt="Coauthored by ChatGPT"></a></p>
+    <div id="copyright" style="font-family: 'Courier New', Courier, monospace;">
+      <b>&copy; 2023 Trevor M. Tomesh</b>
+    </div>
+</div>
+</html>

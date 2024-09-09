@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON to Node-Link Format Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow: auto;
+            max-height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin-top: 10px;
+        }
+        .copy-button {
+            padding: 5px 10px;
+            background-color: #ccc;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>JSON to Node-Link Format Converter</h2>
+    <textarea id="jsonData" placeholder="Enter your JSON data here"></textarea>
+    <button id="generateButton">Generate</button>
+    <pre id="result"></pre>
+    <button class="copy-button" id="copyButton">Copy to Clipboard</button>
+</div>
+
+<script>
+    document.getElementById('generateButton').addEventListener('click', generateNodeLinkData);
+    document.getElementById('copyButton').addEventListener('click', copyToClipboard);
+
+    function convertToNodeLinkFormat(jsonData) {
+        const nodes = [];
+        const links = [];
+
+        function traverse(obj, parentId = null) {
+            const id = obj.id || (parentId ? parentId + '_' + nodes.length : 'root');
+            const label = obj.label || 'Node';
+            const x = obj.x || 0;
+            const y = obj.y || 0;
+            const size = obj.size || 10;
+
+            nodes.push({ id, label, x, y, size });
+
+            if (parentId !== null) {
+                links.push({ source: parentId, target: id });
+            }
+
+            if (obj.children && Array.isArray(obj.children)) {
+                obj.children.forEach(child => traverse(child, id));
+            }
+        }
+
+        traverse(jsonData);
+
+        return { nodes, links };
+    }
+
+    function generateNodeLinkData() {
+        const jsonData = document.getElementById('jsonData').value;
+
+        try {
+            const parsedData = JSON.parse(jsonData);
+            const graphData = convertToNodeLinkFormat(parsedData);
+
+            const formattedNodes = graphData.nodes.map(node => JSON.stringify(node, null, 4)).join(',');
+            const formattedLinks = graphData.links.map(link => JSON.stringify(link, null, 4)).join(',');
+
+            const formattedResult = `"nodes": [${formattedNodes}], "links": [${formattedLinks}]`;
+            document.getElementById('result').textContent = formattedResult;
+
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            alert('Error parsing JSON: ' + error.message);
+        }
+    }
+
+    function copyToClipboard() {
+        const resultElement = document.getElementById('result');
+        const range = document.createRange();
+        range.selectNode(resultElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeRange(range);
+
+        alert('Copied to clipboard!');
+    }
+</script>
+
+</body>
+</html>

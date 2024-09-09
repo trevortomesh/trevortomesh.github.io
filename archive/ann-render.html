@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Basic styling for the rendered ANN */
+    .arrow-container {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+    }
+    .arrow {
+      font-size: 20px;
+    }
+    .line {
+      border-left: 2px solid black;
+      height: 20px;
+      margin-left: 10px;
+    }
+    .indent {
+      width: 20px;
+    }
+    .value {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="input" rows="10" cols="50" placeholder="Enter Arrow Notes Notation here"></textarea>
+  <button id="renderButton">Render</button>
+  <div id="ann-container"></div>
+
+  <script>
+    // Parse the ANN input into a structured data format
+    function parseAnnInput(input) {
+      // For this example, we'll just split lines
+      return input.trim().split('\n');
+    }
+
+    // Render the parsed ANN data
+    function renderAnn(data, parentElement) {
+      data.forEach(line => {
+        const depth = line.indexOf('-');
+        const value = line.trim().replace(/[-|l]/g, '').trim();
+        const arrowContainer = document.createElement('div');
+        arrowContainer.className = 'arrow-container';
+        
+        const arrow = document.createElement('div');
+        arrow.className = 'arrow';
+        arrow.innerHTML = '->';
+
+        const lineDiv = document.createElement('div');
+        lineDiv.className = 'line';
+        lineDiv.style.height = (depth * 20) + 'px';
+
+        const indent = document.createElement('div');
+        indent.className = 'indent';
+
+        const valueElement = document.createElement('div');
+        valueElement.className = 'value';
+        valueElement.textContent = value;
+
+        arrowContainer.appendChild(arrow);
+        arrowContainer.appendChild(lineDiv);
+        arrowContainer.appendChild(indent);
+        arrowContainer.appendChild(valueElement);
+
+        parentElement.appendChild(arrowContainer);
+      });
+    }
+
+    // Handle the "Render" button click
+    const renderButton = document.getElementById('renderButton');
+    renderButton.addEventListener('click', () => {
+      const input = document.getElementById('input').value;
+      const annContainer = document.getElementById('ann-container');
+      annContainer.innerHTML = ''; // Clear previous rendering
+      const parsedData = parseAnnInput(input);
+      renderAnn(parsedData, annContainer);
+    });
+  </script>
+</body>
+</html>

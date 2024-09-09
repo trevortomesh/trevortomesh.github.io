@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. T's Toy Assembler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            display: flex;
+        }
+
+        .container {
+            flex: 1;
+            max-width: calc(100% - 320px);
+            /* Adjust the width based on the instruction card width */
+            margin: 20px;
+            padding: 20px;
+            background-color: #2e2e2e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .instruction-card {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #2e2e2e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #f0f0f0;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #444;
+            color: #e0e0e0;
+            border: 1px solid #666;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+
+        th {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #1e1e1e;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .slider-container {
+            margin-top: 20px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        .link-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        a {
+            text-decoration: none;
+            color: #aaa;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Dr. T's Toy Assembler</h1>
+        <textarea id="codeArea" placeholder="Enter assembly code here..."></textarea>
+        <button id="runButton">Run Code</button>
+
+        <div class="slider-container">
+            <label for="speedSlider">Execution Speed (Delay in ms): <span id="delayValue">0</span>ms</label>
+            <input type="range" id="speedSlider" min="0" max="2000" value="0" step="10">
+        </div>
+
+        <h2>Registers</h2>
+        <table id="registerTable">
+            <thead>
+                <tr>
+                    <th>Register</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>r1</td>
+                    <td id="reg1">0</td>
+                </tr>
+                <tr>
+                    <td>r2</td>
+                    <td id="reg2">0</td>
+                </tr>
+                <tr>
+                    <td>r3</td>
+                    <td id="reg3">0</td>
+                </tr>
+                <tr>
+                    <td>r4</td>
+                    <td id="reg4">0</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Memory</h2>
+        <table id="memoryTable">
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Memory rows will be dynamically generated here -->
+            </tbody>
+        </table>
+        <h2>Output</h2>
+        <pre id="outputArea"></pre>
+    </div>
+
+    <div class="instruction-card">
+        <h3>Instruction Set</h3>
+        <pre>
+MOV r1, r2    ; Copy the value of r2 into r1
+LOAD r1, #5   ; Load the immediate value 5 into r1
+STORE r1, 0   ; Store the value of r1 into memory address 0
+ADD r1, r2    ; Add the value of r2 to r1
+SUB r1, r2    ; Subtract the value of r2 from r1
+INC r1        ; Increment the value of r1 by 1
+DEC r1        ; Decrement the value of r1 by 1
+JMP address   ; Jump to the specified address
+JZ address    ; Jump to the specified address if zero flag is set
+JNZ address   ; Jump to the specified address if zero flag is not set
+IN r1         ; Input a value into r1
+OUT r1        ; Output the value of r1
+LOADM r1, 0   ; Load the value from memory address 0 into r1
+MUL r1, r2, r3 ; Multiply r2 by r3 and store the result in r1
+DIV r1, r2, r3 ; Divide r2 by r3 and store the result to r1
+        </pre>
+        <div class="link-container">
+            <a href="guide.html">Complete Guide</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

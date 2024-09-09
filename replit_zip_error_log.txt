@@ -1,1 +1,1 @@
-{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/replit/modules/replit:v3-20240123-c72e35a","time":"2024-01-26T21:26:46Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/replit/modules/replit","time":"2024-09-09T05:13:13Z"}

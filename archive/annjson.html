@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ANN to JSON Converter</title>
+  <script>
+    function convertToJSON() {
+      const annInput = document.getElementById("annInput").value;
+      const jsonOutput = document.getElementById("jsonOutput");
+
+      try {
+        const jsonResult = annToJSON(annInput);
+        jsonOutput.value = JSON.stringify(jsonResult, null, 2);
+      } catch (error) {
+        jsonOutput.value = "Error converting ANN to JSON: " + error.message;
+      }
+    }
+
+    function annToJSON(annText) {
+      const lines = annText.split("\n");
+      const stack = [];
+      let currentObject = {};
+
+      for (const line of lines) {
+        const { nestingLevel, key, value } = parseLine(line);
+
+        while (stack.length > nestingLevel) {
+          const poppedObject = stack.pop();
+          if (stack.length === 0) {
+            currentObject = poppedObject;
+          } else {
+            stack[stack.length - 1][poppedObject.key] = poppedObject.value;
+          }
+        }
+
+        if (key !== null) {
+          if (value !== null) {
+            currentObject[key] = value;
+          } else {
+            const newObject = {};
+            currentObject[key] = newObject;
+            stack.push({ key: key, value: newObject });
+            currentObject = newObject;
+          }
+        }
+      }
+
+      return currentObject;
+    }
+
+    function parseLine(line) {
+      const arrowMatch = line.match(/^(\s*->)+/);
+      if (arrowMatch) {
+        const nestingLevel = arrowMatch[0].length / 3 - 1;
+        const pipeMatch = line.match(/^\s*\|->+/);
+        const keyMatch = line.match(/^\s*\|?->\s*([^\s=]+)/);
+        const valueMatch = line.match(/^\s*\|?->\s*[^\s=]+\s*=\s*(.*)/);
+
+        const key = keyMatch ? keyMatch[1] : null;
+        const value = valueMatch ? parseValue(valueMatch[1]) : null;
+
+        return { nestingLevel, key, value };
+      }
+
+      return { nestingLevel: 0, key: null, value: null };
+    }
+
+    function parseValue(value) {
+      if (value === "true") return true;
+      if (value === "false") return false;
+      if (/^\d+$/.test(value)) return parseInt(value, 10);
+      if (/^\d+\.\d+$/.test(value)) return parseFloat(value);
+      if (/^".*"$/.test(value)) return value.slice(1, -1);
+      return value;
+    }
+  </script>
+</head>
+<body>
+  <h1>Arrow Notes Notation (ANN) to JSON Converter</h1>
+  <p>Paste your ANN-formatted text below and click the "Convert" button to generate JSON.</p>
+  
+  <textarea id="annInput" rows="10" cols="80" placeholder="Paste your ANN-formatted text here"></textarea>
+  <br>
+  <button onclick="convertToJSON()">Convert</button>
+  <br>
+  <textarea id="jsonOutput" rows="10" cols="80" placeholder="JSON output will appear here" readonly></textarea>
+</body>
+</html>

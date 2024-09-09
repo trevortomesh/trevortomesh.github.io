@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. T's Assembly Emulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #ccc 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            color: #333;
+        }
+        code {
+            background: #e1e1e1;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .example {
+            background: #e1e1e1;
+            padding: 10px;
+            border-left: 5px solid #333;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .note {
+            background: #fffcf0;
+            border-left: 5px solid #ffeb3b;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Dr. T's Assembly Guide</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main">
+            <h2>Introduction</h2>
+            <p>Dr. T's Toy Assembler is an emulator for a minimalist
+                (14 instruction) language for teaching the basics of 
+                ASM programming. 
+            </p>
+
+
+            <h2>Features of the Language</h2>
+            <ul>
+                <li><strong>Register-Based Operations:</strong> The language utilizes registers named <code>r1</code>, <code>r2</code>, <code>r3</code>, etc., to perform operations. Registers are fast storage locations within the CPU that hold data and addresses temporarily during execution.</li>
+                <li><strong>Immediate and Memory Access:</strong> Immediate values can be directly loaded into registers using the <code>LOAD</code> instruction. Memory access is facilitated through <code>STORE</code> and <code>LOADM</code> instructions, allowing values to be stored in and loaded from specific memory addresses.</li>
+                <li><strong>Arithmetic and Logic Operations:</strong> Basic arithmetic operations such as addition (<code>ADD</code>), subtraction (<code>SUB</code>), multiplication (<code>MUL</code>), division (<code>DIV</code>),increment (<code>INC</code>), and decrement (<code>DEC</code>) are supported. Logical operations can be implemented using combinations of arithmetic instructions and conditional jumps.</li>
+                <li><strong>Conditional and Unconditional Jumps:</strong> Unconditional jumps (<code>JMP</code>) and conditional jumps (<code>JZ</code>, <code>JNZ</code>) allow for control flow manipulation, enabling the implementation of loops, conditional statements, and other control structures.</li>
+                <li><strong>Input and Output Operations:</strong> The <code>IN</code> and <code>OUT</code> instructions facilitate interaction with input and output devices, allowing for data exchange between the CPU and peripherals.</li>
+                <li><strong>Flags for Conditional Operations:</strong> The language supports flags, which are special indicators used to influence the flow of execution based on the results of previous operations.</li>
+            </ul>
+
+            <h2>Instruction Set</h2>
+
+            <h3>Data Movement Instructions</h3>
+            <ul>
+                <li><strong><code>MOV r1, r2</code></strong>
+                    <p><strong>Description:</strong> Copy the value of register <code>r2</code> into register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>MOV destination, source</code></p>
+                    <p><strong>Example:</strong> <code>MOV r1, r2</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = r2</code></p>
+                </li>
+                <li><strong><code>LOAD r1, #5</code></strong>
+                    <p><strong>Description:</strong> Load the immediate value <code>5</code> into register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>LOAD register, immediate_value</code></p>
+                    <p><strong>Example:</strong> <code>LOAD r1, #5</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = 5</code></p>
+                </li>
+                <li><strong><code>STORE r1, 0</code></strong>
+                    <p><strong>Description:</strong> Store the value of register <code>r1</code> into memory address <code>0</code>.</p>
+                    <p><strong>Syntax:</strong> <code>STORE register, memory_address</code></p>
+                    <p><strong>Example:</strong> <code>STORE r1, 0</code></p>
+                    <p><strong>Operation:</strong> <code>memory[0] = r1</code></p>
+                </li>
+                <li><strong><code>LOADM r1, 0</code></strong>
+                    <p><strong>Description:</strong> Load the value from memory address <code>0</code> into register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>LOADM register, memory_address</code></p>
+                    <p><strong>Example:</strong> <code>LOADM r1, 0</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = memory[0]</code></p>
+                </li>
+            </ul>
+
+            <h3>Arithmetic Instructions</h3>
+            <ul>
+                <li><strong><code>ADD r1, r2</code></strong>
+                    <p><strong>Description:</strong> Add the value of register <code>r2</code> to register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>ADD destination, source</code></p>
+                    <p><strong>Example:</strong> <code>ADD r1, r2</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = r1 + r2</code></p>
+                </li>
+                <li><strong><code>SUB r1, r2</code></strong>
+                    <p><strong>Description:</strong> Subtract the value of register <code>r2</code> from register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>SUB destination, source</code></p>
+                    <p><strong>Example:</strong> <code>SUB r1, r2</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = r1 - r2</code></p>
+                </li>
+                <li><strong><code>MUL r1, r2, r3</code></strong>
+                    <p><strong>Description:</strong> Multiply the value of register <code>r2</code> by the value of register <code>r3</code> and store the result in register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>MUL destination, source1, source2</code></p>
+                    <p><strong>Example:</strong> <code>MUL r1, r2, r3</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = r2 * r3</code></p>
+                </li>
+                <li><strong><code>MUL r1, r2, r3</code></strong>
+                    <p><strong>Description:</strong> Divide the value of register <code>r2</code> by the value of register <code>r3</code> and store the result in register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>DIV destination, source1, source2</code></p>
+                    <p><strong>Example:</strong> <code>DIV r1, r2, r3</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = r2 / r3</code></p>
+                </li>
+                <li><strong><code>INC r1</code></strong>
+                    <p><strong>Description:</strong> Increment the value of register <code>r1</code> by <code>1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>INC register</code></p>
+                    <p><strong>Example:</strong> <code>INC r1</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = r1 + 1</code></p>
+                </li>
+                <li><strong><code>DEC r1</code></strong>
+                    <p><strong>Description:</strong> Decrement the value of register <code>r1</code> by <code>1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>DEC register</code></p>
+                    <p><strong>Example:</strong> <code>DEC r1</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = r1 - 1</code></p>
+                </li>
+            </ul>
+
+            <h3>Control Flow Instructions</h3>
+            <ul>
+                <li><strong><code>JMP address</code></strong>
+                    <p><strong>Description:</strong> Jump to the specified address.</p>
+                    <p><strong>Syntax:</strong> <code>JMP address</code></p>
+                    <p><strong>Example:</strong> <code>JMP 100</code></p>
+                    <p><strong>Operation:</strong> <code>PC = address</code> (PC stands for Program Counter)</p>
+                </li>
+                <li><strong><code>JZ address</code></strong>
+                    <p><strong>Description:</strong> Jump to the specified address if the zero flag is set.</p>
+                    <p><strong>Syntax:</strong> <code>JZ address</code></p>
+                    <p><strong>Example:</strong> <code>JZ 100</code></p>
+                    <p><strong>Operation:</strong> <code>if (ZF == 1) PC = address</code> (ZF stands for Zero Flag)</p>
+                </li>
+                <li><strong><code>JNZ address</code></strong>
+                    <p><strong>Description:</strong> Jump to the specified address if the zero flag is not set.</p>
+                    <p><strong>Syntax:</strong> <code>JNZ address</code></p>
+                    <p><strong>Example:</strong> <code>JNZ 100</code></p>
+                    <p><strong>Operation:</strong> <code>if (ZF == 0) PC = address</code></p>
+                </li>
+            </ul>
+
+            <h3>Input/Output Instructions</h3>
+            <ul>
+                <li><strong><code>IN r1</code></strong>
+                    <p><strong>Description:</strong> Input a value into register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>IN register</code></p>
+                    <p><strong>Example:</strong> <code>IN r1</code></p>
+                    <p><strong>Operation:</strong> <code>r1 = input_value</code> (Assuming input_value is obtained from an input device or user input)</p>
+                </li>
+                <li><strong><code>OUT r1</code></strong>
+                    <p><strong>Description:</strong> Output the value of register <code>r1</code>.</p>
+                    <p><strong>Syntax:</strong> <code>OUT register</code></p>
+                    <p><strong>Example:</strong> <code>OUT r1</code></p>
+                    <p><strong>Operation:</strong> <code>output(r1)</code> (Assuming output is sent to an output device or display)</p>
+                </li>
+            </ul>
+
+            <h2>Using Labels</h2>
+            <p>Labels are STRING identifiers used to mark specific locations in your code. They are useful for making your code more readable and for facilitating jumps to different sections of the program.</p>
+
+            <h3>Defining Labels</h3>
+            <p>To define a label, simply write the label name followed by a colon (<code>:</code>) at the desired location in your code. Labels are usually placed before a section of code to which you might want to jump.</p>
+            <div class="example">
+                <code>
+                    start:<br>
+                    LOAD r1, #10    ; Load immediate value 10 into r1<br>
+                    ADD r1, r2      ; Add the value of r2 to r1<br>
+                    JNZ end         ; Jump to the label 'end' if Zero Flag is not set<br>
+                    INC r1          ; This line will be skipped if ZF is set<br>
+                    end:<br>
+                    OUT r1          ; Output the value of r1<br>
+                </code>
+            </div>
+
+            <h3>Using Labels with Jumps</h3>
+            <p>Labels can be used with jump instructions (<code>JMP</code>, <code>JZ</code>, <code>JNZ</code>) to create more complex control flows. You can use labels to jump to different parts of your code, enabling loops and conditional execution.</p>
+            <div class="example">
+                <code>
+                    LOOP_START:<br>
+                    LOAD r1, #5     ; Load immediate value 5 into r1<br>
+                    DEC r1          ; Decrement r1<br>
+                    JNZ LOOP_START  ; Jump back to 'LOOP_START' if ZF is not set (r1 != 0)<br>
+                    OUT r1          ; Output the final value of r1 after loop ends<br>
+                </code>
+            </div>
+
+            <h2>Flags Explained</h2>
+            <p>Flags are special bits that store information about the state of the CPU or the results of operations. They are typically used to make decisions during program execution. In this language, the primary flag used is the <strong>Zero Flag (ZF)</strong>.</p>
+
+            <h3>Zero Flag (ZF)</h3>
+            <ul>
+                <li><strong>Purpose:</strong> The Zero Flag is used to indicate whether the result of an operation is zero.</li>
+                <li><strong>Set:</strong> The Zero Flag is set (ZF = 1) if the result of an operation (such as <code>ADD</code>, <code>SUB</code>, <code>MUL</code>, <code>DIV</code>) is zero.</li>
+                <li><strong>Cleared:</strong> The Zero Flag is cleared (ZF = 0) if the result of an operation is non-zero.</li>
+                <li><strong>Usage:</strong> The Zero Flag is primarily used in conditional jump instructions (<code>JZ</code>, <code>JNZ</code>) to determine the flow of execution.</li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+</html>

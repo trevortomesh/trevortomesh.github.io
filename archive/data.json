@@ -185,19 +185,8 @@
       "research"
     ],
     "image":"" 
-    
   },
 
-  
-    "CV": {
-      "title": "My CV",
-      "text": "My CV is hosted on github here:\n<a href=\"https://github.com/trevortomesh/curriculum-vitae/blob/master/README.md\">My CV</a>",
-      "tags": [
-        "about"
-      ],
-      "image": "/images/github.png"
-    },
-  
   "FrontEndTech": {
     "title": "Front End Tech",
     "text": "This entire site was built with front-end web technologies only. JSON, Javascript, HTML and CSS are the only technologies used. This is because I want to be able to run everything without having to rely on server resources. As such, there is no way to save anything, so you have to copy and paste information to and from any of the utilities on here (assuming you want to save anything you've done).",
@@ -207,37 +196,5 @@
       "experiment"
     ],
     "image": ""
-  },
-
-    "example-repo": {
-      "title": "CIDS Example Repo",
-      "text": "Here is an example repo that I created for my CIDS 162 class. Of course, it can be used generally.\n\n<a href = https://github.com/trevortomesh/162-summer2023>Repository Link</a>",
-      "tags": [
-        "programming",
-        "courses"
-      ],
-      "image": ""
-    },
-
-  "coding-guide": {
-    "title": "Dr.T's Coding Guide",
-    "text": "<a href = files/coding-guide.pdf>Coding Guide</a>",
-    "tags": [
-      "programming",
-      "courses"
-    ],
-    "image": ""
-  },
-
- "toy-assembler":{
-     "title": "Dr. T's Toy Assembler",
-     "text": "<a href = assembler/index.html>Toy Assembler</a>",
-     "tags": [
-         "programming",
-         "courses"
-     ],
-     "image": ""
- }
-
-  
+  }
 }

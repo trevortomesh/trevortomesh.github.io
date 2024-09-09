@@ -227,17 +227,7 @@
       "courses"
     ],
     "image": ""
-  },
-
- "toy-assembler":{
-     "title": "Dr. T's Toy Assembler",
-     "text": "<a href = assembler/index.html>Toy Assembler</a>",
-     "tags": [
-         "programming",
-         "courses"
-     ],
-     "image": ""
- }
+  }
 
   
 }

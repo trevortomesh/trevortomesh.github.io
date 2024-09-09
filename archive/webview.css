@@ -1,0 +1,34 @@
+body {
+    font-family: Courier, sans-serif;
+    background-color: #292929;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+#graph-container {
+    width: 600px;
+    height: 400px;
+}
+
+circle {
+    cursor: pointer;
+}
+
+circle:hover {
+    stroke: #ff7f00;
+    stroke-width: 2;
+}
+
+line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+}
+
+line:hover {
+    stroke: #ff7f00;
+}
