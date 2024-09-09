@@ -17,6 +17,19 @@
             "all"
         ]
     },
+
+
+        "projects": {
+            "title": "Projects",
+            "text": "Explore my various projects on <a href=https://github.com/trevortomesh>GitHub</a>. They range from simple scripts to complex web applications.",
+            "tags": [
+                "coding",
+                "projects",
+                "all"
+            ],
+            "image": "/images/projects.png"
+        },
+
     "education": {
         "title": "Education",
         "text": "<p>University of Regina\nPhD in Computer Science - Class of 2020\nThesis Title:<a href = https://ourspace.uregina.ca/handle/10294/9307> \"Toward a Theory of Interactive Hardware</a>\"\nSupervisor: Dr. Daryl Hepting</p><br><p>University of Wisconsin - River Falls: BSc Physics, Class of 2011",
