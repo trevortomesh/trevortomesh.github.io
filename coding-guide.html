@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Trevor M. Tomesh">
+    <title>Dr. T's Style Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e;
+            color: #c9d1d9;
+            line-height: 1.8;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light mode */
+        body.light-mode {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header, footer {
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: #58a6ff;
+            margin-bottom: 20px;
+        }
+
+        body.light-mode h1, body.light-mode h2, body.light-mode h3 {
+            color: #1a73e8;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        ul {
+            margin: 10px 0;
+            list-style: square inside;
+        }
+
+        .index-card {
+            background-color: #0d1117;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .index-card:hover {
+            transform: translateY(-10px);
+        }
+
+        body.light-mode .index-card {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        code {
+            background-color: #2d333b;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #58a6ff;
+        }
+
+        body.light-mode code {
+            background-color: #e0e0e0;
+            color: #1a73e8;
+        }
+
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        body.light-mode a {
+            color: #1a73e8;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        .toggle-container label {
+            margin-right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .toggle-container input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+<header>
+    <div class="toggle-container">
+        <label for="modeToggle">Light Mode</label>
+        <input type="checkbox" id="modeToggle">
+    </div>
+    <h1>Dr. T's Style Guide</h1>
+    <p><strong>Version:</strong> 1.1</p>
+    <p><strong>Author:</strong> Trevor M. Tomesh</p>
+    <p><strong>Email:</strong> trevor.tomesh@uwrf.edu</p>
+    <p><strong>Institution:</strong> University of Wisconsin - River Falls</p>
+    <p><strong>Department:</strong> Computer, Information and Data Science</p>
+    <p><strong>Updated:</strong> September 15th, 2024</p>
+</header>
+
+<section>
+    <h2>Introduction</h2>
+    <blockquote>
+        "Even if you don’t intend anybody else to read your code, there’s still a very good chance that somebody will have
+        to stare at your code and figure out what it does: That person is probably going to be you, twelve months from now."
+    </blockquote>
+    <p>— Raymond Chen, Microsoft Developer</p>
+    <p>
+        Programming is a form of creative expression. While the primary goal of any code is to solve a problem, the way you express
+        the solution is often more important than the solution itself. Code can be beautiful when written clearly and elegantly. For
+        inspiration, read <em>“10 PRINT CHR$(205.5+RND(1)); : GOTO 10”</em> by Montfort et al., and <em>“If Hemingway Wrote JavaScript”</em> by Angus Croll.
+    </p>
+    <p>This document contains best practices for my students, influenced by Python’s PEP-8 style guide, but adapted for Java.
+        Writing clear and maintainable code isn't just a good habit—it’s a professional standard.</p>
+</section>
+
+<section>
+    <h2>Comment Your Code</h2>
+    <p>No matter how experienced you are, <strong>you are not too good to comment your code</strong>. Well-commented code is key to readability and maintainability.</p>
+
+    <h3>Prologue Comments</h3>
+    <p>The prologue is an introductory block of comments at the top of your file. It should include:</p>
+    <ul>
+        <li>Program name</li>
+        <li>Author name</li>
+        <li>Course title</li>
+        <li>Date</li>
+        <li>Assignment number</li>
+        <li>Program description</li>
+    </ul>
+    <p>Use the following format for your prologue in Java:</p>
+    <div class="index-card">
+        <pre><code>/**
+ * Program Name: HelloWorld.java
+ * Author: Trevor M. Tomesh
+ * Course: CS 427
+ * Date: 2023/02/16
+ * Assignment #1
+ *
+ * Description:
+ * This program demonstrates the basic structure and style guidelines
+ * for a simple Java program.
+ */</code></pre>
+    </div>
+
+    <h3>Explaining Code</h3>
+    <p>Comments should explain <strong>what the code is trying to accomplish</strong>, not just restate the code. Comments that simply rephrase code lines are redundant and unhelpful. Instead, your comments should clarify intent and provide context, especially when algorithms or logic may not be immediately clear to the reader.</p>
+
+    <p>For example, when implementing Euler’s method for numerical integration:</p>
+    <p><strong>Good:</strong></p>
+    <div class="index-card">
+        <pre><code>/**
+ * Computes the solution of a function using Euler's method.
+ * This method is used to approximate solutions of ordinary
+ * differential equations (ODEs).
+ */
+while (x &lt;= t) {
+    double k = h * function(x, y);  // Calculate the slope (k)
+    y += k;                         // Update y based on the slope
+    x += h;                         // Move x forward by step size h
+    System.out.printf("%.3f\t%.3f\n", x, y);  // Print the new x and y values
+}</code></pre>
+    </div>
+
+    <p><strong>Bad:</strong></p>
+    <div class="index-card">
+        <pre><code>while (x &lt;= t) { // while loop
+    double k = h * function(x, y); // multiply h with function(x, y)
+    y += k; // add k to y
+    x += h; // increment x by h
+    System.out.printf("%.3f\t%.3f\n", x, y); // print x and y
+}</code></pre>
+    </div>
+    <p>Comments in the bad example merely repeat what the code is doing rather than offering insight into why it's doing it or what purpose it serves.</p>
+</section>
+
+<section>
+    <h2>Documenting Methods and Functions</h2>
+    <p>Each method and function should have a JavaDoc comment that clearly describes its purpose, the role of each parameter, and the expected return value (if any). This documentation should be concise but complete.</p>
+
+    <p><strong>Why is this important?</strong> Well-documented methods help others (and your future self) quickly understand how to use a function without needing to read through the implementation details.</p>
+
+    <p>Example of a well-documented method:</p>
+    <div class="index-card">
+        <pre><code>/**
+ * Calculates the sum of two integers.
+ * This method adds two integers and returns their sum.
+ *
+ * @param a the first integer
+ * @param b the second integer
+ * @return the sum of a and b
+ */
+public static int sum(int a, int b) {
+    return a + b;
+}</code></pre>
+    </div>
+
+    <p>Note how the comment explains the role of each parameter and the function's output. JavaDoc comments also provide valuable information when generating documentation automatically.</p>
+</section>
+
+<section>
+    <h2>Group Your Functions</h2>
+    <p>Functions and methods that are logically related should be grouped together. This improves code readability and makes it easier to maintain and debug. For instance, keep all arithmetic operations together, and separate utility functions from core logic.</p>
+
+    <div class="index-card">
+        <pre><code>//---------------------
+// Arithmetic Operations
+//---------------------
+
+/**
+ * Calculates the sum of two integers.
+ *
+ * @param a the first integer
+ * @param b the second integer
+ * @return the sum of a and b
+ */
+public static int sum(int a, int b) {
+    return a + b;
+}
+
+/**
+ * Calculates the difference between two integers.
+ *
+ * @param a the first integer
+ * @param b the second integer
+ * @return the difference of a and b
+ */
+public static int diff(int a, int b) {
+    return a - b;
+}</code></pre>
+    </div>
+
+    <p>By grouping related methods, you make it easier for someone reading your code to find and understand related functionalities. This organization also helps when extending or modifying code.</p>
+</section>
+
+<section>
+    <h2>Naming, Spacing, and Layout</h2>
+    <h3>Indentation</h3>
+    <p>Proper indentation is crucial for readability. In Java, use 4 spaces per indentation level. Avoid using tabs, as they can display inconsistently across different editors and environments.</p>
+
+    <p><strong>Good example:</strong></p>
+    <div class="index-card">
+        <pre><code>for (int i = 0; i &lt; 100; i++) {
+    if (i == 42) {
+        System.out.println("Life, the universe, whatever...");
+    } else {
+        System.out.println(i);
+    }
+}</code></pre>
+    </div>
+
+    <p><strong>Bad example:</strong></p>
+    <div class="index-card">
+        <pre><code>for(int i=0;i&lt;100;i++){if(i==42){System.out.println("Life, the universe, whatever...");}else{System.out.println(i);}}</code></pre>
+    </div>
+
+    <h3>Line Length</h3>
+    <p>Limit line lengths to <strong>80 characters</strong> max to enhance readability, especially on smaller screens or when working with multiple code windows. Long lines can be split into multiple lines for clarity.</p>
+
+    <div class="index-card">
+        <pre><code>System.out.println("This is a very long statement that goes over " +
+                   "80 characters, so we split it into multiple lines.");</code></pre>
+    </div>
+
+    <p>Keeping lines short makes your code easier to read and understand, improving maintainability and debugging efficiency.</p>
+</section>
+
+<footer>
+    <h2>References</h2>
+    <ul>
+        <li>Raymond Chen, <em>Code is read much more often than it is written, so plan accordingly</em>, 2018.</li>
+        <li>Steve McConnell, <em>Code Complete, Second Edition</em>, Microsoft Press, 2004.</li>
+    </ul>
+</footer>
+
+<script>
+    const toggleSwitch = document.getElementById('modeToggle');
+    const body = document.body;
+
+    toggleSwitch.addEventListener('change', () => {
+        if (toggleSwitch.checked) {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+        } else {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+        }
+    });
+</script>
+</body>
+
+</html>

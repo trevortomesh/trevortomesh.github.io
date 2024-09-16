@@ -221,7 +221,7 @@
 
   "coding-guide": {
     "title": "Dr.T's Coding Guide",
-    "text": "<a href = files/coding-guide.pdf>Coding Guide</a>",
+    "text": "<a href = coding-guide.html>Coding Guide</a>",
     "tags": [
       "programming",
       "courses"

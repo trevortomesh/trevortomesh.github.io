@@ -202,6 +202,7 @@
     "image":"" 
   },
 
+
   "FrontEndTech": {
     "title": "Front End Tech",
     "text": "This entire site was built with front-end web technologies only. JSON, Javascript, HTML and CSS are the only technologies used. This is because I want to be able to run everything without having to rely on server resources. As such, there is no way to save anything, so you have to copy and paste information to and from any of the utilities on here (assuming you want to save anything you've done).",
