@@ -219,6 +219,16 @@
       "image": ""
     },
 
+  "dillinger-guide": {
+    "title": "Guide to Inserting Images in Dillinger",
+    "text": "<a href = dillinger.html>Dillinger Guide</a>",
+    "tags": [
+      "programming",
+      "courses"
+    ],
+    "image": ""
+  },
+
   "coding-guide": {
     "title": "Dr.T's Coding Guide",
     "text": "<a href = coding-guide.html>Coding Guide</a>",
