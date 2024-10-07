@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guide to writing code using the JSDoc standard, with ChatGPT integration, co-authored by Dr. Trevor M. Tomesh.">
+    <title>JSDoc Guide - Co-Authored by ChatGPT and Dr. Trevor M. Tomesh</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #c0c0c0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #00ccff;
+        }
+        code, pre {
+            background-color: #333333;
+            color: #e6e6e6;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+        }
+        a {
+            color: #00ccff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .header {
+            border-bottom: 2px solid #00ccff;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Guide to Writing Code Using the JSDoc Standard</h1>
+    <p><strong>Co-Authored by ChatGPT and Dr. Trevor M. Tomesh</strong></p>
+    <p>Contact: <a href="mailto:trevor.tomesh@uwrf.edu">trevor.tomesh@uwrf.edu</a></p>
+    <p>University of Wisconsin - River Falls<br>Department of Computer, Information, and Data Science</p>
+    <p>Created: September 19th 2024<br>Modified: October 6th 2024</p>
+</div>
+
+<h2>Introduction</h2>
+<p>JSDoc is a widely used standard for documenting JavaScript code. It provides a way to add inline comments that describe the purpose, parameters, return values, and behavior of your code. These comments can be parsed to generate HTML documentation, making it easier to maintain and understand your code.</p>
+
+<h3>Basic JSDoc Syntax</h3>
+<p>JSDoc comments are written inside <code>/** ... */</code> blocks and should be placed directly above the function, class, or variable you're documenting.</p>
+
+<pre><code>
+/**
+ * A simple function that adds two numbers.
+ * @param {number} a - The first number to add.
+ * @param {number} b - The second number to add.
+ * @returns {number} The sum of the two numbers.
+ */
+function add(a, b) {
+  return a + b;
+}
+    </code></pre>
+
+<h3>Documenting Functions</h3>
+<p>When documenting functions, you generally need to describe the following:</p>
+<ul>
+    <li><strong>Function Purpose:</strong> A short description of what the function does.</li>
+    <li><strong>Parameters (@param):</strong> Each parameter should be described, including its data type and role.</li>
+    <li><strong>Return Value (@returns):</strong> The type and meaning of the value returned by the function.</li>
+</ul>
+
+<pre><code>
+/**
+ * Multiplies two numbers.
+ * @param {number} num1 - The first number.
+ * @param {number} num2 - The second number.
+ * @returns {number} The product of num1 and num2.
+ */
+function multiply(num1, num2) {
+  return num1 * num2;
+}
+    </code></pre>
+
+<h3>Documenting Objects and Properties</h3>
+<p>You can document object types and their properties using the @typedef tag. This is helpful when working with complex data structures.</p>
+
+<pre><code>
+/**
+ * A point in 2D space.
+ * @typedef {Object} Point
+ * @property {number} x - The X coordinate.
+ * @property {number} y - The Y coordinate.
+ */
+
+/**
+ * Calculates the distance between two points.
+ * @param {Point} point1 - The first point.
+ * @param {Point} point2 - The second point.
+ * @returns {number} The distance between the two points.
+ */
+function calculateDistance(point1, point2) {
+  const dx = point1.x - point2.x;
+  const dy = point1.y - point2.y;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+    </code></pre>
+
+<h3>Documenting Classes</h3>
+<p>When documenting classes, you can use the @class tag to describe the class and the @constructor tag to describe the constructor function. Document the methods just like functions.</p>
+
+<pre><code>
+/**
+ * Represents a circle.
+ * @class
+ */
+class Circle {
+  /**
+   * Creates a new Circle.
+   * @constructor
+   * @param {number} radius - The radius of the circle.
+   */
+  constructor(radius) {
+    this.radius = radius;
+  }
+
+  /**
+   * Calculates the area of the circle.
+   * @returns {number} The area of the circle.
+   */
+  getArea() {
+    return Math.PI * this.radius ** 2;
+  }
+}
+    </code></pre>
+
+<h3>Documenting Variables</h3>
+<p>To document a variable, use the @type tag, which specifies the data type of the variable.</p>
+
+<pre><code>
+/**
+ * The radius of a circle.
+ * @type {number}
+ */
+let radius = 5;
+    </code></pre>
+
+<h3>Specifying Data Types</h3>
+<p>JSDoc uses various data type annotations for clarity, such as:</p>
+<ul>
+    <li><strong>Primitive types:</strong> string, number, boolean, etc.</li>
+    <li><strong>Object types:</strong> {Object}, {Array}, {Function}, etc.</li>
+    <li><strong>Custom types:</strong> Use @typedef for custom object types.</li>
+</ul>
+
+<pre><code>
+/**
+ * Represents a user profile.
+ * @typedef {Object} UserProfile
+ * @property {string} username - The user's name.
+ * @property {number} [age] - The user's age (optional).
+ * @property {boolean} isActive - Whether the user is active.
+ */
+</code></pre>
+
+<h3>Documenting Asynchronous Functions</h3>
+<p>To document functions that return promises or are asynchronous, use @async and @returns {Promise&lt;type&gt;}.</p>
+
+<pre><code>
+/**
+ * Fetches user data from the server.
+ * @async
+ * @param {number} userId - The ID of the user.
+ * @returns {Promise<Object>} A promise that resolves to the user data.
+ */
+async function fetchUserData(userId) {
+  const response = await fetch(`/api/user/${userId}`);
+  return await response.json();
+}
+</code></pre>
+
+</body>
+</html>

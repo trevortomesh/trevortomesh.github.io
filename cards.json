@@ -229,6 +229,16 @@
     "image": ""
   },
 
+  "jsdocs-guide": {
+    "title": "Guide to using JSDocs",
+    "text": "<a href = jsdocs.html>JSDocs Guide</a>",
+    "tags": [
+      "programming",
+      "courses"
+    ],
+    "image": ""
+  },
+
   "coding-guide": {
     "title": "Dr.T's Coding Guide",
     "text": "<a href = coding-guide.html>Coding Guide</a>",
