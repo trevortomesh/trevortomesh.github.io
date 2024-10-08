@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independent Study Weekly Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Independent Study Weekly Report</h2>
+
+<form id="weekly-report-form">
+    <label for="student-name">Student Name:</label>
+    <input type="text" id="student-name" name="student-name" required>
+
+    <label for="course-title">Course Title:</label>
+    <input type="text" id="course-title" name="course-title" required>
+
+    <label for="week">Week:</label>
+    <input type="text" id="week" name="week" required>
+
+    <label for="overview">1. Overview of Work Done:</label>
+    <textarea id="overview" name="overview" rows="4" required></textarea>
+
+    <label for="deliverables">2. Deliverables:</label>
+    <textarea id="deliverables" name="deliverables" rows="4"></textarea>
+
+    <label for="challenges">3. Challenges or Issues:</label>
+    <textarea id="challenges" name="challenges" rows="4"></textarea>
+
+    <label for="action-items">4. Action Items for Next Week:</label>
+    <textarea id="action-items" name="action-items" rows="4"></textarea>
+
+    <label for="feedback">5. Feedback or Questions:</label>
+    <textarea id="feedback" name="feedback" rows="4"></textarea>
+
+    <label for="reflection">6. Reflection:</label>
+    <textarea id="reflection" name="reflection" rows="4"></textarea>
+
+    <button type="button" onclick="sendEmail()">Send Report</button>
+</form>
+
+<script>
+    function sendEmail() {
+        // Get form values
+        const studentName = document.getElementById('student-name').value;
+        const courseTitle = document.getElementById('course-title').value;
+        const week = document.getElementById('week').value;
+        const overview = document.getElementById('overview').value;
+        const deliverables = document.getElementById('deliverables').value;
+        const challenges = document.getElementById('challenges').value;
+        const actionItems = document.getElementById('action-items').value;
+        const feedback = document.getElementById('feedback').value;
+        const reflection = document.getElementById('reflection').value;
+
+        // Construct the email body
+        const emailBody = `
+                Student Name: ${studentName}%0D%0A
+                Course Title: ${courseTitle}%0D%0A
+                Week: ${week}%0D%0A%0D%0A
+                1. Overview of Work Done:%0D%0A${overview}%0D%0A%0D%0A
+                2. Deliverables:%0D%0A${deliverables}%0D%0A%0D%0A
+                3. Challenges or Issues:%0D%0A${challenges}%0D%0A%0D%0A
+                4. Action Items for Next Week:%0D%0A${actionItems}%0D%0A%0D%0A
+                5. Feedback or Questions:%0D%0A${feedback}%0D%0A%0D%0A
+                6. Reflection:%0D%0A${reflection}
+            `;
+
+        // Use mailto: to open the email client
+        const mailtoLink = `mailto:trevor.tomesh@uwrf.edu?subject=Weekly%20Report%20for%20${courseTitle}%20-%20Week%20${week}&body=${emailBody}`;
+        window.location.href = mailtoLink;
+    }
+</script>
+
+</body>
+</html>
