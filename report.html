@@ -24,6 +24,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #fff;
+            color: #000;
         }
         button {
             margin-top: 20px;
@@ -42,17 +43,26 @@
             color: #555;
             margin-bottom: 10px;
         }
+
+        /* Dark Mode Styles */
         .dark-mode {
-            background-color: #333;
-            color: #f4f4f9;
+            background-color: #222; /* Darker background */
+            color: #f1f1f1; /* Lighter text */
         }
         .dark-mode input, .dark-mode textarea {
-            background-color: #555;
-            color: #f4f4f9;
+            background-color: #333; /* Darker input fields */
+            color: #f1f1f1; /* Lighter text inside input */
+            border: 1px solid #444; /* Better contrast for input border */
         }
         .dark-mode button {
-            background-color: #1f7a1f;
+            background-color: #5a9e5a; /* Lighter green for visibility */
+            color: #fff; /* White text for button */
         }
+        .dark-mode button:hover {
+            background-color: #4CAF50;
+        }
+
+        /* Toggle Switch */
         .toggle-switch {
             position: relative;
             display: inline-block;
