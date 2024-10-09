@@ -53,23 +53,55 @@
         .dark-mode button {
             background-color: #1f7a1f;
         }
-        .toggle-dark-mode {
-            margin-bottom: 20px;
-            cursor: pointer;
-            padding: 5px 10px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: #fff;
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
         }
-        .toggle-dark-mode:hover {
-            background-color: #45a049;
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
         }
     </style>
 </head>
 <body>
 
-<button class="toggle-dark-mode" onclick="toggleDarkMode()">Enable Dark Mode</button>
+<!-- Dark Mode Toggle Switch -->
+<label class="toggle-switch">
+    <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+    <span class="slider"></span>
+</label>
+<span>Enable Dark Mode</span>
 
 <h2>Independent Study Weekly Report</h2>
 
