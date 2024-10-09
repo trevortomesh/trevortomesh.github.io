@@ -11,6 +11,7 @@
             margin: 20px;
             padding: 20px;
             background-color: #f4f4f9;
+            color: #000;
         }
         label {
             display: block;
@@ -22,6 +23,7 @@
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: #fff;
         }
         button {
             margin-top: 20px;
@@ -35,44 +37,89 @@
         button:hover {
             background-color: #45a049;
         }
+        .instructions {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f4f4f9;
+        }
+        .dark-mode input, .dark-mode textarea {
+            background-color: #555;
+            color: #f4f4f9;
+        }
+        .dark-mode button {
+            background-color: #1f7a1f;
+        }
+        .toggle-dark-mode {
+            margin-bottom: 20px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        .toggle-dark-mode:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
 
+<button class="toggle-dark-mode" onclick="toggleDarkMode()">Enable Dark Mode</button>
+
 <h2>Independent Study Weekly Report</h2>
+
+<p class="instructions">Please fill out the following fields and download the PDF report. Once downloaded, send the report to <strong>trevor.tomesh@uwrf.edu</strong> with the email subject "<strong>Weekly Report</strong>".</p>
 
 <form id="weekly-report-form">
     <label for="student-name">Student Name:</label>
+    <p class="instructions">Enter your full name.</p>
     <input type="text" id="student-name" name="student-name" required>
 
     <label for="course-title">Course Title:</label>
+    <p class="instructions">Enter the title of your course (e.g., Independent Study in Computer Science).</p>
     <input type="text" id="course-title" name="course-title" required>
 
     <label for="week">Week:</label>
+    <p class="instructions">Specify the week number you are reporting for (e.g., Week 1).</p>
     <input type="text" id="week" name="week" required>
 
     <label for="overview">1. Overview of Work Done:</label>
+    <p class="instructions">Provide a summary of the work you completed during this week.</p>
     <textarea id="overview" name="overview" rows="4" required></textarea>
 
     <label for="deliverables">2. Deliverables:</label>
+    <p class="instructions">List any deliverables submitted during the week.</p>
     <textarea id="deliverables" name="deliverables" rows="4"></textarea>
 
     <label for="challenges">3. Challenges or Issues:</label>
+    <p class="instructions">Describe any challenges or issues you encountered this week.</p>
     <textarea id="challenges" name="challenges" rows="4"></textarea>
 
     <label for="action-items">4. Action Items for Next Week:</label>
+    <p class="instructions">Outline the tasks you plan to work on next week.</p>
     <textarea id="action-items" name="action-items" rows="4"></textarea>
 
     <label for="feedback">5. Feedback or Questions:</label>
+    <p class="instructions">Include any feedback or questions for your instructor.</p>
     <textarea id="feedback" name="feedback" rows="4"></textarea>
 
     <label for="reflection">6. Reflection:</label>
+    <p class="instructions">Reflect on your progress this week. What went well? What could be improved?</p>
     <textarea id="reflection" name="reflection" rows="4"></textarea>
 
     <button type="button" onclick="generatePDF()">Download PDF</button>
 </form>
 
 <script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+    }
+
     function generatePDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
@@ -88,31 +135,45 @@
         const feedback = document.getElementById('feedback').value;
         const reflection = document.getElementById('reflection').value;
 
-        // Set PDF content
+        // Add Title and Student Info
+        doc.setFontSize(16);
+        doc.setTextColor(40, 40, 40);
+        doc.text("Independent Study Weekly Report", 20, 20);
         doc.setFontSize(12);
-        doc.text(`Independent Study Weekly Report`, 10, 10);
-        doc.text(`Student Name: ${studentName}`, 10, 20);
-        doc.text(`Course Title: ${courseTitle}`, 10, 30);
-        doc.text(`Week: ${week}`, 10, 40);
+        doc.text(`Student Name: ${studentName}`, 20, 30);
+        doc.text(`Course Title: ${courseTitle}`, 20, 40);
+        doc.text(`Week: ${week}`, 20, 50);
 
-        // Add section headers and content
-        doc.text(`1. Overview of Work Done:`, 10, 50);
-        doc.text(doc.splitTextToSize(overview, 180), 10, 60);
+        // Add section headers and content with some line spacing
+        doc.setFontSize(12);
+        doc.text("1. Overview of Work Done:", 20, 60);
+        doc.setFont("times", "normal");
+        doc.text(doc.splitTextToSize(overview, 170), 20, 70);
 
-        doc.text(`2. Deliverables:`, 10, 80);
-        doc.text(doc.splitTextToSize(deliverables, 180), 10, 90);
+        doc.setFont("times", "bold");
+        doc.text("2. Deliverables:", 20, 90);
+        doc.setFont("times", "normal");
+        doc.text(doc.splitTextToSize(deliverables, 170), 20, 100);
 
-        doc.text(`3. Challenges or Issues:`, 10, 110);
-        doc.text(doc.splitTextToSize(challenges, 180), 10, 120);
+        doc.setFont("times", "bold");
+        doc.text("3. Challenges or Issues:", 20, 120);
+        doc.setFont("times", "normal");
+        doc.text(doc.splitTextToSize(challenges, 170), 20, 130);
 
-        doc.text(`4. Action Items for Next Week:`, 10, 140);
-        doc.text(doc.splitTextToSize(actionItems, 180), 10, 150);
+        doc.setFont("times", "bold");
+        doc.text("4. Action Items for Next Week:", 20, 150);
+        doc.setFont("times", "normal");
+        doc.text(doc.splitTextToSize(actionItems, 170), 20, 160);
 
-        doc.text(`5. Feedback or Questions:`, 10, 170);
-        doc.text(doc.splitTextToSize(feedback, 180), 10, 180);
+        doc.setFont("times", "bold");
+        doc.text("5. Feedback or Questions:", 20, 180);
+        doc.setFont("times", "normal");
+        doc.text(doc.splitTextToSize(feedback, 170), 20, 190);
 
-        doc.text(`6. Reflection:`, 10, 200);
-        doc.text(doc.splitTextToSize(reflection, 180), 10, 210);
+        doc.setFont("times", "bold");
+        doc.text("6. Reflection:", 20, 210);
+        doc.setFont("times", "normal");
+        doc.text(doc.splitTextToSize(reflection, 170), 20, 220);
 
         // Save the PDF with a filename
         doc.save(`Weekly_Report_${courseTitle}_Week_${week}.pdf`);
