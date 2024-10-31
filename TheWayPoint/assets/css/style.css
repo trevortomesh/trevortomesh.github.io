@@ -1,0 +1,223 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and Banner Styling */
+.banner {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #121212), url('../images/banner.png');
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f0f0f0;
+    text-align: center;
+}
+
+.banner-text h1 {
+    font-size: 3.5rem;
+    color: #ffc400;
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6); /* Add shadow for readability */
+
+    margin-bottom: 0.5rem;
+}
+
+.banner-text p {
+    font-size: 1.3rem;
+    color: rgb(255, 188, 0);
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 10); /* Add shadow for readability */
+}
+
+/* Navigation Styling */
+nav {
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+/* Section Styling */
+.section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.section h2 {
+    color: #ffd700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section h3 {
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.section p, .section ul {
+    margin: 1rem 0;
+}
+
+.section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+/* Blockquote Styling */
+blockquote {
+    font-style: italic;
+    color: #ffd700;
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 3px solid #ffd700;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #1c1c1c;
+}
+
+/* Slide Styling */
+.slide {
+    display: none;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.slide img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Ensures the image maintains aspect ratio within its frame */
+    border-radius: 50%; /* Circular frame */
+    margin-bottom: 1rem;
+}
+
+.slide h3 {
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+.slide p {
+    font-size: 1rem;
+    color: #f0f0f0;
+    margin: 0.5rem 0;
+}
+
+/* Navigation Buttons for Slideshow */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: #f0f0f0;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Footer Styling */
+footer {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+/* Contact Form Styling */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form label {
+    font-size: 1.1rem;
+    color: #ffd700;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+.contact-form button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: #ffd700;
+    color: #121212;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #e0c600;
+}

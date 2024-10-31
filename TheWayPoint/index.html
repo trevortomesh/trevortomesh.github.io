@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The WayPoint - A Catholic Resource Hub</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Banner Section -->
+<header class="banner">
+  <div class="banner-text">
+    <h1>The WayPoint</h1>
+    <p>A Catholic Resource Hub</p>
+  </div>
+</header>
+
+<!-- Navigation Section -->
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Main Content Section -->
+<main>
+
+  <!-- Introduction Section -->
+  <section class="section introduction">
+    <h2>Welcome to The WayPoint</h2>
+    <p>Welcome to <em>The WayPoint</em>, a personal project and hobby page created by Dr. Trevor M. Tomesh. As a computer science professor deeply interested in the intersections of faith, technology, and large language models like ChatGPT, this site serves as a space to collect, build, and reflect. Here, I share tools and resources that help me explore Catholic teachings and ideas, all collected in one place as a digital notebook of sorts. I hope my journey, though deeply personal, might offer guidance, inspiration, or support to others seeking to blend faith with modern technology.</p>
+    <blockquote>“As one who serves.”</blockquote>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about">
+    <h2>About The WayPoint</h2>
+    <p>I began <em>The WayPoint</em> to bring together my interests in Catholicism, technology, and teaching. Inspired by the motto "As one who serves," I wanted a space to grow spiritually and intellectually by exploring the intersections between these domains. In an increasingly digital age, where artificial intelligence and automation shape many facets of life, I’m particularly fascinated by how tools like ChatGPT can support spiritual growth, reflection, and understanding.</p>
+    <h3>Influences</h3>
+    <ul>
+      <li><strong>Christ as a Teacher</strong> – the ultimate model of guidance and compassion.</li>
+      <li><strong>Dr. Jordan Peterson</strong> – for insights on faith and personal responsibility.</li>
+      <li><strong>Pope St. John Paul II</strong> – an icon of wisdom and dedication to truth.</li>
+      <li><strong>J.R.R. Tolkien</strong> – for his blending of Catholic values with storytelling, imagination, and mythology.</li>
+    </ul>
+    <p>These mentors and teachings guide me as I seek to serve and inspire both my students and myself through faith and learning.</p>
+  </section>
+
+  <!-- Types of Resources Section -->
+  <section class="section resources">
+    <h2>Types of Resources</h2>
+    <p>This hub contains a wide variety of resources that reflect the breadth and depth of Catholic faith and learning. Here you’ll find:</p>
+    <ul>
+      <li><strong>Traditional Prayers</strong>: A collection of core prayers and meditations for reflection and spiritual practice.</li>
+      <li><strong>Catholic Virtues and Teachings</strong>: Guides and resources on virtues, works of mercy, and the Beatitudes.</li>
+      <li><strong>Reflections on Faith and Technology</strong>: Thoughts on integrating Catholic values into a tech-driven world, curated and sometimes generated with the help of ChatGPT.</li>
+      <li><strong>Educational Articles</strong>: Aimed at blending faith and academia, focusing on topics that might intrigue those in both the faith and academic communities.</li>
+    </ul>
+    <p>These resources are all carefully curated and developed specifically for this site, with the support of a large language model to generate additional reflections and ideas.</p>
+  </section>
+
+  <!-- How to Use the Site Section -->
+  <section class="section usage">
+    <h2>How to Use This Site</h2>
+    <p><em>The WayPoint</em> is ultimately my personal workspace – a place to compile resources that deepen my faith and help me explore new ways to serve. However, if any of these tools or reflections resonate with you, I welcome you to make use of them. <em>The WayPoint</em> is as much a journey as it is a destination, and anyone interested in Catholicism, technology, or faith is welcome here.</p>
+  </section>
+
+  <!-- Featured Influence Slideshow -->
+  <section class="section influences">
+    <h2>Featured Influence</h2>
+    <div class="slideshow-container">
+      <!-- Slides will be dynamically generated here -->
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer Section -->
+<footer>
+  <p>© 2024 The WayPoint - Curated by Dr. Trevor M. Tomesh</p>
+</footer>
+
+<!-- JavaScript to Load and Control the Slideshow -->
+<script>
+  // Fetch the influences JSON and initialize the slideshow
+  fetch('influences.json')
+          .then(response => response.json())
+          .then(data => {
+            let container = document.querySelector(".slideshow-container");
+
+            data.forEach((influence, index) => {
+              // Create slide elements dynamically
+              let slide = document.createElement("div");
+              slide.classList.add("slide");
+
+              let img = document.createElement("img");
+              img.src = influence.image;
+              img.alt = influence.alt;
+              slide.appendChild(img);
+
+              let h3 = document.createElement("h3");
+              h3.textContent = influence.name;
+              slide.appendChild(h3);
+
+              let p = document.createElement("p");
+              p.textContent = influence.description;
+              slide.appendChild(p);
+
+              container.insertBefore(slide, container.querySelector(".next"));
+
+              // Show the first slide by default
+              if (index === 0) slide.style.display = "block";
+            });
+          });
+
+  // Slideshow controls
+  let slideIndex = 1;
+  function changeSlide(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function showSlides(n) {
+    let slides = document.getElementsByClassName("slide");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
+</script>
+</body>
+</html>

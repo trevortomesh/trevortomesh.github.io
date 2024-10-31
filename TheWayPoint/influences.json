@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Carlo Acutis",
+    "image": "/assets/images/carlo_acutis.jpg",
+    "alt": "Carlo Acutis",
+    "description": "A young Italian Catholic, Carlo Acutis is celebrated for his love of the Eucharist and his skill with technology, which he used to create a website cataloging Eucharistic miracles. He is an inspiring example of using technology to serve faith, especially for young Catholics."
+  },
+  {
+    "name": "J.R.R. Tolkien",
+    "image": "assets/images/jrr_tolkein.jpg",
+    "alt": "J.R.R. Tolkien",
+    "description": "A devout Catholic, Tolkien’s faith permeates his works, particularly The Lord of the Rings, where themes of sacrifice, redemption, and hope reflect his beliefs. His imaginative world demonstrates how faith can inspire creativity and storytelling with profound moral depth."
+  },
+  {
+    "name": "Jordan Peterson",
+    "image": "assets/images/jordan_peterson.jpg",
+    "alt": "Jordan Peterson",
+    "description": "Though not Catholic, Peterson’s works delve into the importance of faith, personal responsibility, and meaning. His lectures and books encourage people to explore biblical stories and religious ideas as foundations for personal and societal growth."
+  },
+  {
+    "name": "Donald E. Knuth",
+    "image": "assets/images/donald_knuth.jpg",
+    "alt": "Donald E. Knuth",
+    "description": "Often referred to as the 'father of algorithm analysis,' Knuth is a devout Christian who authored Things a Computer Scientist Rarely Talks About, exploring the intersection of computing and faith. Though not Catholic, his work shows a respect for integrating spirituality with intellectual pursuits."
+  },
+  {
+    "name": "St. John Paul II",
+    "image": "assets/images/st_john_paul_ii.jpg",
+    "alt": "St. John Paul II",
+    "description": "As one of the most influential Popes, St. John Paul II's teachings on faith, human dignity, and truth resonate deeply. His work, especially in Theology of the Body, explores profound topics of love, the human body, and Catholic teachings on marriage and family."
+  },
+  {
+    "name": "Fr. Michael McGivney",
+    "image": "assets/images/fr_michael_mcgivney.jpg",
+    "alt": "Fr. Michael McGivney",
+    "description": "As the founder of the Knights of Columbus, Fr. McGivney championed Catholic community and charity, especially for immigrants. His commitment to service and empowerment exemplifies Catholic action in support of social and spiritual welfare."
+  },
+  {
+    "name": "Ignaz Semmelweis",
+    "image": "assets/images/ignaz_semmelweis.jpg",
+    "alt": "Ignaz Semmelweis",
+    "description": "Known as the 'savior of mothers,' Semmelweis was a Hungarian physician whose work in antiseptic procedures revolutionized medical hygiene. His dedication to saving lives through science reflects a spirit of service and compassion that aligns with Catholic values."
+  },
+  {
+    "name": "C.S. Lewis",
+    "image": "assets/images/cs_lewis.jpg",
+    "alt": "C.S. Lewis",
+    "description": "Though Anglican, Lewis’s writings have greatly influenced Christian thought. His works, such as Mere Christianity and The Chronicles of Narnia, explore themes of faith, imagination, and moral truth, resonating deeply with believers of all backgrounds."
+  },
+  {
+    "name": "Georges Lemaître",
+    "image": "assets/images/georges_lemaitre.jpg",
+    "alt": "Georges Lemaître",
+    "description": "A Catholic priest and physicist, Georges Lemaître is renowned for proposing the Big Bang theory, harmonizing science and faith. His groundbreaking work reminds us of the compatibility between religious belief and scientific exploration."
+  }
+]

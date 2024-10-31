@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination of Conscience</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #cfd8dc;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #90a4ae;
+            font-weight: 400;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .sin-item {
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            background-color: #2b2b2b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            transition: background-color 0.3s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .sin-item:hover {
+            background-color: #383838;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-grow: 1;
+        }
+        .dropdown-content {
+            display: none;
+            padding: 12px;
+            background-color: #383838;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #b0bec5;
+            margin-top: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .show {
+            display: block;
+        }
+        .material-icons {
+            font-size: 24px;
+            color: #90a4ae;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .sin-item.selected .material-icons {
+            transform: rotate(180deg);
+        }
+        #generateButton {
+            background-color: #607d8b;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        #generateButton:hover {
+            background-color: #546e7a;
+        }
+    </style>
+</head>
+<body>
+<h1>Examination of Conscience</h1>
+<div id="sinsContainer"></div>
+<button id="generateButton" onclick="generatePDF()">Generate Confession List PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script>
+    async function loadSins() {
+        const response = await fetch('sins.json');
+        const data = await response.json();
+
+        const container = document.getElementById('sinsContainer');
+        data.forEach(category => {
+            const categoryHeading = document.createElement('h2');
+            categoryHeading.textContent = category.category;
+            container.appendChild(categoryHeading);
+
+            category.sins.forEach(sin => {
+                const sinDiv = document.createElement('div');
+                sinDiv.className = 'sin-item';
+
+                const checkboxContainer = document.createElement('label');
+                checkboxContainer.className = 'checkbox-container';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.classList.add(sin.mortal ? 'mortal-sin' : 'venial-sin');
+                checkboxContainer.appendChild(checkbox);
+
+                const sinText = document.createElement('span');
+                sinText.textContent = sin.question;
+                checkboxContainer.appendChild(checkbox);
+                checkboxContainer.appendChild(sinText);
+
+                const arrowIcon = document.createElement('span');
+                arrowIcon.className = 'material-icons';
+                arrowIcon.textContent = 'expand_more';
+                arrowIcon.onclick = (event) => {
+                    event.stopPropagation();
+                    const dropdown = sinDiv.querySelector('.dropdown-content');
+                    dropdown.classList.toggle('show');
+                    arrowIcon.classList.toggle('selected');
+                };
+                sinDiv.appendChild(checkboxContainer);
+                sinDiv.appendChild(arrowIcon);
+
+                const dropdown = document.createElement('div');
+                dropdown.className = 'dropdown-content';
+                dropdown.innerHTML = `
+                        <p><strong>${sin.mortal ? 'Mortal Sin' : 'Venial Sin'}</strong></p>
+                        <p><strong>Catechism Reference:</strong> CCC ${sin.ccc}</p>
+                        <p>${sin.details}</p>
+                    `;
+                sinDiv.appendChild(dropdown);
+
+                container.appendChild(sinDiv);
+            });
+        });
+    }
+
+    function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+        const date = new Date();
+        const dateString = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+        let hasMortalSins = false;
+
+        pdf.setFontSize(12);
+        pdf.text(`Date: ${dateString}`, 10, 10);
+        pdf.setFontSize(14);
+        pdf.text("Standard Instructions for Confession:", 10, 20);
+        pdf.setFontSize(12);
+        pdf.text("1. Approach the confessional and say, 'Bless me, Father, for I have sinned. It has been [time] since my last confession.'", 10, 30);
+        pdf.text("2. Confess your sins.", 10, 40);
+        pdf.text("3. Listen to the priest’s counsel and assigned penance.", 10, 50);
+        pdf.text("4. After receiving absolution, make the Act of Contrition below.", 10, 60);
+
+        const selectedSins = document.querySelectorAll('.sin-item input[type="checkbox"]:checked');
+        let yPosition = 80;
+        if (selectedSins.length > 0) {
+            pdf.text("Sins to Confess:", 10, yPosition);
+            yPosition += 10;
+
+            selectedSins.forEach(checkbox => {
+                const sinText = checkbox.nextSibling.textContent.trim();
+                if (checkbox.classList.contains('mortal-sin')) {
+                    hasMortalSins = true; // Track if any mortal sin is selected
+                }
+                if (yPosition > 270) {
+                    pdf.addPage();
+                    yPosition = 10;
+                }
+                pdf.text(`- ${sinText}`, 10, yPosition);
+                yPosition += 10;
+            });
+        } else {
+            pdf.text("No sins selected.", 10, yPosition);
+        }
+
+        yPosition += 20;
+        pdf.text("Act of Contrition:", 10, yPosition);
+        pdf.text("O my God, I am heartily sorry for having offended You, and I detest all my sins,", 10, yPosition + 10);
+        pdf.text("because I dread the loss of heaven and the pains of hell; but most of all because", 10, yPosition + 20);
+        pdf.text("they offend You, my God, who are all good and deserving of all my love. I firmly resolve,", 10, yPosition + 30);
+        pdf.text("with the help of Your grace, to confess my sins, to do penance, and to amend my life. Amen.", 10, yPosition + 40);
+
+        // Display an alert if any mortal sins were selected
+        if (hasMortalSins) {
+            alert("You have listed one or more mortal sins. Please seek confession as soon as possible.");
+        }
+
+        pdf.save("Confession_List.pdf");
+    }
+
+    window.onload = loadSins;
+</script>
+</body>
+</html>
