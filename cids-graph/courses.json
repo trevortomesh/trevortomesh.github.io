@@ -1,0 +1,139 @@
+{
+  "courses": [
+    {
+      "id": "CIDS 161",
+      "name": "Programming I",
+      "prerequisites": []
+    },
+    {
+      "id": "CIDS 162",
+      "name": "Programming II",
+      "prerequisites": ["CIDS 161"]
+    },
+    {
+      "id": "CIDS 225",
+      "name": "Web Development I",
+      "prerequisites": ["CIDS 161"]
+    },
+    {
+      "id": "CIDS 235",
+      "name": "Object-Oriented Programming",
+      "prerequisites": ["CIDS 162"]
+    },
+    {
+      "id": "CIDS 237",
+      "name": "Data Structures and Algorithms",
+      "prerequisites": ["CIDS 162"]
+    },
+    {
+      "id": "CIDS 247",
+      "name": "Introduction to Computer Networks",
+      "prerequisites": ["CIDS 162"]
+    },
+    {
+      "id": "CIDS 248",
+      "name": "Operating Systems Programming",
+      "prerequisites": ["CIDS 162"]
+    },
+    {
+      "id": "CIDS 333",
+      "name": "Database Management Systems",
+      "prerequisites": ["CIDS 162"]
+    },
+    {
+      "id": "CIDS 343",
+      "name": "Software Engineering and Capstone Project",
+      "prerequisites": ["CIDS 237"]
+    },
+    {
+      "id": "CIDS 355",
+      "name": "Computer Organization and Assembly Language",
+      "prerequisites": ["CIDS 162"]
+    },
+    {
+      "id": "CIDS 429",
+      "name": "Operating Systems",
+      "prerequisites": ["CIDS 248"]
+    },
+    {
+      "id": "CIDS 435",
+      "name": "Computer and Information Security",
+      "prerequisites": ["CIDS 247"]
+    },
+    {
+      "id": "CIDS 484",
+      "name": "Senior Capstone Seminar",
+      "prerequisites": []
+    },
+    {
+      "id": "CIDS 423",
+      "name": "Introduction to Systems Analysis",
+      "prerequisites": ["CIDS 333"]
+    },
+    {
+      "id": "CIDS 433",
+      "name": "Design and Analysis of Management Information Systems",
+      "prerequisites": ["CIDS 423"]
+    },
+    {
+      "id": "CIDS 440",
+      "name": "Information Systems Project Management",
+      "prerequisites": ["CIDS 433"]
+    },
+    {
+      "id": "MATH 156",
+      "name": "Calculus for Business and Social Science",
+      "prerequisites": []
+    },
+    {
+      "id": "MATH 166",
+      "name": "Calculus I",
+      "prerequisites": []
+    },
+    {
+      "id": "MATH 236",
+      "name": "Discrete Mathematics",
+      "prerequisites": ["MATH 156", "MATH 166"]
+    },
+    {
+      "id": "COMS 116",
+      "name": "Business and Professional Communication",
+      "prerequisites": []
+    },
+    {
+      "id": "ENGL 266",
+      "name": "Business Writing",
+      "prerequisites": ["ENGL 100"]
+    },
+    {
+      "id": "ENGL 100",
+      "name": "Introduction to College Writing",
+      "prerequisites": []
+    },
+    {
+      "id": "MNGT 300",
+      "name": "Management and Organizational Behavior",
+      "prerequisites": []
+    },
+    {
+      "id": "MNGT 365",
+      "name": "Business Process Management",
+      "prerequisites": ["MNGT 300"]
+    },
+    {
+      "id": "MNGT 320",
+      "name": "Principles of Marketing",
+      "prerequisites": []
+    },
+    {
+      "id": "ACCT 231",
+      "name": "Principles of Accounting I",
+      "prerequisites": []
+    },
+    {
+      "id": "MNGT 361",
+      "name": "Human Resource Management",
+      "prerequisites": ["MNGT 300"]
+    }
+  ]
+}

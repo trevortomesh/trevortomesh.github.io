@@ -239,6 +239,16 @@
     "image": ""
   },
 
+  "PlantUML": {
+    "title": "Guide to PlantUML",
+    "text": "<a href = PlantUML.html>PlantUML Guide</a>",
+    "tags": [
+      "programming",
+      "courses"
+    ],
+    "image": ""
+  },
+
   "coding-guide": {
     "title": "Dr.T's Coding Guide",
     "text": "<a href = coding-guide.html>Coding Guide</a>",
