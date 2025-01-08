@@ -79,8 +79,13 @@
 
 <!-- Footer Section -->
 <footer>
-    <p>© 2024 The WayPoint - Curated by Dr. Trevor M. Tomesh</p>
+    <p>© <span id="currentYear"></span> The WayPoint - Curated by Dr. Trevor M. Tomesh</p>
 </footer>
+
+<script>
+    // JavaScript to update the year dynamically
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>

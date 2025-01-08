@@ -83,11 +83,12 @@
 
 <!-- Footer Section -->
 <footer>
-  <p>© 2024 The WayPoint - Curated by Dr. Trevor M. Tomesh</p>
+  <p>© <span id="currentYear"></span> The WayPoint - Curated by Dr. Trevor M. Tomesh</p>
 </footer>
 
 <!-- JavaScript to Load and Control the Slideshow -->
 <script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
   // Fetch the influences JSON and initialize the slideshow
   fetch('influences.json')
           .then(response => response.json())
