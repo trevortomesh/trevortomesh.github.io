@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Arena Simulation - Program Writeup Document Tool</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2f;
+            color: #f0f0f0;
+            max-width: 960px;
+            margin: auto;
+            padding: 2rem;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+        form {
+            background: #2b2b3d;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        label {
+            font-weight: bold;
+            margin-top: 1rem;
+            display: block;
+            color: #ffffff;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #444;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            background-color: #1e1e2f;
+            color: #ffffff;
+        }
+        textarea {
+            height: 120px;
+        }
+        input[type="file"] {
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+<h1>Battle Arena Simulation</h1>
+<h2>Program Writeup Document Tool</h2>
+
+<form id="writeupForm">
+    <label>Student Name</label>
+    <input type="text" name="StudentName" placeholder="Enter your full name">
+
+    <label>1. BattleCreature Class – Code</label>
+    <textarea name="BattleCreatureAttributes" placeholder="Paste your full BattleCreature class code here, including attributes and constructor."></textarea>
+
+    <label>1a. BattleCreature Class – Notes</label>
+    <textarea name="BattleCreatureAttributesDesc" placeholder="Briefly explain how your class satisfies the assignment requirements (e.g., all required fields, constructor functionality)."></textarea>
+
+    <label>2. getDescription() Method – Code</label>
+    <textarea name="GetDescriptionMethod" placeholder="Paste only the getDescription() method code here."></textarea>
+
+    <label>2a. getDescription() Method – Notes</label>
+    <textarea name="GetDescriptionMethodDesc" placeholder="What does the method return? How does it meet the requirement of including the OC?"></textarea>
+
+    <label>3. Arena Class – Code</label>
+    <textarea name="ArenaClass" placeholder="Paste your full Arena class code here."></textarea>
+
+    <label>3a. Arena Class – Notes</label>
+    <textarea name="ArenaClassDesc" placeholder="Briefly explain how creatures are added and how battles are conducted."></textarea>
+
+    <label>4. Main Class – Code</label>
+    <textarea name="MainClass" placeholder="Paste your full Main method/class code here."></textarea>
+
+    <label>4a. Main Class – Notes</label>
+    <textarea name="MainClassDesc" placeholder="Describe how you create your creature, borrow another, add both to the arena, and start a battle."></textarea>
+
+    <label>5. Borrowed Creature Details</label>
+    <textarea name="BorrowedCreature" placeholder="List all required details: classmate's name, nickname, species, type, description, OC, level, HP."></textarea>
+
+    <label>6. Acknowledgment Statement</label>
+    <textarea name="Acknowledgment" placeholder="Write a short thank-you paragraph to your classmate and explain how their creature contributed to your project."></textarea>
+
+    <label>7. Object-Oriented Programming Reflection</label>
+    <textarea name="OOPExplanation" placeholder="How does your program demonstrate principles like encapsulation, abstraction, modularity, and reusability?"></textarea>
+
+    <label>8. UML Diagram Screenshot</label>
+    <input type="file" id="umlUpload" accept="image/*">
+
+    <label>9. Program Output</label>
+    <textarea name="ProgramOutput" placeholder="Copy and paste the output printed by your program, showing that everything works as expected."></textarea>
+
+    <label>10. Extra Features (Optional)</label>
+    <textarea name="Extras" placeholder="Did you go beyond the basic requirements? Explain any creative additions or bonus functionality you included."></textarea>
+
+    <label>11. Conclusion</label>
+    <textarea name="Conclusion" placeholder="Reflect on your experience: What did you learn? What challenges did you face? What worked well?"></textarea>
+
+    <label>12. References and Sources</label>
+    <textarea name="References" placeholder="List any tutorials, websites, peers, or books you consulted while working on this project."></textarea>
+
+    <button type="button" onclick="generatePDF()">Generate PDF</button>
+</form>
+
+<script>
+    function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const form = document.getElementById('writeupForm');
+        const fields = form.elements;
+
+        let y = 10;
+        doc.setFontSize(16);
+        const studentName = form.StudentName.value || "[Student Name Not Provided]";
+        doc.text("Battle Arena Simulation - Program Writeup Document", 10, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.text("Student Name: " + studentName, 10, y);
+        y += 10;
+
+        for (let i = 0; i < fields.length; i++) {
+            if (fields[i].tagName === 'TEXTAREA') {
+                const label = fields[i].previousElementSibling.innerText;
+                const text = fields[i].value || "[Not Filled]";
+                const lines = doc.splitTextToSize(`${label}\n${text}`, 180);
+
+                if (y + lines.length * 10 > 280) {
+                    doc.addPage();
+                    y = 10;
+                }
+                doc.text(lines, 10, y);
+                y += lines.length * 8;
+            }
+        }
+
+        const umlFile = document.getElementById('umlUpload').files[0];
+        if (umlFile) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    doc.addPage();
+                    doc.setFontSize(14);
+                    doc.text("UML Diagram Screenshot:", 10, 10);
+                    doc.addImage(img, 'PNG', 10, 20, 180, 150);
+                    doc.save("BattleArena_ProgramWriteup.pdf");
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(umlFile);
+        } else {
+            doc.save("BattleArena_ProgramWriteup.pdf");
+        }
+    }
+</script>
+</body>
+</html>
