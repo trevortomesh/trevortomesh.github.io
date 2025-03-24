@@ -39,6 +39,7 @@
             font-size: 1rem;
             background-color: #1e1e2f;
             color: #ffffff;
+            font-family: monospace;
         }
         textarea {
             height: 120px;
@@ -101,31 +102,47 @@
 <script>
     function generatePDF() {
         const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+        const doc = new jsPDF({ unit: 'pt', format: 'letter' });
         const form = document.getElementById('writeupForm');
         const fields = form.elements;
 
-        let y = 10;
+        let y = 40;
         doc.setFontSize(16);
-        const studentName = form.StudentName.value || "[Student Name Not Provided]";
-        doc.text("Pokedex Simulation - Program Write-Up Document", 10, y);
-        y += 10;
+        doc.setFont("helvetica", "bold");
+        doc.text("Pokedex Simulation - Program Write-Up Document", 40, y);
+        y += 30;
         doc.setFontSize(12);
-        doc.text("Student Name: " + studentName, 10, y);
-        y += 10;
+        doc.setFont("helvetica", "normal");
+        const studentName = form.StudentName.value || "[Student Name Not Provided]";
+        doc.text("Student Name: " + studentName, 40, y);
+        y += 20;
 
         for (let i = 0; i < fields.length; i++) {
             if (fields[i].tagName === 'TEXTAREA' || fields[i].type === 'text') {
                 const label = fields[i].previousElementSibling.innerText;
                 const text = fields[i].value || "[Not Filled]";
-                const lines = doc.splitTextToSize(`${label}\n${text}`, 180);
 
-                if (y + lines.length * 10 > 280) {
-                    doc.addPage();
-                    y = 10;
+                // Adjust font for code sections
+                const isCode = label.toLowerCase().includes("code") || label.toLowerCase().includes("output") || label.toLowerCase().includes("complete code");
+
+                if (isCode) {
+                    doc.setFont("courier", "normal");
+                    doc.setFontSize(9);
+                } else {
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(11);
                 }
-                doc.text(lines, 10, y);
-                y += lines.length * 8;
+
+                const lines = doc.splitTextToSize(`${label}:\n${text}`, 520);
+
+                for (let line of lines) {
+                    if (y > 740) {
+                        doc.addPage();
+                        y = 40;
+                    }
+                    doc.text(line, 40, y);
+                    y += 14;
+                }
             }
         }
 
