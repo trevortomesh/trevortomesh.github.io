@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex Program Write-Up Tool</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+        form {
+            background: #2b2b3d;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        label {
+            font-weight: bold;
+            margin-top: 1rem;
+            display: block;
+            color: #ffffff;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #444;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            background-color: #1e1e2f;
+            color: #ffffff;
+        }
+        textarea {
+            height: 120px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+<h1>Pokedex Simulation</h1>
+<h2>Program Write-Up Document Tool</h2>
+
+<form id="writeupForm">
+    <label>Student Name</label>
+    <input type="text" name="StudentName" placeholder="Enter your full name">
+
+    <label>1. Program Summary</label>
+    <textarea name="Summary" placeholder="Briefly describe what your Pokedex program does and its purpose."></textarea>
+
+    <label>2. Code for Requirements – Input & Data Handling</label>
+    <textarea name="CodeInputHandling" placeholder="Paste the specific code that shows how your program handles user input and stores Pokémon data. Highlight how you meet the requirement of separate arrays OR CSV parsing."></textarea>
+
+    <label>3. Code for Requirements – Search by Name and Number</label>
+    <textarea name="CodeSearchLogic" placeholder="Paste the code that allows users to search by name or number. Clearly indicate where your logic handles matching and error messages."></textarea>
+
+    <label>4. Code for Requirements – Displaying Pokedex Entry</label>
+    <textarea name="CodeDisplayLogic" placeholder="Paste the code responsible for displaying Pokémon classification, description, and type info. Highlight where it formats the output according to the sample provided."></textarea>
+
+    <label>5. Program Output</label>
+    <textarea name="Output" placeholder="Copy and paste output from your running program. Include examples of a successful name search and a number search (both valid and invalid)."></textarea>
+
+    <label>6. Conclusion</label>
+    <textarea name="Conclusion" placeholder="Summarize your experience: What did you learn? What challenges did you face? Any changes you'd make if you had more time?"></textarea>
+
+    <label>7. Complete Code</label>
+    <textarea name="FullCode" placeholder="Paste your complete final version of your Java code here."></textarea>
+
+    <label>8. References</label>
+    <textarea name="References" placeholder="List any sources, tutorials, or help you received for this project."></textarea>
+
+    <button type="button" onclick="generatePDF()">Generate PDF</button>
+</form>
+
+<script>
+    function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const form = document.getElementById('writeupForm');
+        const fields = form.elements;
+
+        let y = 10;
+        doc.setFontSize(16);
+        const studentName = form.StudentName.value || "[Student Name Not Provided]";
+        doc.text("Pokedex Simulation - Program Write-Up Document", 10, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.text("Student Name: " + studentName, 10, y);
+        y += 10;
+
+        for (let i = 0; i < fields.length; i++) {
+            if (fields[i].tagName === 'TEXTAREA' || fields[i].type === 'text') {
+                const label = fields[i].previousElementSibling.innerText;
+                const text = fields[i].value || "[Not Filled]";
+                const lines = doc.splitTextToSize(`${label}\n${text}`, 180);
+
+                if (y + lines.length * 10 > 280) {
+                    doc.addPage();
+                    y = 10;
+                }
+                doc.text(lines, 10, y);
+                y += lines.length * 8;
+            }
+        }
+
+        doc.save("Pokedex_WriteUp.pdf");
+    }
+</script>
+</body>
+</html>
