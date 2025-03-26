@@ -100,28 +100,43 @@
         const fields = form.elements;
 
         let y = 10;
+        const lineHeight = 8;
+        const margin = 10;
+        const pageHeight = doc.internal.pageSize.height;
+
         doc.setFontSize(16);
         const studentName = form.StudentName.value || "[Student Name Not Provided]";
-        doc.text("Pokémon Battle Simulation - Program Write-Up Document", 10, y);
+        doc.text("Pokémon Battle Simulation - Program Write-Up Document", margin, y);
         y += 10;
         doc.setFontSize(12);
-        doc.text("Student Name: " + studentName, 10, y);
+        doc.text("Student Name: " + studentName, margin, y);
         y += 10;
 
-        for (let i = 0; i < fields.length; i++) {
-            if (fields[i].tagName === 'TEXTAREA') {
-                const label = fields[i].previousElementSibling.innerText;
-                const text = fields[i].value || "[Not Filled]";
-                const lines = doc.splitTextToSize(`${label}\n${text}`, 180);
+        const sections = [
+            { label: "1. Python Code", name: "Code" },
+            { label: "2. Program Output", name: "Output" },
+            { label: "3. Process Documentation", name: "Process" },
+            { label: "4. Extra Features (Optional)", name: "Extras" },
+            { label: "5. Conclusion", name: "Conclusion" },
+            { label: "6. References and Sources", name: "References" }
+        ];
 
-                if (y + lines.length * 10 > 280) {
+        sections.forEach(section => {
+            const label = section.label;
+            const value = form[section.name].value || "[Not Filled]";
+            const lines = doc.splitTextToSize(`${label}\n${value}`, 180);
+
+            lines.forEach(line => {
+                if (y + lineHeight > pageHeight - margin) {
                     doc.addPage();
-                    y = 10;
+                    y = margin;
                 }
-                doc.text(lines, 10, y);
-                y += lines.length * 8;
-            }
-        }
+                doc.text(line, margin, y);
+                y += lineHeight;
+            });
+
+            y += 4; // space after each section
+        });
 
         doc.save("PokemonBattle_WriteUp.pdf");
     }
