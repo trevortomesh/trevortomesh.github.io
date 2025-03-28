@@ -130,35 +130,61 @@
     function generatePDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-
-        const form = document.getElementById('writeupForm');
+        const form = document.getElementById("writeupForm");
         const fields = form.elements;
 
         let y = 10;
+        const margin = 10;
+        const lineHeight = 8;
+        const pageHeight = doc.internal.pageSize.height;
+        const textWidth = doc.internal.pageSize.width - 2 * margin;
+
+        // Header
         doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
         const studentName = form.StudentName.value || "[Student Name Not Provided]";
-        doc.text("Battle Arena Simulation - Program Writeup Document", 10, y);
-        y += 10;
+        doc.text("Battle Arena Simulation - Program Writeup Document", margin, y);
+        y += 20;
+
         doc.setFontSize(12);
-        doc.text("Student Name: " + studentName, 10, y);
-        y += 10;
+        doc.setFont("helvetica", "normal");
+        doc.text("Student Name: " + studentName, margin, y);
+        y += 20;
 
+        // Process each textarea
         for (let i = 0; i < fields.length; i++) {
-            if (fields[i].tagName === 'TEXTAREA') {
+            if (fields[i].tagName === "TEXTAREA") {
                 const label = fields[i].previousElementSibling.innerText;
-                const text = fields[i].value || "[Not Filled]";
-                const lines = doc.splitTextToSize(`${label}\n${text}`, 180);
+                const content = fields[i].value || "[Not Filled]";
+                const fullText = `${label}:\n${content}`;
 
-                if (y + lines.length * 10 > 280) {
-                    doc.addPage();
-                    y = 10;
+                // Adjust font for code sections
+                const isCode = label.toLowerCase().includes("code");
+                if (isCode) {
+                    doc.setFont("courier", "normal");
+                    doc.setFontSize(9);
+                } else {
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(11);
                 }
-                doc.text(lines, 10, y);
-                y += lines.length * 8;
+
+                const lines = doc.splitTextToSize(fullText, textWidth);
+
+                // Print each line and add a new page if needed
+                for (let j = 0; j < lines.length; j++) {
+                    if (y + lineHeight > pageHeight - margin) {
+                        doc.addPage();
+                        y = margin;
+                    }
+                    doc.text(lines[j], margin, y);
+                    y += lineHeight;
+                }
+                y += 10; // add extra space after each section
             }
         }
 
-        const umlFile = document.getElementById('umlUpload').files[0];
+        // Process UML image file if provided
+        const umlFile = document.getElementById("umlUpload").files[0];
         if (umlFile) {
             const reader = new FileReader();
             reader.onload = function (e) {
@@ -166,8 +192,12 @@
                 img.onload = function () {
                     doc.addPage();
                     doc.setFontSize(14);
-                    doc.text("UML Diagram Screenshot:", 10, 10);
-                    doc.addImage(img, 'PNG', 10, 20, 180, 150);
+                    doc.setFont("helvetica", "bold");
+                    doc.text("UML Diagram Screenshot:", margin, margin);
+                    // Fit the image to the page width with a margin
+                    const imgWidth = textWidth;
+                    const imgHeight = img.height * imgWidth / img.width;
+                    doc.addImage(img, "PNG", margin, margin + 10, imgWidth, imgHeight);
                     doc.save("BattleArena_ProgramWriteup.pdf");
                 };
                 img.src = e.target.result;
