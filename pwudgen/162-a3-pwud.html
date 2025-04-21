@@ -2,9 +2,170 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Simulator - Program Writeup Tool</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2f;
+            color: #f0f0f0;
+            max-width: 960px;
+            margin: auto;
+            padding: 2rem;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+        form {
+            background: #2b2b3d;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        label {
+            font-weight: bold;
+            margin-top: 1rem;
+            display: block;
+            color: #ffffff;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #444;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            background-color: #1e1e2f;
+            color: #ffffff;
+        }
+        textarea {
+            height: 120px;
+        }
+        input[type="file"], input[type="checkbox"] {
+            margin-bottom: 1.5rem;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
 <body>
+<h1>Tic-Tac-Toe Simulator</h1>
+<h2>Program Writeup Tool</h2>
 
+<form id="writeupForm">
+    <label>Student Name</label>
+    <input type="text" name="StudentName" placeholder="Enter your full name">
+
+    <label><input type="checkbox" name="AIConsent" checked> I consent to this assignment being graded with the assistance of AI</label>
+
+    <label>1. Program Overview</label>
+    <textarea name="Overview" placeholder="Briefly explain what your program does and how it fulfills the assignment goals."></textarea>
+
+    <label>2. Key Implementation Details</label>
+    <textarea name="Details" placeholder="Explain the logic behind your methods (initializeBoard, getPlayerMove, etc.) and how they function."></textarea>
+
+    <label>3. Output Screenshots</label>
+    <input type="file" id="outputScreenshot" accept="image/*">
+
+    <label>4. Conclusion</label>
+    <textarea name="Conclusion" placeholder="Summarize your learning, any challenges, and what worked well."></textarea>
+
+    <label>5. Complete Code (Appendix)</label>
+    <textarea name="FullCode" placeholder="Paste your complete Java code here with comments."></textarea>
+
+    <label>6. References</label>
+    <textarea name="References" placeholder="List any references, tutorials, or peers you consulted."></textarea>
+
+    <button type="button" onclick="generatePDF()">Generate PDF</button>
+</form>
+
+<script>
+    function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const form = document.getElementById("writeupForm");
+        const fields = form.elements;
+
+        let y = 10;
+        const margin = 10;
+        const lineHeight = 8;
+        const pageHeight = doc.internal.pageSize.height;
+        const textWidth = doc.internal.pageSize.width - 2 * margin;
+
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        const studentName = form.StudentName.value || "[Student Name Not Provided]";
+        doc.text("Tic-Tac-Toe Simulator - Program Writeup", margin, y);
+        y += 20;
+
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+        doc.text("Student Name: " + studentName, margin, y);
+        y += 10;
+
+        const aiConsent = form.AIConsent.checked ? "Yes" : "No";
+        doc.text("Consents to AI-Assisted Grading: " + aiConsent, margin, y);
+        y += 20;
+
+        for (let i = 0; i < fields.length; i++) {
+            if (fields[i].tagName === "TEXTAREA" || (fields[i].type === "text" && fields[i].name !== "StudentName")) {
+                const label = fields[i].previousElementSibling.innerText || "Field";
+                const content = fields[i].value || "[Not Filled]";
+                const fullText = `${label}:\n${content}`;
+
+                const lines = doc.splitTextToSize(fullText, textWidth);
+                for (let j = 0; j < lines.length; j++) {
+                    if (y + lineHeight > pageHeight - margin) {
+                        doc.addPage();
+                        y = margin;
+                    }
+                    doc.text(lines[j], margin, y);
+                    y += lineHeight;
+                }
+                y += 10;
+            }
+        }
+
+        const imgFile = document.getElementById("outputScreenshot").files[0];
+        if (imgFile) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    doc.addPage();
+                    doc.setFontSize(14);
+                    doc.setFont("helvetica", "bold");
+                    doc.text("Output Screenshot:", margin, margin);
+                    const imgWidth = textWidth;
+                    const imgHeight = img.height * imgWidth / img.width;
+                    doc.addImage(img, "PNG", margin, margin + 10, imgWidth, imgHeight);
+                    doc.save("TicTacToe_Writeup.pdf");
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(imgFile);
+        } else {
+            doc.save("TicTacToe_Writeup.pdf");
+        }
+    }
+</script>
 </body>
 </html>
