@@ -2,9 +2,165 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Battle Simulation - Program Write-Up Tool</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+        form {
+            background: #2b2b3d;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        label {
+            font-weight: bold;
+            margin-top: 1rem;
+            display: block;
+            color: #ffffff;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #444;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            background-color: #1e1e2f;
+            color: #ffffff;
+        }
+        textarea {
+            height: 120px;
+        }
+        .consent-container {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .consent-container input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
 <body>
+<h1>Pokémon Battle Simulation</h1>
+<h2>Program Write-Up Document Tool</h2>
 
+<form id="writeupForm">
+    <label>Student Name</label>
+    <input type="text" name="StudentName" placeholder="Enter your full name">
+
+    <div class="consent-container">
+        <input type="checkbox" name="Consent" id="ConsentCheckbox" checked>
+        <label for="ConsentCheckbox" style="margin: 0;">I consent to AI-assisted grading (uncheck to withdraw consent)</label>
+    </div>
+
+    <label>1. Python Code</label>
+    <textarea name="Code" placeholder="Paste your full Python code here."></textarea>
+
+    <label>2. Program Output</label>
+    <textarea name="Output" placeholder="Copy and paste the output from running your program. Include multiple rounds of gameplay."></textarea>
+
+    <label>3. Process Documentation</label>
+    <textarea name="Process" placeholder="Describe the steps you followed while building the program, the challenges you encountered, how you solved them, and what you learned. Mention any resources or references you used."></textarea>
+
+    <label>4. Extra Features (Optional)</label>
+    <textarea name="Extras" placeholder="Did you add anything beyond the basic requirements? If so, describe it here."></textarea>
+
+    <label>5. Conclusion</label>
+    <textarea name="Conclusion" placeholder="Summarize your overall experience. What did you enjoy or find difficult about this assignment?"></textarea>
+
+    <label>6. References and Sources</label>
+    <textarea name="References" placeholder="List any references or tutorials you used while completing this assignment."></textarea>
+
+    <button type="button" onclick="generatePDF()">Generate PDF</button>
+</form>
+
+<script>
+    function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const form = document.getElementById('writeupForm');
+        const fields = form.elements;
+        const consentGiven = form.Consent.checked;
+
+        let y = 10;
+        const lineHeight = 8;
+        const margin = 10;
+        const pageHeight = doc.internal.pageSize.height;
+
+        doc.setFontSize(16);
+        if (!consentGiven) {
+            doc.setTextColor(255, 0, 0);
+            doc.text("I DO NOT CONSENT TO AI ASSISTED GRADING", margin, y);
+            y += 10;
+            doc.setTextColor(0);
+        }
+
+        const studentName = form.StudentName.value || "[Student Name Not Provided]";
+        doc.text("Pokémon Battle Simulation - Program Write-Up Document", margin, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.text("Student Name: " + studentName, margin, y);
+        y += 10;
+
+        const sections = [
+            { label: "1. Python Code", name: "Code" },
+            { label: "2. Program Output", name: "Output" },
+            { label: "3. Process Documentation", name: "Process" },
+            { label: "4. Extra Features (Optional)", name: "Extras" },
+            { label: "5. Conclusion", name: "Conclusion" },
+            { label: "6. References and Sources", name: "References" }
+        ];
+
+        sections.forEach(section => {
+            const label = section.label;
+            const value = form[section.name].value || "[Not Filled]";
+            const lines = doc.splitTextToSize(`${label}\n${value}`, 180);
+
+            lines.forEach(line => {
+                if (y + lineHeight > pageHeight - margin) {
+                    doc.addPage();
+                    y = margin;
+                }
+                doc.text(line, margin, y);
+                y += lineHeight;
+            });
+
+            y += 4; // space after each section
+        });
+
+        doc.save("PokemonBattle_WriteUp.pdf");
+    }
+</script>
 </body>
 </html>
