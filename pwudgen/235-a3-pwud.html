@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolved Creature Simulation - Program Writeup Tool</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e2f;
+      color: #f0f0f0;
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #ffffff;
+    }
+    form {
+      background: #2b2b3d;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    label {
+      font-weight: bold;
+      margin-top: 1rem;
+      display: block;
+      color: #ffffff;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #444;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      background-color: #1e1e2f;
+      color: #ffffff;
+    }
+    textarea {
+      height: 120px;
+    }
+    input[type="file"] {
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 2rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+<h1>Evolved Creature Simulation</h1>
+<h2>Program Writeup Tool</h2>
+
+<form id="writeupForm">
+  <label>Student Name</label>
+  <input type="text" name="StudentName" placeholder="Enter your full name">
+
+  <label>1. Program Overview</label>
+  <textarea name="Overview" placeholder="Briefly describe your program and how it demonstrates inheritance, constructor chaining, and method overriding."></textarea>
+
+  <label>2. UML Diagram Screenshot</label>
+  <input type="file" id="umlUpload" accept="image/*">
+
+  <label>3a. Constructor Chaining Explanation</label>
+  <textarea name="ConstructorChaining" placeholder="Explain how constructor chaining is used in your subclass. Include a relevant code snippet."></textarea>
+
+  <label>3b. Overridden Method Explanation</label>
+  <textarea name="OverriddenMethod" placeholder="Explain how you override getDescription() and what it adds. Include a code snippet."></textarea>
+
+  <label>3c. Polymorphism Explanation</label>
+  <textarea name="Polymorphism" placeholder="Explain how your Arena class demonstrates polymorphism. Include a battle log or screenshot if possible."></textarea>
+
+  <label>4. Extra Features (Optional)</label>
+  <textarea name="Extras" placeholder="List and describe any extra features or enhancements you've implemented."></textarea>
+
+  <label>5. Conclusion</label>
+  <textarea name="Conclusion" placeholder="Reflect on what you learned, challenges you faced, and what worked well."></textarea>
+
+  <label>6. Full Code (Appendix)</label>
+  <textarea name="FullCode" placeholder="Paste your complete Java code here with comments. You may include multiple class files."></textarea>
+
+  <label>7. Acknowledgments</label>
+  <textarea name="Acknowledgments" placeholder="Thank anyone who helped you and list any resources or inspirations used."></textarea>
+
+  <button type="button" onclick="generatePDF()">Generate PDF</button>
+</form>
+
+<script>
+  function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const form = document.getElementById("writeupForm");
+    const fields = form.elements;
+
+    let y = 10;
+    const margin = 10;
+    const lineHeight = 8;
+    const pageHeight = doc.internal.pageSize.height;
+    const textWidth = doc.internal.pageSize.width - 2 * margin;
+
+    // Header
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    const studentName = form.StudentName.value || "[Student Name Not Provided]";
+    doc.text("Evolved Creature Simulation - Program Writeup", margin, y);
+    y += 20;
+
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text("Student Name: " + studentName, margin, y);
+    y += 20;
+
+    for (let i = 0; i < fields.length; i++) {
+      if (fields[i].tagName === "TEXTAREA") {
+        const label = fields[i].previousElementSibling.innerText;
+        const content = fields[i].value || "[Not Filled]";
+        const fullText = `${label}:\n${content}`;
+
+        const isCode = label.toLowerCase().includes("code") || label.toLowerCase().includes("snippet");
+        if (isCode) {
+          doc.setFont("courier", "normal");
+          doc.setFontSize(9);
+        } else {
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(11);
+        }
+
+        const lines = doc.splitTextToSize(fullText, textWidth);
+        for (let j = 0; j < lines.length; j++) {
+          if (y + lineHeight > pageHeight - margin) {
+            doc.addPage();
+            y = margin;
+          }
+          doc.text(lines[j], margin, y);
+          y += lineHeight;
+        }
+        y += 10;
+      }
+    }
+
+    const umlFile = document.getElementById("umlUpload").files[0];
+    if (umlFile) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          doc.addPage();
+          doc.setFontSize(14);
+          doc.setFont("helvetica", "bold");
+          doc.text("UML Diagram Screenshot:", margin, margin);
+          const imgWidth = textWidth;
+          const imgHeight = img.height * imgWidth / img.width;
+          doc.addImage(img, "PNG", margin, margin + 10, imgWidth, imgHeight);
+          doc.save("EvolvedCreature_Writeup.pdf");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(umlFile);
+    } else {
+      doc.save("EvolvedCreature_Writeup.pdf");
+    }
+  }
+</script>
+</body>
+</html>
