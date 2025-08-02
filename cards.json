@@ -261,7 +261,7 @@
 
  "the-waypoint":{
   "title": "The Way Point",
-  "text": "A Home for my Theological Computing Work <a href = https://trevortomesh.github.io/TheWayPoint/</a>",
+  "text": "A home for my Theological Computing work: <a href = https://trevortomesh.github.io/TheWayPoint/>click here!</a>",
   "tags":[
     "tools",
     "research" 
