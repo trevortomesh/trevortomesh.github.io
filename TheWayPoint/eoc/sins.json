@@ -1,279 +1,281 @@
-[
+{
+  "categories": [
     {
-        "category": "Sins Against God",
-        "sins": [
-            {
-                "question": "Did I deny or doubt God's existence?",
-                "mortal": true,
-                "ccc": "2087",
-                "details": "Faith requires belief in God and rejects all forms of atheism or agnosticism."
-            },
-            {
-                "question": "Did I refuse to believe God's revelation?",
-                "mortal": true,
-                "ccc": "2088",
-                "details": "Refusing God’s revelation is a serious offense against faith."
-            },
-            {
-                "question": "Did I believe in horoscopes, fortune telling, good luck charms, tarot cards, Ouija boards, or reincarnation?",
-                "mortal": true,
-                "ccc": "2116",
-                "details": "Practices like divination demonstrate a lack of trust in God."
-            },
-            {
-                "question": "Did I deny that I was a Catholic?",
-                "mortal": true,
-                "ccc": "2148",
-                "details": "Denial of faith is a serious offense."
-            },
-            {
-                "question": "Did I abandon the Catholic Faith for any period of time?",
-                "mortal": true,
-                "ccc": "2089",
-                "details": "Apostasy or abandonment of faith is a grave offense."
-            },
-            {
-                "question": "Did I despair of or presume on God's mercy?",
-                "mortal": true,
-                "ccc": "2091",
-                "details": "Despair and presumption are offenses against trust in God."
-            },
-            {
-                "question": "Did I neglect prayer for a long time?",
-                "mortal": false,
-                "ccc": "2745",
-                "details": "Neglecting prayer weakens one’s relationship with God."
-            },
-            {
-                "question": "Did I fail to pray daily?",
-                "mortal": false,
-                "ccc": "2744",
-                "details": "Daily prayer is essential to maintain spiritual health."
-            },
-            {
-                "question": "Did I blaspheme God or take God's Name in vain, curse, or break an oath or vow?",
-                "mortal": true,
-                "ccc": "2148",
-                "details": "Blasphemy is a grave offense against the second commandment."
-            },
-            {
-                "question": "Did I miss Mass on a Sunday or on a Holy Day of Obligation through my own fault?",
-                "mortal": true,
-                "ccc": "2181",
-                "details": "Failing to attend Mass without valid reason is a serious sin."
-            },
-            {
-                "question": "Am I always reverent in the presence of the Most Blessed Sacrament?",
-                "mortal": false,
-                "ccc": "1378",
-                "details": "Reverence is due in the presence of the Eucharist."
-            },
-            {
-                "question": "Was I voluntarily inattentive at Mass?",
-                "mortal": false,
-                "ccc": "1324",
-                "details": "Mass requires active participation and attention."
-            },
-            {
-                "question": "Did I arrive at Mass late through my own fault?",
-                "mortal": false,
-                "ccc": "2181",
-                "details": "Punctuality shows respect for the Mass."
-            },
-            {
-                "question": "Did I leave Mass early?",
-                "mortal": false,
-                "ccc": "2181",
-                "details": "Leaving Mass early without serious reason is disrespectful."
-            },
-            {
-                "question": "Did I do unnecessary servile work on Sunday?",
-                "mortal": true,
-                "ccc": "2185",
-                "details": "Sunday is a day of rest and worship, not for servile labor."
-            }
-        ]
+      "category": "Sins Against God",
+      "sins": [
+        {
+          "question": "Did I deny or doubt God's existence?",
+          "mortal": true,
+          "ccc": "2087",
+          "details": "Knowingly and willfully rejecting the existence of God is a grave violation of faith. This sin undermines the relationship with the Creator and is contrary to the First Commandment. Doubt rooted in honest seeking is not sinful, but deliberate denial, especially after having received faith, constitutes mortal sin."
+        },
+        {
+          "question": "Did I refuse to believe God's revelation?",
+          "mortal": true,
+          "ccc": "2088",
+          "details": "Refusing to accept the truths revealed by God, particularly those taught by the Church, is a serious offense. This includes rejection of dogmas or essential teachings. Such refusal can separate one from the fullness of truth and communion with God."
+        },
+        {
+          "question": "Did I believe in horoscopes, fortune telling, good luck charms, tarot cards, Ouija boards, or reincarnation?",
+          "mortal": true,
+          "ccc": "2116",
+          "details": "Turning to occult practices and superstition demonstrates a lack of trust in God’s providence. These practices open one to spiritual deception and offend the First Commandment, which calls us to rely on God's wisdom alone."
+        },
+        {
+          "question": "Did I deny that I was a Catholic?",
+          "mortal": true,
+          "ccc": "2148",
+          "details": "Publicly denying one’s Catholic faith, especially out of fear or shame, is a grave sin. It is a form of apostasy or scandal and fails to witness to Christ. However, culpability may vary depending on intent and knowledge."
+        },
+        {
+          "question": "Did I abandon the Catholic Faith for any period of time?",
+          "mortal": true,
+          "ccc": "2089",
+          "details": "Knowingly and willingly abandoning the practice of the Catholic faith, especially to adopt another religion or no religion, constitutes apostasy—a grave offense against the faith received in baptism."
+        },
+        {
+          "question": "Did I despair of or presume on God's mercy?",
+          "mortal": true,
+          "ccc": "2091",
+          "details": "Despair is to cease trusting in God’s mercy and forgiveness. Presumption is to assume God’s forgiveness without genuine repentance. Both distort the proper relationship with God and reflect pride or lack of trust—making them grave sins."
+        },
+        {
+          "question": "Did I neglect prayer for a long time?",
+          "mortal": false,
+          "ccc": "2745",
+          "details": "While not always mortally sinful, prolonged neglect of prayer weakens one's spiritual life and can lead to more serious failings. God desires daily relationship with us through prayer."
+        },
+        {
+          "question": "Did I fail to pray daily?",
+          "mortal": false,
+          "ccc": "2744",
+          "details": "Regular daily prayer is essential for spiritual growth. Failure to maintain daily prayer is not necessarily mortal sin, but it is a neglect of one’s duties to love and know God."
+        },
+        {
+          "question": "Did I blaspheme God or take God's Name in vain, curse, or break an oath or vow?",
+          "mortal": true,
+          "ccc": "2148",
+          "details": "Using God's name disrespectfully, especially in oaths or blasphemy, is a serious offense against the Second Commandment. This includes taking sacred things lightly or using them irreverently."
+        },
+        {
+          "question": "Did I miss Mass on a Sunday or on a Holy Day of Obligation through my own fault?",
+          "mortal": true,
+          "ccc": "2181",
+          "details": "Deliberate failure to attend Sunday Mass or Holy Days without a serious reason (illness, caregiving, etc.) breaks the Third Commandment and is gravely sinful. Mass is the highest form of worship and obligation."
+        },
+        {
+          "question": "Am I always reverent in the presence of the Most Blessed Sacrament?",
+          "mortal": false,
+          "ccc": "1378",
+          "details": "While not typically mortally sinful, irreverence toward the Eucharist—Christ’s true presence—is spiritually harmful and disrespectful."
+        },
+        {
+          "question": "Was I voluntarily inattentive at Mass?",
+          "mortal": false,
+          "ccc": "1324",
+          "details": "Distraction at Mass is a common human weakness, but deliberately choosing not to pay attention, or attending for mere formality, reflects a lack of devotion."
+        },
+        {
+          "question": "Did I arrive at Mass late through my own fault?",
+          "mortal": false,
+          "ccc": "2181",
+          "details": "Arriving late due to negligence shows a lack of respect for the sacred liturgy. While not usually mortal, it becomes grave if significant parts of Mass are missed deliberately."
+        },
+        {
+          "question": "Did I leave Mass early?",
+          "mortal": false,
+          "ccc": "2181",
+          "details": "Leaving Mass before it is over, without a serious reason, shows irreverence and may constitute a venial sin."
+        },
+        {
+          "question": "Did I do unnecessary servile work on Sunday?",
+          "mortal": true,
+          "ccc": "2185",
+          "details": "The Lord’s Day is for worship, rest, and family. Performing unnecessary labor—especially if it causes others to miss rest—is a serious violation of God’s command to keep the Sabbath holy."
+        }
+      ]
     },
     {
-        "category": "Sins Against Family and Relationships",
-        "sins": [
-            {
-                "question": "Did I disobey or disrespect my parents or legitimate superiors?",
-                "mortal": true,
-                "ccc": "2199",
-                "details": "Respect for authority is part of the Fourth Commandment."
-            },
-            {
-                "question": "Did I neglect my duties to my husband, wife, children, or parents?",
-                "mortal": true,
-                "ccc": "2201",
-                "details": "Family members are called to honor their responsibilities to each other."
-            },
-            {
-                "question": "Did I fail to actively take an interest in the religious education and formation of my children?",
-                "mortal": false,
-                "ccc": "2223",
-                "details": "Parents are obligated to educate their children in faith."
-            },
-            {
-                "question": "Have I failed to educate myself concerning the teachings of the Church?",
-                "mortal": false,
-                "ccc": "2035",
-                "details": "Learning the teachings of the Church is a lifelong responsibility."
-            },
-            {
-                "question": "Did I give a full day's work in return for a full day's pay?",
-                "mortal": false,
-                "ccc": "2434",
-                "details": "Just work for just pay is part of respecting labor rights."
-            },
-            {
-                "question": "Did I give a fair wage to my employee(s)?",
-                "mortal": true,
-                "ccc": "2434",
-                "details": "Fair wages are required by justice and the dignity of work."
-            },
-            {
-                "question": "Did I give scandal by what I said or did, especially to the young?",
-                "mortal": true,
-                "ccc": "2284",
-                "details": "Giving scandal leads others to sin and is a grave offense."
-            },
-            {
-                "question": "Did I contribute to anyone's abandoning of the Catholic Faith?",
-                "mortal": true,
-                "ccc": "2284",
-                "details": "Leading others away from faith is a serious sin."
-            },
-            {
-                "question": "Was I uncharitable in thought, word, or deed?",
-                "mortal": false,
-                "ccc": "2303",
-                "details": "Charity requires us to love our neighbor as ourselves."
-            }
-        ]
+      "category": "Sins Against Family and Relationships",
+      "sins": [
+        {
+          "question": "Did I disobey or disrespect my parents or legitimate superiors?",
+          "mortal": true,
+          "ccc": "2199",
+          "details": "Deliberate and persistent disobedience or disrespect toward one’s parents or rightful authorities is a grave violation of the Fourth Commandment. It severs the bond of trust and gratitude owed to those given charge over us."
+        },
+        {
+          "question": "Did I neglect my duties to my husband, wife, children, or parents?",
+          "mortal": true,
+          "ccc": "2201",
+          "details": "Failing to fulfill familial duties—such as providing emotional, physical, or spiritual care—can gravely damage the dignity and unity of the family."
+        },
+        {
+          "question": "Did I fail to actively take an interest in the religious education and formation of my children?",
+          "mortal": false,
+          "ccc": "2223",
+          "details": "Parents are the first and primary educators in the faith. Failure to engage regularly in their children’s formation represents a serious neglect of spiritual responsibility."
+        },
+        {
+          "question": "Have I failed to educate myself concerning the teachings of the Church?",
+          "mortal": false,
+          "ccc": "2035",
+          "details": "Every Catholic has the obligation to form their conscience through continual learning. Ignorance of Church teaching, if willful, can lead to serious error."
+        },
+        {
+          "question": "Did I give a full day's work in return for a full day's pay?",
+          "mortal": false,
+          "ccc": "2434",
+          "details": "Honesty in work is a virtue. Slacking or wasting time unjustly while receiving full wages undermines justice and responsibility."
+        },
+        {
+          "question": "Did I give a fair wage to my employee(s)?",
+          "mortal": true,
+          "ccc": "2434",
+          "details": "To exploit laborers or fail to pay just wages is to offend the dignity of work and the worker. Such injustice can deprive others of what they need to live and provide."
+        },
+        {
+          "question": "Did I give scandal by what I said or did, especially to the young?",
+          "mortal": true,
+          "ccc": "2284",
+          "details": "Scandal leads others to sin. This is especially grave when it causes harm to the innocent or misleads someone away from Christ."
+        },
+        {
+          "question": "Did I contribute to anyone's abandoning of the Catholic Faith?",
+          "mortal": true,
+          "ccc": "2284",
+          "details": "Encouraging doubt or rebellion against the faith—through speech, actions, or poor example—is a serious betrayal of the call to evangelize and preserve the faith."
+        },
+        {
+          "question": "Was I uncharitable in thought, word, or deed?",
+          "mortal": false,
+          "ccc": "2303",
+          "details": "Uncharitable behavior—like gossip, harshness, or resentment—wounds relationships and fosters division. While often venial, such actions require contrition and amendment to restore peace."
+        }
+      ]
     },
     {
-        "category": "Sins Against Life and the Body",
-        "sins": [
-            {
-                "question": "Did I physically injure or kill anyone?",
-                "mortal": true,
-                "ccc": "2268",
-                "details": "Harming others is against the Fifth Commandment."
-            },
-            {
-                "question": "Have I had an abortion, or advised or supported an abortion?",
-                "mortal": true,
-                "ccc": "2271",
-                "details": "Abortion is a grave sin against the sanctity of life."
-            },
-            {
-                "question": "Did I participate in or approve of euthanasia or doctor-assisted suicide?",
-                "mortal": true,
-                "ccc": "2277",
-                "details": "Taking life through euthanasia or assisted suicide is gravely sinful."
-            },
-            {
-                "question": "Did I attempt suicide or physically harm myself?",
-                "mortal": true,
-                "ccc": "2281",
-                "details": "The Church teaches against self-harm and suicide."
-            },
-            {
-                "question": "Did I willfully entertain impure thoughts and desires?",
-                "mortal": true,
-                "ccc": "2351",
-                "details": "Impure thoughts and desires are serious sins against chastity."
-            },
-            {
-                "question": "Did I dress immodestly or provocatively?",
-                "mortal": false,
-                "ccc": "2521",
-                "details": "Modesty protects the virtue of chastity."
-            },
-            {
-                "question": "Did I use impure or suggestive words?",
-                "mortal": false,
-                "ccc": "2522",
-                "details": "Speech should reflect chastity and respect."
-            },
-            {
-                "question": "Did I deliberately look at impure television, internet content, plays, pictures, or movies?",
-                "mortal": true,
-                "ccc": "2354",
-                "details": "Viewing impure material violates chastity."
-            },
-            {
-                "question": "Did I read or send impure material?",
-                "mortal": true,
-                "ccc": "2354",
-                "details": "Engaging in impure materials, including reading or sharing, is sinful."
-            },
-            {
-                "question": "Did I perform impure acts, such as masturbation, adultery, fornication, or sodomy?",
-                "mortal": true,
-                "ccc": "2352",
-                "details": "Impure acts violate the call to chastity and the purpose of human sexuality."
-            }
-        ]
+      "category": "Sins Against Life and the Body",
+      "sins": [
+        {
+          "question": "Did I physically injure or kill anyone?",
+          "mortal": true,
+          "ccc": "2268",
+          "details": "Harming or taking the life of another human being, outside of legitimate self-defense or just war, is a direct offense against the Fifth Commandment. All life is sacred from conception to natural death."
+        },
+        {
+          "question": "Have I had an abortion, or advised or supported an abortion?",
+          "mortal": true,
+          "ccc": "2271",
+          "details": "Abortion ends the life of an innocent human being and is a mortal sin. Supporting, promoting, or encouraging abortion is also gravely sinful."
+        },
+        {
+          "question": "Did I participate in or approve of euthanasia or doctor-assisted suicide?",
+          "mortal": true,
+          "ccc": "2277",
+          "details": "Euthanasia and assisted suicide are grave violations of God's sovereignty over life. These acts fail to uphold the dignity of the human person."
+        },
+        {
+          "question": "Did I attempt suicide or physically harm myself?",
+          "mortal": true,
+          "ccc": "2281",
+          "details": "Suicide and serious self-harm contradict the natural instinct to preserve life. Mental illness may reduce culpability, but the objective act remains gravely disordered."
+        },
+        {
+          "question": "Did I willfully entertain impure thoughts and desires?",
+          "mortal": true,
+          "ccc": "2351",
+          "details": "Willfully dwelling on impure fantasies or desires, especially for the sake of arousal or gratification, is a grave sin. Custody of the mind is essential for holiness."
+        },
+        {
+          "question": "Did I dress immodestly or provocatively?",
+          "mortal": false,
+          "ccc": "2521",
+          "details": "Immodest dress can lead others to sin and reflects a lack of respect for the dignity of one’s body. While it may not always be mortally sinful, habitual or deliberate immodesty is spiritually harmful."
+        },
+        {
+          "question": "Did I use impure or suggestive words?",
+          "mortal": false,
+          "ccc": "2522",
+          "details": "Crude jokes, sexual references, or vulgarity degrade the dignity of the speaker and listener. Such speech should be confessed and avoided."
+        },
+        {
+          "question": "Did I deliberately look at impure television, internet content, plays, pictures, or movies?",
+          "mortal": true,
+          "ccc": "2354",
+          "details": "Viewing pornography or any material intended to arouse lust is a grave sin. It distorts the purpose of human sexuality and damages both the viewer and those exploited."
+        },
+        {
+          "question": "Did I read or send impure material?",
+          "mortal": true,
+          "ccc": "2354",
+          "details": "Consuming or distributing sexually explicit texts, images, or messages is a grave offense against chastity. It deforms the soul, wounds relationships, and contributes to the objectification of persons."
+        },
+        {
+          "question": "Did I perform impure acts, such as masturbation, adultery, fornication, or sodomy?",
+          "mortal": true,
+          "ccc": "2352",
+          "details": "These acts separate sexuality from its unitive and procreative purposes. Whether alone or with others, any misuse of sexuality is gravely sinful."
+        }
+      ]
     },
     {
-        "category": "Sins Against Honesty and Justice",
-        "sins": [
-            {
-                "question": "Did I steal, cheat, help or encourage others to steal or cheat, or keep stolen goods?",
-                "mortal": true,
-                "ccc": "2409",
-                "details": "Theft and deceit are offenses against justice and respect for others' property."
-            },
-            {
-                "question": "Have I made restitution for stolen goods?",
-                "mortal": true,
-                "ccc": "2412",
-                "details": "Restitution is required to remedy the injustice of theft."
-            },
-            {
-                "question": "Did I fail to fulfill my contracts or pay my bills?",
-                "mortal": false,
-                "ccc": "2410",
-                "details": "Honoring agreements is part of social justice."
-            },
-            {
-                "question": "Did I give or accept bribes?",
-                "mortal": true,
-                "ccc": "2409",
-                "details": "Bribery undermines justice and fairness."
-            },
-            {
-                "question": "Did I tell lies to deceive or harm others, commit slander, or commit calumny?",
-                "mortal": true,
-                "ccc": "2477",
-                "details": "Lying, slander, and calumny are sins against truth and justice."
-            },
-            {
-                "question": "Did I fail to keep secrets I should have kept?",
-                "mortal": false,
-                "ccc": "2489",
-                "details": "Keeping appropriate confidences respects privacy and trust."
-            }
-        ]
+      "category": "Sins Against Honesty and Justice",
+      "sins": [
+        {
+          "question": "Did I steal, cheat, help or encourage others to steal or cheat, or keep stolen goods?",
+          "mortal": true,
+          "ccc": "2409",
+          "details": "Stealing or encouraging theft deprives others of what is rightfully theirs. Cheating violates justice and truth. The seriousness of the sin depends on the value and harm caused."
+        },
+        {
+          "question": "Have I made restitution for stolen goods?",
+          "mortal": true,
+          "ccc": "2412",
+          "details": "Restitution—returning what was unjustly taken—is a moral obligation. Without sincere effort to make restitution, forgiveness may not be complete."
+        },
+        {
+          "question": "Did I fail to fulfill my contracts or pay my bills?",
+          "mortal": false,
+          "ccc": "2410",
+          "details": "Failure to pay debts or keep lawful agreements—unless due to circumstances beyond control—harms one’s integrity and the trust of others."
+        },
+        {
+          "question": "Did I give or accept bribes?",
+          "mortal": true,
+          "ccc": "2409",
+          "details": "Bribery corrupts justice, promotes dishonesty, and fosters inequality. Both giving and accepting bribes distort fairness and betray the common good."
+        },
+        {
+          "question": "Did I tell lies to deceive or harm others, commit slander, or commit calumny?",
+          "mortal": true,
+          "ccc": "2477",
+          "details": "Lying with intent to harm, ruin reputations, or mislead is gravely sinful. Slander and calumny destroy lives and trust. The Eighth Commandment calls for truth, even when inconvenient."
+        },
+        {
+          "question": "Did I fail to keep secrets I should have kept?",
+          "mortal": false,
+          "ccc": "2489",
+          "details": "Revealing confidential information without just cause damages relationships and violates trust. While not always gravely sinful, it can cause significant harm."
+        }
+      ]
     },
     {
-        "category": "Sins Against Charity and Love",
-        "sins": [
-            {
-                "question": "Did I forgive those who have hurt me or my loved ones?",
-                "mortal": false,
-                "ccc": "2843",
-                "details": "Forgiveness is central to the Christian life and necessary for reconciliation."
-            },
-            {
-                "question": "Did I vote according to a properly informed conscience, consistent with Church teachings?",
-                "mortal": true,
-                "ccc": "2240",
-                "details": "Christians have a duty to vote in line with values of justice and respect for life."
-            }
-        ]
+      "category": "Sins Against Charity and Love",
+      "sins": [
+        {
+          "question": "Did I forgive those who have hurt me or my loved ones?",
+          "mortal": false,
+          "ccc": "2843",
+          "details": "Forgiveness is not optional for Christians. While struggling to forgive is human, a hardened refusal to forgive can close the heart to God's mercy. True forgiveness involves a willingness to seek healing and release bitterness."
+        },
+        {
+          "question": "Did I vote according to a properly informed conscience, consistent with Church teachings?",
+          "mortal": true,
+          "ccc": "2240",
+          "details": "Voting is a moral act that must be guided by a conscience formed in the truths of the faith. Supporting laws or candidates that directly oppose fundamental moral principles—such as the right to life—can be gravely sinful when done with full knowledge and intent."
+        }
+      ]
     }
-]
+  ]
+}
