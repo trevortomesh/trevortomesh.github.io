@@ -1,10 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Scheduling Simulator</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; background: #f0f0f0; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        textarea, select, input, button { width: 100%; margin-top: 1rem; padding: 0.5rem; font-family: monospace; }
+        .output { margin-top: 2rem; white-space: pre-wrap; background: #f8f8f8; padding: 1rem; border-radius: 6px; border: 1px solid #ddd; }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <h1>🧠 Scheduling Simulator</h1>
+    <label>Choose Algorithm:</label>
+    <select id="algorithm">
+        <option value="fcfs">First Come First Serve</option>
+        <option value="rr">Round Robin</option>
+    </select>
+
+    <input id="quantum" type="number" placeholder="Time Quantum (for RR)" />
+
+    <label>Enter Processes (comma-separated, e.g., P1 0 4, P2 1 3, P3 2 5):</label>
+    <textarea id="input"></textarea>
+
+    <button onclick="simulate()">Run Simulation</button>
+
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+    const algorithms = {
+        fcfs: function (processes) {
+            let time = 0;
+            processes.sort((a, b) => a.arrival - b.arrival);
+            for (const p of processes) {
+                if (time < p.arrival) time = p.arrival;
+                p.start = time;
+                p.finish = time + p.burst;
+                p.wait = time - p.arrival;
+                p.turnaround = p.finish - p.arrival;
+                time += p.burst;
+            }
+            return processes;
+        },
+        rr: function (processes, quantum) {
+            let time = 0, queue = [], completed = [], incoming = [...processes].sort((a,b)=>a.arrival-b.arrival);
+            while (incoming.length || queue.length) {
+                while (incoming.length && incoming[0].arrival <= time) queue.push(incoming.shift());
+                if (!queue.length) { time = incoming[0].arrival; continue; }
+                let p = queue.shift();
+                if (p.remaining === undefined) p.remaining = p.burst;
+                let run = Math.min(quantum, p.remaining);
+                if (!p.timeline) p.timeline = [];
+                p.timeline.push([time, time + run]);
+                p.remaining -= run;
+                time += run;
+                while (incoming.length && incoming[0].arrival <= time) queue.push(incoming.shift());
+                if (p.remaining > 0) queue.push(p);
+                else {
+                    p.finish = time;
+                    p.start = p.timeline[0][0];
+                    p.wait = p.finish - p.arrival - p.burst;
+                    p.turnaround = p.finish - p.arrival;
+                    completed.push(p);
+                }
+            }
+            return completed;
+        }
+    };
+
+    function parseInput(text) {
+        return text.trim().split('\n').map(line => {
+            const [pid, arrival, burst] = line.trim().split(/\s+/);
+            return { pid, arrival: +arrival, burst: +burst };
+        });
+    }
+
+    function simulate() {
+        const algo = document.getElementById('algorithm').value;
+        const quantum = +document.getElementById('quantum').value || 2;
+        const input = document.getElementById('input').value;
+        const processes = parseInput(input);
+
+        const result = algo === 'rr' ? algorithms.rr(processes, quantum) : algorithms.fcfs(processes);
+
+        let out = "\uD83D\uDCC5 Process Timeline (Gantt Chart Style):\n\n";
+
+        // Generate symbol map
+        const symbols = ['\uD83D\uDFE9', '\uD83D\uDD06', '\uD83D\uDD35', '\uD83D\uDFE5', '\uD83D\uDFE6'];
+        const timeMap = new Set();
+        const pidMap = {};
+        result.forEach((p, i) => {
+            const sym = symbols[i % symbols.length];
+            pidMap[p.pid] = sym;
+            if (p.timeline) {
+                p.timeline.forEach(([s, e]) => { for (let t = s; t < e; t++) timeMap.add(t); timeMap.add(e); });
+            } else {
+                for (let t = p.start; t < p.finish; t++) timeMap.add(t); timeMap.add(p.finish);
+                p.timeline = [[p.start, p.finish]];
+            }
+        });
+
+        let timelineOutput = {};
+        result.forEach(p => {
+            let line = "";
+            let last = 0;
+            p.timeline.forEach(([s, e]) => {
+                line += " ".repeat(s - last);
+                line += pidMap[p.pid].repeat(e - s);
+                last = e;
+            });
+            timelineOutput[p.pid] = line;
+        });
+
+        for (const pid in timelineOutput) {
+            out += `${pid}: ${timelineOutput[pid]}\n`;
+        }
+
+        out += "\n\uD83D\uDD52 Time: " + Array.from(timeMap).sort((a,b)=>a-b).join("  ") + "\n\n";
+        out += "\uD83D\uDCCA Final Metrics:\n";
+
+        let totalTAT = 0, totalWT = 0;
+        result.forEach(p => {
+            out += `${p.pid}: ⏱️ Turnaround: ${p.turnaround} | ⏳ Waiting: ${p.wait}\n`;
+            totalTAT += p.turnaround;
+            totalWT += p.wait;
+        });
+
+        out += "\n\uD83D\uDCC8 Averages:\n";
+        out += `• 🧮 Avg Turnaround Time: ${(totalTAT / result.length).toFixed(2)}\n`;
+        out += `• 🧮 Avg Waiting Time: ${(totalWT / result.length).toFixed(2)}`;
+
+        document.getElementById('output').textContent = out;
+    }
+</script>
 </body>
 </html>

@@ -257,7 +257,16 @@
          "courses"
      ],
      "image": ""
- }
+ },
 
+ "the-waypoint":{
+  "title": "The Way Point",
+  "text": "A Home for my Theological Computing Work <a href = https://trevortomesh.github.io/TheWayPoint/</a>",
+  "tags":[
+    "tools",
+    "research" 
+  ],
+  "image": ""
+}
   
 }
