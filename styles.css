@@ -1,3 +1,21 @@
+/* Truncate card text and expand on hover */
+.card .card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: block;
+    transition: white-space 0.3s, max-height 0.3s;
+}
+
+.card:hover .card-text, .card:focus-within .card-text {
+    white-space: normal;
+    overflow: visible;
+    max-height: 1000px;
+    background: rgba(40,40,40,0.98);
+    z-index: 2;
+    position: relative;
+}
 /* Global styles */
 body {
     font-family: Courier, sans-serif;
