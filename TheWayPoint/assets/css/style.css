@@ -221,3 +221,57 @@ footer {
 .contact-form button:hover {
     background-color: #e0c600;
 }
+/* Responsive styles for mobile */
+@media (max-width: 900px) {
+    .banner {
+        height: 30vh;
+        padding: 1rem 0;
+    }
+    .banner-text h1 {
+        font-size: 2rem;
+    }
+    .banner-text p {
+        font-size: 1rem;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+    }
+    .section {
+        padding: 1rem;
+        margin: 1rem 0.5rem;
+    }
+    .slideshow-container {
+        max-width: 100%;
+    }
+    .slide img {
+        width: 90px;
+        height: 90px;
+    }
+    .contact-form form {
+        padding: 0.5rem;
+        max-width: 98vw;
+    }
+}
+@media (max-width: 600px) {
+    .banner {
+        height: 18vh;
+        padding: 0.5rem 0;
+    }
+    .banner-text h1 {
+        font-size: 1.2rem;
+    }
+    .section {
+        padding: 0.5rem;
+        margin: 0.5rem 0.2rem;
+    }
+    .contact-form form {
+        padding: 0.2rem;
+        max-width: 99vw;
+    }
+}
