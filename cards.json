@@ -74,7 +74,7 @@
   "json-gui": {
     "title": "Python JSON GUI",
     "text": "I have written a little GUI that allows a user to enter in text and it will translate the input and append to a JSON file. ",
-    "image": "/images/cards.svg",
+  "image": "/images/cards/7_of_hearts.png",
     "tags": [
       "experiment",
       "python",
@@ -85,7 +85,7 @@
   "Queen Lyrics": {
     "title": "Queen Lyrics",
     "text": "Is this the real life? Is this just fantasy?",
-    "image": "/images/cards.svg",
+  "image": "/images/cards/ace_of_spades.png",
     "tags": [
       "test",
       "lyrics"
@@ -111,7 +111,7 @@
             "coding",
             "tools"
         ],
-        "image": "/images/cards.svg"
+  "image": "/images/cards/3_of_diamonds.png"
     },
 
   
@@ -123,7 +123,7 @@
       "experiment",
       "coding"
     ],
-    "image": "/images/cards.svg"
+  "image": "/images/cards/king_of_clubs.png"
   
 },
   
@@ -135,7 +135,7 @@
       "experiment",
       "research"
     ],
-    "image": "/images/cards.svg"
+  "image": "/images/cards/2_of_spades.png"
   },
 
   "translator": {
@@ -227,7 +227,7 @@
       "programming",
       "courses"
     ],
-    "image": "/images/cards.svg"
+  "image": "/images/cards/queen_of_hearts.png"
   },
 
     "jsdocs-guide": {
@@ -247,7 +247,7 @@
       "programming",
       "courses"
     ],
-    "image": "/images/cards.svg"
+  "image": "/images/cards/10_of_clubs.png"
   },
 
  "toy-assembler":{
