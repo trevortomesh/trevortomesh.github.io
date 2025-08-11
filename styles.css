@@ -213,6 +213,55 @@ img {
     border-radius: 10%;
 }
 
+/* Responsive styles for mobile */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+        height: auto;
+    }
+    #sidebar {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        box-shadow: none;
+        padding: 10px;
+        transform: none;
+        height: auto;
+        flex-direction: row;
+        overflow-y: visible;
+        z-index: auto;
+    }
+    #content {
+        padding: 10px;
+    }
+    .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .badge-box {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    #sidebar {
+        padding: 5px;
+        font-size: 0.95em;
+    }
+    #content {
+        padding: 5px;
+    }
+    .container {
+        gap: 5px;
+    }
+    h1 {
+        font-size: 1.3em;
+    }
+}
+
 /* Animation for card movement */
 .animate .card {
     transition: transform 0.3s ease-in-out;
