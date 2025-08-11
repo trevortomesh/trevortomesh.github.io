@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="container">
                 <h4>${cardData.title}</h4>
                 ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
-                <p>${cardData.text}</p>
+                <p class="card-text">${cardData.text}</p>
             </div>
         `;
         return cardElement;
