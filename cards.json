@@ -1,7 +1,7 @@
 {
     "about": {
         "title": "Dr. Trevor M. Tomesh",
-        "image": "/images/myface.png",
+  "image": "images/placeholder.png",
         "text": "Assistant Professor <br> University of Wisconsin - River Falls",
         "tags": [
             "about",
@@ -11,7 +11,7 @@
     "contact": {
         "title": "Contact Information",
         "text": "email me: <a href=mailto:trevor.tomesh@uwrf.edu>trevor.tomesh@uwrf.edu</a>",
-        "image": "/images/mail.png",
+  "image": "images/placeholder.png",
         "tags": [
             "contact",
             "all"
@@ -41,7 +41,7 @@
             "social",
             "about"
         ],
-        "image": "/images/linkedin.png"
+  "image": "images/placeholder.png"
     },
     "github": {
         "title": "GITHUB",
@@ -50,12 +50,12 @@
             "social",
             "me"
         ],
-        "image": "/images/github.png"
+  "image": "images/placeholder.png"
     },
     "latex": {
         "title": "LATEX REPORT TEMPLATE",
         "text": "My standard template for writing reports in <a href = https://www.overleaf.com/read/vfncjkmkwstr>LATEX</a>",
-        "image": "/images/Overleaf_Logo.svg",
+  "image": "/images/Overleaf_Logo.svg",
         "tags": [
             "research-toolkit",
             "files"
@@ -69,7 +69,7 @@
             "coding",
             "research"
         ],
-        "image": "/images/cards.jpg"
+  "image": "/images/cards.jpg"
     },
   "json-gui": {
     "title": "Python JSON GUI",
@@ -85,7 +85,7 @@
   "Queen Lyrics": {
     "title": "Queen Lyrics",
     "text": "Is this the real life? Is this just fantasy?",
-  "image": "/images/cards/ace_of_spades.png",
+  "image": "images/placeholder.png",
     "tags": [
       "test",
       "lyrics"
@@ -94,7 +94,7 @@
     "JSONDex": {
         "title": "JSONDex",
         "text": "An experiment in rendering JSON as a rolodex. <a href = ./jsondex.html> Click Here </a>",
-        "image": "/images/dex.png",
+  "image": "/images/dex.png",
         "tags": [
             "test",
             "experiment",
@@ -111,7 +111,7 @@
             "coding",
             "tools"
         ],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
     },
 
   
@@ -123,7 +123,7 @@
       "experiment",
       "coding"
     ],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   
 },
   
@@ -135,7 +135,7 @@
       "experiment",
       "research"
     ],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "translator": {
@@ -160,7 +160,7 @@
       "research",
       "experiment"
     ],
-    "image": "/images/arrow.png"
+  "image": "/images/arrow.png"
   },
 
 
@@ -172,7 +172,7 @@
       "coding",
       "courses"
     ],
-    "image": "https://replit.com/public/images/replit-logo-png-transparent.png"
+  "image": "https://replit.com/public/images/replit-logo-png-transparent.png"
   },
 
   "todo":{
@@ -227,7 +227,7 @@
       "programming",
       "courses"
     ],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
     "jsdocs-guide": {
@@ -237,7 +237,7 @@
       "programming",
       "courses"
     ],
-    "image": "https://raw.githubusercontent.com/jsdoc/jsdoc/main/logo.svg"
+  "image": "https://raw.githubusercontent.com/jsdoc/jsdoc/main/logo.svg"
   },
 
   "coding-guide": {
@@ -247,7 +247,7 @@
       "programming",
       "courses"
     ],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
  "toy-assembler":{
@@ -257,7 +257,7 @@
      "programming",
      "courses"
    ],
-  "image": "/images/cards/king_of_spades.png"
+  "image": "images/placeholder.png"
  },
 
  "the-waypoint":{
@@ -281,7 +281,7 @@
     "title": "CIDS Graph",
     "text": "Interactive course graph exploration for CIDS. <a href=\"./cids-graph/\">Open</a>",
     "tags": ["courses", "programming"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "plantuml": {
@@ -295,21 +295,21 @@
     "title": "Scheduler Simulator",
     "text": "Interactive CPU scheduling simulation. <a href=\"./scheduler-sim.html\">Launch</a>",
     "tags": ["tools", "teaching"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "compressor": {
     "title": "Text Compressor",
     "text": "Small text compression experiment. <a href=\"./compress.html\">Try it</a>",
     "tags": ["experiment", "tools"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "j2p": {
     "title": "J2P Format",
     "text": "Notes on the J2P formatting idea. <a href=\"./j2pformat.html\">Read</a>",
     "tags": ["notes", "experiment"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "json-plot": {
@@ -323,35 +323,35 @@
     "title": "WebView + TestView",
     "text": "Minimal HTML/JS view helpers. <a href=\"./webview.html\">WebView</a> · <a href=\"./testview.html\">TestView</a>",
     "tags": ["tools", "experiment"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "mcnair": {
     "title": "McNair",
     "text": "Notes and writing. <a href=\"./mcnair.html\">Read</a>",
     "tags": ["writing"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "path-to-grad-school": {
     "title": "Path to Grad School",
     "text": "Advice and reflections. <a href=\"./path-to-grad-school.html\">Read</a>",
     "tags": ["writing", "teaching"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "report": {
     "title": "Report",
     "text": "Report notes and template usage. <a href=\"./report.html\">Read</a>",
     "tags": ["writing"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "tci": {
     "title": "TCI",
     "text": "TCI notes. <a href=\"./tci.html\">Read</a>",
     "tags": ["writing"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": "images/placeholder.png"
   },
 
   "pwudgen": {
