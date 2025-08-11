@@ -1,7 +1,7 @@
 {
     "about": {
         "title": "Dr. Trevor M. Tomesh",
-  "image": "images/placeholder.png",
+  "image": " ",
         "text": "Assistant Professor <br> University of Wisconsin - River Falls",
         "tags": [
             "about",
@@ -11,7 +11,7 @@
     "contact": {
         "title": "Contact Information",
         "text": "email me: <a href=mailto:trevor.tomesh@uwrf.edu>trevor.tomesh@uwrf.edu</a>",
-  "image": "images/placeholder.png",
+  "image": " ",
         "tags": [
             "contact",
             "all"
@@ -74,7 +74,7 @@
   "json-gui": {
     "title": "Python JSON GUI",
     "text": "I have written a little GUI that allows a user to enter in text and it will translate the input and append to a JSON file. ",
-  "image": "images/placeholder.png",
+  "image": " ",
     "tags": [
       "experiment",
       "python",
@@ -85,7 +85,7 @@
   "Queen Lyrics": {
     "title": "Queen Lyrics",
     "text": "Is this the real life? Is this just fantasy?",
-  "image": "images/placeholder.png",
+  "image": " ",
     "tags": [
       "test",
       "lyrics"
