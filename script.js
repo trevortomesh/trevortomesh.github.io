@@ -190,10 +190,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
         cardElement.innerHTML = `
-            <div class="container">
+            <div class="card-inner">
                 <h4>${cardData.title}</h4>
                 ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
-                <p class="card-text">${cardData.text}</p>
+                <div class="card-text">${cardData.text}</div>
             </div>
         `;
         return cardElement;

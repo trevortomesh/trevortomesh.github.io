@@ -1,25 +1,39 @@
 /* Truncate card text and expand on hover */
-.card .card-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%;
-    display: block;
-    transition: all 0.3s ease;
-    max-height: 200px;
+.card-inner {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.card:hover .card-text, .card:focus-within .card-text {
-    white-space: normal;
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    transition: all 0.3s ease;
+    position: relative;
+    flex: 1;
+}
+
+.card:hover .card-text {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
     overflow: visible;
-    max-height: none;
     background: rgba(40,40,40,0.98);
     z-index: 100;
-    position: relative;
+    position: absolute;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    padding: 10px;
-    margin: -10px;
+    padding: 15px;
+    margin: -15px;
     border-radius: 5px;
+    width: calc(100% - 10px);
+    left: 15px;
+    right: 15px;
 }
 /* Global styles */
 body {
