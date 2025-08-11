@@ -197,11 +197,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
                 <div class="card-text-container">
                     <div class="card-text">${cardData.text}</div>
-                    <span class="expand-button">...</span>
+                    <span class="expand-button" style="display: none;">...</span>
                     <div class="text-popup">${cardData.text}</div>
                 </div>
             </div>
         `;
+
+        // Check if text is overflowing after the element is rendered
+        setTimeout(() => {
+            const textElement = cardElement.querySelector('.card-text');
+            const expandButton = cardElement.querySelector('.expand-button');
+            
+            // Check if text is overflowing
+            if (textElement.scrollHeight > textElement.clientHeight) {
+                expandButton.style.display = 'inline-block';
+            }
+        }, 0);
 
         // Add click event listener to the expand button
         const expandButton = cardElement.querySelector('.expand-button');
