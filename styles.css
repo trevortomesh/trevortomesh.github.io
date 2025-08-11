@@ -5,16 +5,21 @@
     white-space: nowrap;
     max-width: 100%;
     display: block;
-    transition: white-space 0.3s, max-height 0.3s;
+    transition: all 0.3s ease;
+    max-height: 200px;
 }
 
 .card:hover .card-text, .card:focus-within .card-text {
     white-space: normal;
     overflow: visible;
-    max-height: 1000px;
+    max-height: none;
     background: rgba(40,40,40,0.98);
-    z-index: 2;
+    z-index: 100;
     position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 10px;
+    margin: -10px;
+    border-radius: 5px;
 }
 /* Global styles */
 body {
