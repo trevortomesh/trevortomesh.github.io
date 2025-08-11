@@ -213,6 +213,15 @@ img {
     border-radius: 10%;
 }
 
+/* Scale down card images */
+.card img {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 8px;
+}
+
 /* Responsive styles for mobile */
 @media (max-width: 900px) {
     body {
