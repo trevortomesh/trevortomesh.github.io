@@ -54,7 +54,7 @@ body {
     z-index: 1;
     background-color: rgba(38, 38, 38, 0.9); /* Added transparency with RGBA */
 
-    width: 10%;
+    width: 12%;
     padding: 20px;
     margin: 10px;
     box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.2);
@@ -78,6 +78,16 @@ body {
     padding-bottom: 10px;
     font-size: 1.5em;
 }
+
+/* Simple nav list at top of sidebar */
+#nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+#nav-links li { margin-bottom: 6px; }
+#nav-links a { color: #bdc3c7; font-weight: 500; }
+#nav-links a:hover { color: #ffffff; }
 
 
 /* Content styles */

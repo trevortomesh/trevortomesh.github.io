@@ -103,7 +103,7 @@
     },
     "json-writer": {
         "title": "JSON Card Writer",
-        "text": "A simple JSON formatting tool that allows me (and you) to create properly formatted json entries that can be rendered as cards for this website! Co-Authored by ChatGPT.\n\n<a href = \"https://tmtomesh.repl.co/json-writer.html\">JSON Card Writer</a>",
+        "text": "A simple JSON formatting tool that allows me (and you) to create properly formatted json entries that can be rendered as cards for this website! Co-Authored by ChatGPT.\n\n<a href=\"./json-writer.html\">JSON Card Writer</a>",
         "tags": [
             "json",
             "experiment",
@@ -267,6 +267,97 @@
     "research" 
   ],
   "image": ""
-}
-  
+},
+
+  "projects": {
+    "title": "Projects",
+    "text": "Browse a consolidated list of my projects and tools. <a href=\"./projects.html\">Open Projects</a>",
+    "tags": ["tools", "about"],
+    "image": "/images/github.png"
+  },
+
+  "cids-graph": {
+    "title": "CIDS Graph",
+    "text": "Interactive course graph exploration for CIDS. <a href=\"./cids-graph/\">Open</a>",
+    "tags": ["courses", "programming"],
+    "image": ""
+  },
+
+  "plantuml": {
+    "title": "PlantUML",
+    "text": "Quick reference and examples for PlantUML. <a href=\"./PlantUML.html\">Open</a>",
+    "tags": ["tools", "programming"],
+    "image": ""
+  },
+
+  "scheduler-sim": {
+    "title": "Scheduler Simulator",
+    "text": "Interactive CPU scheduling simulation. <a href=\"./scheduler-sim.html\">Launch</a>",
+    "tags": ["tools", "teaching"],
+    "image": ""
+  },
+
+  "compressor": {
+    "title": "Text Compressor",
+    "text": "Small text compression experiment. <a href=\"./compress.html\">Try it</a>",
+    "tags": ["experiment", "tools"],
+    "image": ""
+  },
+
+  "j2p": {
+    "title": "J2P Format",
+    "text": "Notes on the J2P formatting idea. <a href=\"./j2pformat.html\">Read</a>",
+    "tags": ["notes", "experiment"],
+    "image": ""
+  },
+
+  "json-plot": {
+    "title": "JSON Plot",
+    "text": "Plot JSON datasets quickly. <a href=\"./jsonplot.html\">Open</a>",
+    "tags": ["json", "tools"],
+    "image": ""
+  },
+
+  "webview": {
+    "title": "WebView + TestView",
+    "text": "Minimal HTML/JS view helpers. <a href=\"./webview.html\">WebView</a> · <a href=\"./testview.html\">TestView</a>",
+    "tags": ["tools", "experiment"],
+    "image": ""
+  },
+
+  "mcnair": {
+    "title": "McNair",
+    "text": "Notes and writing. <a href=\"./mcnair.html\">Read</a>",
+    "tags": ["writing"],
+    "image": ""
+  },
+
+  "path-to-grad-school": {
+    "title": "Path to Grad School",
+    "text": "Advice and reflections. <a href=\"./path-to-grad-school.html\">Read</a>",
+    "tags": ["writing", "teaching"],
+    "image": ""
+  },
+
+  "report": {
+    "title": "Report",
+    "text": "Report notes and template usage. <a href=\"./report.html\">Read</a>",
+    "tags": ["writing"],
+    "image": ""
+  },
+
+  "tci": {
+    "title": "TCI",
+    "text": "TCI notes. <a href=\"./tci.html\">Read</a>",
+    "tags": ["writing"],
+    "image": ""
+  },
+
+  "pwudgen": {
+    "title": "PWUD Generators",
+    "text": "Links for course PWUD generators: <a href=\"./pwudgen/161-a2-pwud.html\">161 A2</a> · <a href=\"./pwudgen/161-a3-pwud.html\">161 A3</a> · <a href=\"./pwudgen/162-a2-pwud.html\">162 A2</a> · <a href=\"./pwudgen/162-a3-pwud.html\">162 A3</a> · <a href=\"./pwudgen/235-a2-pwud.html\">235 A2</a> · <a href=\"./pwudgen/235-a3-pwud.html\">235 A3</a>",
+    "tags": ["courses", "tools"],
+    "image": ""
+  }
+
 }
