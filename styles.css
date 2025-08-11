@@ -220,20 +220,10 @@ img {
         height: auto;
     }
     #sidebar {
-        position: static;
-        width: 100%;
-        min-width: 0;
-        margin: 0;
-        box-shadow: none;
-        padding: 10px;
-        transform: none;
-        height: auto;
-        flex-direction: row;
-        overflow-y: visible;
-        z-index: auto;
+        display: none !important;
     }
     #content {
-        padding: 10px;
+        padding: 16px;
     }
     .container {
         flex-direction: column;
