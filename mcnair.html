@@ -22,11 +22,14 @@
             gap: 1em;
             background-color: #282828;
             padding: 0.5em 0;
+            flex-wrap: wrap;
         }
         nav a {
             text-decoration: none;
             color: #00c4ff;
             padding: 0.5em 1em;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
         }
         nav a:hover {
             background-color: #00c4ff;
@@ -34,14 +37,43 @@
         }
         main {
             padding: 2em;
+            max-width: 900px;
+            margin: 0 auto;
         }
         section {
             margin-bottom: 2em;
         }
-        footer {
-            text-align: center;
-            padding: 1em 0;
-            background-color: #1f1f1f;
+        ul {
+            padding-left: 1.2em;
+        }
+        @media (max-width: 900px) {
+            nav {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5em;
+            }
+            nav a {
+                padding: 0.75em 0.5em;
+                font-size: 1.1em;
+            }
+            main {
+                padding: 1em;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+        }
+        @media (max-width: 600px) {
+            main {
+                padding: 0.5em;
+            }
+            header h1 {
+                font-size: 1.1em;
+            }
+            section {
+                margin-bottom: 1em;
+                padding: 0.5em 0;
+            }
         }
     </style>
 </head>

@@ -17,14 +17,15 @@
             "all"
         ]
     },
-    "education": {
-        "title": "Education",
-        "text": "<p>University of Regina\nPhD in Computer Science - Class of 2020\nThesis Title:<a href = https://ourspace.uregina.ca/handle/10294/9307> \"Toward a Theory of Interactive Hardware</a>\"\nSupervisor: Dr. Daryl Hepting</p><br><p>University of Wisconsin - River Falls: BSc Physics, Class of 2011",
-        "tags": [
-            "education",
-            "all"
-        ]
-    },
+  "education": {
+    "title": "Education",
+    "text": "<p>University of Regina\nPhD in Computer Science - Class of 2020\nThesis Title:<a href = https://ourspace.uregina.ca/handle/10294/9307> \"Toward a Theory of Interactive Hardware</a>\"\nSupervisor: Dr. Daryl Hepting</p><br><p>University of Wisconsin - River Falls: BSc Physics, Class of 2011",
+    "tags": [
+      "education",
+      "all"
+    ],
+    "image": "/images/cards.svg"
+  },
     "research": {
         "title": "Publications",
         "text": "<br>- Tomesh, T. and Hepting, D. (2017). <br> Environmental sensing with recycled materials. [online] O'Reilly Media.<br>  Available <a href = https://www.oreilly.com/ideas/environmentalsensing-with-recycled-materials>Online</a><br><br>- Tomesh, Trevor Michael, and Daryl H. Hepting. \"DIY game console development.\" Proceedings of the first ACM SIGCHI annual symposium on Computer-human interaction in play. ACM, 2014.",
@@ -70,26 +71,26 @@
         ],
         "image": "/images/cards.jpg"
     },
-    "json-gui": {
-        "title": "Python JSON GUI",
-        "text": "I have written a little GUI that allows a user to enter in text and it will translate the input and append to a JSON file. ",
-        "image": "",
-        "tags": [
-            "experiment",
-            "python",
-            "coding",
-            "tools"
-        ]
-    },
-    "Queen Lyrics": {
-        "title": "Queen Lyrics",
-        "text": "Is this the real life? Is this just fantasy?",
-        "image": "",
-        "tags": [
-            "test",
-            "lyrics"
-        ]
-    },
+  "json-gui": {
+    "title": "Python JSON GUI",
+    "text": "I have written a little GUI that allows a user to enter in text and it will translate the input and append to a JSON file. ",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+    "tags": [
+      "experiment",
+      "python",
+      "coding",
+      "tools"
+    ]
+  },
+  "Queen Lyrics": {
+    "title": "Queen Lyrics",
+    "text": "Is this the real life? Is this just fantasy?",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Freddie_Mercury_performing_in_New_Haven%2C_CT%2C_November_1977.jpg",
+    "tags": [
+      "test",
+      "lyrics"
+    ]
+  },
     "JSONDex": {
         "title": "JSONDex",
         "text": "An experiment in rendering JSON as a rolodex. <a href = ./jsondex.html> Click Here </a>",
@@ -150,7 +151,7 @@
 },
 
   
-  "ann": {
+    "ann": {
     "title": "Arrow Notes Notation",
     "text": "<a href = ./annspec.html>Arrow Notes Notation</a> (ANN) draws inspiration from the analog world of handwritten notes, infusing digital data representation with the familiarity and clarity of manual notation. Much like the visual hierarchy that emerges when taking notes on paper, ANN employs arrows with increasing dashes to mirror the indentation that naturally occurs in handwritten lists and outlines. This unique design choice enhances the understanding of data relationships, allowing users to intuitively grasp the nesting depth of elements. Furthermore, the use of pipes and precise alignment evokes the disciplined layout often found in handwritten notes, where each element's positioning contributes to a harmonious overall structure. By bridging the gap between the tactile experience of handwritten annotations and the digital realm, ANN introduces a sense of human touch and organization that resonates with the way we naturally organize and comprehend information on paper.",
     "tags": [
@@ -159,19 +160,19 @@
       "research",
       "experiment"
     ],
-    "image": ""
+    "image": "/images/arrow.png"
   },
 
 
 
-  "repls": {
+    "repls": {
     "title": "My Repl's",
     "text": "All of my public repl's (including class code) can be found <a href=https://replit.com/@tmtomesh>here</>",
     "tags": [
       "coding",
       "courses"
     ],
-    "image": ""
+    "image": "https://replit.com/public/images/replit-logo-png-transparent.png"
   },
 
   "todo":{
@@ -198,7 +199,7 @@
       "image": "/images/github.png"
     },
   
-  "FrontEndTech": {
+    "FrontEndTech": {
     "title": "Front End Tech",
     "text": "This entire site was built with front-end web technologies only. JSON, Javascript, HTML and CSS are the only technologies used. This is because I want to be able to run everything without having to rely on server resources. As such, there is no way to save anything, so you have to copy and paste information to and from any of the utilities on here (assuming you want to save anything you've done).",
     "tags": [
@@ -206,7 +207,7 @@
       "technology",
       "experiment"
     ],
-    "image": ""
+    "image": "/images/cards.jpg"
   },
 
     "example-repo": {
@@ -216,27 +217,27 @@
         "programming",
         "courses"
       ],
-      "image": ""
+      "image": "/images/github.png"
     },
 
-  "dillinger-guide": {
+    "dillinger-guide": {
     "title": "Guide to Inserting Images in Dillinger",
     "text": "<a href = dillinger.html>Dillinger Guide</a>",
     "tags": [
       "programming",
       "courses"
     ],
-    "image": ""
+    "image": "https://dillinger.io/images/dillinger.png"
   },
 
-  "jsdocs-guide": {
+    "jsdocs-guide": {
     "title": "Guide to using JSDocs",
     "text": "<a href = jsdocs.html>JSDocs Guide</a>",
     "tags": [
       "programming",
       "courses"
     ],
-    "image": ""
+    "image": "https://raw.githubusercontent.com/jsdoc/jsdoc/main/logo.svg"
   },
 
   "coding-guide": {
@@ -246,17 +247,17 @@
       "programming",
       "courses"
     ],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
  "toy-assembler":{
-     "title": "Dr. T's Toy Assembler",
-     "text": "<a href = assembler/index.html>Toy Assembler</a>",
-     "tags": [
-         "programming",
-         "courses"
-     ],
-     "image": ""
+   "title": "Dr. T's Toy Assembler",
+   "text": "<a href = assembler/index.html>Toy Assembler</a>",
+   "tags": [
+     "programming",
+     "courses"
+   ],
+   "image": "/images/cards.svg"
  },
 
  "the-waypoint":{
@@ -266,7 +267,7 @@
     "tools",
     "research" 
   ],
-  "image": ""
+  "image": "/images/arrow.png"
 },
 
   "projects": {
@@ -280,84 +281,84 @@
     "title": "CIDS Graph",
     "text": "Interactive course graph exploration for CIDS. <a href=\"./cids-graph/\">Open</a>",
     "tags": ["courses", "programming"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "plantuml": {
     "title": "PlantUML",
     "text": "Quick reference and examples for PlantUML. <a href=\"./PlantUML.html\">Open</a>",
     "tags": ["tools", "programming"],
-    "image": ""
+    "image": "https://plantuml.com/logo3.png"
   },
 
   "scheduler-sim": {
     "title": "Scheduler Simulator",
     "text": "Interactive CPU scheduling simulation. <a href=\"./scheduler-sim.html\">Launch</a>",
     "tags": ["tools", "teaching"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "compressor": {
     "title": "Text Compressor",
     "text": "Small text compression experiment. <a href=\"./compress.html\">Try it</a>",
     "tags": ["experiment", "tools"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "j2p": {
     "title": "J2P Format",
     "text": "Notes on the J2P formatting idea. <a href=\"./j2pformat.html\">Read</a>",
     "tags": ["notes", "experiment"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "json-plot": {
     "title": "JSON Plot",
     "text": "Plot JSON datasets quickly. <a href=\"./jsonplot.html\">Open</a>",
     "tags": ["json", "tools"],
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Iconic_image_of_a_simple_line_chart.png"
   },
 
   "webview": {
     "title": "WebView + TestView",
     "text": "Minimal HTML/JS view helpers. <a href=\"./webview.html\">WebView</a> · <a href=\"./testview.html\">TestView</a>",
     "tags": ["tools", "experiment"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "mcnair": {
     "title": "McNair",
     "text": "Notes and writing. <a href=\"./mcnair.html\">Read</a>",
     "tags": ["writing"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "path-to-grad-school": {
     "title": "Path to Grad School",
     "text": "Advice and reflections. <a href=\"./path-to-grad-school.html\">Read</a>",
     "tags": ["writing", "teaching"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "report": {
     "title": "Report",
     "text": "Report notes and template usage. <a href=\"./report.html\">Read</a>",
     "tags": ["writing"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "tci": {
     "title": "TCI",
     "text": "TCI notes. <a href=\"./tci.html\">Read</a>",
     "tags": ["writing"],
-    "image": ""
+    "image": "/images/cards.svg"
   },
 
   "pwudgen": {
     "title": "PWUD Generators",
     "text": "Links for course PWUD generators: <a href=\"./pwudgen/161-a2-pwud.html\">161 A2</a> · <a href=\"./pwudgen/161-a3-pwud.html\">161 A3</a> · <a href=\"./pwudgen/162-a2-pwud.html\">162 A2</a> · <a href=\"./pwudgen/162-a3-pwud.html\">162 A3</a> · <a href=\"./pwudgen/235-a2-pwud.html\">235 A2</a> · <a href=\"./pwudgen/235-a3-pwud.html\">235 A3</a>",
     "tags": ["courses", "tools"],
-    "image": ""
+    "image": "/images/cards.svg"
   }
 
 }
