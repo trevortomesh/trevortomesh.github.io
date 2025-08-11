@@ -24,7 +24,7 @@
       "education",
       "all"
     ],
-  "image": "images/placeholder.png"
+  "image": ""
   },
     "research": {
         "title": "Publications",
@@ -41,7 +41,7 @@
             "social",
             "about"
         ],
-  "image": "images/placeholder.png"
+  "image": ""
     },
     "github": {
         "title": "GITHUB",
@@ -358,7 +358,7 @@
     "title": "PWUD Generators",
     "text": "Links for course PWUD generators: <a href=\"./pwudgen/161-a2-pwud.html\">161 A2</a> · <a href=\"./pwudgen/161-a3-pwud.html\">161 A3</a> · <a href=\"./pwudgen/162-a2-pwud.html\">162 A2</a> · <a href=\"./pwudgen/162-a3-pwud.html\">162 A3</a> · <a href=\"./pwudgen/235-a2-pwud.html\">235 A2</a> · <a href=\"./pwudgen/235-a3-pwud.html\">235 A3</a>",
     "tags": ["courses", "tools"],
-  "image": "/images/cards/ace_of_spades.png"
+  "image": ""
   }
 
 }
