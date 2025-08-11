@@ -189,13 +189,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function createCardElement(cardData) {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
+        
+        // Create the inner HTML structure
         cardElement.innerHTML = `
             <div class="card-inner">
                 <h4>${cardData.title}</h4>
                 ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
-                <div class="card-text">${cardData.text}</div>
+                <div class="card-text-container">
+                    <div class="card-text">${cardData.text}</div>
+                    <span class="expand-button">...</span>
+                    <div class="text-popup">${cardData.text}</div>
+                </div>
             </div>
         `;
+
+        // Add click event listener to the expand button
+        const expandButton = cardElement.querySelector('.expand-button');
+        const popup = cardElement.querySelector('.text-popup');
+        
+        expandButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            popup.classList.toggle('show');
+        });
+
+        // Close popup when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!popup.contains(e.target) && !expandButton.contains(e.target)) {
+                popup.classList.remove('show');
+            }
+        });
+
         return cardElement;
     }
 });
