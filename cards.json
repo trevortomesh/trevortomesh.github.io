@@ -74,7 +74,7 @@
   "json-gui": {
     "title": "Python JSON GUI",
     "text": "I have written a little GUI that allows a user to enter in text and it will translate the input and append to a JSON file. ",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+    "image": "/images/cards.svg",
     "tags": [
       "experiment",
       "python",
@@ -85,7 +85,7 @@
   "Queen Lyrics": {
     "title": "Queen Lyrics",
     "text": "Is this the real life? Is this just fantasy?",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Freddie_Mercury_performing_in_New_Haven%2C_CT%2C_November_1977.jpg",
+    "image": "/images/cards.svg",
     "tags": [
       "test",
       "lyrics"
@@ -111,7 +111,7 @@
             "coding",
             "tools"
         ],
-        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg"
+        "image": "/images/cards.svg"
     },
 
   
@@ -123,7 +123,7 @@
       "experiment",
       "coding"
     ],
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
+    "image": "/images/cards.svg"
   
 },
   
@@ -135,7 +135,7 @@
       "experiment",
       "research"
     ],
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg"
+    "image": "/images/cards.svg"
   },
 
   "translator": {
@@ -227,7 +227,7 @@
       "programming",
       "courses"
     ],
-    "image": "https://dillinger.io/images/dillinger.png"
+    "image": "/images/cards.svg"
   },
 
     "jsdocs-guide": {
