@@ -1,7 +1,15 @@
 {
     "about": {
         "title": "Dr. Trevor M. Tomesh",
-  "image": "images/myface.png",
+  "im  "site": {
+        "title": "Site Design",
+        "text": "The design of this website is inspired by recipie card note-taking. Specifically, I have taken inspiration from the Zettelkasten notetaking method as well as the work of <a href = https://kormyen.github.io/memex/> Kormyen </a>. ",
+        "tags": [
+            "design",
+            "coding",
+            "research"
+        ],
+  "image": "images/cards.png",ages/myface.png",
         "text": "Assistant Professor <br> University of Wisconsin - River Falls",
         "tags": [
             "about",
@@ -207,7 +215,7 @@
       "technology",
       "experiment"
     ],
-    "image": "images/cards.jpg"
+    "image": "images/cards.png"
   },
 
     "example-repo": {
