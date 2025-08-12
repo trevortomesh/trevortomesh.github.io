@@ -316,7 +316,7 @@
     "title": "JSON Plot",
     "text": "Plot JSON datasets quickly. <a href=\"./jsonplot.html\">Open</a>",
     "tags": ["json", "tools"],
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Iconic_image_of_a_simple_line_chart.png"
+    "image": "images/plot.png"
   },
 
   "webview": {
