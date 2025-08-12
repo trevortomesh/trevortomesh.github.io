@@ -1,0 +1,14 @@
+{
+    "about": {
+        "title": "Dr. Trevor M. Tomesh",
+        "image": "images/myface.png",
+        "text": "Assistant Professor <br> University of Wisconsin - River Falls",
+        "tags": ["about", "all"]
+    },
+    "contact": {
+        "title": "Contact Information",
+        "text": "email me: <a href=mailto:trevor.tomesh@uwrf.edu>trevor.tomesh@uwrf.edu</a>",
+        "image": "images/mail.png",
+        "tags": ["contact", "all"]
+    }
+}
