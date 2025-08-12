@@ -17,8 +17,8 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     display: box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
     -webkit-box-orient: vertical;
     box-orient: vertical;
     margin-bottom: 5px;
