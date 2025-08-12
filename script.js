@@ -190,45 +190,53 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
         
-        // Create the inner HTML structure
+        // First create without expand button to test overflow
+        cardElement.innerHTML = `
+            <div class="card-inner">
+                <h4>${cardData.title}</h4>
+                ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
+                <div class="card-text-container">
+                    <div class="card-text test-overflow">${cardData.text}</div>
+                </div>
+            </div>
+        `;
+
+        // Append to document temporarily to check overflow
+        document.body.appendChild(cardElement);
+        const testElement = cardElement.querySelector('.test-overflow');
+        const isOverflowing = testElement.scrollHeight > (testElement.clientHeight + 2);
+        document.body.removeChild(cardElement);
+
+        // Now create the final HTML with expand button only if needed
         cardElement.innerHTML = `
             <div class="card-inner">
                 <h4>${cardData.title}</h4>
                 ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
                 <div class="card-text-container">
                     <div class="card-text">${cardData.text}</div>
-                    <span class="expand-button" style="display: none;">...</span>
-                    <div class="text-popup">${cardData.text}</div>
+                    ${isOverflowing ? '<span class="expand-button">...</span>' : ''}
+                    ${isOverflowing ? `<div class="text-popup">${cardData.text}</div>` : ''}
                 </div>
             </div>
         `;
 
-        // Check if text is overflowing after the element is rendered
-        setTimeout(() => {
-            const textElement = cardElement.querySelector('.card-text');
+        // Only set up event listeners if we have overflow
+        if (isOverflowing) {
             const expandButton = cardElement.querySelector('.expand-button');
+            const popup = cardElement.querySelector('.text-popup');
             
-            // Check if text is overflowing
-            if (textElement.scrollHeight > textElement.clientHeight) {
-                expandButton.style.display = 'inline-block';
-            }
-        }, 0);
+            expandButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                popup.classList.toggle('show');
+            });
 
-        // Add click event listener to the expand button
-        const expandButton = cardElement.querySelector('.expand-button');
-        const popup = cardElement.querySelector('.text-popup');
-        
-        expandButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            popup.classList.toggle('show');
-        });
-
-        // Close popup when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!popup.contains(e.target) && !expandButton.contains(e.target)) {
-                popup.classList.remove('show');
-            }
-        });
+            // Close popup when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!popup.contains(e.target) && !expandButton.contains(e.target)) {
+                    popup.classList.remove('show');
+                }
+            });
+        }
 
         return cardElement;
     }
