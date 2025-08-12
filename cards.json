@@ -1,7 +1,7 @@
 {
     "about": {
         "title": "Dr. Trevor M. Tomesh",
-  "image": "/images/myface.png",
+  "image": "images/myface.png",
         "text": "Assistant Professor <br> University of Wisconsin - River Falls",
         "tags": [
             "about",
@@ -11,7 +11,7 @@
     "contact": {
         "title": "Contact Information",
         "text": "email me: <a href=mailto:trevor.tomesh@uwrf.edu>trevor.tomesh@uwrf.edu</a>",
-  "image": "/images/mail.png",
+  "image": "images/mail.png",
         "tags": [
             "contact",
             "all"
@@ -41,7 +41,7 @@
             "social",
             "about"
         ],
-  "image": "/images/linkedin.png"
+  "image": "images/linkedin.png"
     },
     "github": {
         "title": "GITHUB",
@@ -55,7 +55,7 @@
     "latex": {
         "title": "LATEX REPORT TEMPLATE",
         "text": "My standard template for writing reports in <a href = https://www.overleaf.com/read/vfncjkmkwstr>LATEX</a>",
-  "image": "/images/Overleaf_Logo.svg",
+  "image": "images/Overleaf_Logo.svg",
         "tags": [
             "research-toolkit",
             "files"
@@ -69,7 +69,7 @@
             "coding",
             "research"
         ],
-  "image": "/images/cards.jpg"
+  "image": "images/cards.jpg"
     },
   "json-gui": {
     "title": "Python JSON GUI",
@@ -94,7 +94,7 @@
     "JSONDex": {
         "title": "JSONDex",
         "text": "An experiment in rendering JSON as a rolodex. <a href = ./jsondex.html> Click Here </a>",
-  "image": "/images/dex.png",
+  "image": "images/dex.png",
         "tags": [
             "test",
             "experiment",
@@ -160,7 +160,7 @@
       "research",
       "experiment"
     ],
-  "image": "/images/arrow.png"
+  "image": "images/arrow.png"
   },
 
 
@@ -196,7 +196,7 @@
       "tags": [
         "about"
       ],
-      "image": "/images/github.png"
+      "image": "images/github.png"
     },
   
     "FrontEndTech": {
@@ -207,7 +207,7 @@
       "technology",
       "experiment"
     ],
-    "image": "/images/cards.jpg"
+    "image": "images/cards.jpg"
   },
 
     "example-repo": {
@@ -217,7 +217,7 @@
         "programming",
         "courses"
       ],
-      "image": "/images/github.png"
+      "image": "images/github.png"
     },
 
     "dillinger-guide": {
@@ -267,14 +267,14 @@
     "tools",
     "research" 
   ],
-  "image": "/images/arrow.png"
+  "image": "images/arrow.png"
 },
 
   "projects": {
     "title": "Projects",
     "text": "Browse a consolidated list of my projects and tools. <a href=\"./projects.html\">Open Projects</a>",
     "tags": ["tools", "about"],
-    "image": "/images/github.png"
+    "image": "images/github.png"
   },
 
   "cids-graph": {
