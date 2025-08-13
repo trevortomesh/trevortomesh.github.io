@@ -1,0 +1,99 @@
+{
+  "categories": [
+    {
+      "category": "Sins Against God",
+      "sins": [
+        {
+          "question": "Did I deny or doubt God's existence?",
+          "mortal": true,
+          "ccc": "2087",
+          "details": "Knowingly and willfully rejecting the existence of God is a grave violation of faith. This sin undermines the relationship with the Creator and is contrary to the First Commandment. Doubt rooted in honest seeking is not sinful, but deliberate denial, especially after having received faith, constitutes mortal sin."
+        },
+        {
+          "question": "Did I refuse to believe God's revelation?",
+          "mortal": true,
+          "ccc": "2088",
+          "details": "Refusing to accept the truths revealed by God, particularly those taught by the Church, is a serious offense. This includes rejection of dogmas or essential teachings. Such refusal can separate one from the fullness of truth and communion with God."
+        },
+        {
+          "question": "Did I believe in horoscopes, fortune telling, good luck charms, tarot cards, Ouija boards, or reincarnation?",
+          "mortal": true,
+          "ccc": "2116",
+          "details": "Turning to occult practices and superstition demonstrates a lack of trust in God's providence. These practices open one to spiritual deception and offend the First Commandment, which calls us to rely on God's wisdom alone."
+        },
+        {
+          "question": "Did I deny that I was a Catholic?",
+          "mortal": true,
+          "ccc": "2148",
+          "details": "Publicly denying one's Catholic faith, especially out of fear or shame, is a grave sin. It is a form of apostasy or scandal and fails to witness to Christ. However, culpability may vary depending on intent and knowledge."
+        },
+        {
+          "question": "Did I abandon the Catholic Faith for any period of time?",
+          "mortal": true,
+          "ccc": "2089",
+          "details": "Knowingly and willingly abandoning the practice of the Catholic faith, especially to adopt another religion or no religion, constitutes apostasy—a grave offense against the faith received in baptism."
+        },
+        {
+          "question": "Did I despair of or presume on God's mercy?",
+          "mortal": true,
+          "ccc": "2091",
+          "details": "Despair is to cease trusting in God's mercy and forgiveness. Presumption is to assume God's forgiveness without genuine repentance. Both distort the proper relationship with God and reflect pride or lack of trust—making them grave sins."
+        },
+        {
+          "question": "Did I neglect prayer for a long time?",
+          "mortal": false,
+          "ccc": "2745",
+          "details": "While not always mortally sinful, prolonged neglect of prayer weakens one's spiritual life and can lead to more serious failings. God desires daily relationship with us through prayer."
+        },
+        {
+          "question": "Did I fail to pray daily?",
+          "mortal": false,
+          "ccc": "2744",
+          "details": "Regular daily prayer is essential for spiritual growth. Failure to maintain daily prayer is not necessarily mortal sin, but it is a neglect of one's duties to love and know God."
+        },
+        {
+          "question": "Did I blaspheme God or take God's Name in vain, curse, or break an oath or vow?",
+          "mortal": true,
+          "ccc": "2148",
+          "details": "Using God's name disrespectfully, especially in oaths or blasphemy, is a serious offense against the Second Commandment. This includes taking sacred things lightly or using them irreverently."
+        },
+        {
+          "question": "Did I miss Mass on a Sunday or on a Holy Day of Obligation through my own fault?",
+          "mortal": true,
+          "ccc": "2181",
+          "details": "Deliberate failure to attend Sunday Mass or Holy Days without a serious reason (illness, caregiving, etc.) breaks the Third Commandment and is gravely sinful. Mass is the highest form of worship and obligation."
+        },
+        {
+          "question": "Am I always reverent in the presence of the Most Blessed Sacrament?",
+          "mortal": false,
+          "ccc": "1378",
+          "details": "While not typically mortally sinful, irreverence toward the Eucharist—Christ's true presence—is spiritually harmful and disrespectful."
+        },
+        {
+          "question": "Was I voluntarily inattentive at Mass?",
+          "mortal": false,
+          "ccc": "1324",
+          "details": "Distraction at Mass is a common human weakness, but deliberately choosing not to pay attention, or attending for mere formality, reflects a lack of devotion."
+        },
+        {
+          "question": "Did I arrive at Mass late through my own fault?",
+          "mortal": false,
+          "ccc": "2181",
+          "details": "Arriving late due to negligence shows a lack of respect for the sacred liturgy. While not usually mortal, it becomes grave if significant parts of Mass are missed deliberately."
+        },
+        {
+          "question": "Did I leave Mass early?",
+          "mortal": false,
+          "ccc": "2181",
+          "details": "Leaving Mass before it is over, without a serious reason, shows irreverence and may constitute a venial sin."
+        },
+        {
+          "question": "Did I do unnecessary servile work on Sunday?",
+          "mortal": true,
+          "ccc": "2185",
+          "details": "The Lord's Day is for worship, rest, and family. Performing unnecessary labor—especially if it causes others to miss rest—is a serious violation of God's command to keep the Sabbath holy."
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,16 @@
   "categories": [
     {
       "category": "Sins Against God",
+      "subcategories": [
+        {
+          "name": "Faith and Worship",
+          "description": "Examining our relationship with God and our participation in divine worship"
+        },
+        {
+          "name": "Prayer and Spiritual Life",
+          "description": "Reflecting on our daily spiritual practices and devotion"
+        }
+      ],
       "sins": [
         {
           "question": "Did I deny or doubt God's existence?",
@@ -93,6 +103,56 @@
           "ccc": "2185",
           "details": "The Lord’s Day is for worship, rest, and family. Performing unnecessary labor—especially if it causes others to miss rest—is a serious violation of God’s command to keep the Sabbath holy."
         }
+      ],
+      "additionalSins": [
+        {
+          "question": "Have I failed to make time for personal prayer and spiritual reading?",
+          "mortal": false,
+          "ccc": "2697",
+          "details": "Regular spiritual reading and meditation are essential for growth in faith. While not mortally sinful, neglecting these practices can lead to spiritual stagnation."
+        },
+        {
+          "question": "Have I received Holy Communion in a state of mortal sin?",
+          "mortal": true,
+          "ccc": "1385",
+          "details": "Receiving the Eucharist while conscious of being in a state of mortal sin is itself a mortal sin. One must first receive sacramental confession."
+        },
+        {
+          "question": "Have I failed to observe the one hour fast before Holy Communion?",
+          "mortal": false,
+          "ccc": "919",
+          "details": "The Eucharistic fast helps prepare us to receive the Lord worthily. Water and medicine are exempt from this fast."
+        },
+        {
+          "question": "Have I failed to make a good confession at least once a year?",
+          "mortal": true,
+          "ccc": "1457",
+          "details": "The Church requires confession of serious sins at least once per year. This precept ensures regular reconciliation with God and the Church."
+        },
+        {
+          "question": "Have I failed to observe the prescribed days of fasting and abstinence?",
+          "mortal": false,
+          "ccc": "1438",
+          "details": "Fasting and abstinence are spiritual disciplines that help us grow in self-control and solidarity with the suffering."
+        },
+        {
+          "question": "Have I engaged in superstitious practices or consulted psychics, mediums, or astrologers?",
+          "mortal": true,
+          "ccc": "2117",
+          "details": "These practices attempt to control or predict the future, showing a lack of trust in God's providence. They can open one to demonic influence."
+        },
+        {
+          "question": "Have I failed to support the Church's mission through prayer and financial contribution according to my means?",
+          "mortal": false,
+          "ccc": "2043",
+          "details": "Supporting the Church's mission is a responsibility of the faithful. While the amount varies by ability, deliberate neglect shows lack of commitment to the Body of Christ."
+        },
+        {
+          "question": "Have I intentionally harbored doubts about the faith without seeking answers?",
+          "mortal": false,
+          "ccc": "2088",
+          "details": "While doubts are natural, deliberately nurturing them without seeking understanding can weaken faith. The proper response to doubt is study and prayer."
+        }
       ]
     },
     {
@@ -151,6 +211,30 @@
           "mortal": false,
           "ccc": "2303",
           "details": "Uncharitable behavior—like gossip, harshness, or resentment—wounds relationships and fosters division. While often venial, such actions require contrition and amendment to restore peace."
+        },
+        {
+          "question": "Have I engaged in cyberbullying or online harassment?",
+          "mortal": true,
+          "ccc": "2464",
+          "details": "Using digital means to harm, intimidate, or humiliate others is a serious sin against charity and justice. The anonymous nature of the internet does not diminish the gravity of such actions."
+        },
+        {
+          "question": "Have I spread misinformation or unverified rumors on social media?",
+          "mortal": false,
+          "ccc": "2477",
+          "details": "Sharing false information, even unintentionally, can cause real harm to persons and institutions. We have a duty to verify information before sharing it."
+        },
+        {
+          "question": "Have I spent excessive time on social media at the expense of family relationships?",
+          "mortal": false,
+          "ccc": "2212",
+          "details": "While social media can be a legitimate tool for connection, allowing it to interfere with family life and direct human relationships is detrimental to authentic community."
+        },
+        {
+          "question": "Have I violated others' privacy by sharing personal information or photos without permission?",
+          "mortal": false,
+          "ccc": "2492",
+          "details": "Respect for privacy is essential to human dignity. Sharing others' personal information or images without consent can cause serious harm and violate trust."
         }
       ]
     },
@@ -274,6 +358,47 @@
           "mortal": true,
           "ccc": "2240",
           "details": "Voting is a moral act that must be guided by a conscience formed in the truths of the faith. Supporting laws or candidates that directly oppose fundamental moral principles—such as the right to life—can be gravely sinful when done with full knowledge and intent."
+        }
+      ]
+    },
+    {
+      "category": "Sins Against Creation and Social Justice",
+      "sins": [
+        {
+          "question": "Have I knowingly participated in activities that cause significant environmental harm?",
+          "mortal": false,
+          "ccc": "2415",
+          "details": "We are stewards of God's creation. Deliberately causing environmental damage shows disrespect for God's work and harms the common good, especially affecting the poor."
+        },
+        {
+          "question": "Have I been wasteful with resources or failed to practice reasonable conservation?",
+          "mortal": false,
+          "ccc": "2415",
+          "details": "Stewardship requires responsible use of resources. Habitual waste, while not always gravely sinful, fails to honor God's gifts and impacts future generations."
+        },
+        {
+          "question": "Have I ignored the plight of the poor when I had the means to help?",
+          "mortal": true,
+          "ccc": "2446",
+          "details": "Deliberately ignoring those in extreme need when we have the ability to help is a serious sin of omission. The Church teaches that we have a moral obligation to help the poor."
+        },
+        {
+          "question": "Have I supported systems or structures that exploit the vulnerable?",
+          "mortal": true,
+          "ccc": "2434",
+          "details": "Knowingly participating in or supporting systems that exploit workers, traffic persons, or abuse the vulnerable is gravely sinful. We must work for just structures in society."
+        },
+        {
+          "question": "Have I been indifferent to social injustice and racial discrimination?",
+          "mortal": false,
+          "ccc": "1935",
+          "details": "The dignity of every human person requires us to work against injustice and discrimination. Willful indifference to systemic injustice fails to fulfill our Christian duty."
+        },
+        {
+          "question": "Have I failed to promote the common good in my professional and social life?",
+          "mortal": false,
+          "ccc": "1926",
+          "details": "Christians are called to work for the good of all society, not just personal or family interests. This includes promoting justice, peace, and human dignity in all spheres of life."
         }
       ]
     }
