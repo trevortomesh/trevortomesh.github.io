@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Examination of Conscience</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     :root {
       --primary-color: #607d8b;
@@ -326,18 +327,17 @@
     }
 
     function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
       // Get selected sins
       const checkedSins = Array.from(document.querySelectorAll('.toggle-input:checked')).map(toggle => {
         const sinItem = toggle.closest('.sin-item');
         const question = sinItem.querySelector('.sin-question').textContent;
         const isMortal = toggle.classList.contains('mortal-sin');
-        const details = sinItem.querySelector('.sin-details')?.textContent || '';
-        const ccc = sinItem.querySelector('.sin-ccc')?.textContent || '';
         return {
           question,
-          isMortal,
-          details,
-          ccc
+          isMortal
         };
       });
 
@@ -345,11 +345,6 @@
         alert('No sins selected');
         return;
       }
-
-      // Format sins for PDF
-      const formattedSins = checkedSins
-        .map(sin => `${sin.isMortal ? '[MORTAL] ' : ''}${sin.question}`)
-        .join('\\n');
 
       const date = new Date().toLocaleString('en-US', {
         month: 'numeric',
@@ -360,19 +355,56 @@
         hour12: true
       });
 
-      const actOfContrition = `O my God, I am heartily sorry for having offended You, and I detest all my sins because of Your just punishments, but most of all because they offend You, my God, who are all good and deserving of all my love. I firmly resolve, with the help of Your grace, to sin no more and to avoid the near occasions of sin. Amen.`;
+      // Set up the document
+      doc.setFontSize(16);
+      doc.setTextColor(96, 125, 139); // Material Blue Grey
+      doc.text('Examination of Conscience', doc.internal.pageSize.getWidth() / 2, 30, { align: 'center' });
+
+      doc.setFontSize(11);
+      doc.setTextColor(128, 128, 128); // Grey
+      doc.text(`Generated on ${date}`, doc.internal.pageSize.getWidth() / 2, 40, { align: 'center' });
+
+      doc.setFontSize(14);
+      doc.setTextColor(0, 0, 0);
+      doc.text('Sins to Confess:', 20, 60);
+
+      // Add sins
+      let y = 70;
+      doc.setFontSize(11);
+      doc.setTextColor(128, 128, 128);
+
+      for (const sin of checkedSins) {
+        const text = `${sin.isMortal ? '[MORTAL] ' : ''}${sin.question}`;
+        const lines = doc.splitTextToSize(text, doc.internal.pageSize.getWidth() - 40);
+        
+        if (y + (lines.length * 7) > doc.internal.pageSize.getHeight() - 40) {
+          doc.addPage();
+          y = 20;
+        }
+
+        doc.text(lines, 20, y);
+        y += lines.length * 7 + 5;
+      }
+
+      // Add Act of Contrition
+      if (y + 60 > doc.internal.pageSize.getHeight()) {
+        doc.addPage();
+        y = 20;
+      }
+
+      doc.setFontSize(14);
+      doc.setTextColor(96, 125, 139);
+      doc.text('Act of Contrition:', 20, y + 20);
+
+      doc.setFontSize(11);
+      doc.setTextColor(0, 0, 0);
+      const actOfContrition = 'O my God, I am heartily sorry for having offended You, and I detest all my sins because of Your just punishments, but most of all because they offend You, my God, who are all good and deserving of all my love. I firmly resolve, with the help of Your grace, to sin no more and to avoid the near occasions of sin. Amen.';
       
-      const content = `# Examination of Conscience\n\nGenerated on ${date}\n\n## Sins to Confess:\n\n${formattedSins}\n\n## Act of Contrition:\n\n${actOfContrition}`;
-      
-      const encodedContent = encodeURIComponent(content);
-      const dataUri = `data:text/plain;charset=utf-8,${encodedContent}`;
-      
-      const link = document.createElement('a');
-      link.href = dataUri;
-      link.download = 'examination.txt';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const lines = doc.splitTextToSize(actOfContrition, doc.internal.pageSize.getWidth() - 40);
+      doc.text(lines, 20, y + 30);
+
+      // Save the PDF
+      doc.save('Confession_List.pdf');
     }
 
     loadData();

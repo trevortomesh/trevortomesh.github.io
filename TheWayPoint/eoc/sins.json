@@ -161,10 +161,22 @@
           "details": "Sexual activity is reserved for marriage; any deliberate sexual activity outside marriage is gravely sinful."
         },
         {
-          "question": "Have I used pornography, masturbated, or entertained lustful thoughts?",
+          "question": "Have I masturbated?",
+          "mortal": true,
+          "ccc": "2352",
+          "details": "Deliberate self-stimulation for sexual pleasure is gravely contrary to chastity and the dignity of the body."
+        },
+        {
+          "question": "Have I viewed pornography or deliberately sought out impure content?",
           "mortal": true,
           "ccc": "2354",
-          "details": "These acts violate chastity and human dignity."
+          "details": "Pornography violates chastity and human dignity, treating persons as objects for pleasure."
+        },
+        {
+          "question": "Have I deliberately entertained lustful thoughts?",
+          "mortal": true,
+          "ccc": "2351",
+          "details": "Willfully dwelling on impure thoughts violates interior chastity."
         },
         {
           "question": "Have I engaged in flirtation or relationships that tempt to sin?",
