@@ -79,6 +79,7 @@
       width: var(--toggle-width);
       height: var(--toggle-height);
       flex-shrink: 0;
+      margin-right: 8px;
     }
     
     .toggle-input {
@@ -86,6 +87,7 @@
       width: 0;
       height: 0;
       position: absolute;
+      pointer-events: none;
     }
     
     .toggle-label {
@@ -96,8 +98,10 @@
       right: 0;
       bottom: 0;
       background-color: rgba(144, 164, 174, 0.2);
-      transition: .4s;
+      transition: background-color 0.3s ease;
       border-radius: var(--toggle-height);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
     
     .toggle-label:before {
@@ -108,8 +112,9 @@
       left: 2px;
       bottom: 2px;
       background-color: white;
-      transition: .4s;
+      transition: transform 0.3s ease;
       border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
     
     .toggle-input:checked + .toggle-label {
@@ -120,8 +125,33 @@
       transform: translateX(calc(var(--toggle-width) - var(--toggle-height)));
     }
     
+    /* Active state for better touch feedback */
+    .toggle-label:active:before {
+      transform: scale(1.1);
+    }
+    
+    .toggle-input:checked + .toggle-label:active:before {
+      transform: translateX(calc(var(--toggle-width) - var(--toggle-height))) scale(1.1);
+    }
+    
     .mortal-sin + .toggle-label {
       border: 1px solid rgba(244, 67, 54, 0.5);
+    }
+    
+    /* Focus styles for accessibility */
+    .toggle-input:focus + .toggle-label {
+      box-shadow: 0 0 0 2px rgba(96, 125, 139, 0.3);
+    }
+    
+    /* Touch target size improvement */
+    @media (pointer: coarse) {
+      .toggle-container {
+        padding: 8px 0;
+      }
+      
+      .toggle-label {
+        touch-action: manipulation;
+      }
     }
     
     .sin-text {
@@ -261,12 +291,17 @@
         const toggleContainer = document.createElement('div');
         toggleContainer.className = 'toggle-container';
         
+        // Create a unique ID for each toggle
+        const toggleId = `toggle-${category.category}-${sin.question}`.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+        
         const toggle = document.createElement('input');
         toggle.type = 'checkbox';
         toggle.className = `toggle-input ${sin.mortal ? 'mortal-sin' : 'venial-sin'}`;
+        toggle.id = toggleId;
         
         const toggleLabel = document.createElement('label');
         toggleLabel.className = 'toggle-label';
+        toggleLabel.setAttribute('for', toggleId);
         
         toggleContainer.appendChild(toggle);
         toggleContainer.appendChild(toggleLabel);
@@ -303,8 +338,11 @@
 
         // Add click handlers
         const toggleExpand = (e) => {
-          // Don't toggle if clicking the toggle switch
-          if (e.target.closest('.toggle-container')) return;
+          // Don't toggle if clicking the toggle switch or its label
+          if (e.target.closest('.toggle-container')) {
+            e.stopPropagation();
+            return;
+          }
           
           sinDiv.classList.toggle('expanded');
           // Use max-height animation defined in CSS
@@ -315,7 +353,13 @@
           }
         };
 
+        // Add click event listeners
         header.addEventListener('click', toggleExpand);
+        
+        // Prevent expansion when clicking the toggle
+        toggleContainer.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
         
         sinDiv.appendChild(header);
         sinDiv.appendChild(dropdown);
