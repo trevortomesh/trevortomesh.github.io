@@ -127,11 +127,15 @@
       padding: 16px;
       margin: 12px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
     
     .sin-item:active {
       transform: scale(0.98);
+      background-color: var(--card-background-active, #333333);
     }
     
     .sin-header {
@@ -149,7 +153,7 @@
       flex-shrink: 0;
       margin-right: 8px;
     }
-    
+
     .toggle-input {
       opacity: 0;
       width: 0;
@@ -446,12 +450,21 @@
       category.sins.forEach(sin => {
         const sinDiv = document.createElement('div');
         sinDiv.className = 'sin-item';
-
+        
+        // Add click handler to toggle the checkbox when clicking anywhere on the item
+        sinDiv.addEventListener('click', (e) => {
+          // Don't toggle if clicking on the toggle itself or the expand icon
+          if (!e.target.closest('.toggle-container') && !e.target.closest('.material-icons')) {
+            const toggle = sinDiv.querySelector('.toggle-input');
+            toggle.checked = !toggle.checked;
+            // Trigger the change event
+            toggle.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+        
         // Create header with toggle and question
         const header = document.createElement('div');
-        header.className = 'sin-header';
-
-        // Create toggle switch
+        header.className = 'sin-header';        // Create toggle switch
         const toggleContainer = document.createElement('div');
         toggleContainer.className = 'toggle-container';
         
