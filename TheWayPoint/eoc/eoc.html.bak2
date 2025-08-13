@@ -52,13 +52,6 @@
       border-bottom: 1px solid rgba(144, 164, 174, 0.3);
       padding-bottom: 0.5em;
     }
-
-    h3 {
-      color: var(--heading-color);
-      font-size: 1.1em;
-      margin: 1em 0;
-      padding-left: 16px;
-    }
     
     .sin-item {
       background-color: var(--card-background);
@@ -66,7 +59,6 @@
       padding: 16px;
       margin: 12px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      margin-left: 16px;
     }
     
     .sin-header {
@@ -153,31 +145,6 @@
     .floating-button:active {
       transform: scale(0.95);
     }
-
-    .generate-pdf-button {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--primary-color);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      z-index: 1000;
-      border: none;
-      font-size: 16px;
-    }
-
-    .generate-pdf-button:active {
-      transform: translateX(-50%) scale(0.95);
-    }
   </style>
 </head>
 <body>
@@ -186,25 +153,114 @@
     <div id="categories"></div>
   </div>
   
-  <button class="generate-pdf-button" onclick="generatePDF()">
+  <div class="floating-button" onclick="generatePDF()">
     <span class="material-icons">picture_as_pdf</span>
-    Generate PDF
-  </button>
+  </div>
 
   <script>
     async function loadData() {
       try {
-        const response = await fetch('sins.json');
-        const data = await response.json();
-        renderCategories(data);
+        console.log('Fetching data...');
+        const response = await fetch('./sins.json', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const text = await response.text(); // Get the raw text first
+        console.log('Raw response:', text.substring(0, 200)); // Log the first 200 chars
+        try {
+          const data = JSON.parse(text);
+          console.log('Data parsed successfully:', data);
+          if (!data.categories || !Array.isArray(data.categories)) {
+            throw new Error('Invalid data structure: missing categories array');
+          }
+          renderCategories(data);
+        } catch (parseError) {
+          throw new Error(`JSON Parse Error: ${parseError.message}`);
+        }
       } catch (error) {
         console.error('Error loading data:', error);
         document.getElementById('categories').innerHTML = `
           <div style="color: #ff6b6b; padding: 20px; background: rgba(255,107,107,0.1); border-radius: 8px; margin: 20px 0;">
-            Error loading data: ${error.message}<br>
+            <strong>Error loading data:</strong><br>
+            ${error.message}<br><br>
+            <em>Technical details:</em><br>
+            ${error.stack ? error.stack.split('\\n')[0] : 'No stack trace available'}<br><br>
             Please check the browser's console for more details.
           </div>`;
       }
+    }
+
+    function renderCategories(data) {
+      const container = document.getElementById('categories');
+      
+      data.categories.forEach(category => {
+        // Create category heading
+        const heading = document.createElement('h2');
+        heading.textContent = category.category;
+        container.appendChild(heading);
+        
+        if (category.subcategories) {
+          category.subcategories.forEach(subcategory => {
+            // Create subcategory heading
+            const subHeading = document.createElement('h3');
+            subHeading.textContent = subcategory.name;
+            subHeading.style.color = 'var(--heading-color)';
+            subHeading.style.fontSize = '1.1em';
+            subHeading.style.marginLeft = '16px';
+            subHeading.style.marginTop = '24px';
+            container.appendChild(subHeading);
+            
+            // Create sins list for subcategory
+            subcategory.sins.forEach(sin => {
+          const sinDiv = document.createElement('div');
+          sinDiv.className = 'sin-item';
+          
+          const header = document.createElement('div');
+          header.className = 'sin-header';
+
+          // Create toggle container
+          const toggleContainer = document.createElement('div');
+          toggleContainer.className = 'toggle-container';
+          
+          const toggleId = `toggle-${Math.random().toString(36).substr(2, 9)}`;
+          
+          const toggle = document.createElement('input');
+          toggle.type = 'checkbox';
+          toggle.className = `toggle-input ${sin.mortal ? 'mortal-sin' : ''}`;
+          toggle.id = toggleId;
+          
+          const toggleLabel = document.createElement('label');
+          toggleLabel.className = 'toggle-label';
+          toggleLabel.setAttribute('for', toggleId);
+          
+          toggleContainer.appendChild(toggle);
+          toggleContainer.appendChild(toggleLabel);
+          
+          // Create question text
+          const sinText = document.createElement('span');
+          sinText.textContent = sin.question;
+          
+          header.appendChild(toggleContainer);
+          header.appendChild(sinText);
+          sinDiv.appendChild(header);
+          
+              container.appendChild(sinDiv);
+            });
+          });
+        }
+        
+        // Handle any sins directly in the category
+        if (category.sins) {
+          category.sins.forEach(sin => {
+            const sinDiv = createSinItem(sin);
+            container.appendChild(sinDiv);
+          });
+        }
+      });
     }
 
     function createSinItem(sin) {
@@ -214,6 +270,7 @@
       const header = document.createElement('div');
       header.className = 'sin-header';
 
+      // Create toggle container
       const toggleContainer = document.createElement('div');
       toggleContainer.className = 'toggle-container';
       
@@ -231,6 +288,7 @@
       toggleContainer.appendChild(toggle);
       toggleContainer.appendChild(toggleLabel);
       
+      // Create question text
       const sinText = document.createElement('span');
       sinText.textContent = sin.question;
       
@@ -239,40 +297,6 @@
       sinDiv.appendChild(header);
       
       return sinDiv;
-    }
-
-    function renderCategories(data) {
-      const container = document.getElementById('categories');
-      
-      data.categories.forEach(category => {
-        // Create category heading
-        const heading = document.createElement('h2');
-        heading.textContent = category.category;
-        container.appendChild(heading);
-        
-        if (category.subcategories) {
-          category.subcategories.forEach(subcategory => {
-            // Create subcategory heading
-            const subHeading = document.createElement('h3');
-            subHeading.textContent = subcategory.name;
-            container.appendChild(subHeading);
-            
-            // Create sins list for subcategory
-            subcategory.sins.forEach(sin => {
-              const sinDiv = createSinItem(sin);
-              container.appendChild(sinDiv);
-            });
-          });
-        }
-        
-        // Process any sins directly in the category
-        if (category.sins) {
-          category.sins.forEach(sin => {
-            const sinDiv = createSinItem(sin);
-            container.appendChild(sinDiv);
-          });
-        }
-      });
     }
 
     function generatePDF() {
