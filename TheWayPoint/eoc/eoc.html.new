@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examination of Conscience</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #607d8b;
+      --background-color: #1e1e1e;
+      --card-background: #2b2b2b;
+      --text-color: #e0e0e0;
+      --heading-color: #cfd8dc;
+      --subheading-color: #90a4ae;
+      --toggle-width: 3.5em;
+      --toggle-height: 2em;
+    }
+    
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 16px;
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+    
+    h1 {
+      color: var(--heading-color);
+      text-align: center;
+      font-size: 1.8em;
+      margin: 1em 0;
+    }
+    
+    .category {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    
+    .category-header {
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(96, 125, 139, 0.1);
+    }
+    
+    .category-header h2 {
+      margin: 0;
+      color: var(--heading-color);
+      font-size: 1.3em;
+    }
+    
+    .category-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .category.expanded .category-content {
+      max-height: 2000px;
+    }
+    
+    .subcategory {
+      margin: 8px 16px;
+      background-color: rgba(43, 43, 43, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .subcategory-header {
+      padding: 12px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .subcategory-header h3 {
+      margin: 0;
+      color: var(--subheading-color);
+      font-size: 1.1em;
+    }
+    
+    .subcategory-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .subcategory.expanded .subcategory-content {
+      max-height: 1000px;
+    }
+    
+    .sin-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .sin-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 48px;
+    }
+    
+    /* Toggle Switch */
+    .toggle-container {
+      position: relative;
+      width: var(--toggle-width);
+      height: var(--toggle-height);
+      flex-shrink: 0;
+    }
+    
+    .toggle-input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+    
+    .toggle-label {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: rgba(144, 164, 174, 0.2);
+      border-radius: var(--toggle-height);
+      transition: 0.3s;
+    }
+    
+    .toggle-label:before {
+      content: "";
+      position: absolute;
+      width: calc(var(--toggle-height) - 4px);
+      height: calc(var(--toggle-height) - 4px);
+      border-radius: 50%;
+      background: white;
+      left: 2px;
+      bottom: 2px;
+      transition: 0.3s;
+    }
+    
+    .toggle-input:checked + .toggle-label {
+      background-color: var(--primary-color);
+    }
+    
+    .toggle-input:checked + .toggle-label:before {
+      transform: translateX(calc(var(--toggle-width) - var(--toggle-height)));
+    }
+    
+    .mortal-sin + .toggle-label {
+      border: 1px solid rgba(244, 67, 54, 0.5);
+    }
+    
+    .sin-text {
+      flex: 1;
+    }
+    
+    .expand-icon {
+      color: var(--subheading-color);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .sin-item.expanded .expand-icon,
+    .category.expanded .expand-icon,
+    .subcategory.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+    
+    .sin-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+    
+    .sin-item.expanded .sin-details {
+      max-height: 500px;
+    }
+    
+    .sin-details-content {
+      padding: 16px;
+    }
+    
+    .sin-type {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      margin-bottom: 8px;
+    }
+    
+    .mortal {
+      background: rgba(244, 67, 54, 0.2);
+      color: #ff8a80;
+    }
+    
+    .venial {
+      background: rgba(255, 152, 0, 0.2);
+      color: #ffcc80;
+    }
+    
+    #generateButton {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary-color);
+      color: white;
+      font-size: 1em;
+      font-weight: 500;
+      border: none;
+      padding: 16px 24px;
+      border-radius: 24px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: calc(100% - 32px);
+      max-width: 600px;
+      z-index: 100;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    #generateButton:active {
+      transform: translateX(-50%) scale(0.98);
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+      
+      .category-header,
+      .subcategory-header {
+        padding: 12px;
+      }
+      
+      .subcategory {
+        margin: 8px 12px;
+      }
+      
+      .sin-item {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Examination of Conscience</h1>
+  <div id="sinsContainer"></div>
+  <button id="generateButton" onclick="generatePDF()">
+    <span class="material-icons" style="vertical-align: middle; margin-right: 8px;">description</span>
+    Generate PDF
+  </button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script>
+  async function loadSins() {
+    const response = await fetch('sins.json');
+    const data = await response.json();
+    const container = document.getElementById('sinsContainer');
+
+    data.categories.forEach(category => {
+      const categoryDiv = document.createElement('div');
+      categoryDiv.className = 'category';
+      
+      const header = document.createElement('div');
+      header.className = 'category-header';
+      
+      const heading = document.createElement('h2');
+      heading.textContent = category.category;
+      
+      const expandIcon = document.createElement('span');
+      expandIcon.className = 'material-icons expand-icon';
+      expandIcon.textContent = 'expand_more';
+      
+      header.appendChild(heading);
+      header.appendChild(expandIcon);
+      
+      const content = document.createElement('div');
+      content.className = 'category-content';
+      
+      header.addEventListener('click', () => {
+        categoryDiv.classList.toggle('expanded');
+      });
+
+      if (category.subcategories) {
+        category.subcategories.forEach(subcategory => {
+          const subDiv = document.createElement('div');
+          subDiv.className = 'subcategory';
+          
+          const subHeader = document.createElement('div');
+          subHeader.className = 'subcategory-header';
+          
+          const subHeading = document.createElement('h3');
+          subHeading.textContent = subcategory.name;
+          
+          const subExpandIcon = document.createElement('span');
+          subExpandIcon.className = 'material-icons expand-icon';
+          subExpandIcon.textContent = 'expand_more';
+          
+          subHeader.appendChild(subHeading);
+          subHeader.appendChild(subExpandIcon);
+          
+          const subContent = document.createElement('div');
+          subContent.className = 'subcategory-content';
+          
+          subHeader.addEventListener('click', (e) => {
+            e.stopPropagation();
+            subDiv.classList.toggle('expanded');
+          });
+
+          subcategory.sins.forEach(sin => {
+            const sinDiv = document.createElement('div');
+            sinDiv.className = 'sin-item';
+
+            const sinHeader = document.createElement('div');
+            sinHeader.className = 'sin-header';
+
+            const toggleContainer = document.createElement('div');
+            toggleContainer.className = 'toggle-container';
+            
+            const toggleId = `toggle-${category.category}-${subcategory.name}-${sin.question}`
+              .replace(/[^a-z0-9]/gi, '-').toLowerCase();
+            
+            const toggle = document.createElement('input');
+            toggle.type = 'checkbox';
+            toggle.className = `toggle-input ${sin.mortal ? 'mortal-sin' : 'venial-sin'}`;
+            toggle.id = toggleId;
+            
+            const toggleLabel = document.createElement('label');
+            toggleLabel.className = 'toggle-label';
+            toggleLabel.setAttribute('for', toggleId);
+            
+            toggleContainer.appendChild(toggle);
+            toggleContainer.appendChild(toggleLabel);
+
+            const sinText = document.createElement('span');
+            sinText.className = 'sin-text';
+            sinText.textContent = sin.question;
+
+            const detailsIcon = document.createElement('span');
+            detailsIcon.className = 'material-icons expand-icon';
+            detailsIcon.textContent = 'expand_more';
+
+            sinHeader.appendChild(toggleContainer);
+            sinHeader.appendChild(sinText);
+            sinHeader.appendChild(detailsIcon);
+
+            const details = document.createElement('div');
+            details.className = 'sin-details';
+            
+            const detailsContent = document.createElement('div');
+            detailsContent.className = 'sin-details-content';
+            detailsContent.innerHTML = `
+              <div class="sin-type ${sin.mortal ? 'mortal' : 'venial'}">
+                ${sin.mortal ? 'Mortal Sin' : 'Venial Sin'}
+              </div>
+              <p><strong>Catechism Reference:</strong> CCC ${sin.ccc}</p>
+              <p>${sin.details}</p>
+            `;
+            
+            details.appendChild(detailsContent);
+
+            const toggleDetails = (e) => {
+              if (e.target.closest('.toggle-container')) return;
+              e.stopPropagation();
+              sinDiv.classList.toggle('expanded');
+            };
+
+            sinHeader.addEventListener('click', toggleDetails);
+            
+            sinDiv.appendChild(sinHeader);
+            sinDiv.appendChild(details);
+            subContent.appendChild(sinDiv);
+          });
+
+          subDiv.appendChild(subHeader);
+          subDiv.appendChild(subContent);
+          content.appendChild(subDiv);
+        });
+      }
+
+      categoryDiv.appendChild(header);
+      categoryDiv.appendChild(content);
+      container.appendChild(categoryDiv);
+    });
+  }
+
+  function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+    const date = new Date();
+    const dateString = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+    let yPosition = 10;
+
+    pdf.setFontSize(16);
+    pdf.setTextColor(96, 125, 139);
+    pdf.text("Examination of Conscience", pdf.internal.pageSize.width/2, yPosition, { align: 'center' });
+    yPosition += 10;
+
+    pdf.setFontSize(11);
+    pdf.setTextColor(128, 128, 128);
+    pdf.text(`Generated on ${dateString}`, pdf.internal.pageSize.width/2, yPosition, { align: 'center' });
+    yPosition += 15;
+
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFontSize(14);
+    pdf.text("Sins to Confess:", 10, yPosition);
+    yPosition += 10;
+
+    const selected = document.querySelectorAll('.toggle-input:checked');
+    const mortalSins = [];
+
+    if (selected.length === 0) {
+      pdf.setFontSize(11);
+      pdf.text("No sins selected.", 10, yPosition);
+    } else {
+      selected.forEach(toggle => {
+        const sinItem = toggle.closest('.sin-item');
+        const sinText = sinItem.querySelector('.sin-text').textContent.trim();
+        const details = sinItem.querySelector('.sin-details-content').textContent.trim();
+        
+        if (toggle.classList.contains('mortal-sin')) {
+          mortalSins.push({ sinText, details });
+        }
+
+        if (yPosition > 270) {
+          pdf.addPage();
+          yPosition = 10;
+        }
+
+        pdf.setFontSize(11);
+        const lines = pdf.splitTextToSize(`• ${sinText}`, 180);
+        pdf.text(lines, 10, yPosition);
+        yPosition += (lines.length * 6) + 4;
+      });
+    }
+
+    yPosition += 10;
+    pdf.setFontSize(14);
+    pdf.text("Act of Contrition:", 10, yPosition);
+    yPosition += 10;
+    pdf.setFontSize(11);
+    const contrition = "O my God, I am heartily sorry for having offended You, and I detest all my sins because of Your just punishments, but most of all because they offend You, my God, who are all good and deserving of all my love. I firmly resolve, with the help of Your grace, to sin no more and to avoid the near occasions of sin. Amen.";
+    const contritionLines = pdf.splitTextToSize(contrition, 180);
+    pdf.text(contritionLines, 10, yPosition);
+
+    if (mortalSins.length > 0) {
+      if (navigator.vibrate) {
+        navigator.vibrate(200);
+      }
+      alert("You have selected one or more mortal sins. Please seek confession as soon as possible.");
+    }
+
+    pdf.save("Confession_List.pdf");
+  }
+
+  window.onload = loadSins;
+</script>
+</body>
+</html>

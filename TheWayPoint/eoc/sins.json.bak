@@ -1,0 +1,241 @@
+{
+  "categories": [
+    {
+      "category": "First Commandment",
+      "description": "I am the Lord your God. You shall not have strange gods before me.",
+      "sins": [
+        {
+          "question": "Have I neglected prayer or treated it as unimportant?",
+          "mortal": false,
+          "ccc": "2744",
+          "details": "Regular prayer is essential for spiritual growth and maintaining a relationship with God."
+        },
+        {
+          "question": "Have I doubted or denied the truths of the faith?",
+          "mortal": true,
+          "ccc": "2088",
+          "details": "Deliberately rejecting Church teachings or dogmas is a serious offense against faith."
+        },
+        {
+          "question": "Have I been involved in superstition, fortune-telling, horoscopes, occult practices, witchcraft, or New Age rituals?",
+          "mortal": true,
+          "ccc": "2116",
+          "details": "These practices demonstrate a lack of trust in God's providence and can open one to spiritual deception."
+        },
+        {
+          "question": "Have I despaired of God's mercy or presumed upon it without repentance?",
+          "mortal": true,
+          "ccc": "2091",
+          "details": "Both despair and presumption distort our understanding of God's mercy and justice."
+        },
+        {
+          "question": "Have I put trust in myself, wealth, popularity, or created things more than in God?",
+          "mortal": true,
+          "ccc": "2113",
+          "details": "Placing ultimate trust in created things rather than God is a form of idolatry."
+        }
+      ]
+    },
+    {
+      "category": "Second Commandment",
+      "description": "You shall not take the name of the Lord your God in vain.",
+      "sins": [
+        {
+          "question": "Have I used God's name carelessly, irreverently, or in anger?",
+          "mortal": false,
+          "ccc": "2146",
+          "details": "Using God's name without respect shows a lack of reverence for His holiness."
+        },
+        {
+          "question": "Have I spoken blasphemy against God, the Church, or holy things?",
+          "mortal": true,
+          "ccc": "2148",
+          "details": "Blasphemy is a direct offense against God's honor and dignity."
+        },
+        {
+          "question": "Have I made false oaths or broken promises made in God's name?",
+          "mortal": true,
+          "ccc": "2150",
+          "details": "Taking false oaths or breaking sworn promises involves God in falsehood."
+        }
+      ]
+    },
+    {
+      "category": "Third Commandment",
+      "description": "Remember to keep holy the Lord's Day.",
+      "sins": [
+        {
+          "question": "Have I deliberately missed Mass on Sundays or Holy Days of Obligation without a serious reason?",
+          "mortal": true,
+          "ccc": "2181",
+          "details": "The Sunday obligation is a serious duty that binds under pain of mortal sin."
+        },
+        {
+          "question": "Have I done unnecessary servile work on Sunday that prevented worship or rest?",
+          "mortal": false,
+          "ccc": "2185",
+          "details": "Sunday should be kept free from work that hinders worship and proper relaxation."
+        },
+        {
+          "question": "Have I failed to sanctify the day through prayer, reading Scripture, or works of mercy?",
+          "mortal": false,
+          "ccc": "2186",
+          "details": "Sunday should be a day dedicated to spiritual growth and charitable works."
+        }
+      ]
+    },
+    {
+      "category": "Fourth Commandment",
+      "description": "Honor your father and your mother.",
+          "description": "Our fundamental relationship with God and His Church",
+          "sins": [
+            {
+              "question": "Did I deny or doubt God's existence?",
+              "mortal": true,
+              "ccc": "2087",
+              "details": "Knowingly and willfully rejecting the existence of God is a grave violation of faith. This sin undermines the relationship with the Creator and is contrary to the First Commandment."
+            },
+            {
+              "question": "Did I refuse to believe God's revelation?",
+              "mortal": true,
+              "ccc": "2088",
+              "details": "Refusing to accept the truths revealed by God, particularly those taught by the Church, is a serious offense. This includes rejection of dogmas or essential teachings."
+            },
+            {
+              "question": "Did I deny that I was a Catholic?",
+              "mortal": true,
+              "ccc": "2148",
+              "details": "Publicly denying one's Catholic faith, especially out of fear or shame, is a grave sin. It is a form of apostasy or scandal and fails to witness to Christ."
+            }
+          ]
+        },
+        {
+          "name": "Worship and Prayer",
+          "description": "Our participation in divine worship and prayer life",
+          "sins": [
+            {
+              "question": "Did I miss Mass on a Sunday or Holy Day of Obligation?",
+              "mortal": true,
+              "ccc": "2181",
+              "details": "Deliberately missing Mass without a serious reason (illness, caregiving, etc.) breaks the Third Commandment and is gravely sinful."
+            },
+            {
+              "question": "Was I voluntarily inattentive at Mass?",
+              "mortal": false,
+              "ccc": "1324",
+              "details": "Distraction at Mass is a common human weakness, but deliberately choosing not to pay attention shows lack of devotion."
+            },
+            {
+              "question": "Did I receive Communion in a state of mortal sin?",
+              "mortal": true,
+              "ccc": "1385",
+              "details": "Receiving the Eucharist while conscious of being in a state of mortal sin is itself a mortal sin. One must first receive sacramental confession."
+            }
+          ]
+        },
+        {
+          "name": "Reverence and Respect",
+          "description": "Our respect for God's name and sacred things",
+          "sins": [
+            {
+              "question": "Did I blaspheme or take God's name in vain?",
+              "mortal": true,
+              "ccc": "2148",
+              "details": "Using God's name disrespectfully, especially in oaths or blasphemy, is a serious offense against the Second Commandment."
+            },
+            {
+              "question": "Did I engage in superstitious practices?",
+              "mortal": true,
+              "ccc": "2117",
+              "details": "Turning to occult practices and superstition demonstrates a lack of trust in God's providence and can open one to spiritual deception."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Sins Against Family and Relationships",
+      "description": "Examining our duties toward family members and those in authority",
+      "sins": [
+        {
+          "question": "Did I disobey or disrespect my parents or legitimate superiors?",
+          "mortal": true,
+          "ccc": "2199",
+          "details": "Deliberate and persistent disobedience or disrespect toward one's parents or rightful authorities is a grave violation of the Fourth Commandment."
+        },
+        {
+          "question": "Did I neglect my duties to my spouse, children, or parents?",
+          "mortal": true,
+          "ccc": "2201",
+          "details": "Failing to fulfill familial duties—such as providing emotional, physical, or spiritual care—can gravely damage family unity."
+        }
+      ]
+    },
+    {
+      "category": "Sins Against Life and Dignity",
+      "description": "Examining our respect for human life and dignity",
+      "sins": [
+        {
+          "question": "Did I physically injure or kill anyone?",
+          "mortal": true,
+          "ccc": "2268",
+          "details": "Harming or taking the life of another human being, outside of legitimate self-defense, is a direct offense against the Fifth Commandment."
+        },
+        {
+          "question": "Have I had an abortion, or advised or supported an abortion?",
+          "mortal": true,
+          "ccc": "2271",
+          "details": "Abortion ends the life of an innocent human being and is a mortal sin. Supporting or encouraging abortion is also gravely sinful."
+        },
+        {
+          "question": "Did I willfully entertain impure thoughts?",
+          "mortal": true,
+          "ccc": "2351",
+          "details": "Willfully dwelling on impure thoughts or desires, especially for arousal, is a grave sin against chastity."
+        }
+      ]
+    },
+    {
+      "category": "Sins Against Justice and Truth",
+      "description": "Examining our honesty and fairness in dealings with others",
+      "sins": [
+        {
+          "question": "Did I steal or deliberately damage another's property?",
+          "mortal": true,
+          "ccc": "2409",
+          "details": "Taking or damaging what belongs to others violates justice. The gravity depends on value and harm caused."
+        },
+        {
+          "question": "Did I tell serious lies or deliberately deceive others?",
+          "mortal": true,
+          "ccc": "2484",
+          "details": "Lying with intent to seriously harm others or mislead in grave matters is mortally sinful."
+        }
+      ]
+    },
+    {
+      "category": "Sins Against Charity",
+      "description": "Examining our love for God and neighbor",
+      "sins": [
+        {
+          "question": "Did I harbor hatred or resentment?",
+          "mortal": true,
+          "ccc": "2303",
+          "details": "Deliberate hatred is contrary to charity. Harboring resentment can lead to serious sin."
+        },
+        {
+          "question": "Did I refuse to forgive others?",
+          "mortal": true,
+          "ccc": "2840",
+          "details": "Refusing to forgive others while seeking God's forgiveness is a serious contradiction."
+        },
+        {
+          "question": "Did I ignore the needs of the poor when I could have helped?",
+          "mortal": true,
+          "ccc": "2446",
+          "details": "Deliberately ignoring those in extreme need when able to help is a serious sin of omission."
+        }
+      ]
+    }
+  ]
+}
