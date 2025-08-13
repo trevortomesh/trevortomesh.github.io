@@ -326,10 +326,19 @@
     }
 
     function generatePDF() {
+      // Get selected sins
       const checkedSins = Array.from(document.querySelectorAll('.toggle-input:checked')).map(toggle => {
-        const sinText = toggle.closest('.sin-item').querySelector('span').textContent;
+        const sinItem = toggle.closest('.sin-item');
+        const question = sinItem.querySelector('.sin-question').textContent;
         const isMortal = toggle.classList.contains('mortal-sin');
-        return `${isMortal ? '[Mortal] ' : ''}${sinText}`;
+        const details = sinItem.querySelector('.sin-details')?.textContent || '';
+        const ccc = sinItem.querySelector('.sin-ccc')?.textContent || '';
+        return {
+          question,
+          isMortal,
+          details,
+          ccc
+        };
       });
 
       if (checkedSins.length === 0) {
@@ -337,7 +346,24 @@
         return;
       }
 
-      const content = checkedSins.join('\\n');
+      // Format sins for PDF
+      const formattedSins = checkedSins
+        .map(sin => `${sin.isMortal ? '[MORTAL] ' : ''}${sin.question}`)
+        .join('\\n');
+
+      const date = new Date().toLocaleString('en-US', {
+        month: 'numeric',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+
+      const actOfContrition = `O my God, I am heartily sorry for having offended You, and I detest all my sins because of Your just punishments, but most of all because they offend You, my God, who are all good and deserving of all my love. I firmly resolve, with the help of Your grace, to sin no more and to avoid the near occasions of sin. Amen.`;
+      
+      const content = `# Examination of Conscience\n\nGenerated on ${date}\n\n## Sins to Confess:\n\n${formattedSins}\n\n## Act of Contrition:\n\n${actOfContrition}`;
+      
       const encodedContent = encodeURIComponent(content);
       const dataUri = `data:text/plain;charset=utf-8,${encodedContent}`;
       

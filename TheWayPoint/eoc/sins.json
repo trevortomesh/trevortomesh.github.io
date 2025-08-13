@@ -1,158 +1,338 @@
 {
   "categories": [
     {
-      "category": "Sins Against God",
-      "description": "Examining our relationship with God and adherence to the First Three Commandments",
-      "subcategories": [
+      "category": "First Commandment",
+      "description": "I am the Lord your God. You shall not have strange gods before me.",
+      "sins": [
         {
-          "name": "Faith and Belief",
-          "description": "Our fundamental relationship with God and His Church",
-          "sins": [
-            {
-              "question": "Did I deny or doubt God's existence?",
-              "mortal": true,
-              "ccc": "2087",
-              "details": "Knowingly and willfully rejecting the existence of God is a grave violation of faith. This sin undermines the relationship with the Creator and is contrary to the First Commandment."
-            },
-            {
-              "question": "Did I refuse to believe God's revelation?",
-              "mortal": true,
-              "ccc": "2088",
-              "details": "Refusing to accept the truths revealed by God, particularly those taught by the Church, is a serious offense. This includes rejection of dogmas or essential teachings."
-            },
-            {
-              "question": "Did I deny that I was a Catholic?",
-              "mortal": true,
-              "ccc": "2148",
-              "details": "Publicly denying one's Catholic faith, especially out of fear or shame, is a grave sin. It is a form of apostasy or scandal and fails to witness to Christ."
-            }
-          ]
+          "question": "Have I neglected prayer or treated it as unimportant?",
+          "mortal": false,
+          "ccc": "2744",
+          "details": "Regular prayer is essential for spiritual growth and maintaining a relationship with God."
         },
         {
-          "name": "Worship and Prayer",
-          "description": "Our participation in divine worship and prayer life",
-          "sins": [
-            {
-              "question": "Did I miss Mass on a Sunday or Holy Day of Obligation?",
-              "mortal": true,
-              "ccc": "2181",
-              "details": "Deliberately missing Mass without a serious reason (illness, caregiving, etc.) breaks the Third Commandment and is gravely sinful."
-            },
-            {
-              "question": "Was I voluntarily inattentive at Mass?",
-              "mortal": false,
-              "ccc": "1324",
-              "details": "Distraction at Mass is a common human weakness, but deliberately choosing not to pay attention shows lack of devotion."
-            },
-            {
-              "question": "Did I receive Communion in a state of mortal sin?",
-              "mortal": true,
-              "ccc": "1385",
-              "details": "Receiving the Eucharist while conscious of being in a state of mortal sin is itself a mortal sin. One must first receive sacramental confession."
-            }
-          ]
+          "question": "Have I doubted or denied the truths of the faith?",
+          "mortal": true,
+          "ccc": "2088",
+          "details": "Deliberately rejecting Church teachings or dogmas is a serious offense against faith."
         },
         {
-          "name": "Reverence and Respect",
-          "description": "Our respect for God's name and sacred things",
-          "sins": [
-            {
-              "question": "Did I blaspheme or take God's name in vain?",
-              "mortal": true,
-              "ccc": "2148",
-              "details": "Using God's name disrespectfully, especially in oaths or blasphemy, is a serious offense against the Second Commandment."
-            },
-            {
-              "question": "Did I engage in superstitious practices?",
-              "mortal": true,
-              "ccc": "2117",
-              "details": "Turning to occult practices and superstition demonstrates a lack of trust in God's providence and can open one to spiritual deception."
-            }
-          ]
+          "question": "Have I been involved in superstition, fortune-telling, horoscopes, occult practices, witchcraft, or New Age rituals?",
+          "mortal": true,
+          "ccc": "2116",
+          "details": "These practices demonstrate a lack of trust in God's providence and can open one to spiritual deception."
+        },
+        {
+          "question": "Have I despaired of God's mercy or presumed upon it without repentance?",
+          "mortal": true,
+          "ccc": "2091",
+          "details": "Both despair and presumption distort our understanding of God's mercy and justice."
+        },
+        {
+          "question": "Have I put trust in myself, wealth, popularity, or created things more than in God?",
+          "mortal": true,
+          "ccc": "2113",
+          "details": "Placing ultimate trust in created things rather than God is a form of idolatry."
         }
       ]
     },
     {
-      "category": "Sins Against Family and Relationships",
-      "description": "Examining our duties toward family members and those in authority",
+      "category": "Second Commandment",
+      "description": "You shall not take the name of the Lord your God in vain.",
       "sins": [
         {
-          "question": "Did I disobey or disrespect my parents or legitimate superiors?",
-          "mortal": true,
-          "ccc": "2199",
-          "details": "Deliberate and persistent disobedience or disrespect toward one's parents or rightful authorities is a grave violation of the Fourth Commandment."
+          "question": "Have I used God's name carelessly, irreverently, or in anger?",
+          "mortal": false,
+          "ccc": "2146",
+          "details": "Using God's name without respect shows a lack of reverence for His holiness."
         },
         {
-          "question": "Did I neglect my duties to my spouse, children, or parents?",
+          "question": "Have I spoken blasphemy against God, the Church, or holy things?",
           "mortal": true,
-          "ccc": "2201",
-          "details": "Failing to fulfill familial duties—such as providing emotional, physical, or spiritual care—can gravely damage family unity."
+          "ccc": "2148",
+          "details": "Blasphemy is a direct offense against God's honor and dignity."
+        },
+        {
+          "question": "Have I made false oaths or broken promises made in God's name?",
+          "mortal": true,
+          "ccc": "2150",
+          "details": "Taking false oaths or breaking sworn promises involves God in falsehood."
         }
       ]
     },
     {
-      "category": "Sins Against Life and Dignity",
-      "description": "Examining our respect for human life and dignity",
+      "category": "Third Commandment",
+      "description": "Remember to keep holy the Lord's Day.",
       "sins": [
         {
-          "question": "Did I physically injure or kill anyone?",
+          "question": "Have I deliberately missed Mass on Sundays or Holy Days of Obligation without a serious reason?",
           "mortal": true,
-          "ccc": "2268",
-          "details": "Harming or taking the life of another human being, outside of legitimate self-defense, is a direct offense against the Fifth Commandment."
+          "ccc": "2181",
+          "details": "The Sunday obligation is a serious duty that binds under pain of mortal sin."
         },
         {
-          "question": "Have I had an abortion, or advised or supported an abortion?",
-          "mortal": true,
-          "ccc": "2271",
-          "details": "Abortion ends the life of an innocent human being and is a mortal sin. Supporting or encouraging abortion is also gravely sinful."
+          "question": "Have I done unnecessary servile work on Sunday that prevented worship or rest?",
+          "mortal": false,
+          "ccc": "2185",
+          "details": "Sunday should be kept free from work that hinders worship and proper relaxation."
         },
         {
-          "question": "Did I willfully entertain impure thoughts?",
-          "mortal": true,
-          "ccc": "2351",
-          "details": "Willfully dwelling on impure thoughts or desires, especially for arousal, is a grave sin against chastity."
+          "question": "Have I failed to sanctify the day through prayer, reading Scripture, or works of mercy?",
+          "mortal": false,
+          "ccc": "2186",
+          "details": "Sunday should be a day dedicated to spiritual growth and charitable works."
         }
       ]
     },
     {
-      "category": "Sins Against Justice and Truth",
-      "description": "Examining our honesty and fairness in dealings with others",
+      "category": "Fourth Commandment",
+      "description": "Honor your father and your mother.",
       "sins": [
         {
-          "question": "Did I steal or deliberately damage another's property?",
+          "question": "Have I disobeyed, disrespected, or neglected my parents?",
           "mortal": true,
-          "ccc": "2409",
-          "details": "Taking or damaging what belongs to others violates justice. The gravity depends on value and harm caused."
+          "ccc": "2214",
+          "details": "Children owe their parents respect, gratitude, and reasonable obedience."
         },
         {
-          "question": "Did I tell serious lies or deliberately deceive others?",
+          "question": "Have I failed to care for aging parents?",
           "mortal": true,
-          "ccc": "2484",
-          "details": "Lying with intent to seriously harm others or mislead in grave matters is mortally sinful."
+          "ccc": "2218",
+          "details": "Adult children have a duty to support their parents in old age and illness."
+        },
+        {
+          "question": "Have I disobeyed legitimate authority when it was just?",
+          "mortal": false,
+          "ccc": "2242",
+          "details": "We have a duty to respect and obey legitimate authority within its proper sphere."
+        },
+        {
+          "question": "Have I failed to support and honor family members?",
+          "mortal": false,
+          "ccc": "2206",
+          "details": "Family members should support one another materially and spiritually."
         }
       ]
     },
     {
-      "category": "Sins Against Charity",
-      "description": "Examining our love for God and neighbor",
+      "category": "Fifth Commandment",
+      "description": "You shall not kill.",
       "sins": [
         {
-          "question": "Did I harbor hatred or resentment?",
+          "question": "Have I harbored hatred, anger, or resentment?",
           "mortal": true,
           "ccc": "2303",
-          "details": "Deliberate hatred is contrary to charity. Harboring resentment can lead to serious sin."
+          "details": "Deliberately nurturing hatred is contrary to charity and can lead to more serious sins."
         },
         {
-          "question": "Did I refuse to forgive others?",
+          "question": "Have I injured others physically or emotionally?",
           "mortal": true,
-          "ccc": "2840",
-          "details": "Refusing to forgive others while seeking God's forgiveness is a serious contradiction."
+          "ccc": "2258",
+          "details": "Causing deliberate harm to others violates their human dignity."
         },
         {
-          "question": "Did I ignore the needs of the poor when I could have helped?",
+          "question": "Have I participated in, supported, or encouraged abortion, euthanasia, or assisted suicide?",
           "mortal": true,
-          "ccc": "2446",
-          "details": "Deliberately ignoring those in extreme need when able to help is a serious sin of omission."
+          "ccc": "2271",
+          "details": "Direct participation in or support of the taking of innocent human life is gravely sinful."
+        },
+        {
+          "question": "Have I abused alcohol, drugs, or food in a way that harms health?",
+          "mortal": false,
+          "ccc": "2290",
+          "details": "We have a duty to care for our health as a gift from God."
+        },
+        {
+          "question": "Have I failed to care for my own health or that of others?",
+          "mortal": false,
+          "ccc": "2288",
+          "details": "We are stewards of our health and have a responsibility to care for others."
+        }
+      ]
+    },
+    {
+      "category": "Sixth Commandment",
+      "description": "You shall not commit adultery.",
+      "sins": [
+        {
+          "question": "Have I engaged in sexual activity outside of marriage?",
+          "mortal": true,
+          "ccc": "2353",
+          "details": "Sexual activity is reserved for marriage; any deliberate sexual activity outside marriage is gravely sinful."
+        },
+        {
+          "question": "Have I used pornography, masturbated, or entertained lustful thoughts?",
+          "mortal": true,
+          "ccc": "2354",
+          "details": "These acts violate chastity and human dignity."
+        },
+        {
+          "question": "Have I engaged in flirtation or relationships that tempt to sin?",
+          "mortal": false,
+          "ccc": "2339",
+          "details": "We must avoid occasions that could lead to sins against chastity."
+        },
+        {
+          "question": "Have I dressed immodestly or encouraged others to sin?",
+          "mortal": false,
+          "ccc": "2521",
+          "details": "Modesty protects the dignity of persons and their capacity for love."
+        },
+        {
+          "question": "Have I used contraception or sterilization to prevent conception?",
+          "mortal": true,
+          "ccc": "2370",
+          "details": "Deliberately frustrating the procreative nature of the marital act is gravely sinful."
+        }
+      ]
+    },
+    {
+      "category": "Seventh Commandment",
+      "description": "You shall not steal.",
+      "sins": [
+        {
+          "question": "Have I taken what is not mine?",
+          "mortal": true,
+          "ccc": "2408",
+          "details": "Theft violates justice and the right to private property."
+        },
+        {
+          "question": "Have I cheated in school, business, or games?",
+          "mortal": false,
+          "ccc": "2410",
+          "details": "Cheating violates justice and truth in human relationships."
+        },
+        {
+          "question": "Have I failed to pay debts or just wages?",
+          "mortal": true,
+          "ccc": "2434",
+          "details": "Withholding just wages or failing to pay debts is a serious violation of justice."
+        },
+        {
+          "question": "Have I wasted or misused others' time, property, or resources?",
+          "mortal": false,
+          "ccc": "2409",
+          "details": "We must respect and use responsibly what belongs to others."
+        }
+      ]
+    },
+    {
+      "category": "Eighth Commandment",
+      "description": "You shall not bear false witness.",
+      "sins": [
+        {
+          "question": "Have I lied or been deceitful?",
+          "mortal": false,
+          "ccc": "2482",
+          "details": "Lying damages truth and trust in human relationships."
+        },
+        {
+          "question": "Have I spoken badly of others without reason (detraction)?",
+          "mortal": false,
+          "ccc": "2477",
+          "details": "Revealing others' faults without just cause damages their reputation."
+        },
+        {
+          "question": "Have I spread gossip or rumors?",
+          "mortal": false,
+          "ccc": "2479",
+          "details": "Spreading harmful information, even if true, can violate charity."
+        },
+        {
+          "question": "Have I damaged someone's reputation?",
+          "mortal": true,
+          "ccc": "2479",
+          "details": "Calumny - speaking falsehood to harm reputation - is gravely sinful."
+        },
+        {
+          "question": "Have I failed to defend someone's good name when I could?",
+          "mortal": false,
+          "ccc": "2477",
+          "details": "We have a duty to defend the reputation of others when possible."
+        }
+      ]
+    },
+    {
+      "category": "Ninth Commandment",
+      "description": "You shall not covet your neighbor's wife.",
+      "sins": [
+        {
+          "question": "Have I entertained sexual desire for someone not my spouse?",
+          "mortal": true,
+          "ccc": "2528",
+          "details": "Deliberately entertaining lustful thoughts violates interior chastity."
+        },
+        {
+          "question": "Have I deliberately looked at impure images or situations?",
+          "mortal": true,
+          "ccc": "2525",
+          "details": "Seeking out occasions of sexual temptation is a sin against purity."
+        },
+        {
+          "question": "Have I been unfaithful in my heart or imagination?",
+          "mortal": true,
+          "ccc": "2380",
+          "details": "Mental infidelity violates marital fidelity and chastity."
+        }
+      ]
+    },
+    {
+      "category": "Tenth Commandment",
+      "description": "You shall not covet your neighbor's goods.",
+      "sins": [
+        {
+          "question": "Have I been jealous of another's possessions, success, or talents?",
+          "mortal": false,
+          "ccc": "2538",
+          "details": "Envy and greed damage our relationship with God and neighbor."
+        },
+        {
+          "question": "Have I resented the good fortune of others?",
+          "mortal": false,
+          "ccc": "2539",
+          "details": "Sadness at others' good fortune is contrary to charity."
+        },
+        {
+          "question": "Have I been dissatisfied with my own blessings?",
+          "mortal": false,
+          "ccc": "2545",
+          "details": "Ingratitude for God's gifts shows a lack of trust in divine providence."
+        }
+      ]
+    },
+    {
+      "category": "Precepts of the Church",
+      "description": "The minimum requirements for practicing the faith.",
+      "sins": [
+        {
+          "question": "Have I failed to attend Mass on Sundays/Holy Days?",
+          "mortal": true,
+          "ccc": "2042",
+          "details": "Missing Mass without serious reason is a grave sin."
+        },
+        {
+          "question": "Have I neglected confession at least once a year?",
+          "mortal": true,
+          "ccc": "2042",
+          "details": "Annual confession of serious sins is a minimum requirement for Catholics."
+        },
+        {
+          "question": "Have I failed to receive Holy Communion during Easter Season?",
+          "mortal": true,
+          "ccc": "2042",
+          "details": "The Easter duty is a fundamental obligation of Catholic life."
+        },
+        {
+          "question": "Have I neglected to fast and abstain on required days?",
+          "mortal": false,
+          "ccc": "2043",
+          "details": "Fasting and abstinence are important practices of penance."
+        },
+        {
+          "question": "Have I failed to support the Church financially when able?",
+          "mortal": false,
+          "ccc": "2043",
+          "details": "Supporting the Church's material needs is a duty according to one's means."
         }
       ]
     }
