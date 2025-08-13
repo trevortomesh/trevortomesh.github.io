@@ -160,11 +160,22 @@
   <script>
     async function loadData() {
       try {
+        console.log('Fetching data...');
         const response = await fetch('sins.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log('Got response, parsing JSON...');
         const data = await response.json();
+        console.log('Data loaded:', data);
         renderCategories(data);
       } catch (error) {
         console.error('Error loading data:', error);
+        document.getElementById('categories').innerHTML = `
+          <div style="color: #ff6b6b; padding: 20px; background: rgba(255,107,107,0.1); border-radius: 8px; margin: 20px 0;">
+            Error loading data: ${error.message}<br>
+            Please make sure sins.json exists in the same directory.
+          </div>`;
       }
     }
 
@@ -177,9 +188,19 @@
         heading.textContent = category.category;
         container.appendChild(heading);
         
-        // Create sins list
-        const sins = [...(category.sins || [])];
-        sins.forEach(sin => {
+        if (category.subcategories) {
+          category.subcategories.forEach(subcategory => {
+            // Create subcategory heading
+            const subHeading = document.createElement('h3');
+            subHeading.textContent = subcategory.name;
+            subHeading.style.color = 'var(--heading-color)';
+            subHeading.style.fontSize = '1.1em';
+            subHeading.style.marginLeft = '16px';
+            subHeading.style.marginTop = '24px';
+            container.appendChild(subHeading);
+            
+            // Create sins list for subcategory
+            subcategory.sins.forEach(sin => {
           const sinDiv = document.createElement('div');
           sinDiv.className = 'sin-item';
           
@@ -212,9 +233,55 @@
           header.appendChild(sinText);
           sinDiv.appendChild(header);
           
-          container.appendChild(sinDiv);
-        });
+              container.appendChild(sinDiv);
+            });
+          });
+        }
+        
+        // Handle any sins directly in the category
+        if (category.sins) {
+          category.sins.forEach(sin => {
+            const sinDiv = createSinItem(sin);
+            container.appendChild(sinDiv);
+          });
+        }
       });
+    }
+
+    function createSinItem(sin) {
+      const sinDiv = document.createElement('div');
+      sinDiv.className = 'sin-item';
+      
+      const header = document.createElement('div');
+      header.className = 'sin-header';
+
+      // Create toggle container
+      const toggleContainer = document.createElement('div');
+      toggleContainer.className = 'toggle-container';
+      
+      const toggleId = `toggle-${Math.random().toString(36).substr(2, 9)}`;
+      
+      const toggle = document.createElement('input');
+      toggle.type = 'checkbox';
+      toggle.className = `toggle-input ${sin.mortal ? 'mortal-sin' : ''}`;
+      toggle.id = toggleId;
+      
+      const toggleLabel = document.createElement('label');
+      toggleLabel.className = 'toggle-label';
+      toggleLabel.setAttribute('for', toggleId);
+      
+      toggleContainer.appendChild(toggle);
+      toggleContainer.appendChild(toggleLabel);
+      
+      // Create question text
+      const sinText = document.createElement('span');
+      sinText.textContent = sin.question;
+      
+      header.appendChild(toggleContainer);
+      header.appendChild(sinText);
+      sinDiv.appendChild(header);
+      
+      return sinDiv;
     }
 
     function generatePDF() {
