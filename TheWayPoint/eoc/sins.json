@@ -6,18 +6,21 @@
       "sins": [
         {
           "question": "Have I neglected regular prayer or treated my relationship with God as unimportant?",
+          "confessionalFormat": "I have neglected regular prayer and my relationship with God",
           "mortal": false,
           "ccc": "2744",
           "details": "Prayer is essential for spiritual growth and sustaining a living relationship with God."
         },
         {
           "question": "Have I denied or doubted God's existence?",
+          "confessionalFormat": "I have denied or deliberately doubted the existence of God",
           "mortal": true,
           "ccc": "2088",
           "details": "Atheism and deliberate doubt about God's existence contradict the virtue of faith."
         },
         {
           "question": "Have I doubted, denied, or deliberately rejected the truths of the Catholic faith?",
+          "confessionalFormat": "I have deliberately rejected truths of the Catholic faith",
           "mortal": true,
           "ccc": "2088",
           "details": "Deliberately rejecting Church teachings or dogmas is a serious offense against faith."
