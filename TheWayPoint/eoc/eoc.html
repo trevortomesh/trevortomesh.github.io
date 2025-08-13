@@ -4,7 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Examination of Conscience</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Mat      data.categories.forEach(category => {      
+        const categorySection = document.createElement('div');
+        categorySection.className = 'category-section';
+        
+        // Create category header with expand/collapse
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'category-header';
+        
+        const categoryHeading = document.createElement('h2');
+        categoryHeading.textContent = category.category;
+        
+        const categoryToggle = document.createElement('span');
+        categoryToggle.className = 'material-icons category-toggle';
+        categoryToggle.textContent = 'expand_more';
+        
+        categoryHeader.appendChild(categoryHeading);
+        categoryHeader.appendChild(categoryToggle);
+        categorySection.appendChild(categoryHeader);
+        
+        // Create container for category content
+        const categoryContent = document.createElement('div');
+        categoryContent.className = 'category-content';
+        categorySection.appendChild(categoryContent);
+        
+        // Add click handler for category expansion
+        categoryHeader.addEventListener('click', () => {
+          categorySection.classList.toggle('expanded');
+          categoryToggle.textContent = categorySection.classList.contains('expanded') ? 'expand_less' : 'expand_more';
+        });
+        
+        // Process subcategories if they exist
+        if (category.subcategories) {
+          category.subcategories.forEach(subcategory => {
+            const subcategoryDiv = document.createElement('div');
+            subcategoryDiv.className = 'subcategory';
+            
+            const subcategoryHeader = document.createElement('div');
+            subcategoryHeader.className = 'subcategory-header';
+            
+            const subcategoryTitle = document.createElement('h3');
+            subcategoryTitle.textContent = subcategory.name;
+            
+            const subcategoryToggle = document.createElement('span');
+            subcategoryToggle.className = 'material-icons subcategory-toggle';
+            subcategoryToggle.textContent = 'expand_more';
+            
+            subcategoryHeader.appendChild(subcategoryTitle);
+            subcategoryHeader.appendChild(subcategoryToggle);
+            
+            const subcategoryContent = document.createElement('div');
+            subcategoryContent.className = 'subcategory-content';
+            
+            subcategoryDiv.appendChild(subcategoryHeader);
+            subcategoryDiv.appendChild(subcategoryContent);
+            
+            // Add click handler for subcategory expansion
+            subcategoryHeader.addEventListener('click', (e) => {
+              e.stopPropagation();
+              subcategoryDiv.classList.toggle('expanded');
+              subcategoryToggle.textContent = subcategoryDiv.classList.contains('expanded') ? 'expand_less' : 'expand_more';
+            });
+            
+            categoryContent.appendChild(subcategoryDiv);
+          });
+        }
+
+        // Process sins for this category
+        const sinsToProcess = [...(category.sins || []), ...(category.additionalSins || [])];
+        sinsToProcess.forEach(sin => {Icons" rel="stylesheet">
   <style>
     :root {
       --primary-color: #607d8b;
@@ -234,6 +302,93 @@
       background-color: #546e7a;
     }
     
+    /* Category Styling */
+    .category-section {
+      margin-bottom: 24px;
+      background-color: rgba(43, 43, 43, 0.5);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      cursor: pointer;
+      background-color: var(--card-background);
+      transition: background-color 0.2s ease;
+    }
+    
+    .category-header:hover {
+      background-color: rgba(96, 125, 139, 0.1);
+    }
+    
+    .category-header h2 {
+      margin: 0;
+      flex: 1;
+    }
+    
+    .category-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .category-section.expanded .category-content {
+      max-height: 5000px;
+      transition: max-height 0.5s ease-in;
+    }
+    
+    .category-toggle,
+    .subcategory-toggle {
+      transition: transform 0.3s ease;
+    }
+    
+    .category-section.expanded .category-toggle,
+    .subcategory.expanded .subcategory-toggle {
+      transform: rotate(180deg);
+    }
+    
+    /* Subcategory Styling */
+    .subcategory {
+      margin: 8px 16px;
+      background-color: rgba(43, 43, 43, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .subcategory-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    
+    .subcategory-header:hover {
+      background-color: rgba(96, 125, 139, 0.1);
+    }
+    
+    .subcategory-header h3 {
+      margin: 0;
+      font-size: 1.1em;
+      color: var(--subheading-color);
+    }
+    
+    .subcategory-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .subcategory.expanded .subcategory-content {
+      max-height: 2000px;
+      transition: max-height 0.5s ease-in;
+    }
+    
+    /* Responsive Styles */
     @media (max-width: 480px) {
       body {
         padding: 12px;
@@ -253,6 +408,15 @@
       
       .sin-text {
         font-size: 0.95em;
+      }
+      
+      .category-header,
+      .subcategory-header {
+        padding: 12px;
+      }
+      
+      .subcategory {
+        margin: 8px 12px;
       }
     }
   </style>

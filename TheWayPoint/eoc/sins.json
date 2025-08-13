@@ -2,14 +2,80 @@
   "categories": [
     {
       "category": "Sins Against God",
+      "description": "Examining our relationship with God and adherence to the First Three Commandments",
       "subcategories": [
         {
-          "name": "Faith and Worship",
-          "description": "Examining our relationship with God and our participation in divine worship"
+          "name": "Faith and Belief",
+          "description": "Our fundamental relationship with God and His Church",
+          "sins": [
+            {
+              "question": "Did I deny or doubt God's existence?",
+              "mortal": true,
+              "ccc": "2087"
+            },
+            {
+              "question": "Did I refuse to believe God's revelation?",
+              "mortal": true,
+              "ccc": "2088"
+            },
+            {
+              "question": "Did I deny that I was a Catholic?",
+              "mortal": true,
+              "ccc": "2148"
+            },
+            {
+              "question": "Did I abandon the Catholic Faith for any period of time?",
+              "mortal": true,
+              "ccc": "2089"
+            }
+          ]
         },
         {
-          "name": "Prayer and Spiritual Life",
-          "description": "Reflecting on our daily spiritual practices and devotion"
+          "name": "Worship and Prayer",
+          "description": "Our participation in divine worship and prayer life",
+          "sins": [
+            {
+              "question": "Did I miss Mass on a Sunday or Holy Day of Obligation?",
+              "mortal": true,
+              "ccc": "2181"
+            },
+            {
+              "question": "Was I voluntarily inattentive at Mass?",
+              "mortal": false,
+              "ccc": "1324"
+            },
+            {
+              "question": "Did I receive Communion in a state of mortal sin?",
+              "mortal": true,
+              "ccc": "1385"
+            },
+            {
+              "question": "Did I neglect prayer for a long time?",
+              "mortal": false,
+              "ccc": "2745"
+            }
+          ]
+        },
+        {
+          "name": "Reverence and Respect",
+          "description": "Our respect for God's name and sacred things",
+          "sins": [
+            {
+              "question": "Did I blaspheme or take God's name in vain?",
+              "mortal": true,
+              "ccc": "2148"
+            },
+            {
+              "question": "Did I engage in superstitious practices?",
+              "mortal": true,
+              "ccc": "2117"
+            },
+            {
+              "question": "Was I irreverent in church or toward sacred objects?",
+              "mortal": false,
+              "ccc": "2120"
+            }
+          ]
         }
       ],
       "sins": [
@@ -362,8 +428,12 @@
       ]
     },
     {
-      "category": "Sins Against Creation and Social Justice",
-      "sins": [
+      "category": "Sins Against Justice and the Common Good",
+      "subcategories": [
+        {
+          "name": "Economic Justice",
+          "description": "Our obligations regarding work, property, and economic relationships",
+          "sins": [
         {
           "question": "Have I knowingly participated in activities that cause significant environmental harm?",
           "mortal": false,
