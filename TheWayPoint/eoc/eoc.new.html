@@ -161,20 +161,35 @@
     async function loadData() {
       try {
         console.log('Fetching data...');
-        const response = await fetch('sins.json');
+        const response = await fetch('./sins.json.fixed', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log('Got response, parsing JSON...');
-        const data = await response.json();
-        console.log('Data loaded:', data);
-        renderCategories(data);
+        const text = await response.text(); // Get the raw text first
+        console.log('Raw response:', text.substring(0, 200)); // Log the first 200 chars
+        try {
+          const data = JSON.parse(text);
+          console.log('Data parsed successfully:', data);
+          if (!data.categories || !Array.isArray(data.categories)) {
+            throw new Error('Invalid data structure: missing categories array');
+          }
+          renderCategories(data);
+        } catch (parseError) {
+          throw new Error(`JSON Parse Error: ${parseError.message}`);
+        }
       } catch (error) {
         console.error('Error loading data:', error);
         document.getElementById('categories').innerHTML = `
           <div style="color: #ff6b6b; padding: 20px; background: rgba(255,107,107,0.1); border-radius: 8px; margin: 20px 0;">
-            Error loading data: ${error.message}<br>
-            Please make sure sins.json exists in the same directory.
+            <strong>Error loading data:</strong><br>
+            ${error.message}<br><br>
+            <em>Technical details:</em><br>
+            ${error.stack ? error.stack.split('\\n')[0] : 'No stack trace available'}<br><br>
+            Please check the browser's console for more details.
           </div>`;
       }
     }
