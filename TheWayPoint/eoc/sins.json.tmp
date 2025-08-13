@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "category": "Sins Against God",
+      "description": "Examining our relationship with God and adherence to the First Three Commandments",
+      "subcategories": [
+        {
+          "name": "Faith and Belief",
+          "description": "Our fundamental relationship with God and His Church",
+          "sins": [
+            {
+              "question": "Did I deny or doubt God's existence?",
+              "mortal": true,
+              "ccc": "2087",
+              "details": "Knowingly and willfully rejecting the existence of God is a grave violation of faith. This sin undermines the relationship with the Creator and is contrary to the First Commandment."
+            },
+            {
+              "question": "Did I refuse to believe God's revelation?",
+              "mortal": true,
+              "ccc": "2088",
+              "details": "Refusing to accept the truths revealed by God, particularly those taught by the Church, is a serious offense. This includes rejection of dogmas or essential teachings."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

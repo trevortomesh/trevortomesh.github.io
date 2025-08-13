@@ -71,9 +71,38 @@
     
     .sin-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
       min-height: 48px;
+    }
+
+    .sin-content {
+      flex: 1;
+    }
+
+    .sin-question {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .sin-details {
+      display: block;
+      font-size: 0.9em;
+      color: var(--subheading-color);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    .sin-ccc {
+      display: inline-block;
+      font-size: 0.8em;
+      color: var(--primary-color);
+      margin-top: 4px;
+      text-decoration: none;
+    }
+
+    .sin-ccc:hover {
+      text-decoration: underline;
     }
     
     .toggle-container {
@@ -231,11 +260,32 @@
       toggleContainer.appendChild(toggle);
       toggleContainer.appendChild(toggleLabel);
       
-      const sinText = document.createElement('span');
-      sinText.textContent = sin.question;
+      const sinContent = document.createElement('div');
+      sinContent.className = 'sin-content';
+
+      const sinQuestion = document.createElement('span');
+      sinQuestion.className = 'sin-question';
+      sinQuestion.textContent = sin.question;
+      sinContent.appendChild(sinQuestion);
+
+      if (sin.details) {
+        const sinDetails = document.createElement('span');
+        sinDetails.className = 'sin-details';
+        sinDetails.textContent = sin.details;
+        sinContent.appendChild(sinDetails);
+      }
+
+      if (sin.ccc) {
+        const sinCCC = document.createElement('a');
+        sinCCC.className = 'sin-ccc';
+        sinCCC.href = `http://www.scborromeo.org/ccc/para/` + sin.ccc + `.htm`;
+        sinCCC.target = '_blank';
+        sinCCC.textContent = `CCC ${sin.ccc}`;
+        sinContent.appendChild(sinCCC);
+      }
       
       header.appendChild(toggleContainer);
-      header.appendChild(sinText);
+      header.appendChild(sinContent);
       sinDiv.appendChild(header);
       
       return sinDiv;
