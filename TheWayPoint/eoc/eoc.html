@@ -157,6 +157,56 @@
       border: 1px solid rgba(244, 67, 54, 0.5);
     }
 
+    .mortal-sin:checked + .toggle-label {
+      background-color: #f44336;
+    }
+
+    .warning-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #2b2b2b;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+    }
+
+    .warning-modal h3 {
+      color: #f44336;
+      margin-top: 0;
+    }
+
+    .warning-modal p {
+      margin: 16px 0;
+    }
+
+    .warning-modal button {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
     .material-icons {
       color: var(--subheading-color);
       margin-left: 8px;
@@ -221,7 +271,74 @@
     Generate PDF
   </button>
 
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="warning-modal" id="warningModal">
+    <h3>Mortal Sin Warning</h3>
+    <p>You have selected a mortal sin. Remember that mortal sins must be confessed in the Sacrament of Reconciliation before receiving Holy Communion.</p>
+    <button onclick="closeWarningModal()">I Understand</button>
+  </div>
+
   <script>
+    function showWarningModal() {
+      document.getElementById('modalOverlay').style.display = 'block';
+      document.getElementById('warningModal').style.display = 'block';
+    }
+
+    function closeWarningModal() {
+      document.getElementById('modalOverlay').style.display = 'none';
+      document.getElementById('warningModal').style.display = 'none';
+    }
+
+    function formatSinForConfession(question) {
+      // Remove "Have I" and similar question starters
+      let formatted = question.replace(/^(Have|Did|Do) I /i, "I ");
+      
+      // Convert to past tense and make it more confessional
+      formatted = formatted.replace(/\?$/, "");  // Remove question mark
+      
+      // Common replacements for better confessional format
+      const replacements = {
+        "neglected": "neglected",
+        "doubted": "doubted",
+        "been involved in": "participated in",
+        "put trust in": "put my trust in",
+        "used God's name": "used God's name",
+        "spoken blasphemy": "spoke blasphemy",
+        "made false oaths": "made false oaths",
+        "missed Mass": "missed Mass",
+        "done unnecessary": "did unnecessary",
+        "failed to": "failed to",
+        "disobeyed": "disobeyed",
+        "harbored": "harbored",
+        "injured": "injured",
+        "participated in": "participated in",
+        "abused": "abused",
+        "engaged in": "engaged in",
+        "used pornography": "viewed pornography",
+        "masturbated": "committed the sin of masturbation",
+        "dressed immodestly": "dressed immodestly",
+        "taken what": "took what",
+        "cheated": "cheated",
+        "lied": "lied",
+        "spread gossip": "spread gossip",
+        "damaged": "damaged",
+        "entertained": "entertained",
+        "been jealous": "was jealous",
+        "resented": "resented",
+        "been dissatisfied": "was dissatisfied"
+      };
+
+      // Apply replacements
+      for (const [key, value] of Object.entries(replacements)) {
+        const regex = new RegExp(`\\b${key}\\b`, 'i');
+        if (regex.test(formatted)) {
+          formatted = formatted.replace(regex, value);
+        }
+      }
+
+      return formatted;
+    }
+
     async function loadData() {
       try {
         const response = await fetch('sins.json');
@@ -253,6 +370,11 @@
       toggle.type = 'checkbox';
       toggle.className = `toggle-input ${sin.mortal ? 'mortal-sin' : ''}`;
       toggle.id = toggleId;
+      toggle.addEventListener('change', function() {
+        if (this.checked && this.classList.contains('mortal-sin')) {
+          showWarningModal();
+        }
+      });
       
       const toggleLabel = document.createElement('label');
       toggleLabel.className = 'toggle-label';
@@ -374,7 +496,8 @@
       doc.setTextColor(128, 128, 128);
 
       for (const sin of checkedSins) {
-        const text = `${sin.isMortal ? '[MORTAL] ' : ''}${sin.question}`;
+        const formattedSin = formatSinForConfession(sin.question);
+        const text = `${sin.isMortal ? '[MORTAL SIN] ' : ''}${formattedSin}.`;
         const lines = doc.splitTextToSize(text, doc.internal.pageSize.getWidth() - 40);
         
         if (y + (lines.length * 7) > doc.internal.pageSize.getHeight() - 40) {
