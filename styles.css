@@ -159,6 +159,9 @@ body {
 #content {
     flex: 1;
     padding: 20px;
+    /* Sidebar is fixed and partially visible even when "hidden" (translateX).
+       Add left margin so page content doesn't sit underneath it. */
+    margin-left: 90px;
 }
 
 #copyright{
@@ -304,6 +307,7 @@ img {
     }
     #content {
         padding: 16px;
+        margin-left: 0;
     }
     .container {
         flex-direction: column;
