@@ -66,8 +66,9 @@
 /* Global styles */
 body {
     font-family: Courier, sans-serif;
-    background-color: #292929;
-    color: #ffffff;
+    /* Darker background + higher contrast */
+    background-color: #0f1115;
+    color: #f2f4f8;
     margin: 0;
     padding: 0;
     display: flex;
@@ -117,7 +118,7 @@ body {
 
     position: fixed;
     z-index: 1;
-    background-color: rgba(38, 38, 38, 0.9);
+    background-color: rgba(20, 22, 28, 0.96);
 
     /* Keep the sidebar from covering page content when "hidden".
        We slide it almost fully off-screen and leave a small handle visible. */
@@ -254,13 +255,12 @@ p {
 
 /* Code blocks */
 pre {
-    background: #1f1f1f;
-    border: 1px solid #4a4a4a;
-    border-radius: 8px;
+    background: #0b0d12;
+    border: 1px solid #2b3442;
+    border-radius: 10px;
     padding: 12px 14px;
     overflow-x: auto;
 }
-
 code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 0.95em;
@@ -268,33 +268,42 @@ code {
 
 /* Simple callout box */
 .callout {
-    background: rgba(52, 152, 219, 0.12);
-    border: 1px solid rgba(52, 152, 219, 0.35);
-    border-radius: 10px;
+    background: rgba(34, 211, 238, 0.10);
+    border: 1px solid rgba(34, 211, 238, 0.28);
+    border-radius: 12px;
     padding: 12px 14px;
     margin: 12px 0;
 }
 
+.callout strong, .callout b { color: #e6fbff; }
+
+.small {
+    opacity: 0.9;
+    font-size: 0.95em;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #2b3442;
+    margin: 18px 0;
+}
 /* Default link color */
 a {
-    color: #3498db; /* Blue link color */
+    color: #7dd3fc;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
-/* Hover color for links */
 a:hover {
-    color: #2980b9; /* Darker blue on hover */
+    color: #38bdf8;
 }
 
-/* Visited link color */
 a:visited {
-    color: #9b59b6; /* Purple for visited links */
+    color: #c4b5fd;
 }
 
-/* Active link color */
 a:active {
-    color: #e74c3c; /* Red for active links */
+    color: #fb7185;
 }
 
 /* Sidebar link color */
