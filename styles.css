@@ -229,7 +229,50 @@ h4 {
 }
 
 p {
-    margin: 0;
+    margin: 0 0 12px 0;
+    line-height: 1.55;
+}
+
+/* Make long-form pages easier to read */
+#content {
+    max-width: 860px;
+}
+
+#content h1, #content h2, #content h3 {
+    text-align: left;
+}
+
+#content h2 {
+    margin-top: 26px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #444;
+}
+
+#content h3 {
+    margin-top: 18px;
+}
+
+/* Code blocks */
+pre {
+    background: #1f1f1f;
+    border: 1px solid #4a4a4a;
+    border-radius: 8px;
+    padding: 12px 14px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.95em;
+}
+
+/* Simple callout box */
+.callout {
+    background: rgba(52, 152, 219, 0.12);
+    border: 1px solid rgba(52, 152, 219, 0.35);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 12px 0;
 }
 
 /* Default link color */
