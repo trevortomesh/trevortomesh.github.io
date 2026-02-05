@@ -31,17 +31,33 @@
       Catholicism accurately and respectfully, using Catechism-of-the-Catholic-Church (CCC) citations.
     </p>
 
-    <h2>Install</h2>
-    <p>Install from ClawHub:</p>
+    <h2>Install (copy/paste)</h2>
+
+    <p><b>Step 1:</b> Install the ClawHub CLI (one time):</p>
+    <pre><code>npm i -g clawhub</code></pre>
+
+    <p><b>Step 2:</b> Install the skill:</p>
     <pre><code>clawhub install catholic-grounding</code></pre>
 
-    <h2>Quick start</h2>
-    <p>Examples of prompts that should trigger the skill:</p>
+    <p>
+      If you already have it installed and want updates later:
+    </p>
+    <pre><code>clawhub update catholic-grounding</code></pre>
+
+    <h2>Use it</h2>
+
+    <p>
+      Once installed, just ask your OpenClaw assistant a Catholic question. Examples:
+    </p>
     <ul>
-      <li>“What does the Catholic Church teach about the Eucharist?”</li>
-      <li>“Explain confession like I’m in RCIA, with CCC citations.”</li>
-      <li>“Give me CCC references for prayer / conscience / grace.”</li>
+      <li>What does the Catholic Church teach about the Eucharist?</li>
+      <li>Explain confession like I’m in RCIA, with CCC citations.</li>
+      <li>Give me CCC references for prayer, conscience, and grace.</li>
     </ul>
+
+    <p>
+      Tip: If you want it to be more “Catechism-first,” say so. If you want “RCIA-first,” say so.
+    </p>
 
     <h2>What it includes</h2>
     <ul>
@@ -50,6 +66,16 @@
       <li><b>Style guide</b> (tone + guardrails)</li>
       <li><b>Local helper scripts</b> (ccc/prayer/status)</li>
     </ul>
+
+    <h3>Local scripts (optional)</h3>
+    <p>
+      If you installed the skill into your OpenClaw workspace, you can also run local helper scripts.
+      For example:
+    </p>
+    <pre><code>cd ~/.openclaw/workspace/skills/catholic-grounding
+./scripts/status.sh
+./scripts/ccc.sh "eucharist"
+./scripts/prayer.sh "hail mary"</code></pre>
 
     <h2>Notes</h2>
     <ul>

@@ -117,25 +117,30 @@ body {
 
     position: fixed;
     z-index: 1;
-    background-color: rgba(38, 38, 38, 0.9); /* Added transparency with RGBA */
+    background-color: rgba(38, 38, 38, 0.9);
 
-    width: 12%;
+    /* Keep the sidebar from covering page content when "hidden".
+       We slide it almost fully off-screen and leave a small handle visible. */
+    width: 260px;
+    max-width: 85vw;
+
     padding: 20px;
     margin: 10px;
     box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.2);
-    height: 100%; /* Initial height */
-    overflow: hidden;
-    transition: height 0.3s;
+    height: calc(100% - 20px);
+
     display: flex;
     flex-direction: column;
-    transform: translateX(-150px);
-    transition: transform 0.3s ease-in-out;
+
     overflow-y: auto;
+
+    /* Leave ~22px visible as a "tab" so it's discoverable */
+    transform: translateX(calc(-100% + 22px));
+    transition: transform 0.25s ease-in-out;
 }
 
 #sidebar:hover {
-    transform: translateX(0px);
-    transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
 }
 
 #sidebar h2 {
@@ -159,9 +164,8 @@ body {
 #content {
     flex: 1;
     padding: 20px;
-    /* Sidebar is fixed and partially visible even when "hidden" (translateX).
-       Add left margin so page content doesn't sit underneath it. */
-    margin-left: 90px;
+    /* Sidebar leaves a small visible tab (~22px). Keep content clear of it. */
+    margin-left: 48px;
 }
 
 #copyright{
