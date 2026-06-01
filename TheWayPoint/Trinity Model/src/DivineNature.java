@@ -16,7 +16,9 @@
  * - Omniscient: Ps 139:1-6; 1 John 3:20; CCC 216.
  * - Simple (divine simplicity): Fourth Lateran Council DS 800-806.
  */
-public class DivineNature {
+public final class DivineNature {
+    private static final DivineNature INSTANCE = new DivineNature();
+
     // Claim: God is eternal.
     // References: Ps 90:2; Rev 1:8; CCC 212.
     private final boolean eternal = true;
@@ -39,7 +41,19 @@ public class DivineNature {
      * <p>All fields are fixed to {@code true} because this class is not performing speculative
      * theology by computation; it is expressing settled doctrinal predicates in a concise API.
      */
-    public DivineNature() {
+    private DivineNature() {
+    }
+
+    /**
+     * Returns the one shared DivineNature instance for the entire model.
+     *
+     * <p>This enforces a strict singleton in code so object identity aligns with the
+     * pedagogical claim of one undivided divine essence.
+     *
+     * @return the one DivineNature instance
+     */
+    public static DivineNature getInstance() {
+        return INSTANCE;
     }
 
     /**

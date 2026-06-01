@@ -7,17 +7,30 @@
  *
  * <p>References: John 1:1, 1:14, 1:18; Heb 1:3; Matt 28:19; Nicene Creed; CCC 242-248.
  */
-public class Son extends DivinePerson {
+public final class Son extends DivinePerson {
+    private static final Son INSTANCE = new Son(DivineNature.getInstance());
+
     /**
-     * Constructs the Son Person with full possession of the shared divine nature.
+     * Internally constructs the Son singleton with full possession of the shared divine nature.
      *
      * <p>The constructor encodes, at object-graph level, that the Son shares one divine essence
      * with the Father and the Holy Spirit.
      *
+     * <p>Callers should use {@link #getInstance()} rather than this constructor.
+     *
      * @param divineNature the one divine nature possessed fully by the Son
      */
-    public Son(DivineNature divineNature) {
+    private Son(DivineNature divineNature) {
         super("Son", divineNature);
+    }
+
+    /**
+     * Returns the one Son instance in this model.
+     *
+     * @return the singleton Son instance
+     */
+    public static Son getInstance() {
+        return INSTANCE;
     }
 
     /**

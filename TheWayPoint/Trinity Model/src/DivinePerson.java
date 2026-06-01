@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * DivinePerson models one hypostasis (Person) in Trinitarian theology.
  *
@@ -45,8 +47,8 @@ public abstract class DivinePerson {
      * @param divineNature the one divine nature fully possessed by this Person
      */
     protected DivinePerson(String name, DivineNature divineNature) {
-        this.name = name;
-        this.divineNature = divineNature;
+        this.name = Objects.requireNonNull(name, "name must not be null");
+        this.divineNature = Objects.requireNonNull(divineNature, "divineNature must not be null");
     }
 
     /**

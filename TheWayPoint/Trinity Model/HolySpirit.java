@@ -11,17 +11,30 @@
  * - Creedal confession: Nicene-Constantinopolitan Creed.
  * - Catechism: CCC 243-248.
  */
-public class HolySpirit extends DivinePerson {
+public final class HolySpirit extends DivinePerson {
+    private static final HolySpirit INSTANCE = new HolySpirit(DivineNature.getInstance());
+
     /**
-     * Constructs the Holy Spirit Person with full possession of the shared divine nature.
+     * Internally constructs the Holy Spirit singleton with full possession of the shared divine nature.
      *
      * <p>Using the shared {@link DivineNature} instance maintains the model's monotheistic
      * structure while preserving personal distinction by relation.
      *
+     * <p>Callers should use {@link #getInstance()} rather than this constructor.
+     *
      * @param divineNature the one divine nature possessed fully by the Holy Spirit
      */
-    public HolySpirit(DivineNature divineNature) {
+    private HolySpirit(DivineNature divineNature) {
         super("Holy Spirit", divineNature);
+    }
+
+    /**
+     * Returns the one Holy Spirit instance in this model.
+     *
+     * @return the singleton Holy Spirit instance
+     */
+    public static HolySpirit getInstance() {
+        return INSTANCE;
     }
 
     /**

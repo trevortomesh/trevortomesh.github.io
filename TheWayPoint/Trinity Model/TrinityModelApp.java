@@ -29,7 +29,7 @@ public class TrinityModelApp {
     }
 
     /**
-     * Builds one shared DivineNature and three distinct DivinePerson instances.
+     * Retrieves one shared DivineNature and the three singleton DivinePerson instances.
      *
      * <p>The single shared DivineNature instance in this simulation expresses the claim
      * "one divine nature, not three gods" (Deut 6:4; 1 Cor 8:6; CCC 253).
@@ -50,13 +50,13 @@ public class TrinityModelApp {
     public static void main(String[] args) {
         // One divine essence shared fully by Father, Son, and Holy Spirit.
         // References: Deut 6:4; Nicene Creed ("I believe in one God"); CCC 253-255.
-        DivineNature oneDivineNature = new DivineNature();
+        DivineNature oneDivineNature = DivineNature.getInstance();
 
         // Three distinct Persons, each possessing the one divine essence fully.
         // References: Matt 28:19; 2 Cor 13:14; Athanasian Creed; CCC 254-255.
-        Father father = new Father(oneDivineNature);
-        Son son = new Son(oneDivineNature);
-        HolySpirit holySpirit = new HolySpirit(oneDivineNature);
+        Father father = Father.getInstance();
+        Son son = Son.getInstance();
+        HolySpirit holySpirit = HolySpirit.getInstance();
 
         System.out.println("UML Analogy of the Holy Trinity");
         System.out.println("--------------------------------");

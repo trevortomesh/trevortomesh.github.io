@@ -11,17 +11,30 @@
  *   (John 15:26; John 16:13-15; CCC 246-248; Florence DS 1300-1302),
  * - sends the Spirit in temporal mission (John 14:26; CCC 244).
  */
-public class Father extends DivinePerson {
+public final class Father extends DivinePerson {
+    private static final Father INSTANCE = new Father(DivineNature.getInstance());
+
     /**
-     * Constructs the Father Person with full possession of the shared divine nature.
+     * Internally constructs the Father singleton with full possession of the shared divine nature.
      *
      * <p>By passing the same {@link DivineNature} object used by other Persons, the model
      * preserves unity of essence while permitting personal distinction by relation.
      *
+     * <p>Callers should use {@link #getInstance()} rather than this constructor.
+     *
      * @param divineNature the one divine nature possessed fully by the Father
      */
-    public Father(DivineNature divineNature) {
+    private Father(DivineNature divineNature) {
         super("Father", divineNature);
+    }
+
+    /**
+     * Returns the one Father instance in this model.
+     *
+     * @return the singleton Father instance
+     */
+    public static Father getInstance() {
+        return INSTANCE;
     }
 
     /**

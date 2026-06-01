@@ -34,6 +34,7 @@
       <div class="hero-actions">
         <a class="hero-link" href="#model">Explore Model</a>
         <a class="hero-link hero-link-secondary" href="javadocs.html">Open Javadocs</a>
+        <a class="hero-link hero-link-secondary" href="Theological-Research-Journal.md">Research Journal</a>
       </div>
     </header>
 
@@ -43,6 +44,11 @@
         <p>
           This model follows Catholic doctrinal language: one divine essence, real personal
           distinctions by relations of origin, and inseparable operations in mission.
+        </p>
+        <p>
+          Current software architecture now enforces strict singleton identity for
+          <strong>DivineNature</strong>, <strong>Father</strong>, <strong>Son</strong>, and
+          <strong>HolySpirit</strong> to preserve model consistency.
         </p>
 
         <div class="grid">
@@ -224,14 +230,14 @@ public class TrinityModelApp {
     }
 
     /**
-     * Builds one shared DivineNature and three distinct DivinePerson instances.
+     * Retrieves the singleton DivineNature and the three singleton DivinePerson instances.
      * @param args unused command-line arguments
      */
     public static void main(String[] args) {
-        DivineNature oneDivineNature = new DivineNature();
-        Father father = new Father(oneDivineNature);
-        Son son = new Son(oneDivineNature);
-        HolySpirit holySpirit = new HolySpirit(oneDivineNature);
+        DivineNature oneDivineNature = DivineNature.getInstance();
+        Father father = Father.getInstance();
+        Son son = Son.getInstance();
+        HolySpirit holySpirit = HolySpirit.getInstance();
 
         System.out.println("UML Analogy of the Holy Trinity");
         System.out.println("--------------------------------");
@@ -288,7 +294,16 @@ public class TrinityModelApp {
               <button class="class-info-trigger" data-class="DivineNature" type="button">What this class does</button>
             </div>
             <pre><code class="language-java">/** Models predicates of the one divine essence. */
-      public class DivineNature {
+      public final class DivineNature {
+    private static final DivineNature INSTANCE = new DivineNature();
+
+    private DivineNature() {
+    }
+
+    public static DivineNature getInstance() {
+        return INSTANCE;
+    }
+
     private final boolean eternal = true;
     private final boolean omnipotent = true;
     private final boolean omniscient = true;
@@ -322,6 +337,8 @@ public class TrinityModelApp {
               <button class="class-info-trigger" data-class="DivinePerson" type="button">What this class does</button>
             </div>
             <pre><code class="language-java">/** Abstract base class for Trinitarian personhood in the model. */
+      import java.util.Objects;
+
       public abstract class DivinePerson {
     private final DivineNature divineNature;
     private final boolean fullyGod = true;
@@ -333,8 +350,8 @@ public class TrinityModelApp {
          * @param divineNature the one divine nature fully possessed by this Person
          */
     protected DivinePerson(String name, DivineNature divineNature) {
-        this.name = name;
-        this.divineNature = divineNature;
+      this.name = Objects.requireNonNull(name, "name must not be null");
+      this.divineNature = Objects.requireNonNull(divineNature, "divineNature must not be null");
     }
 
         /** @return the one divine nature possessed fully by this Person */
@@ -368,10 +385,15 @@ public class TrinityModelApp {
               <button class="class-info-trigger" data-class="Father" type="button">What this class does</button>
             </div>
             <pre><code class="language-java">/** First Person of the Trinity in classical naming. */
-      public class Father extends DivinePerson {
-        /** @param divineNature the one divine nature possessed fully by the Father */
-    public Father(DivineNature divineNature) {
+      public final class Father extends DivinePerson {
+    private static final Father INSTANCE = new Father(DivineNature.getInstance());
+
+    private Father(DivineNature divineNature) {
         super("Father", divineNature);
+    }
+
+    public static Father getInstance() {
+        return INSTANCE;
     }
 
         /** @return sentence describing eternal generation of the Son */
@@ -403,10 +425,15 @@ public class TrinityModelApp {
               <button class="class-info-trigger" data-class="Son" type="button">What this class does</button>
             </div>
             <pre><code class="language-java">/** Second Person of the Trinity in classical naming. */
-      public class Son extends DivinePerson {
-        /** @param divineNature the one divine nature possessed fully by the Son */
-    public Son(DivineNature divineNature) {
+      public final class Son extends DivinePerson {
+    private static final Son INSTANCE = new Son(DivineNature.getInstance());
+
+    private Son(DivineNature divineNature) {
         super("Son", divineNature);
+    }
+
+    public static Son getInstance() {
+        return INSTANCE;
     }
 
         /** @return sentence describing eternal spiration of the Holy Spirit */
@@ -433,10 +460,15 @@ public class TrinityModelApp {
               <button class="class-info-trigger" data-class="HolySpirit" type="button">What this class does</button>
             </div>
             <pre><code class="language-java">/** Third Person of the Trinity in classical naming. */
-      public class HolySpirit extends DivinePerson {
-        /** @param divineNature the one divine nature possessed fully by the Holy Spirit */
-    public HolySpirit(DivineNature divineNature) {
+      public final class HolySpirit extends DivinePerson {
+    private static final HolySpirit INSTANCE = new HolySpirit(DivineNature.getInstance());
+
+    private HolySpirit(DivineNature divineNature) {
         super("Holy Spirit", divineNature);
+    }
+
+    public static HolySpirit getInstance() {
+        return INSTANCE;
     }
 
         /** @return relation-of-origin phrase for the Holy Spirit */
@@ -461,6 +493,18 @@ public class TrinityModelApp {
         <p>
           Annotated publication references are available in
           <a href="Annotated-Bibliography.md">Annotated-Bibliography.md</a>.
+        </p>
+        <p>
+          Session-by-session research decisions are documented in
+          <a href="Theological-Research-Journal.md">Theological-Research-Journal.md</a>.
+        </p>
+        <p>
+          Boundary notes for publication and teaching use are documented in
+          <a href="Model-Limits.md">Model-Limits.md</a>.
+        </p>
+        <p>
+          Executable software invariants are documented in
+          <a href="TrinityModelInvariantTest.java">TrinityModelInvariantTest.java</a>.
         </p>
         <p>
           API-style documentation for the Java model is available at
