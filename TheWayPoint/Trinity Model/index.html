@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UML Analogy of the Holy Trinity</title>
+    <meta
+      name="description"
+      content="A doctrinally annotated visual and textual presentation of the UML Analogy of the Holy Trinity."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
+    />
+    <script defer src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient-glow" aria-hidden="true"></div>
+
+    <header class="hero">
+      <p class="eyebrow">Theological Systems Model</p>
+      <h1>UML Analogy of the Holy Trinity</h1>
+      <p class="lead">
+        A pedagogical website representation of one divine nature, three distinct Persons,
+        eternal relations of origin, and temporal missions.
+      </p>
+      <div class="hero-actions">
+        <a class="hero-link" href="#model">Explore Model</a>
+        <a class="hero-link hero-link-secondary" href="javadocs.html">Open Javadocs</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="model" class="panel reveal">
+        <h2>Model Overview</h2>
+        <p>
+          This model follows Catholic doctrinal language: one divine essence, real personal
+          distinctions by relations of origin, and inseparable operations in mission.
+        </p>
+
+        <div class="grid">
+          <article class="card nature">
+            <h3>One Divine Nature</h3>
+            <ul>
+              <li>Eternal</li>
+              <li>Omnipotent</li>
+              <li>Omniscient</li>
+              <li>Simple</li>
+            </ul>
+            <p class="ref">Deut 6:4; 1 Cor 8:6; CCC 253; Lateran IV (DS 800-806)</p>
+          </article>
+
+          <article class="card person">
+            <h3>Father</h3>
+            <p>Fully God. Distinct Person.</p>
+            <p class="ref">Matt 28:19; CCC 254-255</p>
+            <p class="relation"><strong>Relation of origin:</strong> Unbegotten; principle without principle.</p>
+          </article>
+
+          <article class="card person">
+            <h3>Son</h3>
+            <p>Fully God. Distinct Person.</p>
+            <p class="ref">John 1:1, 1:14; Heb 1:3; CCC 242-244</p>
+            <p class="relation"><strong>Relation of origin:</strong> Eternally begotten of the Father.</p>
+          </article>
+
+          <article class="card person">
+            <h3>Holy Spirit</h3>
+            <p>Fully God. Distinct Person.</p>
+            <p class="ref">Acts 5:3-4; John 14:26; CCC 246-248</p>
+            <p class="relation">
+              <strong>Relation of origin:</strong>
+              Eternally proceeds from the Father and the Son as from one principle.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal">
+        <h2>Aitia Closure</h2>
+        <p>
+          Personal identity is expressed by relations of origin, not by division of divine nature.
+          This closes the model's distinction logic in Catholic terms.
+        </p>
+        <div class="closure-box">
+          <p><strong>Father:</strong> unbegotten; principle without principle.</p>
+          <p><strong>Son:</strong> eternally begotten of the Father.</p>
+          <p>
+            <strong>Holy Spirit:</strong> eternally proceeds from the Father and the Son as from one principle.
+          </p>
+        </div>
+        <p class="ref">CCC 254-255; CCC 248; Council of Florence DS 1300-1302</p>
+      </section>
+
+      <section class="panel reveal">
+        <h2>Rendered UML</h2>
+        <p>
+          Diagram rendering of the Trinity model relationships shown as a UML-style class graph.
+        </p>
+        <div class="uml-diagram" role="img" aria-label="UML class diagram for DivineNature, DivinePerson, Father, Son, and Holy Spirit relationships">
+          <div class="mermaid">
+classDiagram
+  class DivineNature {
+    +eternal : boolean
+    +omnipotent : boolean
+    +omniscient : boolean
+    +simple : boolean
+  }
+
+  class DivinePerson {
+    &lt;&lt;abstract&gt;&gt;
+    +fullyGod : boolean
+    +distinctPerson : boolean
+    +possessesFully() DivineNature
+    +relationOfOriginDescription() String
+  }
+
+  class Father
+  class Son
+  class HolySpirit
+
+  DivinePerson --&gt; DivineNature : possesses fully
+  DivinePerson &lt;|-- Father
+  DivinePerson &lt;|-- Son
+  DivinePerson &lt;|-- HolySpirit
+
+  Father --&gt; Son : eternally begets
+  Father --&gt; HolySpirit : eternally spirates
+  Son --&gt; HolySpirit : eternally spirates
+
+  Father ..&gt; HolySpirit : sends in time
+  Son ..&gt; HolySpirit : sends in time
+          </div>
+        </div>
+        <div class="uml-legend" aria-label="UML legend">
+          <h3>Legend: How to Read the Arrows</h3>
+          <div class="legend-grid">
+            <p><span class="legend-glyph">--&gt;</span> Directed association</p>
+            <p class="legend-detail">Example: DivinePerson possesses fully DivineNature.</p>
+
+            <p><span class="legend-glyph">&lt;|--</span> Inheritance (is-a)</p>
+            <p class="legend-detail">Example: Father, Son, and HolySpirit are subclasses of DivinePerson.</p>
+
+            <p><span class="legend-glyph">..&gt;</span> Dependency / mission in time</p>
+            <p class="legend-detail">Example: Father and Son send the HolySpirit in temporal mission.</p>
+
+            <p><span class="legend-glyph">&laquo;abstract&raquo;</span> Abstract class</p>
+            <p class="legend-detail">Example: DivinePerson is a type that is not instantiated directly.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel reveal">
+        <h2>PlantUML Source</h2>
+        <pre><code class="language-plaintext">@startuml
+title UML Analogy of the Holy Trinity
+
+class DivineNature {
+  +eternal
+  +omnipotent
+  +omniscient
+  +simple
+}
+
+abstract class DivinePerson {
+  +fullyGod
+  +distinctPerson
+}
+
+class Father
+class Son
+class HolySpirit
+
+DivinePerson --&gt; DivineNature : possesses fully
+
+Father --|&gt; DivinePerson
+Son --|&gt; DivinePerson
+HolySpirit --|&gt; DivinePerson
+
+Father --&gt; Son : eternally begets
+Father --&gt; HolySpirit : eternally spirates
+Son --&gt; HolySpirit : eternally spirates
+
+Father ..&gt; HolySpirit : sends in time
+Son ..&gt; HolySpirit : sends in time
+@enduml</code></pre>
+      </section>
+
+      <section class="panel reveal">
+        <h2>Java Source Code</h2>
+        <p>
+          Source snippets now include method-level JavaDoc so each method's intent is explicit,
+          and each class also has a quick pop-out description for theological and structural
+          context.
+        </p>
+        <div class="source-links">
+          <a href="TrinityModelApp.java">Open TrinityModelApp.java</a>
+          <a href="DivineNature.java">Open DivineNature.java</a>
+          <a href="DivinePerson.java">Open DivinePerson.java</a>
+          <a href="Father.java">Open Father.java</a>
+          <a href="Son.java">Open Son.java</a>
+          <a href="HolySpirit.java">Open HolySpirit.java</a>
+        </div>
+        <p class="ref">
+          API documentation: <a href="javadocs/index.html">Generated Javadocs</a>
+        </p>
+        <div class="source-browser">
+          <details class="source-file" open>
+            <summary>TrinityModelApp.java</summary>
+            <div class="source-file-tools">
+              <button class="class-info-trigger" data-class="TrinityModelApp" type="button">What this class does</button>
+            </div>
+            <pre><code class="language-java">/** Utility entry-point class for the Trinity model demo. */
+public class TrinityModelApp {
+    /** Utility class; not intended for instantiation. */
+    private TrinityModelApp() {
+    }
+
+    /**
+     * Builds one shared DivineNature and three distinct DivinePerson instances.
+     * @param args unused command-line arguments
+     */
+    public static void main(String[] args) {
+        DivineNature oneDivineNature = new DivineNature();
+        Father father = new Father(oneDivineNature);
+        Son son = new Son(oneDivineNature);
+        HolySpirit holySpirit = new HolySpirit(oneDivineNature);
+
+        System.out.println("UML Analogy of the Holy Trinity");
+        System.out.println("--------------------------------");
+        System.out.println();
+        System.out.println("One divine nature, not three gods:");
+        System.out.println("- Father possesses the same DivineNature instance as Son: "
+                + (father.possessesFully() == son.possessesFully()));
+        System.out.println("- Son possesses the same DivineNature instance as Holy Spirit: "
+                + (son.possessesFully() == holySpirit.possessesFully()));
+        System.out.println();
+
+        printPersonSummary(father);
+        printPersonSummary(son);
+        printPersonSummary(holySpirit);
+        System.out.println();
+        System.out.println("Eternal relations:");
+        System.out.println("- " + father.eternallyBegets(son));
+        System.out.println("- " + father.eternallySpirates(holySpirit));
+        System.out.println("- " + son.eternallySpirates(holySpirit));
+        System.out.println();
+        System.out.println("Aitia closure (relations of origin):");
+        printAitiaClosure(father);
+        printAitiaClosure(son);
+        printAitiaClosure(holySpirit);
+        System.out.println();
+        System.out.println("Missions in time:");
+        System.out.println("- " + father.sendsInTime(holySpirit));
+        System.out.println("- " + son.sendsInTime(holySpirit));
+    }
+
+      /**
+       * Prints a concise summary of personhood and full divinity claims for one Person.
+       * @param person the divine Person whose summary should be printed
+       */
+    private static void printPersonSummary(DivinePerson person) {
+        System.out.println(person.getName() + ":");
+        System.out.println("  fullyGod = " + person.isFullyGod());
+        System.out.println("  distinctPerson = " + person.isDistinctPerson());
+    }
+
+      /**
+       * Prints each Person's relation of origin to make personal distinctions explicit.
+       * @param person the divine Person whose relation-of-origin descriptor is printed
+       */
+    private static void printAitiaClosure(DivinePerson person) {
+        System.out.println("- " + person.getName() + ": " + person.relationOfOriginDescription());
+    }
+}</code></pre>
+          </details>
+
+          <details class="source-file">
+            <summary>DivineNature.java</summary>
+            <div class="source-file-tools">
+              <button class="class-info-trigger" data-class="DivineNature" type="button">What this class does</button>
+            </div>
+            <pre><code class="language-java">/** Models predicates of the one divine essence. */
+      public class DivineNature {
+    private final boolean eternal = true;
+    private final boolean omnipotent = true;
+    private final boolean omniscient = true;
+    private final boolean simple = true;
+
+        /** @return true in this model, expressing eternality */
+    public boolean isEternal() {
+        return eternal;
+    }
+
+        /** @return true in this model, expressing omnipotence */
+    public boolean isOmnipotent() {
+        return omnipotent;
+    }
+
+        /** @return true in this model, expressing omniscience */
+    public boolean isOmniscient() {
+        return omniscient;
+    }
+
+        /** @return true in this model, expressing divine simplicity */
+    public boolean isSimple() {
+        return simple;
+    }
+}</code></pre>
+          </details>
+
+          <details class="source-file">
+            <summary>DivinePerson.java</summary>
+            <div class="source-file-tools">
+              <button class="class-info-trigger" data-class="DivinePerson" type="button">What this class does</button>
+            </div>
+            <pre><code class="language-java">/** Abstract base class for Trinitarian personhood in the model. */
+      public abstract class DivinePerson {
+    private final DivineNature divineNature;
+    private final boolean fullyGod = true;
+    private final boolean distinctPerson = true;
+    private final String name;
+
+        /**
+         * @param name person designation (Father, Son, Holy Spirit)
+         * @param divineNature the one divine nature fully possessed by this Person
+         */
+    protected DivinePerson(String name, DivineNature divineNature) {
+        this.name = name;
+        this.divineNature = divineNature;
+    }
+
+        /** @return the one divine nature possessed fully by this Person */
+    public DivineNature possessesFully() {
+        return divineNature;
+    }
+
+        /** @return true, expressing full divinity for each Person */
+    public boolean isFullyGod() {
+        return fullyGod;
+    }
+
+        /** @return true, expressing real personal distinction in the model */
+    public boolean isDistinctPerson() {
+        return distinctPerson;
+    }
+
+        /** @return the person name used in textual output */
+    public String getName() {
+        return name;
+    }
+
+        /** @return this Person's relation-of-origin descriptor */
+    public abstract String relationOfOriginDescription();
+}</code></pre>
+          </details>
+
+          <details class="source-file">
+            <summary>Father.java</summary>
+            <div class="source-file-tools">
+              <button class="class-info-trigger" data-class="Father" type="button">What this class does</button>
+            </div>
+            <pre><code class="language-java">/** First Person of the Trinity in classical naming. */
+      public class Father extends DivinePerson {
+        /** @param divineNature the one divine nature possessed fully by the Father */
+    public Father(DivineNature divineNature) {
+        super("Father", divineNature);
+    }
+
+        /** @return sentence describing eternal generation of the Son */
+    public String eternallyBegets(Son son) {
+        return getName() + " eternally begets " + son.getName() + ".";
+    }
+
+        /** @return sentence describing eternal spiration of the Holy Spirit */
+    public String eternallySpirates(HolySpirit holySpirit) {
+        return getName() + " eternally spirates " + holySpirit.getName() + ".";
+    }
+
+        /** @return sentence describing temporal mission of the Holy Spirit */
+    public String sendsInTime(HolySpirit holySpirit) {
+        return getName() + " sends " + holySpirit.getName() + " in time.";
+    }
+
+        /** @return relation-of-origin phrase for the Father */
+    @Override
+    public String relationOfOriginDescription() {
+        return "unbegotten; principle without principle.";
+    }
+}</code></pre>
+          </details>
+
+          <details class="source-file">
+            <summary>Son.java</summary>
+            <div class="source-file-tools">
+              <button class="class-info-trigger" data-class="Son" type="button">What this class does</button>
+            </div>
+            <pre><code class="language-java">/** Second Person of the Trinity in classical naming. */
+      public class Son extends DivinePerson {
+        /** @param divineNature the one divine nature possessed fully by the Son */
+    public Son(DivineNature divineNature) {
+        super("Son", divineNature);
+    }
+
+        /** @return sentence describing eternal spiration of the Holy Spirit */
+    public String eternallySpirates(HolySpirit holySpirit) {
+        return getName() + " eternally spirates " + holySpirit.getName() + ".";
+    }
+
+        /** @return sentence describing temporal mission of the Holy Spirit */
+    public String sendsInTime(HolySpirit holySpirit) {
+        return getName() + " sends " + holySpirit.getName() + " in time.";
+    }
+
+        /** @return relation-of-origin phrase for the Son */
+    @Override
+    public String relationOfOriginDescription() {
+        return "eternally begotten of the Father.";
+    }
+}</code></pre>
+          </details>
+
+          <details class="source-file">
+            <summary>HolySpirit.java</summary>
+            <div class="source-file-tools">
+              <button class="class-info-trigger" data-class="HolySpirit" type="button">What this class does</button>
+            </div>
+            <pre><code class="language-java">/** Third Person of the Trinity in classical naming. */
+      public class HolySpirit extends DivinePerson {
+        /** @param divineNature the one divine nature possessed fully by the Holy Spirit */
+    public HolySpirit(DivineNature divineNature) {
+        super("Holy Spirit", divineNature);
+    }
+
+        /** @return relation-of-origin phrase for the Holy Spirit */
+    @Override
+    public String relationOfOriginDescription() {
+        return "eternally proceeds from the Father and the Son as from one principle.";
+    }
+}</code></pre>
+          </details>
+        </div>
+        <dialog id="class-info-dialog" class="class-info-dialog">
+          <div class="class-info-header">
+            <h3 id="class-info-title">Class Description</h3>
+            <button id="class-info-close" type="button" class="class-info-close" aria-label="Close description">x</button>
+          </div>
+          <p id="class-info-body"></p>
+        </dialog>
+      </section>
+
+      <section class="panel reveal">
+        <h2>Companion References</h2>
+        <p>
+          Annotated publication references are available in
+          <a href="Annotated-Bibliography.md">Annotated-Bibliography.md</a>.
+        </p>
+        <p>
+          API-style documentation for the Java model is available at
+          <a href="javadocs.html">Open Javadocs</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footnote">
+      <p>
+        Publication note: This website is a pedagogical theological analogy. It does not claim to
+        exhaust or reduce the mystery of the Trinity.
+      </p>
+      <p>
+        AI involvement disclosure: Draft site structure and text were generated with AI assistance
+        (GPT-5.3-Codex) and should be reviewed for final editorial and doctrinal precision.
+      </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
