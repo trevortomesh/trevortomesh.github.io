@@ -218,6 +218,15 @@ h2 {
   min-width: 680px;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  padding: 0.5rem 0 1rem;
+}
+
+.uml-diagram .mermaid svg {
+  display: block;
+  height: auto !important;
+  max-width: none;
+  overflow: visible;
 }
 
 .uml-legend {
