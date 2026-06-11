@@ -1,6 +1,8 @@
-if (window.mermaid) {
+const initializeMermaid = () => {
+  if (!window.mermaid) return;
+
   window.mermaid.initialize({
-    startOnLoad: true,
+    startOnLoad: false,
     theme: 'base',
     securityLevel: 'loose',
     themeVariables: {
@@ -15,6 +17,16 @@ if (window.mermaid) {
       fontFamily: 'Source Sans 3, Segoe UI, sans-serif'
     }
   });
+
+  if (typeof window.mermaid.run === 'function') {
+    window.mermaid.run({ querySelector: '.mermaid' });
+  }
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeMermaid);
+} else {
+  initializeMermaid();
 }
 
 const classInfoDialog = document.getElementById('class-info-dialog');

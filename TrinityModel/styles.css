@@ -177,6 +177,33 @@ h2 {
   padding: 0.7rem 0.8rem;
 }
 
+.lds-unity-card {
+  border-left-color: #176087;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.comparison-grid > div {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.85rem;
+}
+
+.comparison-grid h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.comparison-grid p {
+  margin: 0;
+}
+
 .uml-diagram {
   margin-top: 0.7rem;
   border: 1px solid rgba(20, 34, 43, 0.2);
@@ -398,6 +425,10 @@ a {
   .legend-grid {
     grid-template-columns: 1fr;
     gap: 0.15rem;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
   }
 
   .source-links {
