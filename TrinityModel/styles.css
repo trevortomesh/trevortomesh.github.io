@@ -181,6 +181,10 @@ h2 {
   border-left-color: #176087;
 }
 
+.orthodox-essence-card {
+  border-left-color: #7a3f12;
+}
+
 .comparison-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -221,6 +221,140 @@ footer {
 .contact-form button:hover {
     background-color: #e0c600;
 }
+
+/* Rosary Guide */
+.rosary-guide .section {
+    max-width: 920px;
+}
+
+.rosary-intro p,
+.rosary-order p {
+    font-size: 1.05rem;
+}
+
+.rosary-steps {
+    padding-left: 1.5rem;
+}
+
+.rosary-steps li {
+    margin: 0.65rem 0;
+}
+
+.rosary-counts {
+    border-top: 1px solid #333;
+    color: #e6e6e6;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+}
+
+.prayer-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.prayer-list details,
+.mystery-set details {
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #151515;
+    overflow: hidden;
+}
+
+.prayer-list summary,
+.mystery-set summary {
+    cursor: pointer;
+    color: #ffd700;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.prayer-list details p {
+    padding: 0 1rem 1rem;
+}
+
+.mystery-set summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.mystery-set summary span {
+    color: #c8c8c8;
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-align: right;
+}
+
+.mode-selector {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.mode-button {
+    min-height: 44px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #151515;
+    color: #f0f0f0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mode-button:hover,
+.mode-button.active {
+    background-color: #ffd700;
+    border-color: #ffd700;
+    color: #121212;
+}
+
+.mystery-card {
+    border-top: 1px solid #333;
+    padding: 1.25rem;
+}
+
+.mystery-card h3 {
+    color: #f0f0f0;
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+}
+
+.mystery-fruit {
+    border-left: 3px solid #ffd700;
+    color: #e6e6e6;
+    margin: 0 0 0.9rem;
+    padding-left: 0.75rem;
+}
+
+.mode-content {
+    display: none;
+    margin: 0;
+}
+
+.rosary-guide[data-mode="meditative"] .mode-meditative,
+.rosary-guide[data-mode="scriptural"] .mode-scriptural,
+.rosary-guide[data-mode="reflection"] .mode-reflection,
+.rosary-guide[data-mode="visualization"] .mode-visualization {
+    display: block;
+}
+
+a.resource-link {
+    color: #121212;
+    background-color: #ffd700;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+}
+
+a.resource-link:hover {
+    background-color: #e0c600;
+}
 /* Responsive styles for mobile */
 @media (max-width: 900px) {
     .banner {
@@ -256,6 +390,16 @@ footer {
     .contact-form form {
         padding: 0.5rem;
         max-width: 98vw;
+    }
+    .mode-selector {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .mystery-set summary {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .mystery-set summary span {
+        text-align: left;
     }
 }
 @media (max-width: 600px) {
