@@ -322,6 +322,15 @@
         return `../registry/${match[1]}/${tokenId}.json`;
       }
 
+      function previousRecordPath(tokenId) {
+        const match = tokenId.match(/^OMG-(\d{4})-(\d{6})$/);
+        if (!match) throw new Error("Token ID must look like OMG-2026-000001");
+        const year = match[1];
+        const number = Number(match[2]);
+        if (number === 1) return "../registry/genesis.json";
+        return `../registry/${year}/OMG-${year}-${String(number - 1).padStart(6, "0")}.json`;
+      }
+
       async function verify(file) {
         const uploadedBuffer = await file.arrayBuffer();
         const uploadedHash = await sha256HexBuffer(uploadedBuffer);
@@ -337,10 +346,8 @@
           signatureBytes(record.issuer_signature),
           encoder.encode(record.record_hash),
         );
-        const index = await loadJson("../registry/index.json");
-        const position = index.records.findIndex((entry) => entry.token_id === tokenId);
-        const previousEntry = position > 0 ? index.records[position - 1] : null;
-        const previousValid = Boolean(previousEntry) && record.previous_hash === previousEntry.record_hash;
+        const previousRecord = await loadJson(previousRecordPath(tokenId));
+        const previousValid = record.previous_hash === previousRecord.record_hash;
         const imageValid = uploadedHash === record.image_sha256;
         const publicKeyResponse = await fetch("../public_key.pem", { cache: "no-store" });
         const publicKeyHash = await sha256HexBuffer(await publicKeyResponse.arrayBuffer());

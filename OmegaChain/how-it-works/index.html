@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How OmegaChain Works</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f7f4;
+        --ink: #1e2528;
+        --muted: #607077;
+        --line: #cfd8d8;
+        --panel: #ffffff;
+        --accent: #245a7d;
+        --accent-dark: #173f5a;
+        --soft: #e9eeee;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.58 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      main {
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 34px 0 54px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand {
+        color: var(--ink);
+        font-weight: 900;
+        text-decoration: none;
+        font-size: 1.05rem;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 14px;
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 750;
+        text-decoration: none;
+      }
+      .button.secondary {
+        background: transparent;
+        color: var(--accent-dark);
+      }
+      header {
+        padding: 42px 0 24px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2.8rem, 8vw, 5.8rem);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+      .lede {
+        max-width: 760px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 1.18rem;
+      }
+      .notice {
+        margin-top: 22px;
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-left: 5px solid var(--accent);
+        background: var(--panel);
+        border-radius: 8px;
+      }
+      .notice p {
+        margin: 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 24px;
+      }
+      section {
+        padding: 22px 0;
+        border-top: 1px solid var(--line);
+      }
+      .card {
+        height: 100%;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+      h2,
+      h3 {
+        margin: 0 0 9px;
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+      h2 {
+        font-size: 1.55rem;
+      }
+      h3 {
+        font-size: 1.08rem;
+      }
+      p {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+      ol,
+      ul {
+        margin: 10px 0 0;
+        padding-left: 22px;
+        color: var(--muted);
+      }
+      li {
+        margin: 8px 0;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.94em;
+      }
+      .flow {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .flow-item {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+      .step {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--soft);
+        color: var(--accent-dark);
+        font-weight: 900;
+      }
+      .flow-item p {
+        margin-top: 3px;
+      }
+      @media (max-width: 740px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        nav {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="OmegaChain">
+        <a class="brand" href="../">OmegaChain</a>
+        <div class="nav-links">
+          <a class="button secondary" href="../">Home</a>
+          <a class="button" href="../verify/">Verify a Coin</a>
+        </div>
+      </nav>
+
+      <header>
+        <h1>How OmegaChain Works</h1>
+        <p class="lede">
+          OmegaChain is a public, non-financial registry for unique digital challenge coins.
+          It uses ordinary files, SHA-256 hashes, and issuer signatures so a recipient can
+          upload a coin PNG and check whether it is an authentic keepsake.
+        </p>
+        <div class="notice">
+          <p>
+            OmegaChain coins are commemorative tokens of appreciation. They are not currency,
+            securities, investments, or a cryptocurrency system.
+          </p>
+        </div>
+      </header>
+
+      <section>
+        <h2>The Short Version</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Each coin has a public record</h3>
+            <p>
+              A token record describes the coin: its token ID, title, description, date struck,
+              issuer, recipient fields, image hash, previous record hash, and issuer signature.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Each PNG carries hidden verification data</h3>
+            <p>
+              The minted coin image contains a small hidden payload in its pixels. The verifier
+              extracts that payload from the uploaded PNG and uses it to find the matching public record.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Records are chained together</h3>
+            <p>
+              Every token record includes the hash of the previous record. Changing an older public
+              record would break the link for every later coin.
+            </p>
+          </div>
+          <div class="card">
+            <h3>The issuer signs the record hash</h3>
+            <p>
+              The private key stays on the minting computer. The public website publishes only
+              <code>public_key.pem</code>, which lets anyone verify the signature.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Minting Flow</h2>
+        <div class="flow">
+          <div class="flow-item">
+            <div class="step">1</div>
+            <div>
+              <h3>Create the coin locally</h3>
+              <p>
+                The minting GUI runs on the issuer's computer. It accepts the artwork, title,
+                description, recipient text, coin text, and other commemorative fields.
+              </p>
+            </div>
+          </div>
+          <div class="flow-item">
+            <div class="step">2</div>
+            <div>
+              <h3>Render the PNG</h3>
+              <p>
+                OmegaChain generates a coin image, blends in the artwork, adds the chosen visible
+                text, and hides a verification payload inside the image pixels.
+              </p>
+            </div>
+          </div>
+          <div class="flow-item">
+            <div class="step">3</div>
+            <div>
+              <h3>Hash the image and record</h3>
+              <p>
+                The PNG gets a SHA-256 image hash. The JSON token record is canonicalized, then
+                hashed with SHA-256 while excluding <code>record_hash</code> and <code>issuer_signature</code>.
+              </p>
+            </div>
+          </div>
+          <div class="flow-item">
+            <div class="step">4</div>
+            <div>
+              <h3>Sign the record hash</h3>
+              <p>
+                The issuer private key signs the record hash. The signature proves that the issuer
+                approved that exact record.
+              </p>
+            </div>
+          </div>
+          <div class="flow-item">
+            <div class="step">5</div>
+            <div>
+              <h3>Publish only the public records</h3>
+              <p>
+                The public website receives the verifier page, public key, genesis record, and token
+                JSON records. The minted coin PNGs remain private unless the issuer gives one to a recipient.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Verification Flow</h2>
+        <ol>
+          <li>The recipient opens the static verifier page and selects their OmegaChain PNG.</li>
+          <li>The browser reads the hidden payload from the uploaded image. The image is not sent to a server.</li>
+          <li>The verifier loads the matching public token JSON record.</li>
+          <li>It recalculates the canonical record hash and compares it to the published <code>record_hash</code>.</li>
+          <li>It verifies the issuer signature using the published public key.</li>
+          <li>It hashes the uploaded PNG and checks that hash against <code>image_sha256</code>.</li>
+          <li>It loads the previous public record and checks that <code>previous_hash</code> links correctly.</li>
+          <li>If all checks pass, the page displays <strong>Verified</strong>.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>What The Checks Prove</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Authenticity</h3>
+            <p>
+              A valid signature means the record was signed by the holder of the OmegaChain private key.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Image integrity</h3>
+            <p>
+              A matching image hash means the uploaded PNG is byte-for-byte the same image recorded
+              at minting time.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Tamper evidence</h3>
+            <p>
+              A matching record hash and previous hash link mean the public JSON record still fits
+              into the append-only chain.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Uniqueness in the registry</h3>
+            <p>
+              Each token ID identifies one public record in the OmegaChain registry. The coin is
+              unique as a signed commemorative record, not as a financial asset.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>What It Does Not Mean</h2>
+        <ul>
+          <li>It does not make the coin money, an investment, or a tradeable asset.</li>
+          <li>It does not prevent someone from copying the image file.</li>
+          <li>It does not require a blockchain, mining, wallets, gas fees, or a token marketplace.</li>
+          <li>It does not publish private keys or store recipients' uploaded coin images on the website.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Why This Design</h2>
+        <p>
+          The goal is simple public verification without financial baggage. A GitHub Pages site can
+          host the verifier, public key, and token records as static files. The issuer can mint coins
+          locally, give PNGs directly to recipients, update the public records, and push the site.
+          Recipients can later verify their coin with only a browser.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
