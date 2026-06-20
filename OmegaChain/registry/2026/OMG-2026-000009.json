@@ -1,0 +1,17 @@
+{
+  "token_id": "OMG-2026-000009",
+  "title": "Ko-Fi Tipper Coin",
+  "description": "Thank you for supporting my work! ",
+  "date_struck": "2026-06-20",
+  "issuer": "Trevor Tomesh",
+  "coin_type": "commemorative",
+  "image_filename": "omg-2026-000009-coin.png",
+  "image_sha256": "60e6fca98a6f2100d61c21f4c51b6dedf36ec2fcae50017455972299fdaa3eb7",
+  "previous_hash": "4549a2ecdf06271f674ecc44db5fe927507150636b60d787d4fb5499a60a5a8c",
+  "record_hash": "e615afd40303e4fffe9a804531f6fa12d3be9cb5f4cbb1ecafda4e49adcf51f2",
+  "issuer_signature": "qp47z1FCfkCoT19WquzALKq4oB+nNYmC/m3dRH75b8Uj9Q7MI8oJsJYxyAxYdGyD9ovdjwgSXJtvGWpuGVJsxEbwQqnDLfHD4q6G8Ruiv/4d8Om8Wr4o6XXxFSJz36UeoczsjMwK+Pe1T0rOAiQ+/JgDoOGUl1MNpvbo7K49ApgbP0tiOeYgsoxr7lqPIlgDh/pUkdo5LXWJ2aZI/kZwMbFaD54S2vaWqzibVtN8CO5NajVtwoaUSmQ1i2dcf1x6y9TlCAaCHct0ynbIiBB1sE8T6j7n35nLKAi03bAKGl4aiTjJdwXLF3C1VrS5D9yMhJjYbLvCAd9RPpD41DncUI1BDiJjQO+sWf5FOeO1ESexjfaCE5XK8D6j+HCFb6JdgG2K3MP1YbBZkRlJNHzh5HuwjocuOrnwawBuwDKWhE6cNKwAtMVpy+1Ef2bTIArGZofDaV9G2KpuGARzpPm55lOiJHLb7qopgjD1t0n39Exii398JYMrA1S+S0wsuU0+",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "stamp_note": "Demo Coin",
+  "stamp_date": "2026-06-20",
+  "image_payload_schema": "omegachain-image-payload-v1"
+}
