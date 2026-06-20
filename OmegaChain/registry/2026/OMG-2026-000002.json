@@ -1,0 +1,19 @@
+{
+  "token_id": "OMG-2026-000002",
+  "title": "GUI Mint Sample",
+  "description": "A sample coin minted through the local OmegaChain GUI.",
+  "date_struck": "2026-06-19",
+  "issuer": "OmegaChain",
+  "coin_type": "commemorative",
+  "image_filename": "omg-2026-000002-coin.png",
+  "image_sha256": "4cf118d6cf45ec8f4f345a5ceba7aff3abe81eb41cd391e6e55da273075755b8",
+  "previous_hash": "51598145e3ac20411b54411b9e15de684852baf51c35b7279af53f147c3733bd",
+  "record_hash": "5dfb3644bc6503f5159ea95a4a5c51e6940b77feb336390bb7834c15cf7c7a69",
+  "issuer_signature": "r8WoeIV23X34LiwWkJ75HBSJpM+b0lphFPt/qCFjztKKEWbCXEs03aJ0jjWxJuA389eGS9QFnx/CEpHk2fTa4LFAgxzX7skupwJq4frstYOzon5OH+M/gUw+DTa7yRX75R+qf78Ssgev5QvH7h88K+UQBZkjLmbX/H4gdQQ2/Wm2cog+Y58yZUe1LhSD1yHez/JTxrfg95oFUsLWIV/eGv5XiV+kZoTbH3t4pqTjzjyy6H2S/8ljRtsGwIURGA89Xt1qjGA7rVewvc4K/VOnZVMJIqDPvrBEEjyDzNlHnrpTohi9nSloQxk2tfQ0/rE6iZJ/q44LSXjSZSiFsUX+MRwX9eh2NFhLr0SRwheKUHWU35rBWEp/SGSbBDmD0OUPSc09xA+jH8ak+Iomv5PZvXPglnEg9F2S7eAjKmmzhyw7UAYk+uixAS3bNVJEKfKXi+Z9+/8sZyOX3Q8QABBJpmNKlmqgCaTJFK1C3qFB4rhG15zZLBeuEwKvxJsi68aR",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "minted_to": "GUI Recipient",
+  "minted_for": "Local minting workflow",
+  "stamp_note": "Minted from the local GUI test",
+  "stamp_date": "2026-06-20",
+  "image_payload_schema": "omegachain-image-payload-v1"
+}

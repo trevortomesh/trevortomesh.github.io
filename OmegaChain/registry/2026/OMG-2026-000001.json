@@ -1,0 +1,19 @@
+{
+  "token_id": "OMG-2026-000001",
+  "title": "Genesis Challenge Coin",
+  "description": "The first OmegaChain commemorative digital challenge coin.",
+  "date_struck": "2026-06-19",
+  "issuer": "OmegaChain",
+  "coin_type": "commemorative",
+  "image_filename": "omg-2026-000001-coin.png",
+  "image_sha256": "845bff82206fe681bea323014d7a6561445c8d2fe7eb7b8d3bad8b58b7d7801b",
+  "previous_hash": "b42bedafa6b34f506b3088f573cfd84fc3a4cc832ca74797952fbfcf7240b8e3",
+  "record_hash": "51598145e3ac20411b54411b9e15de684852baf51c35b7279af53f147c3733bd",
+  "issuer_signature": "iIhtXmyJWpGXFnSt9vKNBYhGwgrSGPOLSqfa2UFAtq257nqNBiTvmprYCyEsbknzjjfPvSrJuZ6eycW+A139L7Km8ZzV2o3SGqOr8grFByraRr2a4aJ4sl0cXAzIXs+McDhzOPvYUTH30EHSsrm/sI9sPUw6SqCVlsvaEYxXr6oaa4QURO8ep11bJpxqBLCjC3O01TwFFFDYMwG18yhvoGK/NkLcneVhLjnQvD1IbVoc3o6v10hNSABAlgkeDrfFObMmriA8uirESFl0PNB7/mrK/YJ+ZZdpPZAznKwXFz6XUx8yHzaJmA4Nb5AP5Bu7YTKL31Na0dt2+TZUHy//fCQlGWAVzm7aAO6d206U03LH8Y0IGB+jErZGmlJjpDXO9H8xosWiWBAx3vloXqwAI8wvvsSeGHCHj9znIMYJ2tzSsWC3L8MvhaRgiXu55AK8lUsywODPxdVlRLCN4hO3bGTiTplIX4sq1vAklfY9yBzj2w3kzGXG83P8O/c2zmqx",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "image_payload_schema": "omegachain-image-payload-v1",
+  "minted_to": "Sample Recipient",
+  "minted_for": "Service and dedication",
+  "stamp_note": "Presented at OmegaChain launch",
+  "stamp_date": "2026-06-19"
+}

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OmegaChain</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f7f4;
+        --ink: #1e2528;
+        --muted: #607077;
+        --line: #cfd8d8;
+        --panel: #ffffff;
+        --accent: #245a7d;
+        --accent-dark: #173f5a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+        gap: 42px;
+        align-items: center;
+        padding: 42px 0 28px;
+        border-bottom: 1px solid var(--line);
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(3.2rem, 9vw, 7.2rem);
+        line-height: 0.9;
+        letter-spacing: 0;
+      }
+      .lede {
+        max-width: 680px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 1.15rem;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+      a.button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 6px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      a.secondary {
+        background: transparent;
+        color: var(--accent-dark);
+      }
+      .coin {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: contain;
+      }
+      .info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        padding: 28px 0 44px;
+      }
+      section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      @media (max-width: 760px) {
+        .hero,
+        .info {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="hero">
+        <div>
+          <h1>OmegaChain</h1>
+          <p class="lede">
+            A non-financial, hash-chain-backed registry for commemorative digital challenge coins.
+            Upload a baked OmegaChain PNG to verify its signed public record.
+          </p>
+          <div class="actions">
+            <a class="button" href="verify/">Verify a Coin</a>
+            <a class="button secondary" href="registry/index.json">View Registry Index</a>
+          </div>
+        </div>
+        <img class="coin" src="coins/omg-2026-000002-coin.png" alt="OmegaChain sample challenge coin" />
+      </div>
+
+      <div class="info">
+        <section>
+          <h2>Non-Financial</h2>
+          <p>OmegaChain tokens are commemorative digital challenge coins. They are not currency, securities, or assets.</p>
+        </section>
+        <section>
+          <h2>Static Verification</h2>
+          <p>The verifier runs in your browser using public JSON records, <code>public_key.pem</code>, and the uploaded PNG.</p>
+        </section>
+        <section>
+          <h2>Tamper Evidence</h2>
+          <p>Records are SHA-256 hashed, signed by the issuer, and linked through an append-only hash chain.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

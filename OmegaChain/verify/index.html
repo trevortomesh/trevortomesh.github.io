@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OmegaChain Verifier</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f7f4;
+        --ink: #1e2528;
+        --muted: #607077;
+        --line: #cfd8d8;
+        --panel: #ffffff;
+        --good: #176b43;
+        --bad: #a5282c;
+        --accent: #245a7d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      main {
+        width: min(880px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+      form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        margin: 24px 0;
+      }
+      input,
+      button {
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font: inherit;
+      }
+      input {
+        width: 100%;
+        padding: 0 12px;
+        background: #fff;
+      }
+      input[type="file"] {
+        padding: 9px 12px;
+      }
+      button {
+        padding: 0 18px;
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+        cursor: pointer;
+      }
+      section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+      }
+      .record-view {
+        display: grid;
+        grid-template-columns: minmax(180px, 280px) 1fr;
+        gap: 20px;
+        align-items: start;
+        margin-top: 20px;
+      }
+      .coin-image {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: contain;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f2f2ef;
+      }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0 12px;
+        border-radius: 999px;
+        font-weight: 700;
+      }
+      .valid {
+        color: var(--good);
+        background: #e7f4ed;
+      }
+      .invalid {
+        color: var(--bad);
+        background: #fae8e9;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 8px 16px;
+        margin: 20px 0 0;
+      }
+      dt {
+        color: var(--muted);
+      }
+      dd {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+      ul {
+        margin: 16px 0 0;
+        padding-left: 20px;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.92em;
+      }
+      @media (max-width: 640px) {
+        form,
+        dl,
+        .record-view {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>OmegaChain</h1>
+        <p>Non-financial digital challenge coin registry verifier.</p>
+      </header>
+
+      <form id="verify-form">
+        <input id="coin-file" type="file" accept="image/png" />
+        <button type="submit">Verify</button>
+      </form>
+
+      <section id="result">
+        <span class="status">Upload a coin PNG</span>
+      </section>
+    </main>
+
+    <script>
+      const encoder = new TextEncoder();
+      const result = document.querySelector("#result");
+      const fileInput = document.querySelector("#coin-file");
+
+      function canonicalize(value) {
+        if (value === null || typeof value !== "object") return JSON.stringify(value);
+        if (Array.isArray(value)) return `[${value.map(canonicalize).join(",")}]`;
+        return `{${Object.keys(value)
+          .sort()
+          .map((key) => `${JSON.stringify(key)}:${canonicalize(value[key])}`)
+          .join(",")}}`;
+      }
+
+      async function sha256Hex(text) {
+        const digest = await crypto.subtle.digest("SHA-256", encoder.encode(text));
+        return hexBytes(digest);
+      }
+
+      async function sha256HexBuffer(buffer) {
+        const digest = await crypto.subtle.digest("SHA-256", buffer);
+        return hexBytes(digest);
+      }
+
+      function hexBytes(buffer) {
+        return [...new Uint8Array(buffer)]
+          .map((byte) => byte.toString(16).padStart(2, "0"))
+          .join("");
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function bytesFromBits(bits) {
+        const bytes = [];
+        for (let i = 0; i < bits.length; i += 8) {
+          let byte = 0;
+          for (let j = 0; j < 8; j += 1) byte = (byte << 1) | bits[i + j];
+          bytes.push(byte);
+        }
+        return new Uint8Array(bytes);
+      }
+
+      function decodeUtf8(bytes) {
+        return new TextDecoder().decode(bytes);
+      }
+
+      async function extractImagePayloadFromFile(file) {
+        const image = new Image();
+        const url = URL.createObjectURL(file);
+        try {
+          image.src = url;
+          await image.decode();
+          const canvas = document.createElement("canvas");
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext("2d", { willReadFrequently: true });
+          context.drawImage(image, 0, 0);
+          const data = context.getImageData(0, 0, canvas.width, canvas.height).data;
+          const bits = [];
+          for (let i = 2; i < data.length; i += 4) bits.push(data[i] & 1);
+          const header = bytesFromBits(bits.slice(0, 88));
+          if (decodeUtf8(header.slice(0, 7)) !== "OMGCHN1") {
+            throw new Error("No OmegaChain hidden image payload found.");
+          }
+          const length =
+            (header[7] << 24) | (header[8] << 16) | (header[9] << 8) | header[10];
+          const payloadBytes = bytesFromBits(bits.slice(88, 88 + length * 8));
+          return JSON.parse(decodeUtf8(payloadBytes));
+        } finally {
+          URL.revokeObjectURL(url);
+        }
+      }
+
+      function hashInput(record) {
+        const copy = { ...record };
+        delete copy.record_hash;
+        delete copy.issuer_signature;
+        return copy;
+      }
+
+      function pemToArrayBuffer(pem) {
+        const base64 = pem.replace(/-----[^-]+-----/g, "").replace(/\s+/g, "");
+        const binary = atob(base64);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+        return bytes.buffer;
+      }
+
+      async function importPublicKey() {
+        const pem = await fetch("../public_key.pem").then((response) => {
+          if (!response.ok) throw new Error("Unable to load public_key.pem");
+          return response.text();
+        });
+        return crypto.subtle.importKey(
+          "spki",
+          pemToArrayBuffer(pem),
+          { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+          false,
+          ["verify"],
+        );
+      }
+
+      function signatureBytes(base64) {
+        const binary = atob(base64 || "");
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+        return bytes;
+      }
+
+      async function loadJson(path) {
+        const response = await fetch(path, { cache: "no-store" });
+        if (!response.ok) throw new Error(`Unable to load ${path}`);
+        return response.json();
+      }
+
+      function tokenPath(tokenId) {
+        const match = tokenId.match(/^OMG-(\d{4})-\d{6}$/);
+        if (!match) throw new Error("Token ID must look like OMG-2026-000001");
+        return `../registry/${match[1]}/${tokenId}.json`;
+      }
+
+      async function verify(file) {
+        const uploadedBuffer = await file.arrayBuffer();
+        const uploadedHash = await sha256HexBuffer(uploadedBuffer);
+        const payload = await extractImagePayloadFromFile(file);
+        const tokenId = payload.token_id;
+        const record = await loadJson(tokenPath(tokenId));
+        const expectedHash = await sha256Hex(canonicalize(hashInput(record)));
+        const hashValid = expectedHash === record.record_hash;
+        const key = await importPublicKey();
+        const signatureValid = await crypto.subtle.verify(
+          "RSASSA-PKCS1-v1_5",
+          key,
+          signatureBytes(record.issuer_signature),
+          encoder.encode(record.record_hash),
+        );
+        const index = await loadJson("../registry/index.json");
+        const position = index.records.findIndex((entry) => entry.token_id === tokenId);
+        const previousEntry = position > 0 ? index.records[position - 1] : null;
+        const previousValid = Boolean(previousEntry) && record.previous_hash === previousEntry.record_hash;
+        const imageValid = uploadedHash === record.image_sha256;
+        const publicKeyResponse = await fetch("../public_key.pem", { cache: "no-store" });
+        const publicKeyHash = await sha256HexBuffer(await publicKeyResponse.arrayBuffer());
+        const imagePayloadValid =
+          payload.schema === record.image_payload_schema &&
+          payload.token_id === record.token_id &&
+          payload.verification_url === record.verification_url &&
+          payload.issuer === record.issuer &&
+          payload.previous_hash === record.previous_hash &&
+          payload.public_key_sha256 === publicKeyHash &&
+          (payload.minted_to || "") === (record.minted_to || "") &&
+          (payload.minted_for || "") === (record.minted_for || "") &&
+          (payload.stamp_note || "") === (record.stamp_note || "") &&
+          (payload.stamp_date || "") === (record.stamp_date || "");
+        const previewUrl = URL.createObjectURL(file);
+        return { record, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl };
+      }
+
+      function render(details) {
+        const { record, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl } = details;
+        const ok = hashValid && signatureValid && previousValid && imageValid && imagePayloadValid;
+        result.innerHTML = `
+          <span class="status ${ok ? "valid" : "invalid"}">${ok ? "Verified" : "Invalid"}</span>
+          <div class="record-view">
+            <img class="coin-image" src="${escapeHtml(previewUrl)}" alt="${escapeHtml(record.title)}" />
+            <div>
+              <dl>
+                <dt>Token ID</dt><dd><code>${escapeHtml(record.token_id)}</code></dd>
+                <dt>Title</dt><dd>${escapeHtml(record.title)}</dd>
+                <dt>Description</dt><dd>${escapeHtml(record.description)}</dd>
+                <dt>Date struck</dt><dd>${escapeHtml(record.date_struck)}</dd>
+                ${record.minted_to ? `<dt>Minted to</dt><dd>${escapeHtml(record.minted_to)}</dd>` : ""}
+                ${record.minted_for ? `<dt>Minted for</dt><dd>${escapeHtml(record.minted_for)}</dd>` : ""}
+                ${record.stamp_note ? `<dt>Stamp note</dt><dd>${escapeHtml(record.stamp_note)}</dd>` : ""}
+                ${record.stamp_date ? `<dt>Stamp date</dt><dd>${escapeHtml(record.stamp_date)}</dd>` : ""}
+                <dt>Issuer</dt><dd>${escapeHtml(record.issuer)}</dd>
+                <dt>Coin type</dt><dd>${escapeHtml(record.coin_type)}</dd>
+                <dt>Record hash</dt><dd><code>${escapeHtml(record.record_hash)}</code></dd>
+                <dt>Image hash</dt><dd><code>${escapeHtml(record.image_sha256)}</code></dd>
+              </dl>
+              <ul>
+                <li>Record hash: ${hashValid ? "valid" : "invalid"}</li>
+                <li>Issuer signature: ${signatureValid ? "valid" : "invalid"}</li>
+                <li>Previous hash link: ${previousValid ? "valid" : "invalid"}</li>
+                <li>Image hash: ${imageValid ? "valid" : "invalid"}</li>
+                <li>Hidden image payload: ${imagePayloadValid ? "valid" : "invalid"}</li>
+              </ul>
+            </div>
+          </div>
+        `;
+      }
+
+      document.querySelector("#verify-form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        result.innerHTML = `<span class="status">Verifying...</span>`;
+        try {
+          const file = fileInput.files[0];
+          if (!file) throw new Error("Choose a PNG coin image to verify.");
+          render(await verify(file));
+        } catch (error) {
+          result.innerHTML = `<span class="status invalid">Invalid</span><p>${error.message}</p>`;
+        }
+      });
+    </script>
+  </body>
+</html>
