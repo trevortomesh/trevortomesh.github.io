@@ -94,21 +94,21 @@
         color: #1e2528;
       }
       .coin::after {
-        content: "UPLOAD TO VERIFY";
+        content: "VERIFIABLE KEEPSAKE";
         position: absolute;
-        bottom: 19%;
+        bottom: 22%;
         left: 50%;
         transform: translateX(-50%);
-        width: min(76%, 320px);
-        min-height: 46px;
-        display: grid;
-        place-items: center;
-        border: 3px solid #4c5557;
-        border-radius: 8px;
-        background: #f5f2e7;
+        width: max-content;
+        max-width: 78%;
         color: #1e2528;
-        font-weight: 800;
+        font-size: clamp(0.86rem, 2.2vw, 1.1rem);
+        font-weight: 900;
         letter-spacing: 0;
+        text-align: center;
+        text-shadow:
+          0 1px 0 rgb(255 255 255 / 0.62),
+          0 -1px 0 rgb(0 0 0 / 0.22);
       }
       .info {
         display: grid;
