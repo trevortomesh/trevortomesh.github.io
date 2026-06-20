@@ -1,0 +1,22 @@
+{
+  "token_id": "OMG-2026-000004",
+  "title": "Custom Text Coin",
+  "description": "A sample coin with custom rim and stamp text.",
+  "date_struck": "2026-06-19",
+  "issuer": "OmegaChain",
+  "coin_type": "commemorative",
+  "image_filename": "omg-2026-000004-coin.png",
+  "image_sha256": "8ae0d7314daa04cd9a0a8aa8e492f9408410ffd543011020c50b78468275857f",
+  "previous_hash": "0eb6f2ce0ef78a29582e2422243d72aab2843c0b45816acc4bfdfedba420d8a7",
+  "record_hash": "d7f78f5c2e3e8f127569d3cb2a4160fb857cc7685a81feddece4de326a7dad02",
+  "issuer_signature": "nAsEZLBWap0OUQZV0eeERyOnjD8YhRWjs/krqOyncycUw8P9YKF5WkBQ0OaSrEgEX0IsHEPCi5GBRIsMn5f981xxt4TiopJTz96hCi/kKfjF78BpjhAt+sEAJqhgG/LkpGXegFkb/4fQGw5kmfNVAI9l5AHDJX3j72pPGaQkgvXfpyeZFnCToKk7m+ddircEO0bnnK+z7bwb1TOu7d+MnThSfvSzIB2k50T6GDTHkamB9PGyDn6yhd5e3NQ1olY38et01dQGiv4ifjZf1fRSh2vQudYD62xaXTquU9sFHBfF0NiskvzyAnPSxTXwLKtPVR+dxCGmxA0hAZjjZdvlZbS/Pyg/RuBsnipVEPMPVE5vitG2aM/z2t4wy9HJal/AxHZnlJUe2uK8OQEbtvAk+xMEHLMdxPiiagpDTfT6IrQX8byE+FWduMFJGFyv64lV6nEP4lUwKBwa/orn1yDcEhavgwW+Xef+SDOxsuDNUXXoXRDGL4UA9b4cmSaDlVms",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "minted_to": "Text Recipient",
+  "minted_for": "Custom text validation",
+  "stamp_note": "Testing custom text",
+  "coin_top_text": "Honor Coin",
+  "coin_bottom_text": "Carry The Light",
+  "stamp_label": "Awarded To",
+  "stamp_date": "2026-06-20",
+  "image_payload_schema": "omegachain-image-payload-v1"
+}

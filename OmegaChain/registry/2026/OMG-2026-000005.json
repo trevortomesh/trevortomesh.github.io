@@ -1,0 +1,18 @@
+{
+  "token_id": "OMG-2026-000005",
+  "title": "OmegaChain Challenge Coin",
+  "description": "A commemorative OmegaChain digital challenge coin.",
+  "date_struck": "2026-06-20",
+  "issuer": "OmegaChain",
+  "coin_type": "commemorative",
+  "image_filename": "omg-2026-000005-coin.png",
+  "image_sha256": "d4e1621ff31c59ca36413bc0e57f280c9ada4392fde835d214d81cfdf38ca90d",
+  "previous_hash": "d7f78f5c2e3e8f127569d3cb2a4160fb857cc7685a81feddece4de326a7dad02",
+  "record_hash": "3507d830d7d25a016d0c26b29293dbe5aa2187f4174a090107f760dc3211d7f5",
+  "issuer_signature": "T2Eeldnk8cUex23GbGRRVfOhdquPNC1ffC3h8dVlT4rihVEq2NzBmyq2HSUu+KGqmn8X3JdIcT0qR8WSXfTBYS5VpX6NRarURXjGTEucnl1762aQOCbA89g01A5zTSeynHGpqpQpy7McioLt+BauQU5pJ+Z0eYqTzMnd9V5XT6te3O5gK+1K4QvrLu4EigH2HOZwhLnXWTPaMOALtejjwt22EqzubP8NaRIfeRqXJEl3MKKPsgNjdRRCFagjT7Np5vB+EqF5WwlxOh/2yWwYbTEhcnbD6DaRdpGizwm9JuSK25nKFiyCqIXSKCL63xrELDE4qoVN9iE7hao8KPM0QcgevVrRRYZkMTA9DIdbQ4bRPyXzxxQofGy6SPswc4Ncq3mp0otVfodpw/WrO9d5YJpmeT8G44P0HQegFrL5TxZeALXIUqIPyGFSGh62DRdiFrTgirdqoLoOkCekknu68wx+vy/HCpfLmShAIfvTCwLPlVqDfd3IEEOngLMk76AI",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "coin_top_text": "OmegaChain",
+  "coin_bottom_text": "Test",
+  "stamp_label": "Minted To",
+  "image_payload_schema": "omegachain-image-payload-v1"
+}

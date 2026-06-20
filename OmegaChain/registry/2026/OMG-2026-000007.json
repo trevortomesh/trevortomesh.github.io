@@ -1,0 +1,19 @@
+{
+  "token_id": "OMG-2026-000007",
+  "title": "Blank Text Coin",
+  "description": "A sample coin with no top or bottom text fields.",
+  "date_struck": "2026-06-19",
+  "issuer": "OmegaChain",
+  "coin_type": "commemorative",
+  "image_filename": "omg-2026-000007-coin.png",
+  "image_sha256": "20ee55c82f69e47b7de20835b099db5c699f8309d88d5c605b4152173e0ba8c4",
+  "previous_hash": "c21f5c0c4b6be82a8d95f684bce6946926bf206582ae56e365fc71b299548c67",
+  "record_hash": "fc4a87c64ad6e10e6f790d13defd850b819a3db9f7f939573b109a0572f562db",
+  "issuer_signature": "DfjLUXLhiBLuh0mKy7SPRz7v2lrkmCkWyUOXRIpQkz9w2kpwzWV20YTa3Nl6RwbWsxhJrAPF/AvKcGVdChVl5kAFylFgMiAANQ1idcl2rNLQ9ULTO27EuKOpKMRbm1EDVEvX3K0uYQW7lax6rNhlimlCOHS5LMoEAIEHW0ZF5UvlrwqAC3slIueok4QKPkkkHKpQuMspMEALDkNoiSIh/umVYDlo0fPodMVasiE1qTo0FkzCOswWA/fICKWahqylLN4eeRsVtsZD3DRtjEdxKyxmKMomIT2UHm2qDPwk/WHnVRor3IFLT2EGS2lgehFLfqVx6oRJXPYFjJRYKXSY2awtwHqMpFEvFI4ju9WEB/NDsKGRIkzI9Aw8v4ssB8HiM5z54cLhMU+CUaT/VWcyilr9+MVWlKRTAlgUWOXjsV62Uvr+xcND/UbOyUJif8MUE3gUw9zcqWm9yYDUYsjJI/AGwdOABZRptttGYJxHbHNRPMyXZTRxxw/ifTLrU5oM",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "minted_to": "Blank Text Recipient",
+  "minted_for": "Optional text validation",
+  "stamp_label": "Presented To",
+  "stamp_date": "2026-06-20",
+  "image_payload_schema": "omegachain-image-payload-v1"
+}

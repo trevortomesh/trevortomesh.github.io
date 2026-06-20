@@ -80,6 +80,25 @@
         border-radius: 8px;
         padding: 20px;
       }
+      .intro {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+      .intro h2 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        line-height: 1.2;
+      }
+      .intro p {
+        font-size: 0.95rem;
+      }
+      .note {
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
       .record-view {
         display: grid;
         grid-template-columns: minmax(180px, 280px) 1fr;
@@ -135,6 +154,7 @@
       @media (max-width: 640px) {
         form,
         dl,
+        .intro,
         .record-view {
           grid-template-columns: 1fr;
         }
@@ -145,8 +165,23 @@
     <main>
       <header>
         <h1>OmegaChain</h1>
-        <p>Non-financial digital challenge coin registry verifier.</p>
+        <p>Verify a unique digital challenge coin against its signed public record.</p>
       </header>
+
+      <div class="intro">
+        <section>
+          <h2>What These Are</h2>
+          <p>OmegaChain coins are unique, non-financial digital challenge coins. They are commemorative keepsakes, not cryptocurrency, NFTs, securities, or investments.</p>
+        </section>
+        <section>
+          <h2>Why I Make Them</h2>
+          <p>I designed these coins as a personal way to thank people who support my work, including Ko-fi donors, and to mark that appreciation with something verifiable.</p>
+        </section>
+        <section>
+          <h2>How They Verify</h2>
+          <p>Each PNG contains hidden verification data. This page checks it against a public JSON registry, issuer signature, image hash, and append-only hash chain.</p>
+        </section>
+      </div>
 
       <form id="verify-form">
         <input id="coin-file" type="file" accept="image/png" />
@@ -155,6 +190,7 @@
 
       <section id="result">
         <span class="status">Upload a coin PNG</span>
+        <p class="note">Verification runs entirely in your browser. The uploaded image is not sent to a server by this static page.</p>
       </section>
     </main>
 
@@ -318,7 +354,10 @@
           (payload.minted_to || "") === (record.minted_to || "") &&
           (payload.minted_for || "") === (record.minted_for || "") &&
           (payload.stamp_note || "") === (record.stamp_note || "") &&
-          (payload.stamp_date || "") === (record.stamp_date || "");
+          (payload.stamp_date || "") === (record.stamp_date || "") &&
+          (payload.coin_top_text || "") === (record.coin_top_text || "") &&
+          (payload.coin_bottom_text || "") === (record.coin_bottom_text || "") &&
+          (payload.stamp_label || "") === (record.stamp_label || "");
         const previewUrl = URL.createObjectURL(file);
         return { record, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl };
       }
@@ -340,6 +379,9 @@
                 ${record.minted_for ? `<dt>Minted for</dt><dd>${escapeHtml(record.minted_for)}</dd>` : ""}
                 ${record.stamp_note ? `<dt>Stamp note</dt><dd>${escapeHtml(record.stamp_note)}</dd>` : ""}
                 ${record.stamp_date ? `<dt>Stamp date</dt><dd>${escapeHtml(record.stamp_date)}</dd>` : ""}
+                ${record.coin_top_text ? `<dt>Top text</dt><dd>${escapeHtml(record.coin_top_text)}</dd>` : ""}
+                ${record.coin_bottom_text ? `<dt>Bottom text</dt><dd>${escapeHtml(record.coin_bottom_text)}</dd>` : ""}
+                ${record.stamp_label ? `<dt>Stamp label</dt><dd>${escapeHtml(record.stamp_label)}</dd>` : ""}
                 <dt>Issuer</dt><dd>${escapeHtml(record.issuer)}</dd>
                 <dt>Coin type</dt><dd>${escapeHtml(record.coin_type)}</dd>
                 <dt>Record hash</dt><dd><code>${escapeHtml(record.record_hash)}</code></dd>
