@@ -76,7 +76,39 @@
       .coin {
         width: 100%;
         aspect-ratio: 1;
-        object-fit: contain;
+        border-radius: 50%;
+        border: 18px solid #b8ad2d;
+        background:
+          radial-gradient(circle at center, #f6f6f2 0 30%, transparent 31%),
+          radial-gradient(circle at center, #123946 0 48%, #d9dde0 49% 66%, #b8ad2d 67%);
+        box-shadow: 0 30px 60px rgb(30 37 40 / 0.18);
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .coin::before {
+        content: "Ω";
+        font-size: clamp(7rem, 18vw, 13rem);
+        line-height: 1;
+        color: #1e2528;
+      }
+      .coin::after {
+        content: "UPLOAD TO VERIFY";
+        position: absolute;
+        bottom: 19%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(76%, 320px);
+        min-height: 46px;
+        display: grid;
+        place-items: center;
+        border: 3px solid #4c5557;
+        border-radius: 8px;
+        background: #f5f2e7;
+        color: #1e2528;
+        font-weight: 800;
+        letter-spacing: 0;
       }
       .info {
         display: grid;
@@ -126,7 +158,7 @@
             <a class="button secondary" href="registry/index.json">View Registry Index</a>
           </div>
         </div>
-        <img class="coin" src="coins/omg-2026-000002-coin.png" alt="OmegaChain sample challenge coin" />
+        <div class="coin" role="img" aria-label="OmegaChain medallion graphic"></div>
       </div>
 
       <div class="info">
