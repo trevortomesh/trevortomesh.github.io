@@ -113,7 +113,7 @@
       }
       .info {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 22px;
         padding: 28px 0 44px;
       }
@@ -141,6 +141,11 @@
         }
         .hero {
           min-height: auto;
+        }
+      }
+      @media (min-width: 761px) and (max-width: 1040px) {
+        .info {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
     </style>
@@ -173,8 +178,12 @@
           <p>The verifier runs in your browser using public JSON records, <code>public_key.pem</code>, and the coin PNG you upload.</p>
         </section>
         <section>
-          <h2>Signed Keepsakes</h2>
-          <p>Each coin has hidden verification data, a SHA-256 image hash, an issuer signature, and a place in an append-only hash chain.</p>
+          <h2>Encrypted Details</h2>
+          <p>Readable coin details are encrypted in the registry JSON and unlocked locally by a key hidden in the matching coin PNG.</p>
+        </section>
+        <section>
+          <h2>Hash Chained</h2>
+          <p>Each coin has a SHA-256 image hash, an issuer signature, and a place in an append-only hash chain.</p>
         </section>
       </div>
     </main>

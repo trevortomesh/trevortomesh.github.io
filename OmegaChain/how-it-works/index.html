@@ -211,15 +211,15 @@
           <div class="card">
             <h3>Each coin has a public record</h3>
             <p>
-              A token record identifies the coin and carries the verification hashes, signature,
-              encrypted coin details, and encrypted recipient or stamp fields.
+              A token record identifies the coin and carries verification hashes, the issuer
+              signature, and encrypted coin details. The readable details are stored as ciphertext.
             </p>
           </div>
           <div class="card">
-            <h3>Each PNG carries hidden verification data</h3>
+            <h3>Each PNG carries the unlock key</h3>
             <p>
               The minted coin image contains a small hidden payload in its pixels. The verifier
-              extracts that payload from the uploaded PNG and uses it to find the matching public record.
+              extracts that payload from the uploaded PNG and uses it to decrypt the matching public record.
             </p>
           </div>
           <div class="card">
@@ -240,6 +240,79 @@
       </section>
 
       <section>
+        <h2>Encrypted Registry Details</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>What the JSON shows</h3>
+            <p>
+              The public JSON keeps structural verification data readable: token ID, image filename,
+              image hash, previous record hash, record hash, issuer signature, verification URL, and
+              encryption metadata.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What the JSON hides</h3>
+            <p>
+              Human-readable details such as title, description, issuer, coin type, recipient,
+              purpose, note, and date are encrypted into <code>private_fields_ciphertext</code>.
+              Browsing the registry does not reveal those values.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What the coin provides</h3>
+            <p>
+              The PNG contains a hidden <code>private_fields_key</code>. When the coin is uploaded,
+              the browser uses that key with AES-GCM to decrypt the public JSON locally.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What gets displayed</h3>
+            <p>
+              After decryption, the verifier checks the decrypted details against
+              <code>private_fields_sha256</code>. If the checks pass, it displays the coin details on
+              the verify page.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Hash Chain</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Canonical record hash</h3>
+            <p>
+              Each JSON record is canonicalized into a stable key order, then hashed with SHA-256.
+              The <code>record_hash</code> and <code>issuer_signature</code> fields are excluded from
+              that hash so the record can contain its own hash and signature.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Previous hash link</h3>
+            <p>
+              Every token record stores the previous record's <code>record_hash</code> in
+              <code>previous_hash</code>. That means coin 2 depends on coin 1, coin 3 depends on coin
+              2, and so on.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Tamper evidence</h3>
+            <p>
+              If someone edits an older JSON file, its <code>record_hash</code> changes. The next
+              record's <code>previous_hash</code> no longer matches, so the chain check fails.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Coin-bound readable data</h3>
+            <p>
+              The encrypted details live in the JSON, but they are only readable when paired with
+              the appropriate coin PNG because the decrypt key is hidden inside that coin.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
         <h2>Minting Flow</h2>
         <div class="flow">
           <div class="flow-item">
@@ -248,7 +321,7 @@
               <h3>Create the coin locally</h3>
               <p>
                 The minting GUI runs on the issuer's computer. It accepts the artwork, title,
-                description, recipient text, coin text, and other commemorative fields.
+                description, recipient text, and other commemorative fields.
               </p>
             </div>
           </div>
@@ -270,8 +343,8 @@
               <p>
                 The PNG gets a SHA-256 image hash. The JSON token record is canonicalized, then
                 hashed with SHA-256 while excluding <code>record_hash</code> and <code>issuer_signature</code>.
-                Human-readable coin details, recipient text, and stamp details are encrypted before
-                the public record is signed. The decrypt key is hidden in the minted PNG.
+                Human-readable coin details, recipient text, and stamp details are encrypted with
+                AES-GCM before the public record is signed. The decrypt key is hidden in the minted PNG.
               </p>
             </div>
           </div>
