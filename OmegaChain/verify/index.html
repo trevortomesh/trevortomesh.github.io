@@ -198,6 +198,15 @@
       const encoder = new TextEncoder();
       const result = document.querySelector("#result");
       const fileInput = document.querySelector("#coin-file");
+      const privateFieldNames = [
+        "minted_to",
+        "minted_for",
+        "stamp_note",
+        "stamp_date",
+        "coin_top_text",
+        "coin_bottom_text",
+        "stamp_label",
+      ];
 
       function canonicalize(value) {
         if (value === null || typeof value !== "object") return JSON.stringify(value);
@@ -281,6 +290,22 @@
         return copy;
       }
 
+      function privateFieldsFromPayload(payload) {
+        const fields = {};
+        for (const field of privateFieldNames) {
+          if (payload[field]) fields[field] = payload[field];
+        }
+        return fields;
+      }
+
+      async function privateFieldsHash(payload) {
+        if (!payload.private_fields_salt) return "";
+        return sha256Hex(canonicalize({
+          fields: privateFieldsFromPayload(payload),
+          salt: payload.private_fields_salt,
+        }));
+      }
+
       function pemToArrayBuffer(pem) {
         const base64 = pem.replace(/-----[^-]+-----/g, "").replace(/\s+/g, "");
         const binary = atob(base64);
@@ -351,27 +376,32 @@
         const imageValid = uploadedHash === record.image_sha256;
         const publicKeyResponse = await fetch("../public_key.pem", { cache: "no-store" });
         const publicKeyHash = await sha256HexBuffer(await publicKeyResponse.arrayBuffer());
-        const imagePayloadValid =
+        const publicPayloadValid =
           payload.schema === record.image_payload_schema &&
           payload.token_id === record.token_id &&
           payload.verification_url === record.verification_url &&
           payload.issuer === record.issuer &&
           payload.previous_hash === record.previous_hash &&
-          payload.public_key_sha256 === publicKeyHash &&
-          (payload.minted_to || "") === (record.minted_to || "") &&
-          (payload.minted_for || "") === (record.minted_for || "") &&
-          (payload.stamp_note || "") === (record.stamp_note || "") &&
-          (payload.stamp_date || "") === (record.stamp_date || "") &&
-          (payload.coin_top_text || "") === (record.coin_top_text || "") &&
-          (payload.coin_bottom_text || "") === (record.coin_bottom_text || "") &&
-          (payload.stamp_label || "") === (record.stamp_label || "");
+          payload.public_key_sha256 === publicKeyHash;
+        let privatePayloadValid = true;
+        if (record.private_fields_sha256) {
+          privatePayloadValid =
+            record.private_fields_schema === "omegachain-private-fields-v1" &&
+            (await privateFieldsHash(payload)) === record.private_fields_sha256;
+        } else {
+          for (const field of privateFieldNames) {
+            if ((payload[field] || "") !== (record[field] || "")) privatePayloadValid = false;
+          }
+        }
+        const imagePayloadValid = publicPayloadValid && privatePayloadValid;
         const previewUrl = URL.createObjectURL(file);
-        return { record, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl };
+        return { record, payload, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl };
       }
 
       function render(details) {
-        const { record, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl } = details;
+        const { record, payload, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl } = details;
         const ok = hashValid && signatureValid && previousValid && imageValid && imagePayloadValid;
+        const privateDetails = record.private_fields_sha256 && imagePayloadValid ? payload : record;
         result.innerHTML = `
           <span class="status ${ok ? "valid" : "invalid"}">${ok ? "Verified" : "Invalid"}</span>
           <div class="record-view">
@@ -382,13 +412,13 @@
                 <dt>Title</dt><dd>${escapeHtml(record.title)}</dd>
                 <dt>Description</dt><dd>${escapeHtml(record.description)}</dd>
                 <dt>Date struck</dt><dd>${escapeHtml(record.date_struck)}</dd>
-                ${record.minted_to ? `<dt>Minted to</dt><dd>${escapeHtml(record.minted_to)}</dd>` : ""}
-                ${record.minted_for ? `<dt>Minted for</dt><dd>${escapeHtml(record.minted_for)}</dd>` : ""}
-                ${record.stamp_note ? `<dt>Stamp note</dt><dd>${escapeHtml(record.stamp_note)}</dd>` : ""}
-                ${record.stamp_date ? `<dt>Stamp date</dt><dd>${escapeHtml(record.stamp_date)}</dd>` : ""}
-                ${record.coin_top_text ? `<dt>Top text</dt><dd>${escapeHtml(record.coin_top_text)}</dd>` : ""}
-                ${record.coin_bottom_text ? `<dt>Bottom text</dt><dd>${escapeHtml(record.coin_bottom_text)}</dd>` : ""}
-                ${record.stamp_label ? `<dt>Stamp label</dt><dd>${escapeHtml(record.stamp_label)}</dd>` : ""}
+                ${privateDetails.minted_to ? `<dt>Minted to</dt><dd>${escapeHtml(privateDetails.minted_to)}</dd>` : ""}
+                ${privateDetails.minted_for ? `<dt>Minted for</dt><dd>${escapeHtml(privateDetails.minted_for)}</dd>` : ""}
+                ${privateDetails.stamp_note ? `<dt>Stamp note</dt><dd>${escapeHtml(privateDetails.stamp_note)}</dd>` : ""}
+                ${privateDetails.stamp_date ? `<dt>Stamp date</dt><dd>${escapeHtml(privateDetails.stamp_date)}</dd>` : ""}
+                ${privateDetails.coin_top_text ? `<dt>Top text</dt><dd>${escapeHtml(privateDetails.coin_top_text)}</dd>` : ""}
+                ${privateDetails.coin_bottom_text ? `<dt>Bottom text</dt><dd>${escapeHtml(privateDetails.coin_bottom_text)}</dd>` : ""}
+                ${privateDetails.stamp_label ? `<dt>Stamp label</dt><dd>${escapeHtml(privateDetails.stamp_label)}</dd>` : ""}
                 <dt>Issuer</dt><dd>${escapeHtml(record.issuer)}</dd>
                 <dt>Coin type</dt><dd>${escapeHtml(record.coin_type)}</dd>
                 <dt>Record hash</dt><dd><code>${escapeHtml(record.record_hash)}</code></dd>

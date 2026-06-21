@@ -1,0 +1,17 @@
+{
+  "token_id": "OMG-2026-000011",
+  "title": "Test Coin",
+  "description": "test coin",
+  "date_struck": "2026-06-21",
+  "issuer": "Trevor Tomesh",
+  "coin_type": "test",
+  "image_filename": "omg-2026-000011-coin.png",
+  "image_sha256": "8dcad9be7e947424f5155b1a213f5639c0af8472ca0bbd12319c04952be3df80",
+  "previous_hash": "f474ef0172bd9dfd93c40d04e853f48e96f05fca5eacf55acf59a68e8bfac5b8",
+  "record_hash": "3e27830a99f741cfe42174c25f434dfe9130a2281d0fed7de04e3e759721de36",
+  "issuer_signature": "iEOk3AfDC9F7nJ+c6lE4ph/3iTj4BpwzgksONhQ1f8kHW1ESL/64GCoh0mBDoRAjoin1cdVjYM/GIcjiwRsM/XkdOhhrDqS0FstqI4hF1fLmzbbrmk8yfkdfz6RJrHCF1Ot8cmkJympzROjGhEkMsZooVUOqBSL9u4imnji2pCKa1Ey1xZG/JjaM0VPzv+SoT/TypDi/JqfX2HPEbD8nmmaIFgrySf4vpof/huqxQXX8GP/338pDa1gWnxjoeRM7UOampNvdgeCeC56wq8ISLRsmXYATBM8hnwPZBDVYW8nyAxeJWxorVoBZUaG0nwly+Nz2cOQngSowsIV+wW7KjvM/auFilklwcXNiXFxXK8u8mL+9ujXGrMOkGrTKTHJfQP2rxcWCqnCNVl1Pb96cpqzX0I+2Rbb9pE2VZEz0glb8pnNtgNcZN1N90qK4rQQfazdbYlSwtMlzo1vo0iX5FBdBz/syiY0zUyIfoDNiwfmSQCRCn6QtUO9lN/gIjlv2",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "image_payload_schema": "omegachain-image-payload-v1",
+  "private_fields_schema": "omegachain-private-fields-v1",
+  "private_fields_sha256": "4337a789b4bd960f33113184c0a1907719267b7638defcaf3a6132ccc3d95ea3"
+}

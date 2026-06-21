@@ -269,6 +269,8 @@
               <p>
                 The PNG gets a SHA-256 image hash. The JSON token record is canonicalized, then
                 hashed with SHA-256 while excluding <code>record_hash</code> and <code>issuer_signature</code>.
+                Recipient and stamp details are replaced with a salted commitment hash before the
+                public record is signed.
               </p>
             </div>
           </div>
@@ -288,7 +290,9 @@
               <h3>Publish only the public records</h3>
               <p>
                 The public website receives the verifier page, public key, genesis record, and token
-                JSON records. The minted coin PNGs remain private unless the issuer gives one to a recipient.
+                JSON records. The public JSON can prove redacted details match the coin PNG without
+                publishing those details. The minted coin PNGs remain private unless the issuer gives
+                one to a recipient.
               </p>
             </div>
           </div>
@@ -304,6 +308,7 @@
           <li>It recalculates the canonical record hash and compares it to the published <code>record_hash</code>.</li>
           <li>It verifies the issuer signature using the published public key.</li>
           <li>It hashes the uploaded PNG and checks that hash against <code>image_sha256</code>.</li>
+          <li>It checks any hidden recipient or stamp details against the public salted commitment hash.</li>
           <li>It loads the previous public record and checks that <code>previous_hash</code> links correctly.</li>
           <li>If all checks pass, the page displays <strong>Verified</strong>.</li>
         </ol>
@@ -347,6 +352,7 @@
         <ul>
           <li>It does not make the coin money, an investment, or a tradeable asset.</li>
           <li>It does not prevent someone from copying the image file.</li>
+          <li>It does not encrypt details from someone who already has the minted PNG.</li>
           <li>It does not require a blockchain, mining, wallets, gas fees, or a token marketplace.</li>
           <li>It does not publish private keys or store recipients' uploaded coin images on the website.</li>
         </ul>
