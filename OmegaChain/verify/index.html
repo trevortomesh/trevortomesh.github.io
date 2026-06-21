@@ -208,9 +208,6 @@
         "minted_for",
         "stamp_note",
         "stamp_date",
-        "coin_top_text",
-        "coin_bottom_text",
-        "stamp_label",
       ];
 
       function canonicalize(value) {
@@ -471,9 +468,6 @@
                 ${privateDetails.minted_for ? `<dt>Minted for</dt><dd>${escapeHtml(privateDetails.minted_for)}</dd>` : ""}
                 ${privateDetails.stamp_note ? `<dt>Stamp note</dt><dd>${escapeHtml(privateDetails.stamp_note)}</dd>` : ""}
                 ${privateDetails.stamp_date ? `<dt>Stamp date</dt><dd>${escapeHtml(privateDetails.stamp_date)}</dd>` : ""}
-                ${privateDetails.coin_top_text ? `<dt>Top text</dt><dd>${escapeHtml(privateDetails.coin_top_text)}</dd>` : ""}
-                ${privateDetails.coin_bottom_text ? `<dt>Bottom text</dt><dd>${escapeHtml(privateDetails.coin_bottom_text)}</dd>` : ""}
-                ${privateDetails.stamp_label ? `<dt>Stamp label</dt><dd>${escapeHtml(privateDetails.stamp_label)}</dd>` : ""}
                 ${privateDetails.issuer ? `<dt>Issuer</dt><dd>${escapeHtml(privateDetails.issuer)}</dd>` : ""}
                 ${privateDetails.coin_type ? `<dt>Coin type</dt><dd>${escapeHtml(privateDetails.coin_type)}</dd>` : ""}
                 <dt>Record hash</dt><dd><code>${escapeHtml(record.record_hash)}</code></dd>
