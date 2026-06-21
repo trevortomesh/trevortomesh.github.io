@@ -1,15 +1,17 @@
 {
   "token_id": "OMG-2026-000003",
-  "title": "OmegaChain Challenge Coin",
-  "description": "A commemorative OmegaChain digital challenge coin.",
-  "date_struck": "2026-06-20",
-  "issuer": "OmegaChain",
-  "coin_type": "commemorative",
   "image_filename": "omg-2026-000003-coin.png",
-  "image_sha256": "e5278290414187cf1b271b24ea7b78a86570aa6adeb316c03af6e8d12f9d1cb1",
-  "previous_hash": "5dfb3644bc6503f5159ea95a4a5c51e6940b77feb336390bb7834c15cf7c7a69",
-  "record_hash": "0eb6f2ce0ef78a29582e2422243d72aab2843c0b45816acc4bfdfedba420d8a7",
-  "issuer_signature": "HlvxLXNZs2j58ZNvi4qfTz8rFmFdTg90xRnSrXtP5YCe6aSmp8CixtZFgBFf0htyAXkX8mKZ8LYPpcdY3gFJDzRiP9tYR78+8PNOJEtGdibR+SNgpy54X4pjemWugss8Rr4A8lyhoWfdbvuju49Ee7r2MG2w/R+W3LuKhZdv5QZqp1eXl/XnMXPyJnWI7Sz011WwKfxCr351Eyz3eDUC4xtBWlNWSGSXx1Q7Q2xYt9YgqRG0rJZNb/+ovubDunhsvj8e3JJG8H3PP8olj3vHCwpIELYBY28LvbJNuro+tbqPV/GsEQ1bopJJjmgu192vD7CK6Hd8X6C5eFCS0A3Wny6yB707peKDp6Ri5bkYGXAWQtkmM2oj+idSiZxPXYlfdhNcaHsNCUzTnHeen2rkzzSxknH3/wiSGNbNJIapNeJqtf+99BEcL1xPjzcS6hJR9A0lI7e6NwIIpsNdbrA56rjgxsJfrYkdfjqGsFo2Ge7eb1DHsJiMvSgF44UeXlNF",
+  "image_sha256": "5e6364fbf9db0808fbd7601206322a9d27ba181991a8fa083e45b8d409081652",
+  "previous_hash": "6a8db94da7eeaad92f81c36e42118a30e0872c8331d793d9b881eaf6a037760a",
+  "record_hash": "2da514f9044bf505153cddfd09751057e1e984d99879ff07a4a30350902e7867",
+  "issuer_signature": "YLEhLlduUqedaiElnlSjmviKiknv95lG5v8KWAyeByztVQwh2ds1u1xMQjU/+1fhLOTPNgMg8ulOdFGhMu/ZZnOQLCNAQcl/SvL2XzLiminzRJjWQnWsqshl3VcDyfCwRPzkVfOF1JDfw0zHUdpy67qO2nkJJaczG+W9Xr+yaNR9K49Jgn0Q0Nr+J5/PWJhP7fpGRDUbs4Yb60GpKktZbszt9nAPq87wfF3o2UMVQLEQhEgE5bSEB66OJjSydKMlxJ+W+j7qKUiJdUcFoTiWH503QNg9/xp1WPDp7Pomh4JY4eqVMaiXT8G6C/J/aDm811IvUfU5epWAcOqlV5ZZwFRUZHJNK4UZEBuzIcnLXfl+i1HDSG52Xby5oNO5ve/gLhTcRQyR1C5Em3OhtRrVW12kb96n07DB817z+ZyB3nYNA9ePCTVj52IIntKKO5GASqzZj7qgfQyVslJ2ikOZBfGl2QIXYdeM7Nq2l4QsqJOiPtQYwHlwKIcPt0aWUTk/",
   "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
-  "image_payload_schema": "omegachain-image-payload-v1"
+  "image_payload_schema": "omegachain-image-payload-v1",
+  "image_payload_previous_hash": "5dfb3644bc6503f5159ea95a4a5c51e6940b77feb336390bb7834c15cf7c7a69",
+  "private_fields_schema": "omegachain-private-fields-v2",
+  "private_fields_encryption": "AES-256-GCM",
+  "private_fields_iv": "MyLjmjjTnBhsgahG",
+  "private_fields_ciphertext": "E/G955vrkmlXH4g6PotGxgi76q1RTL4aJRpG+E23CPh+I2KUYIOidzrl769yrAmdZ80yWS2Wml/j72AjhGbgtBF0xLYQFVfVDliHAM/CuobE7bigdrXUyP2F7HWD8UcdQIdmWn4LCodK7fq07JNg0RJnIM/9+MK6gGfW2tmu+8AJ1ukvQKpm7xOW4Yqib3sD8KGLb4OgJbdL50XYSeRBBVHJ8+8suBJgdy8fgUlG1rMLI0PW2A==",
+  "private_fields_tag": "UQJh5LjL15rc5VtePF1Jcg==",
+  "private_fields_sha256": "d03a974140719086d42c4d4317f2e79e8f183474ecb4a26c1b9733487c752880"
 }

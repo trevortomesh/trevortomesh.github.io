@@ -2,8 +2,13 @@
   "record_type": "genesis",
   "message": "Trust in the Lord.",
   "date_created": "2026-06-19",
-  "issuer": "OmegaChain",
   "previous_hash": null,
-  "record_hash": "b42bedafa6b34f506b3088f573cfd84fc3a4cc832ca74797952fbfcf7240b8e3",
-  "issuer_signature": "saP1f6sf7YaI7pTRN4WYz7jIgnB43hHcFlkkzMp4naD6+aTlLP/+qGZ9VJvtBZ/YhGfxAQn7pdZVbEvpbOChExrzEdf+lA4QjmYN4+cPpPqb9BFo0YEsyi3ZZdta6dwVhffjOLMs1Vi0s4j4/Icy43qJrvyBmdSBjWP5AoSeHWibtQxA+OGzAP5o89BjB28U2orcc4rMBJxDUR/I4p9KcL492xAd4lFuVBW7XVQt1aNGj79KTK+EiBHm9BCxnaGTnphQfhJ6zBiIKdaTXK4o+bp+VVR3yhRgs6N4RKHuj3EJREbw9aZ+GFtCuEjHfH40i/drJcnImugi6aZ9QjoHY6xDv65O0gfM3uTthM5Afdp3IvA2ii1ST/QjObgtm5B72HITftAY8Dnh8YS96QHlnf2sgWgaarR9pafK7QMrMRcPZOpQNUSpY74IZ7zsotF0K3Oww7dsPPMa+E85FLLIAK7BsFrVqJj7rvJR+J/IG7+EeWQ2GTOw2ARimsI2GSxw"
+  "record_hash": "79e91a40b3e19a882cd21d270260976bca5dd448afcf06497a0b0c198faefff5",
+  "issuer_signature": "Q1FdSj3WyRSizYLDnOB4xVyxMX9TSEAgk2Q92D89VL4w9l2egRY0B2pK2YCyGOB/HpdyQUD8H7I1YhFQkBcjtDylFEwg77oaBLK2Dxecmn1z+vSTBCgWc3ksN6SrYT4JGz7yQa4I2idp8YyI2NdELUy+KoOfQMybxJaH8vuPXHJWkYyZsRZPQHzExTGwBgnn1wolmC0hBLoiM38aK2p3VpkTpLtISdfdVWaEGQF/pZ5iizxjvVDPG/hZFG2ETOGxIyPJwLnmDPHodK6SAuV2xFzXyn3RnfqiLboAjMdmwrB7adAKib47OfOYgp1dmJOAnKer/kEls0SkZ1JfPCx4/f9hqJi20GPRDKCVnpC9XEysOnno6SmlP4bVMgKthCN3L7PRnZlKyF6toHsa+FNOjfq6ax5vjuRzbPQNWOl79Dz9GRn3x1YzJj1c/2Ydfv4p28XooKBNCrKaJh0GZ2Z2CUYED9KPKhaEY0vfhviiMyFNZPGFysIduwwGHkA+J6tr",
+  "private_fields_schema": "omegachain-private-fields-v2",
+  "private_fields_encryption": "AES-256-GCM",
+  "private_fields_iv": "LxoC1FDNaPAGUUZM",
+  "private_fields_ciphertext": "fXxAaRUHk9JfSpaBXkTZxKbLTyUVXNk=",
+  "private_fields_tag": "ZmYLdZf0gPeYvAnFjHjaGQ==",
+  "private_fields_sha256": "7bd08b9e873d254c99f76f8fa04cbb4503ab7a61a68e1b65502e6dda80b13f21"
 }

@@ -211,8 +211,8 @@
           <div class="card">
             <h3>Each coin has a public record</h3>
             <p>
-              A token record describes the coin: its token ID, title, description, date struck,
-              issuer, recipient fields, image hash, previous record hash, and issuer signature.
+              A token record identifies the coin and carries the verification hashes, signature,
+              encrypted coin details, and encrypted recipient or stamp fields.
             </p>
           </div>
           <div class="card">
@@ -257,8 +257,8 @@
             <div>
               <h3>Render the PNG</h3>
               <p>
-                OmegaChain generates a coin image, blends in the artwork, adds the chosen visible
-                text, and hides a verification payload inside the image pixels.
+                OmegaChain generates a coin image, blends in the artwork, and hides a verification
+                payload inside the image pixels. Coin details are not printed visibly on the PNG.
               </p>
             </div>
           </div>
@@ -269,8 +269,8 @@
               <p>
                 The PNG gets a SHA-256 image hash. The JSON token record is canonicalized, then
                 hashed with SHA-256 while excluding <code>record_hash</code> and <code>issuer_signature</code>.
-                Recipient and stamp details are replaced with a salted commitment hash before the
-                public record is signed.
+                Human-readable coin details, recipient text, and stamp details are encrypted before
+                the public record is signed. The decrypt key is hidden in the minted PNG.
               </p>
             </div>
           </div>
@@ -290,8 +290,8 @@
               <h3>Publish only the public records</h3>
               <p>
                 The public website receives the verifier page, public key, genesis record, and token
-                JSON records. The public JSON can prove redacted details match the coin PNG without
-                publishing those details. The minted coin PNGs remain private unless the issuer gives
+                JSON records. The public JSON can carry encrypted coin details without publishing
+                readable titles, names, or messages. The minted coin PNGs remain private unless the issuer gives
                 one to a recipient.
               </p>
             </div>
@@ -308,7 +308,7 @@
           <li>It recalculates the canonical record hash and compares it to the published <code>record_hash</code>.</li>
           <li>It verifies the issuer signature using the published public key.</li>
           <li>It hashes the uploaded PNG and checks that hash against <code>image_sha256</code>.</li>
-          <li>It checks any hidden recipient or stamp details against the public salted commitment hash.</li>
+          <li>It uses the key hidden in the PNG to decrypt human-readable coin details from the public JSON.</li>
           <li>It loads the previous public record and checks that <code>previous_hash</code> links correctly.</li>
           <li>If all checks pass, the page displays <strong>Verified</strong>.</li>
         </ol>

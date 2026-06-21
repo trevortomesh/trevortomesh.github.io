@@ -199,6 +199,11 @@
       const result = document.querySelector("#result");
       const fileInput = document.querySelector("#coin-file");
       const privateFieldNames = [
+        "title",
+        "description",
+        "date_struck",
+        "issuer",
+        "coin_type",
         "minted_to",
         "minted_for",
         "stamp_note",
@@ -298,12 +303,46 @@
         return fields;
       }
 
-      async function privateFieldsHash(payload) {
-        if (!payload.private_fields_salt) return "";
+      async function privateFieldsHash(payload, saltOverride = "") {
+        const salt = saltOverride || payload.private_fields_salt || "";
+        if (!salt) return "";
         return sha256Hex(canonicalize({
           fields: privateFieldsFromPayload(payload),
-          salt: payload.private_fields_salt,
+          salt,
         }));
+      }
+
+      function base64Bytes(base64) {
+        const binary = atob(base64 || "");
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+        return bytes;
+      }
+
+      async function decryptPrivateFields(record, payload) {
+        if (!payload.private_fields_key) throw new Error("Coin is missing its private field key.");
+        const key = await crypto.subtle.importKey(
+          "raw",
+          base64Bytes(payload.private_fields_key),
+          { name: "AES-GCM" },
+          false,
+          ["decrypt"],
+        );
+        const ciphertext = base64Bytes(record.private_fields_ciphertext);
+        const tag = base64Bytes(record.private_fields_tag);
+        const sealed = new Uint8Array(ciphertext.length + tag.length);
+        sealed.set(ciphertext, 0);
+        sealed.set(tag, ciphertext.length);
+        const plaintext = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: base64Bytes(record.private_fields_iv) },
+          key,
+          sealed,
+        );
+        const fields = JSON.parse(decodeUtf8(new Uint8Array(plaintext)));
+        if (record.private_fields_sha256 && await sha256Hex(canonicalize(fields)) !== record.private_fields_sha256) {
+          throw new Error("Private field plaintext hash mismatch.");
+        }
+        return fields;
       }
 
       function pemToArrayBuffer(pem) {
@@ -376,42 +415,58 @@
         const imageValid = uploadedHash === record.image_sha256;
         const publicKeyResponse = await fetch("../public_key.pem", { cache: "no-store" });
         const publicKeyHash = await sha256HexBuffer(await publicKeyResponse.arrayBuffer());
+        const payloadPreviousHashValid =
+          payload.previous_hash === record.previous_hash ||
+          (record.image_payload_previous_hash && payload.previous_hash === record.image_payload_previous_hash);
         const publicPayloadValid =
           payload.schema === record.image_payload_schema &&
           payload.token_id === record.token_id &&
           payload.verification_url === record.verification_url &&
-          payload.issuer === record.issuer &&
-          payload.previous_hash === record.previous_hash &&
+          payloadPreviousHashValid &&
           payload.public_key_sha256 === publicKeyHash;
         let privatePayloadValid = true;
+        let privateDetails = {};
         if (record.private_fields_sha256) {
-          privatePayloadValid =
-            record.private_fields_schema === "omegachain-private-fields-v1" &&
-            (await privateFieldsHash(payload)) === record.private_fields_sha256;
+          if (record.private_fields_schema === "omegachain-private-fields-v2") {
+            try {
+              privateDetails = await decryptPrivateFields(record, payload);
+              if (privateDetails.issuer && payload.issuer !== privateDetails.issuer) {
+                privatePayloadValid = false;
+              }
+            } catch {
+              privatePayloadValid = false;
+            }
+          } else {
+            privateDetails = payload;
+            privatePayloadValid =
+              record.private_fields_schema === "omegachain-private-fields-v1" &&
+              (await privateFieldsHash(payload, record.private_fields_salt)) === record.private_fields_sha256;
+          }
         } else {
+          privateDetails = record;
           for (const field of privateFieldNames) {
             if ((payload[field] || "") !== (record[field] || "")) privatePayloadValid = false;
           }
         }
         const imagePayloadValid = publicPayloadValid && privatePayloadValid;
         const previewUrl = URL.createObjectURL(file);
-        return { record, payload, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl };
+        return { record, payload, privateDetails, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl };
       }
 
       function render(details) {
-        const { record, payload, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl } = details;
+        const { record, privateDetails: verifiedPrivateDetails, hashValid, signatureValid, previousValid, imageValid, imagePayloadValid, previewUrl } = details;
         const ok = hashValid && signatureValid && previousValid && imageValid && imagePayloadValid;
-        const privateDetails = record.private_fields_sha256 && imagePayloadValid ? payload : record;
+        const privateDetails = imagePayloadValid ? verifiedPrivateDetails : {};
         result.innerHTML = `
           <span class="status ${ok ? "valid" : "invalid"}">${ok ? "Verified" : "Invalid"}</span>
           <div class="record-view">
-            <img class="coin-image" src="${escapeHtml(previewUrl)}" alt="${escapeHtml(record.title)}" />
+            <img class="coin-image" src="${escapeHtml(previewUrl)}" alt="${escapeHtml(privateDetails.title || record.token_id)}" />
             <div>
               <dl>
                 <dt>Token ID</dt><dd><code>${escapeHtml(record.token_id)}</code></dd>
-                <dt>Title</dt><dd>${escapeHtml(record.title)}</dd>
-                <dt>Description</dt><dd>${escapeHtml(record.description)}</dd>
-                <dt>Date struck</dt><dd>${escapeHtml(record.date_struck)}</dd>
+                ${privateDetails.title ? `<dt>Title</dt><dd>${escapeHtml(privateDetails.title)}</dd>` : ""}
+                ${privateDetails.description ? `<dt>Description</dt><dd>${escapeHtml(privateDetails.description)}</dd>` : ""}
+                ${privateDetails.date_struck ? `<dt>Date struck</dt><dd>${escapeHtml(privateDetails.date_struck)}</dd>` : ""}
                 ${privateDetails.minted_to ? `<dt>Minted to</dt><dd>${escapeHtml(privateDetails.minted_to)}</dd>` : ""}
                 ${privateDetails.minted_for ? `<dt>Minted for</dt><dd>${escapeHtml(privateDetails.minted_for)}</dd>` : ""}
                 ${privateDetails.stamp_note ? `<dt>Stamp note</dt><dd>${escapeHtml(privateDetails.stamp_note)}</dd>` : ""}
@@ -419,8 +474,8 @@
                 ${privateDetails.coin_top_text ? `<dt>Top text</dt><dd>${escapeHtml(privateDetails.coin_top_text)}</dd>` : ""}
                 ${privateDetails.coin_bottom_text ? `<dt>Bottom text</dt><dd>${escapeHtml(privateDetails.coin_bottom_text)}</dd>` : ""}
                 ${privateDetails.stamp_label ? `<dt>Stamp label</dt><dd>${escapeHtml(privateDetails.stamp_label)}</dd>` : ""}
-                <dt>Issuer</dt><dd>${escapeHtml(record.issuer)}</dd>
-                <dt>Coin type</dt><dd>${escapeHtml(record.coin_type)}</dd>
+                ${privateDetails.issuer ? `<dt>Issuer</dt><dd>${escapeHtml(privateDetails.issuer)}</dd>` : ""}
+                ${privateDetails.coin_type ? `<dt>Coin type</dt><dd>${escapeHtml(privateDetails.coin_type)}</dd>` : ""}
                 <dt>Record hash</dt><dd><code>${escapeHtml(record.record_hash)}</code></dd>
                 <dt>Image hash</dt><dd><code>${escapeHtml(record.image_sha256)}</code></dd>
               </dl>

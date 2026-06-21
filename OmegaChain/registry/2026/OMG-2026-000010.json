@@ -1,17 +1,17 @@
 {
   "token_id": "OMG-2026-000010",
-  "title": "Test Coin",
-  "description": "test coin",
-  "date_struck": "2026-06-21",
-  "issuer": "Trevor Tomesh",
-  "coin_type": "test",
   "image_filename": "omg-2026-000010-coin.png",
-  "image_sha256": "362f70beb3b695684d582149798b8ac3fc9c3ad45e3d8185abc6f74d2c9adcff",
-  "previous_hash": "e615afd40303e4fffe9a804531f6fa12d3be9cb5f4cbb1ecafda4e49adcf51f2",
-  "record_hash": "f474ef0172bd9dfd93c40d04e853f48e96f05fca5eacf55acf59a68e8bfac5b8",
-  "issuer_signature": "mrGFr6G/+9rxpXS1pecylSdEOKQQvVyPIL8iJTEnAOmWBye8EtlnH2hk1KnGJjVNaMh7xpauujhwHXZOMHRJ1KpOzUhDtsbGu0EKDtO/aM3uSxtZDdA+l9PtzT99RMjsAn+8e6uHmS+hioI+4TSFzuVok0pL8NG0ZQHEsvlPhUZB24+RhDKh3USXkXUr/+1KKP/91zSxfQ2Az4DruBTWQYWZM+tKAqL7LAwzpCH2jr09IzKa0Cs2MuY9jTBS4XpP9SfxSDRavZpvFYptYmFIbSJdQzGt8uJOcWYQ9LmDKK/+FGsI0TAf1yQ2uoB5RQLSNef1Apd0g7pntjgTVP5yS2uj0O3n/uOys7ATcV5bVJtGMxiDYW9dFWbdUKST8XUYTA/pLA+4yaYoGUmqZ/K9KlRfL2Y0U5r4ZIoieBJQmtoiyiHEA2IVheDKZ+mtaF6Hmkm59t8sbQak+onGnPwV7Y4MOjzS7xGj6JfhBlQs59aIDEKHqwA7vEt66/snRMDd",
+  "image_sha256": "4f93643aa13412eca209b01a2eaecd2b637756fb6763cf46237baaa8a408e874",
+  "previous_hash": "61f8fa31ef9b4b205d55cf981dbcc0fbc3e293604b326e0b4a14d613d8932f21",
+  "record_hash": "062ccad095efc96cce5729fe093e1d05d2aee40e16c34b13e284e578d127a0fb",
+  "issuer_signature": "i3DXp9wZW94nIfjq3tJAPTsWD90BGNK42KVIWDKQ333gRrPATMxSNYfFAiuw9P660nhpOU2/xPHbzs1GRz/pjiBo6g8tSRLhpa0aqvmdLc9GHAFhU5vZJ3j43mb2wx4EQibYRDBpAIVyBFtU6urvGIeW65o6fjANnauu7HLlYlyXoM+EzicUp2iyHlFJgWVstFlnZav9ANYOEC2MkBN6JU85duuYc5UX+jU0ft7UtNSi/4d4XxTu4kPJExS+Ty3oWp4BUE6OzSSodYsQ/Fx/JxbgeDQB+z+hnD8yJuHri4HGUhOs3kmhK+cGRN9+CCrdL+gq58UjOMn9VrWcfBx8KA21Ko29/EJ9YI3q/XvVN+2wKas+zWgr2bQ2+BZboXnt6qP/bbfPtsqRJ6Y5IHkPC5qXW337Fh9VOv6TYW/Pi+kedX9Iil6SJ8YCS0P/sFUG7n4xsFwmKz3jL1efQsGzqtX85R62IMd/DobYgY2uleMBAg1uiUJKkqEo9P1Uiz0U",
   "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
   "image_payload_schema": "omegachain-image-payload-v1",
-  "private_fields_schema": "omegachain-private-fields-v1",
-  "private_fields_sha256": "26c05cf4d0bec46d9f10367751e12d6550fe534aba98ca3f2f6e38b1ad8041a3"
+  "image_payload_previous_hash": "e615afd40303e4fffe9a804531f6fa12d3be9cb5f4cbb1ecafda4e49adcf51f2",
+  "private_fields_schema": "omegachain-private-fields-v2",
+  "private_fields_sha256": "a0a3c468c1ea3f60bb334a9bd589c806090996aa86b1d2c414ebfd4116ea7e78",
+  "private_fields_encryption": "AES-256-GCM",
+  "private_fields_iv": "vR+jcFUfGiZVrHAp",
+  "private_fields_ciphertext": "9mzbfDROotJxjA2/0SU8+mIPyl5wWO1uTi9Fc/P2PAU+Dq/xSZeH9RZBsKnuXJ3xGop5bRUmVYxHg2WxqaJKWnIjqRjL95EnWKlQpFVj2obsFgmFNghreqmbcbhLtdRMewg9WrotsMnXXXOULGYPNRGZd21/uGjdiNgTtFU0EV3i6oTEGyXGsEnG+rkg1AxSpO6HtdHlXzaCUuRTwo7bUZTrz1bXLFylMkiWfvN9UPPyuyqfWTfF7gYgHu3tvxQU3Cvu1sWOJWypb6yC/G6xF66dpwfbJw==",
+  "private_fields_tag": "XYonBoL/iBQ/0N+vjs5xvA=="
 }
