@@ -1,0 +1,16 @@
+{
+  "token_id": "OMG-2026-000024",
+  "image_filename": "omg-2026-000024-coin.png",
+  "image_sha256": "b64b88f987b6194833688d21e13505f3bc262b5f090761bc17df8fa905906331",
+  "previous_hash": "a1f3d59000dd2ec542ca5773b095d32766a7fd001605eeb9c62ebdd6062511dd",
+  "record_hash": "9d7b0900d59da3694c2c98dbef902aae07277f51dda7d45e34811787dce49762",
+  "issuer_signature": "RReN9yYITnXnZwIz6pi+WAQNpAsJ22HQzq6c7WHvOxyJEKqKHLSGZSaYusIjQ6MHjaXwRKAnw6uBSqNTnDHNfkKYy8WLD1uoYXZz75bCTJ5LTFOdeqaDELcPJqYx7d00frtiL29Xj9fYw34TSzpotn1qrN8GllYfdylp9ROjmEK7xGSO6cw9BDT8uxPEiGLj33eZ8YZ/2Mqyolbhbsa9GgBnnqo/o0NLK3x44HYWygkvF98a8fesKT2p9No3MX0v3DD15a1Ocs4t65Nb0MPGlb37WBwmO2IqX9UEuHMNyCRguzhapQ33ClnyFNB9sqGVEJbslQMoUyuHAI8K4pyDtvswLKKxCPBak5fPw/yRqxROTvYj+E2IAHUcDM7XVTKetbAo8qf+VXFdRof3D4UQRxYb9q+NY+1RxI1mAYSel/FJBInW0ZDYCLUhQWeE4Z8k+d43kNPdyhwpXatxGu1w152w41hFVaNB/4tQrVnA7NceH6Iuo4EZ2f+aKictFo6i",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "image_payload_schema": "omegachain-image-payload-v1",
+  "private_fields_schema": "omegachain-private-fields-v2",
+  "private_fields_encryption": "AES-256-GCM",
+  "private_fields_iv": "BTh4HmQ3cm2YTcYL",
+  "private_fields_ciphertext": "uD3ccvpUqRA1O/5pD6HpZu1tA0xrteskryxQWI5M6DTNJT94OOPc5Xv8Qxm92BAcxfa79XRqHyQ1ckuWPP/gphT9mrK5qpItKmEBmdkbzS+cN5C07FC07/o/JFfvJiStXtk723GQ1NjN2eNgMXgaCaW7R3dNQ6G+V7+Xad9EJnGc2OumAJqgHwXEk8FiDgzKogA6FUQPUUy2nMZ7SrAcAQzZQIyVrBXKKUmLNNPB9YDHZOflqUNVgcgwFYziKWm9y631pYBs1+5Cug082LM9btEucmElEQxeDJuD3/pptr+YV5dBcHFS9dJ01SQa456Z9EBQ1J+8wWVCOIVn80hbwBw43YZEfR3B2xEGFQ3N+3oLvJhcU/opkVLwK/mOMPQ4wtFS6a31fwLT2bsYMSjpx8zpgD4Np5klGQF8HANi+id+lyFvn7j2/q+DvGXEJ6IpxyPlyPYA+2NohFr03Rc40igwy4q/Bnq2cFSrWkz9QtlHb/E+p88CsATa082rRoWNyMCpex7wNXBN4o17VcdX8QgyelG+r03FX0yM3u1xmu59I3kHjfLGxOQo8vIu/cIK+VzWb2BZRsa+UarZFe82a7VjQhf+8uxMl0jDpRpQNhTx/6Db2a42TD7DIKJCw4MQQ+PU4h/iCAxcZtWmsos93oU7Gl0rbhDU6K4I7sQvcRJ2NW+2fkC5i10eD4vP2ZYSbGG3+3NiH6wWkqA6K+JO",
+  "private_fields_tag": "YfY/OrCBZQtgljouZ8FDhQ==",
+  "private_fields_sha256": "d080cf6b112a2df0a9aa5a6b473f3239677e6cf0dd52fa6d72eb7a37672b509e"
+}
