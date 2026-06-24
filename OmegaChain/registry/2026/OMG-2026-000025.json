@@ -1,0 +1,16 @@
+{
+  "token_id": "OMG-2026-000025",
+  "image_filename": "omg-2026-000025-coin.png",
+  "image_sha256": "4b7b919e67ce57b4afc353ee8d98ccdd02e562e8ac4729fd97350ac76deea807",
+  "previous_hash": "9d7b0900d59da3694c2c98dbef902aae07277f51dda7d45e34811787dce49762",
+  "record_hash": "3dae5d2d9a4fb6866bd5da762e0a3c5f2045472c7fc175605afc91faadde7dfa",
+  "issuer_signature": "lLLqI3/jzFlaW0ElwdK7a6lEU1MU/tpFPPLKVH6O78ZQ8lMucPvOu1YlHgtx2xFMJnlQAZMPuxdmo2sHlBaIeOf4J3a0wk0M4b5/r/h3lH3N1OPxPCtxAky+gUCOWz5F5JCR/sktK2TbrNEoYiT1jnsFaBK1jelezV+2wfxtB2JGmsbcQwIn0x9gD8ANhIv/GWcjk9T9oOl4R5H4nEm2KwA0Uk2/zW7GqiXa1yAuHoz5HLT3pAYgQpVTbUJjwIuBDP/7Lp7yl4OsvhoSQEdakFLCQ6S2hG1N5vKyAZ6dCCC+t5c5e1Gn/2RmOyW54e8azPdV25Li+8rTPvHLxPoOQtMjkVtpO/XN8KWuRYbmzs3LgIzUl6KMpsbgAstE0xmfdJKenl/eJXnaESbmuycG0yKrfURpU9EF4YKfcNgwcAO2E3z83A/F2eaQ85EzfKSJGKDhIk0BKgKRQeh4Bwx43HKpv5JlSQMoUWb5q9brCZJCzGYEeBOojHOvUoyorY3K",
+  "verification_url": "https://trevortomesh.github.io/OmegaChain/verify/",
+  "image_payload_schema": "omegachain-image-payload-v1",
+  "private_fields_schema": "omegachain-private-fields-v2",
+  "private_fields_encryption": "AES-256-GCM",
+  "private_fields_iv": "FtI+E6U26x0bondi",
+  "private_fields_ciphertext": "FJAO3ApuaLrF6MsqK6cXzS6rVAaa9OIzT5akT60AiRbYSGhbe7n/rk2CVQ4/jsYsxHDeJexycQ7cJ1kbnY4GS7rVDgCUIygdieXrR2GogekUov8F2ZYiESCOVuI61BIKaUn1Uey5XPiW0nWA8bWiJym/WCS0k5ngDxduFoW/vzf1JzH6rUSBn9K2yCcKWu1cMzIDzIoTXO+i1P4WjruET3spDnXiu7eFPXC5a7fwPSZ7kmKEcoqERD2B6Nk4BN2/inY86t23GkW5XILVTXIcJr20o22a6BP7H5+REtL/Uibi6KQ/odfm4wu+Wt0JUgqMzAqvT2q2/dDsaHbQZ/oUXSeZlI1W4M85jzzxOet+3jR8mp6BifoKj3u9VIONz7LnWSeX/+x5AoSrnBpFslSyKKYHdWJaLFV8+Dr6KGUpGA1I/Evlcvk+e3k/rmMkfWVUprLVJIhrFa+Wc/zw6y4QuvcRCbR25+dmxFerqiyy8HbLX+TFUNWcsPpYuuEx3rnkLqSy+Fm5AjpfsMiUiXl8uC5DE+IRSPgptq5A",
+  "private_fields_tag": "i8ifyA05rmrxhnq5Zpnt2Q==",
+  "private_fields_sha256": "3053bb3edcdb5229fb099d9e39d49bc0f0a41a638fd9c79870c4f8f5992c0302"
+}
