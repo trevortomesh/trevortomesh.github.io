@@ -1,243 +1,178 @@
-
-
-// OLD CODE WITHOUT SEARCH BAR
-/**
- * Fetches data from a JSON file and renders it on a web page with tag filtering functionality.
- 
-fetch('cards.json')
-    .then(response => response.json())
-    .then(data => {
-        // Get references to the card container and tag list elements in the HTML
-        const cardContainer = document.getElementById('card-container');
-        const tagList = document.getElementById('tag-list');
-
-        // Create a set to store unique tags
-        const tags = new Set();
-
-        // Add a class name for controlling animations
-        const animateClassName = 'animate';
-
-        // Add "all" tag as default and render it at the top of the tag list
-        tags.add("all");
-        const allTagLink = document.createElement('li');
-        allTagLink.innerHTML = `<a href="#" data-tag="all">All</a>`;
-        tagList.appendChild(allTagLink);
-
-        // Iterate through the data and extract tags
-        Object.keys(data).forEach(id => {
-            const cardData = data[id];
-            if (cardData.tags) {
-                cardData.tags.forEach(tag => {
-                    tags.add(tag.toLowerCase()); // Convert tag to lowercase before adding
-                });
-            }
-        });
-
-        // Render individual tags in the tag list
-        tags.forEach(tag => {
-            if (tag !== "all") {
-                const tagLink = document.createElement('li');
-                tagLink.innerHTML = `<a href="#" data-tag="${tag}">${tag}</a>`;
-                tagList.appendChild(tagLink);
-            }
-        });
-
-        // Get all tag links with data attributes
-        const tagLinks = document.querySelectorAll('#tag-list a[data-tag]');
-
-        // Add click event listeners to tag links
-        tagLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const selectedTag = link.getAttribute('data-tag');
-                cardContainer.classList.add(animateClassName); // Add animation class
-                cardContainer.innerHTML = '';
-
-                // Iterate through the data and render cards based on the selected tag
-                Object.keys(data).forEach(id => {
-                    const cardData = data[id];
-                    if (!selectedTag || selectedTag === "all" || (cardData.tags && cardData.tags.includes(selectedTag))) {
-                        const cardElement = document.createElement('div');
-                        cardElement.className = 'card';
-                        cardElement.innerHTML = `
-                            <div class="container">
-                                <h4>${cardData.title}</h4>
-                                ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
-                                <p>${cardData.text}</p>
-                            </div>
-                        `;
-                        cardContainer.appendChild(cardElement);
-                    }
-                });
-
-                // Remove the animation class after a delay
-                setTimeout(() => {
-                    cardContainer.classList.remove(animateClassName);
-                }, 300); // Adjust the delay as needed
-            });
-        });
-
-        // Select "all" tag by default when the page loads
-        tagLinks[0].click();
-    })
-    .catch(error => console.error('Error loading JSON:', error));
-*/
-
-//------------------------------------------------------------//
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch data from JSON file
     fetch('cards.json')
         .then(response => response.json())
         .then(data => initializePage(data))
-        .catch(error => console.error('Error loading JSON:', error));
-
-    // Function to initialize the page with data
-    function initializePage(data) {
-        const cardContainer = document.getElementById('card-container');
-        const tagList = document.getElementById('tag-list');
-        const searchInput = document.getElementById('search');
-        const animateClassName = 'animate';
-
-        // Create a set to store unique tags
-        const tags = new Set();
-
-        // Add "all" tag as default and render it at the top of the tag list
-        tags.add('all');
-        const allTagLink = createTagLink('All', 'all');
-        tagList.appendChild(allTagLink);
-
-        // Extract tags from the data
-        Object.keys(data).forEach(id => {
-            const cardData = data[id];
-            if (cardData.tags) {
-                cardData.tags.forEach(tag => {
-                    tags.add(tag.toLowerCase());
-                });
+        .catch(error => {
+            console.error('Error loading JSON:', error);
+            const cardContainer = document.getElementById('card-container');
+            if (cardContainer) {
+                cardContainer.innerHTML = '<p class="callout">Cards could not be loaded.</p>';
             }
         });
+});
 
-        // Render individual tags in the tag list
-        tags.forEach(tag => {
-            if (tag !== 'all') {
-                const tagLink = createTagLink(tag, tag);
-                tagList.appendChild(tagLink);
-            }
-        });
+function initializePage(data) {
+    const cardContainer = document.getElementById('card-container');
+    const tagList = document.getElementById('tag-list');
+    const searchInput = document.getElementById('search');
 
-        // Add click event listeners to tag links
-        const tagLinks = document.querySelectorAll('#tag-list a[data-tag]');
-        tagLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const selectedTag = link.getAttribute('data-tag');
-                updateActiveTag(link);
-                renderCards(data, cardContainer, selectedTag, searchInput.value.trim(), animateClassName);
-            });
-        });
-
-        // Add input event listener to the search input for real-time filtering
-        searchInput.addEventListener('input', () => {
-            const selectedTag = getActiveTag();
-            renderCards(data, cardContainer, selectedTag, searchInput.value.trim(), animateClassName);
-        });
-
-        // Select "all" tag by default when the page loads
-        tagLinks[0].click();
+    if (!cardContainer || !tagList || !searchInput) {
+        return;
     }
 
-    // Function to create a tag link element
-    function createTagLink(label, tag) {
-        const tagLink = document.createElement('li');
-        tagLink.innerHTML = `<a href="#" data-tag="${tag}">${label}</a>`;
-        return tagLink;
-    }
+    const cards = Object.entries(data).map(([id, card]) => ({
+        id,
+        ...card,
+        tags: normalizeTags(card.tags)
+    }));
 
-    // Function to update the active tag styling
-    function updateActiveTag(selectedLink) {
-        const tagLinks = document.querySelectorAll('#tag-list a[data-tag]');
-        tagLinks.forEach(link => link.classList.remove('active'));
-        selectedLink.classList.add('active');
-    }
+    const tags = [...new Set(cards.flatMap(card => card.tags))]
+        .filter(tag => tag !== 'all')
+        .sort((a, b) => a.localeCompare(b));
 
-    // Function to get the currently active tag
-    function getActiveTag() {
-        const activeTagLink = document.querySelector('#tag-list a.active');
-        return activeTagLink ? activeTagLink.getAttribute('data-tag') : 'all';
-    }
+    tagList.appendChild(createTagLink('All', 'all'));
+    tags.forEach(tag => tagList.appendChild(createTagLink(formatTagLabel(tag), tag)));
 
-    // Function to render cards based on the selected tag or search query
-    function renderCards(data, cardContainer, selectedTag, searchQuery, animateClassName) {
-        cardContainer.classList.add(animateClassName);
-        cardContainer.innerHTML = '';
-
-        Object.keys(data).forEach(id => {
-            const cardData = data[id];
-            const isMatchingTag = !selectedTag || selectedTag === 'all' || (cardData.tags && cardData.tags.includes(selectedTag));
-            const isMatchingSearch = !searchQuery || cardData.title.toLowerCase().includes(searchQuery.toLowerCase());
-
-            if (isMatchingTag && isMatchingSearch) {
-                const cardElement = createCardElement(cardData);
-                cardContainer.appendChild(cardElement);
-            }
-        });
-
-        setTimeout(() => {
-            cardContainer.classList.remove(animateClassName);
-        }, 300);
-    }
-
-    // Function to create a card element
-    function createCardElement(cardData) {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'card';
-        
-        // First create without expand button to test overflow
-        cardElement.innerHTML = `
-            <div class="card-inner">
-                <h4>${cardData.title}</h4>
-                ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
-                <div class="card-text-container">
-                    <div class="card-text test-overflow">${cardData.text}</div>
-                </div>
-            </div>
-        `;
-
-        // Append to document temporarily to check overflow
-        document.body.appendChild(cardElement);
-        const testElement = cardElement.querySelector('.test-overflow');
-        const isOverflowing = testElement.scrollHeight > (testElement.clientHeight + 2);
-        document.body.removeChild(cardElement);
-
-        // Now create the final HTML with expand button only if needed
-        cardElement.innerHTML = `
-            <div class="card-inner">
-                <h4>${cardData.title}</h4>
-                ${cardData.image ? `<img src="${cardData.image}" alt="Profile Picture">` : ''}
-                <div class="card-text-container">
-                    <div class="card-text">${cardData.text}</div>
-                    ${isOverflowing ? '<span class="expand-button">...</span>' : ''}
-                    ${isOverflowing ? `<div class="text-popup">${cardData.text}</div>` : ''}
-                </div>
-            </div>
-        `;
-
-        // Only set up event listeners if we have overflow
-        if (isOverflowing) {
-            const expandButton = cardElement.querySelector('.expand-button');
-            const popup = cardElement.querySelector('.text-popup');
-            
-            expandButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                popup.classList.toggle('show');
-            });
-
-            // Close popup when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!popup.contains(e.target) && !expandButton.contains(e.target)) {
-                    popup.classList.remove('show');
-                }
-            });
+    tagList.addEventListener('click', event => {
+        const link = event.target.closest('a[data-tag]');
+        if (!link) {
+            return;
         }
 
-        return cardElement;
+        event.preventDefault();
+        setActiveTag(link);
+        renderCards(cards, cardContainer, getActiveTag(), searchInput.value);
+    });
+
+    searchInput.addEventListener('input', () => {
+        renderCards(cards, cardContainer, getActiveTag(), searchInput.value);
+    });
+
+    const allLink = tagList.querySelector('a[data-tag="all"]');
+    setActiveTag(allLink);
+    renderCards(cards, cardContainer, 'all', '');
+}
+
+function normalizeTags(tags = []) {
+    return [...new Set(tags.map(tag => String(tag).trim().toLowerCase()).filter(Boolean))];
+}
+
+function createTagLink(label, tag) {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#card-container';
+    link.dataset.tag = tag;
+    link.textContent = label;
+    item.appendChild(link);
+    return item;
+}
+
+function formatTagLabel(tag) {
+    return tag
+        .split('-')
+        .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+        .join(' ');
+}
+
+function setActiveTag(selectedLink) {
+    document.querySelectorAll('#tag-list a[data-tag]').forEach(link => {
+        const isActive = link === selectedLink;
+        link.classList.toggle('active', isActive);
+        link.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+}
+
+function getActiveTag() {
+    return document.querySelector('#tag-list a.active')?.dataset.tag || 'all';
+}
+
+function renderCards(cards, cardContainer, selectedTag, searchQuery) {
+    const query = searchQuery.trim().toLowerCase();
+    const fragment = document.createDocumentFragment();
+
+    cards
+        .filter(card => matchesTag(card, selectedTag))
+        .filter(card => matchesSearch(card, query))
+        .forEach(card => fragment.appendChild(createCardElement(card)));
+
+    cardContainer.replaceChildren(fragment);
+}
+
+function matchesTag(card, selectedTag) {
+    return !selectedTag || selectedTag === 'all' || card.tags.includes(selectedTag);
+}
+
+function matchesSearch(card, query) {
+    if (!query) {
+        return true;
     }
-});
+
+    const searchableText = [
+        card.title,
+        stripHtml(card.text || ''),
+        card.tags.join(' ')
+    ].join(' ').toLowerCase();
+
+    return searchableText.includes(query);
+}
+
+function stripHtml(html) {
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content.textContent || '';
+}
+
+function createCardElement(cardData) {
+    const cardElement = document.createElement('article');
+    cardElement.className = 'card';
+
+    const primaryLink = extractPrimaryLink(cardData.text || '');
+    const tags = cardData.tags.filter(tag => tag !== 'all');
+
+    cardElement.innerHTML = `
+        <div class="card-inner">
+            <div class="card-header">
+                <h4>${cardData.title}</h4>
+                ${primaryLink ? `<a class="card-action" href="${primaryLink.href}" ${primaryLink.external ? 'target="_blank" rel="noopener noreferrer"' : ''}>Open</a>` : ''}
+            </div>
+            ${cardData.image ? `<img src="${cardData.image}" alt="">` : ''}
+            <div class="card-text-container">
+                <div class="card-text">${cardData.text || ''}</div>
+                <button class="expand-button" type="button" aria-expanded="false">More</button>
+            </div>
+            ${tags.length ? `<div class="card-tags">${tags.map(tag => `<span class="card-tag">${formatTagLabel(tag)}</span>`).join('')}</div>` : ''}
+        </div>
+    `;
+
+    const text = cardElement.querySelector('.card-text');
+    const expandButton = cardElement.querySelector('.expand-button');
+
+    requestAnimationFrame(() => {
+        const isOverflowing = text.scrollHeight > text.clientHeight + 2;
+        expandButton.hidden = !isOverflowing;
+    });
+
+    expandButton.addEventListener('click', () => {
+        const isExpanded = cardElement.classList.toggle('expanded');
+        expandButton.textContent = isExpanded ? 'Less' : 'More';
+        expandButton.setAttribute('aria-expanded', String(isExpanded));
+    });
+
+    return cardElement;
+}
+
+function extractPrimaryLink(html) {
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    const anchor = template.content.querySelector('a[href]');
+
+    if (!anchor) {
+        return null;
+    }
+
+    const href = anchor.getAttribute('href');
+    return {
+        href,
+        external: /^https?:\/\//i.test(href)
+    };
+}

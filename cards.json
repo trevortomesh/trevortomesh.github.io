@@ -359,6 +359,48 @@
     "text": "Links for course PWUD generators: <a href=\"./pwudgen/161-a2-pwud.html\">161 A2</a> · <a href=\"./pwudgen/161-a3-pwud.html\">161 A3</a> · <a href=\"./pwudgen/162-a2-pwud.html\">162 A2</a> · <a href=\"./pwudgen/162-a3-pwud.html\">162 A3</a> · <a href=\"./pwudgen/235-a2-pwud.html\">235 A2</a> · <a href=\"./pwudgen/235-a3-pwud.html\">235 A3</a>",
     "tags": ["courses", "tools"],
   "image": "images/placeholder.png"
+  },
+
+  "omegachain": {
+    "title": "OmegaChain",
+    "text": "A local-first minted coin registry and verification project. <a href=\"./OmegaChain/\">Open OmegaChain</a> · <a href=\"./OmegaChain/verify/\">Verify a coin</a> · <a href=\"./OmegaChain/how-it-works/\">How it works</a>",
+    "tags": ["tools", "experiment", "projects"],
+    "image": "images/github.png"
+  },
+
+  "trinity-model": {
+    "title": "Trinity Model",
+    "text": "A Java-based teaching model and theological computing project. <a href=\"./TrinityModel/\">Open Trinity Model</a> · <a href=\"./TrinityModel/javadocs.html\">Javadocs</a> · <a href=\"./TrinityModel/orthodox-trinity.html\">Orthodox Trinity</a>",
+    "tags": ["research", "teaching", "programming", "projects"],
+    "image": "images/placeholder.png"
+  },
+
+  "catholic-grounding": {
+    "title": "Catholic Grounding",
+    "text": "A grounding page for Catholic theological context and related work. <a href=\"./catholic-grounding.html\">Read Catholic Grounding</a>",
+    "tags": ["writing", "research", "theology"],
+    "image": "images/arrow.png"
+  },
+
+  "waypoint-resources": {
+    "title": "The Way Point Resources",
+    "text": "Related pages for The Way Point: <a href=\"./TheWayPoint/resources.html\">Resources</a> · <a href=\"./TheWayPoint/theological-computing.html\">Theological Computing</a> · <a href=\"./TheWayPoint/rosary.html\">Rosary</a> · <a href=\"./TheWayPoint/about.html\">About</a>",
+    "tags": ["research", "tools", "theology", "projects"],
+    "image": "images/arrow.png"
+  },
+
+  "ann-toolkit": {
+    "title": "Arrow Notes Toolkit",
+    "text": "Work with Arrow Notes Notation across the connected tools: <a href=\"./annspec.html\">Spec</a> · <a href=\"./ann-render.html\">Render</a> · <a href=\"./annjson.html\">JSON</a> · <a href=\"./annparse.html\">Parse</a>",
+    "tags": ["tools", "programming", "research", "projects"],
+    "image": "images/arrow.png"
+  },
+
+  "archive": {
+    "title": "Archive",
+    "text": "Older versions and archived experiments are collected here. <a href=\"./archive/\">Browse the archive</a>",
+    "tags": ["archive", "experiment", "projects"],
+    "image": "images/cards.png"
   }
 
 }
