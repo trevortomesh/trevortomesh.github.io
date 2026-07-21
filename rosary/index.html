@@ -510,22 +510,95 @@
     }
 
     @media (max-width: 560px) {
-      .shell { padding: 12px; gap: 12px; }
-      header { padding: 6px 3px; }
+      .shell { width: 100%; max-width: 100vw; min-width: 0; padding: 12px; gap: 12px; overflow: hidden; }
+      header { min-width: 0; padding: 6px 3px; gap: 10px; }
+      .header-actions { min-width: 0; gap: 8px; }
+      .guide-link { font-size: .7rem; }
+      .theme-toggle { width: 40px; min-height: 40px; padding: 7px; justify-content: center; }
+      #themeLabel { display: none; }
+      main { width: 100%; min-width: 0; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; overflow: hidden; }
+      main > * { width: 100%; max-width: 100%; min-width: 0; }
       .panel { border-radius: 22px; }
-      .rosary-panel { height: 570px; min-height: 570px; }
+      .rosary-panel,
+      .prayer-panel {
+        grid-column: 1;
+        grid-row: 1;
+        height: max(620px, calc(100dvh - 105px));
+        max-height: 800px;
+        min-height: 620px;
+      }
+      .rosary-panel { z-index: 0; }
       .rosary-stage { inset: 8px; }
       .rosary-stage::before { width: 80%; height: 52%; top: 32%; }
-      .decade-label { top: 32%; width: 58%; }
+      .decade-label { display: none; }
       .bead { width: 12px; }
       .bead.large { width: 20px; }
-      .prayer-panel { padding: 24px 20px 20px; }
-      .prayer-card { min-height: 420px; padding: 26px 0; justify-content: flex-start; }
-      .prayer-title { font-size: 2.5rem; }
-      .control-btn { background: #faf7f0; }
+      .prayer-panel {
+        z-index: 5;
+        min-height: 620px;
+        padding: 14px;
+        overflow: hidden;
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        pointer-events: none;
+      }
+      .toolbar {
+        width: 100%;
+        min-width: 0;
+        padding: 10px 12px;
+        border: 1px solid rgba(255,255,255,.32);
+        border-radius: 15px;
+        background: rgba(250,249,246,.76);
+        box-shadow: 0 5px 18px rgba(18,22,29,.12);
+        backdrop-filter: blur(10px);
+        pointer-events: auto;
+      }
+      html[data-theme="dark"] .toolbar {
+        border-color: rgba(225,231,241,.15);
+        background: rgba(12,15,21,.72);
+      }
+      .select-wrap { min-width: 0; }
+      select { width: min(210px, 55vw); max-width: 100%; }
+      .progress-track { margin: 8px 12px 0; background: rgba(142,151,166,.25); }
+      .prayer-card {
+        min-height: 0;
+        margin: 10px 4px;
+        padding: 22px 18px;
+        overflow-y: auto;
+        border: 1px solid rgba(255,255,255,.22);
+        border-radius: 20px;
+        background: linear-gradient(90deg, rgba(250,249,246,.38), rgba(250,249,246,.68) 18% 82%, rgba(250,249,246,.38));
+        box-shadow: 0 12px 34px rgba(18,22,29,.12);
+        backdrop-filter: blur(1.5px);
+        justify-content: center;
+        pointer-events: none;
+        scrollbar-width: thin;
+      }
+      html[data-theme="dark"] .prayer-card {
+        border-color: rgba(225,231,241,.1);
+        background: linear-gradient(90deg, rgba(9,11,16,.34), rgba(9,11,16,.62) 18% 82%, rgba(9,11,16,.34));
+        box-shadow: 0 14px 38px rgba(0,0,0,.3);
+      }
+      .prayer-title { margin-bottom: 14px; font-size: clamp(2rem, 10vw, 2.65rem); }
+      .prayer-text { font-size: 1rem; line-height: 1.48; text-shadow: 0 1px 8px rgba(250,249,246,.85); }
+      html[data-theme="dark"] .prayer-text { text-shadow: 0 1px 8px rgba(0,0,0,.95); }
+      .mystery-note { margin-bottom: 12px; background: rgba(148,120,73,.13); }
+      .controls { position: relative; z-index: 2; width: 100%; min-width: 0; pointer-events: auto; }
+      .control-btn {
+        min-width: 0;
+        min-height: 52px;
+        padding: 10px 12px;
+        border-color: rgba(69,77,91,.3);
+        background: rgba(250,249,246,.88);
+        box-shadow: 0 7px 20px rgba(18,22,29,.18);
+        backdrop-filter: blur(10px);
+      }
       .control-btn.primary { background: var(--green); }
-      html[data-theme="dark"] .control-btn { background: #1a202b; }
+      html[data-theme="dark"] .control-btn { border-color: rgba(225,231,241,.16); background: rgba(18,23,32,.9); }
       html[data-theme="dark"] .control-btn.primary { background: var(--green); }
+      .hints { margin: 9px 5px 0; pointer-events: auto; }
       .hints span:first-child { display: none; }
     }
 
