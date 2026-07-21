@@ -550,40 +550,41 @@
         padding: 10px 12px;
         border: 1px solid rgba(255,255,255,.32);
         border-radius: 15px;
-        background: rgba(250,249,246,.76);
+        background: rgba(250,249,246,.58);
         box-shadow: 0 5px 18px rgba(18,22,29,.12);
         backdrop-filter: blur(10px);
         pointer-events: auto;
       }
       html[data-theme="dark"] .toolbar {
         border-color: rgba(225,231,241,.15);
-        background: rgba(12,15,21,.72);
+        background: rgba(12,15,21,.54);
       }
       .select-wrap { min-width: 0; }
       select { width: min(210px, 55vw); max-width: 100%; }
       .progress-track { margin: 8px 12px 0; background: rgba(142,151,166,.25); }
       .prayer-card {
         min-height: 0;
-        margin: 10px 4px;
-        padding: 22px 18px;
+        width: 88%;
+        margin: 10px auto;
+        padding: 22px 10px;
         overflow-y: auto;
-        border: 1px solid rgba(255,255,255,.22);
-        border-radius: 20px;
-        background: linear-gradient(90deg, rgba(250,249,246,.38), rgba(250,249,246,.68) 18% 82%, rgba(250,249,246,.38));
-        box-shadow: 0 12px 34px rgba(18,22,29,.12);
-        backdrop-filter: blur(1.5px);
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
         justify-content: center;
         pointer-events: none;
         scrollbar-width: thin;
       }
       html[data-theme="dark"] .prayer-card {
-        border-color: rgba(225,231,241,.1);
-        background: linear-gradient(90deg, rgba(9,11,16,.34), rgba(9,11,16,.62) 18% 82%, rgba(9,11,16,.34));
-        box-shadow: 0 14px 38px rgba(0,0,0,.3);
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
       }
-      .prayer-title { margin-bottom: 14px; font-size: clamp(2rem, 10vw, 2.65rem); }
-      .prayer-text { font-size: 1rem; line-height: 1.48; text-shadow: 0 1px 8px rgba(250,249,246,.85); }
-      html[data-theme="dark"] .prayer-text { text-shadow: 0 1px 8px rgba(0,0,0,.95); }
+      .prayer-title { margin-bottom: 14px; font-size: clamp(2rem, 10vw, 2.65rem); text-shadow: 0 1px 12px rgba(250,249,246,.95), 0 0 4px rgba(250,249,246,.9); }
+      .prayer-text { font-size: 1rem; line-height: 1.48; text-shadow: 0 1px 10px rgba(250,249,246,.95), 0 0 4px rgba(250,249,246,.92); }
+      html[data-theme="dark"] .prayer-title,
+      html[data-theme="dark"] .prayer-text { text-shadow: 0 2px 10px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1); }
       .mystery-note { margin-bottom: 12px; background: rgba(148,120,73,.13); }
       .controls { position: relative; z-index: 2; width: 100%; min-width: 0; pointer-events: auto; }
       .control-btn {
