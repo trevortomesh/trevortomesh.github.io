@@ -583,9 +583,17 @@
         border-color: rgba(225,231,241,.15);
         background: rgba(12,15,21,.42);
       }
-      .select-wrap { min-width: 0; }
-      .select-wrap label, .counter { display: none; }
-      select { width: min(205px, 58vw); max-width: 100%; padding-right: 20px; font-size: .94rem; text-align: center; }
+      .select-wrap { min-width: 0; display: flex; align-items: center; }
+      .select-wrap label {
+        display: block;
+        margin: 0 8px 0 0;
+        color: var(--gold);
+        font-size: .61rem;
+        letter-spacing: .1em;
+        white-space: nowrap;
+      }
+      .counter { display: none; }
+      select { width: min(182px, 50vw); max-width: 100%; padding-right: 20px; font-size: .94rem; text-align: center; }
       .progress-track { display: none; }
       .prayer-card {
         min-height: 0;
