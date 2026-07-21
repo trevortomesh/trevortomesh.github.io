@@ -270,8 +270,15 @@
     .bead.completed { filter: none; opacity: 1; }
     .bead.active {
       z-index: 4;
-      transform: translate(-50%, -50%) scale(1.55);
-      box-shadow: 0 0 0 5px rgba(255,253,248,.86), 0 0 0 8px var(--gold), 0 7px 18px rgba(60,44,18,.3);
+      filter: brightness(1.38) saturate(1.18);
+      transform: translate(-50%, -50%) scale(1.68);
+      box-shadow: 0 0 0 4px rgba(255,253,248,.92), 0 0 0 8px var(--gold), 0 0 24px rgba(194,167,114,.78), 0 8px 20px rgba(0,0,0,.42);
+      animation: selected-bead-pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes selected-bead-pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(255,253,248,.92), 0 0 0 8px var(--gold), 0 0 18px rgba(194,167,114,.58), 0 8px 20px rgba(0,0,0,.42); }
+      50% { box-shadow: 0 0 0 5px rgba(255,253,248,.96), 0 0 0 10px var(--gold), 0 0 30px rgba(194,167,114,.88), 0 8px 22px rgba(0,0,0,.48); }
     }
 
     .connector {
@@ -525,7 +532,7 @@
       .guide-link { font-size: .7rem; }
       .theme-toggle { width: 40px; min-height: 40px; padding: 7px; justify-content: center; }
       #themeLabel { display: none; }
-      main { width: 100%; min-width: 0; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; overflow: hidden; }
+      main { width: 100%; min-width: 0; margin-top: 46px; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; overflow: visible; }
       main > * { width: 100%; max-width: 100%; min-width: 0; }
       .panel { border-radius: 22px; }
       .rosary-panel,
@@ -555,6 +562,10 @@
         pointer-events: none;
       }
       .toolbar {
+        position: absolute;
+        top: -44px;
+        left: 50%;
+        z-index: 8;
         width: auto;
         min-width: 0;
         align-self: center;
@@ -566,6 +577,7 @@
         box-shadow: 0 3px 12px rgba(18,22,29,.09);
         backdrop-filter: blur(6px);
         pointer-events: auto;
+        transform: translateX(-50%);
       }
       html[data-theme="dark"] .toolbar {
         border-color: rgba(225,231,241,.15);
@@ -588,6 +600,14 @@
         justify-content: center;
         pointer-events: none;
         scrollbar-width: thin;
+      }
+      .prayer-card.long-prayer {
+        justify-content: flex-start;
+        padding-top: 28px;
+        padding-bottom: 84px;
+        pointer-events: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
       }
       html[data-theme="dark"] .prayer-card {
         border-color: transparent;
@@ -636,6 +656,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
       .prayer-card.text-waiting { opacity: 1; transform: none; }
+      .bead.active { animation: none; }
     }
   </style>
 </head>
@@ -936,6 +957,8 @@
       const mysterySet = MYSTERIES[mysterySelect.value];
       clearTimeout(prayerRevealTimer);
       prayerCard.classList.add("text-waiting");
+      prayerCard.classList.toggle("long-prayer", ["creed", "hailHolyQueen", "final"].includes(step.prayer));
+      prayerCard.scrollTop = 0;
       document.querySelectorAll(".active").forEach(el => el.classList.remove("active"));
       document.querySelectorAll("[aria-current='step']").forEach(el => el.removeAttribute("aria-current"));
       document.querySelectorAll(".completed").forEach(el => el.classList.remove("completed"));
