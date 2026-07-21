@@ -534,6 +534,7 @@
       .bead { width: 12px; }
       .bead.large { width: 20px; }
       .prayer-panel {
+        position: relative;
         z-index: 5;
         min-height: 620px;
         padding: 14px;
@@ -572,7 +573,7 @@
         padding: 22px 10px;
         overflow-y: auto;
         border: 0;
-        background: transparent;
+        background: radial-gradient(ellipse at center, rgba(250,249,246,.82) 0%, rgba(250,249,246,.68) 48%, rgba(250,249,246,.2) 72%, transparent 84%);
         box-shadow: none;
         backdrop-filter: none;
         justify-content: center;
@@ -581,7 +582,7 @@
       }
       html[data-theme="dark"] .prayer-card {
         border-color: transparent;
-        background: transparent;
+        background: radial-gradient(ellipse at center, rgba(9,11,16,.78) 0%, rgba(9,11,16,.65) 48%, rgba(9,11,16,.2) 72%, transparent 84%);
         box-shadow: none;
       }
       .prayer-title { margin-bottom: 14px; font-size: clamp(2rem, 10vw, 2.65rem); text-shadow: 0 1px 12px rgba(250,249,246,.95), 0 0 4px rgba(250,249,246,.9); }
@@ -589,26 +590,38 @@
       html[data-theme="dark"] .prayer-title,
       html[data-theme="dark"] .prayer-text { text-shadow: 0 2px 10px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1); }
       .mystery-note { margin-bottom: 12px; background: rgba(148,120,73,.13); }
-      .controls { position: relative; z-index: 2; width: 100%; min-width: 0; grid-template-columns: 1fr 1fr; gap: 8px; pointer-events: auto; }
+      .controls {
+        position: absolute;
+        z-index: 2;
+        right: 14px;
+        bottom: 16px;
+        left: 14px;
+        width: auto;
+        min-width: 0;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+      }
       .controls, .control-btn, select, .reset-btn, .theme-toggle, .guide-link { touch-action: manipulation; }
       .control-btn {
-        min-width: 0;
-        min-height: 46px;
-        padding: 9px 11px;
+        width: auto;
+        min-width: 102px;
+        min-height: 44px;
+        padding: 8px 10px;
         border-color: rgba(69,77,91,.2);
         color: var(--muted);
         background: rgba(250,249,246,.56);
         box-shadow: 0 3px 10px rgba(18,22,29,.1);
         backdrop-filter: blur(7px);
-        font-size: .84rem;
+        font-size: .78rem;
         font-weight: 650;
+        pointer-events: auto;
       }
       .control-btn:active { transform: scale(.97); }
       .control-btn.primary { border-color: rgba(64,86,120,.3); color: var(--ink); background: rgba(64,86,120,.16); }
       html[data-theme="dark"] .control-btn { border-color: rgba(225,231,241,.1); color: var(--muted); background: rgba(18,23,32,.54); }
       html[data-theme="dark"] .control-btn.primary { border-color: rgba(111,143,194,.25); color: #d9dee7; background: rgba(83,111,157,.2); }
-      .hints { margin: 9px 5px 0; pointer-events: auto; }
-      .hints span:first-child { display: none; }
+      .hints { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -887,7 +900,7 @@
     Object.entries(MYSTERIES).forEach(([key, value]) => {
       const option = document.createElement("option");
       option.value = key;
-      option.textContent = `${value.label}${key === suggested ? " · Today" : ""}`;
+      option.textContent = value.label;
       mysterySelect.appendChild(option);
     });
 
