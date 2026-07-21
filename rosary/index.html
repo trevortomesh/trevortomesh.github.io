@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#efede8">
   <meta name="description" content="A calm, interactive rosary for browser and mobile prayer.">
   <title>The Rosary</title>
@@ -61,7 +61,7 @@
     }
 
     button, select { font: inherit; }
-    button { -webkit-tap-highlight-color: transparent; }
+    button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
     .shell {
       width: min(1440px, 100%);
@@ -586,19 +586,23 @@
       html[data-theme="dark"] .prayer-title,
       html[data-theme="dark"] .prayer-text { text-shadow: 0 2px 10px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1); }
       .mystery-note { margin-bottom: 12px; background: rgba(148,120,73,.13); }
-      .controls { position: relative; z-index: 2; width: 100%; min-width: 0; pointer-events: auto; }
+      .controls { position: relative; z-index: 2; width: 100%; min-width: 0; grid-template-columns: 1fr 1fr; gap: 8px; pointer-events: auto; }
+      .controls, .control-btn, select, .reset-btn, .theme-toggle, .guide-link { touch-action: manipulation; }
       .control-btn {
         min-width: 0;
-        min-height: 52px;
-        padding: 10px 12px;
-        border-color: rgba(69,77,91,.3);
-        background: rgba(250,249,246,.88);
-        box-shadow: 0 7px 20px rgba(18,22,29,.18);
-        backdrop-filter: blur(10px);
+        min-height: 46px;
+        padding: 9px 11px;
+        border-color: rgba(69,77,91,.2);
+        color: var(--muted);
+        background: rgba(250,249,246,.56);
+        box-shadow: 0 3px 10px rgba(18,22,29,.1);
+        backdrop-filter: blur(7px);
+        font-size: .84rem;
+        font-weight: 650;
       }
-      .control-btn.primary { background: var(--green); }
-      html[data-theme="dark"] .control-btn { border-color: rgba(225,231,241,.16); background: rgba(18,23,32,.9); }
-      html[data-theme="dark"] .control-btn.primary { background: var(--green); }
+      .control-btn.primary { border-color: rgba(64,86,120,.3); color: var(--ink); background: rgba(64,86,120,.16); }
+      html[data-theme="dark"] .control-btn { border-color: rgba(225,231,241,.1); color: var(--muted); background: rgba(18,23,32,.54); }
+      html[data-theme="dark"] .control-btn.primary { border-color: rgba(111,143,194,.25); color: #d9dee7; background: rgba(83,111,157,.2); }
       .hints { margin: 9px 5px 0; pointer-events: auto; }
       .hints span:first-child { display: none; }
     }
