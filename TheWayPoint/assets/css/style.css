@@ -50,7 +50,9 @@ nav {
 
 nav ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    row-gap: 0.5rem;
     list-style: none;
 }
 
@@ -355,6 +357,46 @@ a.resource-link {
 a.resource-link:hover {
     background-color: #e0c600;
 }
+
+a.resource-link-secondary {
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    background-color: transparent;
+    margin-left: 0.5rem;
+}
+
+a.resource-link-secondary:hover {
+    color: #121212;
+    background-color: #ffd700;
+}
+
+.simulator-callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid #454545;
+    border-left: 4px solid #ffd700;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #171717, #202020);
+}
+
+.simulator-callout h3,
+.simulator-callout p {
+    margin: 0;
+}
+
+.simulator-callout h3 {
+    color: #ffd700;
+    font-size: 1.25rem;
+}
+
+.simulator-callout .resource-link {
+    flex: 0 0 auto;
+    margin-top: 0;
+}
 /* Responsive styles for mobile */
 @media (max-width: 900px) {
     .banner {
@@ -400,6 +442,17 @@ a.resource-link:hover {
     }
     .mystery-set summary span {
         text-align: left;
+    }
+    .simulator-callout {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .simulator-callout .resource-link {
+        width: 100%;
+        text-align: center;
+    }
+    a.resource-link-secondary {
+        margin-left: 0;
     }
 }
 @media (max-width: 600px) {
