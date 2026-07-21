@@ -421,6 +421,15 @@
       flex-direction: column;
       justify-content: center;
       padding: 30px 0;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .3s ease, transform .34s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .prayer-card.text-waiting {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: none;
     }
 
     .step-eyebrow {
@@ -626,6 +635,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .prayer-card.text-waiting { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -916,11 +926,16 @@
     const centerKicker = document.getElementById("centerKicker");
     const centerTitle = document.getElementById("centerTitle");
     const centerCount = document.getElementById("centerCount");
+    const prayerCard = document.querySelector(".prayer-card");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let prayerRevealTimer;
     let current = Math.min(Number(localStorage.getItem("rosary-step")) || 0, steps.length - 1);
 
     function render(options = {}) {
       const step = steps[current];
       const mysterySet = MYSTERIES[mysterySelect.value];
+      clearTimeout(prayerRevealTimer);
+      prayerCard.classList.add("text-waiting");
       document.querySelectorAll(".active").forEach(el => el.classList.remove("active"));
       document.querySelectorAll("[aria-current='step']").forEach(el => el.removeAttribute("aria-current"));
       document.querySelectorAll(".completed").forEach(el => el.classList.remove("completed"));
@@ -956,6 +971,11 @@
       document.getElementById("nextBtn").textContent = current === steps.length - 1 ? "Begin again ↻" : "Next bead →";
       localStorage.setItem("rosary-step", current);
       if (options.focus) step.node.focus({ preventScroll: true });
+      if (reducedMotion.matches) {
+        prayerCard.classList.remove("text-waiting");
+      } else {
+        prayerRevealTimer = setTimeout(() => prayerCard.classList.remove("text-waiting"), 220);
+      }
     }
 
     function ordinal(number) { return ["First", "Second", "Third", "Fourth", "Fifth"][number - 1]; }
