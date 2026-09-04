@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fall 2026 Class Schedules — Dr. Trevor M. Tomesh</title>
+<style>
+  :root {
+    --c161: #2563eb;
+    --c235: #dc2626;
+    --c120: #16a34a;
+    --c325: #9333ea;
+    --accent: #e62429;
+    --accent-dark: #c31f24;
+    --bg: #f3f4f6;
+    --text: #1f2430;
+    --panel-bg: #ffffff;
+    --panel-border: #e5e7eb;
+    --subtle-border: #eef0f3;
+    --subtle-text: #6b7280;
+    --other-month-bg: #fafbfc;
+    --other-month-text: #c7cbd3;
+    --today-bg: #fff4d6;
+    --today-ring: #f2b93b;
+    --notice-bg: #eef6ff;
+    --notice-border: #bcdcff;
+    --disclosure-bg: #f4f4f5;
+    --shadow: 0 1px 2px rgba(16,24,40,0.04), 0 4px 14px rgba(16,24,40,0.06);
+    --shadow-hover: 0 2px 6px rgba(16,24,40,0.08), 0 10px 24px rgba(16,24,40,0.10);
+  }
+  body.dark {
+    --bg: #0f1115;
+    --text: #e7e9ee;
+    --panel-bg: #181b21;
+    --panel-border: #2a2e37;
+    --subtle-border: #262a32;
+    --subtle-text: #9aa4b2;
+    --other-month-bg: #14171c;
+    --other-month-text: #454b56;
+    --today-bg: #3a2f0f;
+    --today-ring: #caa23b;
+    --notice-bg: #152233;
+    --notice-border: #22394f;
+    --disclosure-bg: #191c22;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.35);
+    --shadow-hover: 0 2px 8px rgba(0,0,0,0.4), 0 12px 28px rgba(0,0,0,0.45);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0; padding: 1.5rem 1.2rem 2.5rem; color: var(--text); background: var(--bg);
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .page-header { max-width: 1300px; margin: 0 auto 1.4rem; text-align: center; position: relative; }
+  h1 {
+    margin: 0 0 0.25rem; font-size: 2rem; font-weight: 800; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent), #ff6b6b);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .subtitle { color: var(--subtle-text); margin: 0; font-size: 0.95em; }
+  .notice {
+    background: var(--notice-bg); border: 1px solid var(--notice-border); padding: 0.85rem 1.1rem;
+    border-radius: 10px; font-size: 0.85em; max-width: 1100px; margin: 1.1rem auto 1.4rem; line-height: 1.5;
+    box-shadow: var(--shadow);
+  }
+  .top-bar { max-width: 1300px; margin: 0 auto 0.8rem; display: flex; justify-content: flex-end; }
+  #darkModeToggle {
+    background: var(--panel-bg); color: var(--text); border: 1px solid var(--panel-border);
+    border-radius: 999px; padding: 0.45rem 1.1rem; cursor: pointer; font-size: 0.85em;
+    box-shadow: var(--shadow); transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  #darkModeToggle:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+  .layout { display: flex; gap: 1.4rem; max-width: 1300px; margin: 0 auto; align-items: flex-start; flex-wrap: wrap; }
+  .sidebar {
+    width: 240px; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 14px;
+    padding: 1.2rem; position: sticky; top: 1.2rem; box-shadow: var(--shadow);
+  }
+  .sidebar h3 {
+    margin: 1.1rem 0 0.6rem; font-size: 0.78em; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--subtle-text); border-bottom: 1px solid var(--subtle-border); padding-bottom: 6px; font-weight: 700;
+  }
+  .sidebar h3:first-child { margin-top: 0; }
+  .sidebar label {
+    display: flex; align-items: center; gap: 0.5rem; font-size: 0.88em; margin: 0.45rem 0; cursor: pointer;
+    padding: 3px 4px; border-radius: 6px; transition: background 0.15s ease;
+  }
+  .sidebar label:hover { background: var(--subtle-border); }
+  .swatch { width: 11px; height: 11px; border-radius: 50%; display: inline-block; flex-shrink: 0; box-shadow: 0 0 0 2px rgba(0,0,0,0.03); }
+  .sidebar .mini-btn {
+    font-size: 0.75em; margin-right: 0.4rem; background: var(--subtle-border); color: var(--text);
+    border: 1px solid var(--panel-border); border-radius: 6px; padding: 0.25rem 0.6rem; cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .sidebar .mini-btn:hover { background: var(--panel-border); }
+  .legend-note { font-size: 0.78em; color: var(--subtle-text); margin-top: 0.9rem; line-height: 1.5; }
+  .calendar-wrap {
+    flex: 1; min-width: 320px; background: var(--panel-bg); border: 1px solid var(--panel-border);
+    border-radius: 14px; padding: 1.2rem; box-shadow: var(--shadow);
+  }
+  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .cal-header button {
+    background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 0.45rem 0.95rem;
+    cursor: pointer; font-size: 0.88em; font-weight: 600; transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .cal-header button:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .cal-header h2 { margin: 0; font-size: 1.25em; font-weight: 700; }
+  .cal-nav-group { display: flex; gap: 0.5rem; }
+  table.cal { width: 100%; border-collapse: separate; border-spacing: 4px; table-layout: fixed; }
+  table.cal th {
+    padding: 8px 4px; font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--subtle-text); text-align: center;
+  }
+  table.cal td {
+    border: 1px solid var(--subtle-border); border-radius: 10px; vertical-align: top; height: 104px;
+    padding: 5px; font-size: 0.75em; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  table.cal td:hover { box-shadow: var(--shadow); border-color: var(--panel-border); }
+  table.cal td.other-month { background: var(--other-month-bg); color: var(--other-month-text); }
+  table.cal td.today { background: var(--today-bg); box-shadow: inset 0 0 0 2px var(--today-ring); }
+  .day-num { font-weight: 700; font-size: 0.95em; margin-bottom: 3px; }
+  .event-pill {
+    display: block; border-radius: 6px; padding: 2px 6px; margin: 2px 0; color: #fff; font-size: 0.85em;
+    line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: default;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12); transition: transform 0.1s ease;
+  }
+  .event-pill:hover { transform: scale(1.03); }
+  .event-pill.open-type { opacity: 0.55; font-style: italic; box-shadow: none; }
+  .day-detail {
+    max-width: 1300px; margin: 1.2rem auto 0; background: var(--panel-bg); border: 1px solid var(--panel-border);
+    border-radius: 14px; padding: 1.2rem; display: none; box-shadow: var(--shadow);
+  }
+  .day-detail.show { display: block; }
+  .day-detail h3 { margin-top: 0; font-weight: 700; }
+  .day-detail ul { margin: 0; padding-left: 1.1rem; list-style: none; }
+  .day-detail li { padding: 4px 0; border-bottom: 1px solid var(--subtle-border); }
+  .day-detail li:last-child { border-bottom: none; }
+  .disclosure {
+    background: var(--disclosure-bg); border-left: 4px solid var(--subtle-text); padding: 0.7rem 1.1rem;
+    border-radius: 0 10px 10px 0; font-size: 0.8em; max-width: 1100px; margin: 1.4rem auto 0; line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button type="button" id="darkModeToggle">🌙 Dark Mode</button>
+</div>
+<div class="page-header">
+  <h1>Fall 2026 Class Schedules</h1>
+  <p class="subtitle">Dr. Trevor M. Tomesh &middot; University of Wisconsin&ndash;River Falls &middot; Term: Sep 2, 2026 &ndash; Dec 15, 2026</p>
+</div>
+
+<div class="notice">
+  <strong>Status:</strong> Introduction to Computing dates are transcribed from the published syllabi (one shared schedule for both the in-person and online sections).
+  Programming Paradigms, Technology &amp; Cyberspace, and Web Development dates were drafted here (staggered across courses to
+  spread out grading/assignment load) since no fixed schedule existed yet — review and confirm before publishing to students.
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <h3>Courses</h3>
+    <label><input type="checkbox" class="course-filter" value="CIDS161" checked><span class="swatch" style="background:var(--c161)"></span> CIDS 161 (in person &amp; online)</label>
+    <label><input type="checkbox" class="course-filter" value="CIDS235" checked><span class="swatch" style="background:var(--c235)"></span> CIDS 235 Prog. Paradigms</label>
+    <label><input type="checkbox" class="course-filter" value="CIDS120" checked><span class="swatch" style="background:var(--c120)"></span> CIDS 120 Tech &amp; Cyberspace</label>
+    <label><input type="checkbox" class="course-filter" value="CIDS325" checked><span class="swatch" style="background:var(--c325)"></span> CIDS 325 Web Development</label>
+    <div style="margin-top:0.5rem;">
+      <button type="button" id="allCourses" class="mini-btn">All</button>
+      <button type="button" id="noCourses" class="mini-btn">None</button>
+    </div>
+
+    <h3>Event Type</h3>
+    <label><input type="checkbox" class="type-filter" value="quiz" checked> Quizzes</label>
+    <label><input type="checkbox" class="type-filter" value="assignment" checked> Assignments</label>
+    <label><input type="checkbox" class="type-filter" value="exam" checked> Midterms / Finals</label>
+
+    <h3>Date Kind</h3>
+    <label><input type="checkbox" id="showOpen"> Show "opens/assigned" dates</label>
+    <label><input type="checkbox" id="showDue" checked> Show "due" dates</label>
+
+    <p class="legend-note">Italic/faded pills are "opens" dates. Solid pills are due dates or exams. Click a day with events to see details below the calendar.</p>
+  </div>
+
+  <div class="calendar-wrap">
+    <div class="cal-header">
+      <div class="cal-nav-group">
+        <button id="prevMonth">&larr; Prev</button>
+        <button id="todayBtn">Today</button>
+        <button id="nextMonth">Next &rarr;</button>
+      </div>
+      <h2 id="monthLabel"></h2>
+      <div></div>
+    </div>
+    <table class="cal">
+      <thead><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr></thead>
+      <tbody id="calBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="day-detail" id="dayDetail">
+  <h3 id="dayDetailTitle"></h3>
+  <ul id="dayDetailList"></ul>
+</div>
+
+<div class="disclosure">
+  <strong>AI involvement disclosure:</strong> This page was assembled with AI assistance (GitHub Copilot / Claude). Dates for
+  Introduction to Computing were transcribed directly from the published syllabi. Dates for Programming Paradigms,
+  Technology &amp; Cyberspace, and Web Development were newly drafted by the AI at the instructor's direction to stagger
+  due dates across courses, since no fixed schedule existed yet; these should be reviewed and confirmed by the instructor
+  before being communicated to students.
+</div>
+
+<script>
+const COURSE_COLORS = {
+  CIDS161: "var(--c161)", CIDS235: "var(--c235)",
+  CIDS120: "var(--c120)", CIDS325: "var(--c325)"
+};
+const COURSE_NAMES = {
+  CIDS161: "CIDS 161 (in person & online)",
+  CIDS235: "CIDS 235 Programming Paradigms", CIDS120: "CIDS 120 Tech & Cyberspace",
+  CIDS325: "CIDS 325 Web Development"
+};
+
+// date, course, type ("quiz"|"assignment"|"exam"), kind ("open"|"due"|"exam"), title
+// Rule: quiz open->due gap = 7 days; assignment open->due gap = 14 days.
+const events = [
+  // ---------- CIDS161 (in person & online) ----------
+  {date:"2026-09-14", course:"CIDS161", type:"assignment", kind:"open", title:"Assignment 1 opens"},
+  {date:"2026-09-25", course:"CIDS161", type:"quiz", kind:"open", title:"Quiz 1 opens"},
+  {date:"2026-09-28", course:"CIDS161", type:"assignment", kind:"due", title:"Assignment 1 due"},
+  {date:"2026-10-02", course:"CIDS161", type:"quiz", kind:"due", title:"Quiz 1 due"},
+  {date:"2026-10-19", course:"CIDS161", type:"assignment", kind:"open", title:"Assignment 2 opens"},
+  {date:"2026-10-23", course:"CIDS161", type:"quiz", kind:"open", title:"Quiz 2 opens"},
+  {date:"2026-10-28", course:"CIDS161", type:"exam", kind:"exam", title:"Midterm Exam"},
+  {date:"2026-10-30", course:"CIDS161", type:"quiz", kind:"due", title:"Quiz 2 due"},
+  {date:"2026-11-02", course:"CIDS161", type:"assignment", kind:"due", title:"Assignment 2 due"},
+  {date:"2026-11-06", course:"CIDS161", type:"quiz", kind:"open", title:"Quiz 3 opens"},
+  {date:"2026-11-13", course:"CIDS161", type:"quiz", kind:"due", title:"Quiz 3 due"},
+  {date:"2026-11-23", course:"CIDS161", type:"assignment", kind:"open", title:"Assignment 3 opens"},
+  {date:"2026-11-27", course:"CIDS161", type:"quiz", kind:"open", title:"Quiz 4 opens"},
+  {date:"2026-12-04", course:"CIDS161", type:"quiz", kind:"due", title:"Quiz 4 due"},
+  {date:"2026-12-04", course:"CIDS161", type:"quiz", kind:"open", title:"Quiz 5 opens"},
+  {date:"2026-12-07", course:"CIDS161", type:"assignment", kind:"due", title:"Assignment 3 due"},
+  {date:"2026-12-11", course:"CIDS161", type:"quiz", kind:"due", title:"Quiz 5 due"},
+  {date:"2026-12-17", course:"CIDS161", type:"exam", kind:"exam", title:"Final Exam"},
+
+  // ---------- CIDS235 Programming Paradigms ----------
+  {date:"2026-09-11", course:"CIDS235", type:"quiz", kind:"open", title:"Quiz 1 opens"},
+  {date:"2026-09-18", course:"CIDS235", type:"quiz", kind:"due", title:"Quiz 1 due"},
+  {date:"2026-09-21", course:"CIDS235", type:"assignment", kind:"open", title:"Assignment 1 opens"},
+  {date:"2026-09-25", course:"CIDS235", type:"quiz", kind:"open", title:"Quiz 2 opens"},
+  {date:"2026-10-02", course:"CIDS235", type:"quiz", kind:"due", title:"Quiz 2 due"},
+  {date:"2026-10-05", course:"CIDS235", type:"assignment", kind:"due", title:"Assignment 1 due"},
+  {date:"2026-10-16", course:"CIDS235", type:"quiz", kind:"open", title:"Quiz 3 opens"},
+  {date:"2026-10-23", course:"CIDS235", type:"quiz", kind:"due", title:"Quiz 3 due"},
+  {date:"2026-10-26", course:"CIDS235", type:"exam", kind:"exam", title:"Midterm Exam (in-person)"},
+  {date:"2026-10-26", course:"CIDS235", type:"assignment", kind:"open", title:"A2 – Object Oriented Battle Creatures: Arena! opens"},
+  {date:"2026-11-06", course:"CIDS235", type:"quiz", kind:"open", title:"Quiz 4 opens"},
+  {date:"2026-11-09", course:"CIDS235", type:"assignment", kind:"due", title:"A2 – Object Oriented Battle Creatures: Arena! due"},
+  {date:"2026-11-13", course:"CIDS235", type:"quiz", kind:"due", title:"Quiz 4 due"},
+  {date:"2026-11-16", course:"CIDS235", type:"assignment", kind:"open", title:"A3 – Evolutionary Battle Creatures opens"},
+  {date:"2026-11-30", course:"CIDS235", type:"assignment", kind:"due", title:"A3 – Evolutionary Battle Creatures due"},
+  {date:"2026-12-04", course:"CIDS235", type:"quiz", kind:"open", title:"Quiz 5 opens"},
+  {date:"2026-12-11", course:"CIDS235", type:"quiz", kind:"due", title:"Quiz 5 due"},
+  {date:"2026-12-17", course:"CIDS235", type:"exam", kind:"exam", title:"Final Exam"},
+
+  // ---------- CIDS120 Technology & Cyberspace ----------
+  {date:"2026-09-04", course:"CIDS120", type:"assignment", kind:"open", title:"A0 – Value Inventory opens"},
+  {date:"2026-09-11", course:"CIDS120", type:"quiz", kind:"open", title:"Quiz 1 opens"},
+  {date:"2026-09-11", course:"CIDS120", type:"assignment", kind:"due", title:"A0 – Value Inventory due"},
+  {date:"2026-09-18", course:"CIDS120", type:"quiz", kind:"due", title:"Quiz 1 due"},
+  {date:"2026-10-02", course:"CIDS120", type:"quiz", kind:"open", title:"Quiz 2 opens"},
+  {date:"2026-10-05", course:"CIDS120", type:"assignment", kind:"open", title:"Position Paper 1 opens"},
+  {date:"2026-10-09", course:"CIDS120", type:"quiz", kind:"due", title:"Quiz 2 due"},
+  {date:"2026-10-19", course:"CIDS120", type:"assignment", kind:"due", title:"Position Paper 1 due"},
+  {date:"2026-10-23", course:"CIDS120", type:"quiz", kind:"open", title:"Quiz 3 opens"},
+  {date:"2026-10-30", course:"CIDS120", type:"quiz", kind:"due", title:"Quiz 3 due"},
+  {date:"2026-10-30", course:"CIDS120", type:"exam", kind:"exam", title:"Midterm Exam (in-person)"},
+  {date:"2026-11-02", course:"CIDS120", type:"assignment", kind:"open", title:"Position Paper 2 opens"},
+  {date:"2026-11-13", course:"CIDS120", type:"quiz", kind:"open", title:"Quiz 4 opens"},
+  {date:"2026-11-16", course:"CIDS120", type:"assignment", kind:"due", title:"Position Paper 2 due"},
+  {date:"2026-11-20", course:"CIDS120", type:"quiz", kind:"due", title:"Quiz 4 due"},
+  {date:"2026-11-30", course:"CIDS120", type:"assignment", kind:"open", title:"Position Paper 3 – Anti-Position Paper opens"},
+  {date:"2026-12-04", course:"CIDS120", type:"quiz", kind:"open", title:"Quiz 5 opens"},
+  {date:"2026-12-11", course:"CIDS120", type:"quiz", kind:"due", title:"Quiz 5 due"},
+  {date:"2026-12-14", course:"CIDS120", type:"assignment", kind:"due", title:"Position Paper 3 – Anti-Position Paper due"},
+  {date:"2026-12-16", course:"CIDS120", type:"exam", kind:"exam", title:"Final Exam (proposed — not specified in syllabus)"},
+
+  // ---------- CIDS325 Web Development ----------
+  {date:"2026-09-11", course:"CIDS325", type:"quiz", kind:"open", title:"Quiz 1 opens"},
+  {date:"2026-09-18", course:"CIDS325", type:"quiz", kind:"due", title:"Quiz 1 due"},
+  {date:"2026-09-28", course:"CIDS325", type:"assignment", kind:"open", title:"Assignment 1 opens"},
+  {date:"2026-10-09", course:"CIDS325", type:"quiz", kind:"open", title:"Quiz 2 opens"},
+  {date:"2026-10-12", course:"CIDS325", type:"assignment", kind:"due", title:"Assignment 1 due"},
+  {date:"2026-10-16", course:"CIDS325", type:"quiz", kind:"due", title:"Quiz 2 due"},
+  {date:"2026-10-30", course:"CIDS325", type:"quiz", kind:"open", title:"Quiz 3 opens"},
+  {date:"2026-11-06", course:"CIDS325", type:"quiz", kind:"due", title:"Quiz 3 due"},
+  {date:"2026-11-09", course:"CIDS325", type:"assignment", kind:"open", title:"Assignment 2 opens"},
+  {date:"2026-11-23", course:"CIDS325", type:"assignment", kind:"due", title:"Assignment 2 due"},
+  {date:"2026-11-27", course:"CIDS325", type:"quiz", kind:"open", title:"Quiz 4 opens"},
+  {date:"2026-11-30", course:"CIDS325", type:"assignment", kind:"open", title:"Assignment 3 opens"},
+  {date:"2026-12-04", course:"CIDS325", type:"quiz", kind:"due", title:"Quiz 4 due"},
+  {date:"2026-12-07", course:"CIDS325", type:"quiz", kind:"open", title:"Quiz 5 opens"},
+  {date:"2026-12-14", course:"CIDS325", type:"quiz", kind:"due", title:"Quiz 5 due"},
+  {date:"2026-12-14", course:"CIDS325", type:"assignment", kind:"due", title:"Assignment 3 due"},
+  {date:"2026-12-21", course:"CIDS325", type:"exam", kind:"exam", title:"Final Exam"}
+];
+
+let viewYear = 2026, viewMonth = 8; // September 2026 (0-indexed)
+const today = new Date();
+
+function activeFilters() {
+  const courses = Array.from(document.querySelectorAll(".course-filter:checked")).map(c => c.value);
+  const types = Array.from(document.querySelectorAll(".type-filter:checked")).map(c => c.value);
+  const showOpen = document.getElementById("showOpen").checked;
+  const showDue = document.getElementById("showDue").checked;
+  return { courses, types, showOpen, showDue };
+}
+
+function eventsForDate(dateStr, f) {
+  return events.filter(e => {
+    if (e.date !== dateStr) return false;
+    if (!f.courses.includes(e.course)) return false;
+    if (!f.types.includes(e.type)) return false;
+    if (e.kind === "open" && !f.showOpen) return false;
+    if (e.kind === "due" && !f.showDue) return false;
+    // exams always shown if type "exam" is checked, regardless of open/due toggles
+    return true;
+  });
+}
+
+function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+function renderCalendar() {
+  const f = activeFilters();
+  const monthLabel = new Date(viewYear, viewMonth, 1).toLocaleString("default", { month: "long", year: "numeric" });
+  document.getElementById("monthLabel").textContent = monthLabel;
+
+  const firstDay = new Date(viewYear, viewMonth, 1);
+  const startWeekday = firstDay.getDay();
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const daysInPrevMonth = new Date(viewYear, viewMonth, 0).getDate();
+
+  const cells = [];
+  for (let i = startWeekday - 1; i >= 0; i--) {
+    cells.push({ day: daysInPrevMonth - i, otherMonth: true, y: viewMonth === 0 ? viewYear - 1 : viewYear, m: viewMonth === 0 ? 11 : viewMonth - 1 });
+  }
+  for (let d = 1; d <= daysInMonth; d++) {
+    cells.push({ day: d, otherMonth: false, y: viewYear, m: viewMonth });
+  }
+  let nextMonthDay = 1;
+  while (cells.length % 7 !== 0) {
+    cells.push({ day: nextMonthDay++, otherMonth: true, y: viewMonth === 11 ? viewYear + 1 : viewYear, m: viewMonth === 11 ? 0 : viewMonth + 1 });
+  }
+
+  const tbody = document.getElementById("calBody");
+  tbody.innerHTML = "";
+  for (let w = 0; w < cells.length / 7; w++) {
+    const tr = document.createElement("tr");
+    for (let d = 0; d < 7; d++) {
+      const cell = cells[w * 7 + d];
+      const td = document.createElement("td");
+      const dateStr = `${cell.y}-${pad(cell.m + 1)}-${pad(cell.day)}`;
+      if (cell.otherMonth) td.classList.add("other-month");
+      const isToday = dateStr === `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+      if (isToday) td.classList.add("today");
+
+      const dayNum = document.createElement("div");
+      dayNum.className = "day-num";
+      dayNum.textContent = cell.day;
+      td.appendChild(dayNum);
+
+      const dayEvents = eventsForDate(dateStr, f);
+      dayEvents.forEach(e => {
+        const pill = document.createElement("div");
+        pill.className = "event-pill" + (e.kind === "open" ? " open-type" : "");
+        pill.style.background = COURSE_COLORS[e.course];
+        pill.title = `${COURSE_NAMES[e.course]}: ${e.title}`;
+        pill.textContent = e.title;
+        td.appendChild(pill);
+      });
+
+      if (dayEvents.length) {
+        td.style.cursor = "pointer";
+        td.addEventListener("click", () => showDayDetail(dateStr, dayEvents));
+      }
+
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+}
+
+function showDayDetail(dateStr, dayEvents) {
+  const panel = document.getElementById("dayDetail");
+  const title = document.getElementById("dayDetailTitle");
+  const list = document.getElementById("dayDetailList");
+  const d = new Date(dateStr + "T00:00:00");
+  title.textContent = d.toLocaleDateString("default", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  list.innerHTML = "";
+  dayEvents.forEach(e => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="swatch" style="background:${COURSE_COLORS[e.course]}"></span> <strong>${COURSE_NAMES[e.course]}</strong> — ${e.title}`;
+    list.appendChild(li);
+  });
+  panel.classList.add("show");
+}
+
+document.getElementById("prevMonth").addEventListener("click", () => {
+  viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+  renderCalendar();
+});
+document.getElementById("nextMonth").addEventListener("click", () => {
+  viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+  renderCalendar();
+});
+document.getElementById("todayBtn").addEventListener("click", () => {
+  viewYear = today.getFullYear(); viewMonth = today.getMonth();
+  renderCalendar();
+});
+document.getElementById("allCourses").addEventListener("click", () => {
+  document.querySelectorAll(".course-filter").forEach(c => c.checked = true);
+  renderCalendar();
+});
+document.getElementById("noCourses").addEventListener("click", () => {
+  document.querySelectorAll(".course-filter").forEach(c => c.checked = false);
+  renderCalendar();
+});
+document.querySelectorAll(".course-filter, .type-filter").forEach(el => el.addEventListener("change", renderCalendar));
+document.getElementById("showOpen").addEventListener("change", renderCalendar);
+document.getElementById("showDue").addEventListener("change", renderCalendar);
+
+const darkToggle = document.getElementById("darkModeToggle");
+function applyDarkMode(on) {
+  document.body.classList.toggle("dark", on);
+  darkToggle.textContent = on ? "☀️ Light Mode" : "🌙 Dark Mode";
+  localStorage.setItem("classScheduleDarkMode", on ? "1" : "0");
+}
+applyDarkMode(localStorage.getItem("classScheduleDarkMode") === "1");
+darkToggle.addEventListener("click", () => applyDarkMode(!document.body.classList.contains("dark")));
+
+renderCalendar();
+</script>
+
+</body>
+</html>
