@@ -1,68 +1,722 @@
 [
   {
-    "order": 2,
-    "book": "Alma",
-    "chapters": "Alma 33–35",
-    "date": "July 30, 2026",
-    "title": "Alma 33–35",
-    "url": "https://x.com/i/spaces/1kKzDDjQrywJv?s=20",
-    "note": "Recovered from the Ko-fi archive."
+    "order": 1,
+    "book": "",
+    "chapters": "Intro Pt. 1",
+    "date": "",
+    "title": "Intro Pt. 1",
+    "url": "https://x.com/i/spaces/1nxnRRjyPdYxO?s=20",
+    "missing": false,
+    "note": ""
   },
   {
-    "order": 1,
-    "book": "1 Nephi",
-    "chapters": "Opening readings",
-    "date": "June 2026",
-    "title": "The journey begins",
-    "url": "",
-    "note": "Series began in June 2026; exact first Space link still being recovered."
+    "order": 2,
+    "book": "",
+    "chapters": "Intro Pt. 2",
+    "date": "",
+    "title": "Intro Pt. 2",
+    "url": "https://x.com/i/spaces/1qKDzzlDBawJV?s=20",
+    "missing": false,
+    "note": ""
   },
   {
     "order": 3,
-    "book": "Helaman",
-    "chapters": "Helaman 4–6",
-    "date": "2026",
-    "title": "Faith, repentance, and the Holy Spirit",
-    "url": "",
-    "note": "Contemporary indexed discussion confirms a reading covering Helaman 4–6."
+    "book": "1 Nephi",
+    "chapters": "1 Nephi 1",
+    "date": "",
+    "title": "1 Nephi 1",
+    "url": "https://x.com/i/spaces/1vJpPPZmLrmJE?s=20",
+    "missing": false,
+    "note": ""
   },
   {
     "order": 4,
-    "book": "3 Nephi",
-    "chapters": "The appearance of Christ",
-    "date": "September 2026",
-    "title": "Christ arrives in the Book of Mormon",
-    "url": "",
-    "partial": "x.com/i/spaces/1Nxar…",
-    "note": "Indexed post: nearly three months and 422 pages into the project."
+    "book": "",
+    "chapters": "pt. 3",
+    "date": "",
+    "title": "pt. 3",
+    "url": "https://x.com/i/spaces/1jGXggXgEZNKZ?s=20",
+    "missing": false,
+    "note": ""
   },
   {
     "order": 5,
-    "book": "4 Nephi",
-    "chapters": "4 Nephi",
-    "date": "September 2026",
-    "title": "Reading 4 Nephi",
-    "url": "",
-    "partial": "x.com/i/spaces/1YGNr…",
-    "note": "Indexed post marked the project as 85% complete."
+    "book": "",
+    "chapters": "",
+    "date": "",
+    "title": "Reading 5",
+    "url": "https://x.com/i/spaces/1NGarregLNlJj?s=20",
+    "missing": true,
+    "note": "Recording marked missing."
   },
   {
     "order": 6,
-    "book": "Mormon",
-    "chapters": "Mormon",
-    "date": "September 2026",
-    "title": "Later Book of Mormon readings",
-    "url": "",
-    "partial": "x.com/i/spaces/1lJQR…",
-    "note": "Historical Space reference recovered, but the public index truncates the ID."
+    "book": "1 Nephi",
+    "chapters": "1 Nephi 15-19",
+    "date": "",
+    "title": "1 Nephi 15-19",
+    "url": "https://x.com/i/spaces/1qKVmmVgeyVxB?s=20",
+    "missing": false,
+    "note": ""
   },
   {
     "order": 7,
+    "book": "1 Nephi",
+    "chapters": "1 Nephi 20-22",
+    "date": "",
+    "title": "1 Nephi 20-22",
+    "url": "https://x.com/i/spaces/1RJjppRYqweKw?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 8,
+    "book": "2 Nephi",
+    "chapters": "2 Nephi 1-5",
+    "date": "",
+    "title": "2 Nephi 1-5",
+    "url": "https://x.com/i/spaces/1NGarrAAMlNJj?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 9,
+    "book": "2 Nephi",
+    "chapters": "2 Nephi 6-10",
+    "date": "",
+    "title": "2 Nephi 6-10",
+    "url": "https://x.com/i/spaces/1mGPaanwyqVJN?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 10,
+    "book": "2 Nephi",
+    "chapters": "2 Nephi 10-14",
+    "date": "",
+    "title": "2 Nephi 10-14",
+    "url": "https://x.com/i/spaces/1mGPaanMWaqJN?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 11,
+    "book": "2 Nephi",
+    "chapters": "2 Nephi 15-20",
+    "date": "",
+    "title": "2 Nephi 15-20",
+    "url": "https://x.com/i/spaces/1oKMvvBMYdNGQ?s=20",
+    "missing": true,
+    "note": "Recording marked missing."
+  },
+  {
+    "order": 12,
+    "book": "2 Nephi",
+    "chapters": "2 Nephi 20-24",
+    "date": "",
+    "title": "2 Nephi 20-24",
+    "url": "https://x.com/i/spaces/1nGnRRmdoyjGO?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 13,
+    "book": "2 Nephi",
+    "chapters": "2 Nephi 25-29",
+    "date": "",
+    "title": "2 Nephi 25-29",
+    "url": "https://x.com/i/spaces/1qKDzzLdEWBJV?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 14,
+    "book": "Jacob",
+    "chapters": "Jacob 1-4",
+    "date": "",
+    "title": "Jacob 1-4",
+    "url": "https://x.com/i/spaces/1qJVmmLyONaGB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 15,
+    "book": "Jacob",
+    "chapters": "Jacob 6-7",
+    "date": "",
+    "title": "Jacob 6-7",
+    "url": "https://x.com/i/spaces/1pKkOOVOwbwKj?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 16,
+    "book": "Enos / Jarom / Omni",
+    "chapters": "Enos, Jarom and Omni",
+    "date": "",
+    "title": "Enos, Jarom and Omni",
+    "url": "https://x.com/i/spaces/1oJMvvjkoMYxQ?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 17,
+    "book": "Words of Mormon / Mosiah / Mormon",
+    "chapters": "Words of Mormon and Mosiah 1-4",
+    "date": "",
+    "title": "Words of Mormon and Mosiah 1-4",
+    "url": "https://x.com/i/spaces/1yJAPPyVrqeGb?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 18,
+    "book": "Mosiah",
+    "chapters": "Mosiah 5-8",
+    "date": "",
+    "title": "Mosiah 5-8",
+    "url": "https://x.com/i/spaces/1dJrPPvQZvOKX?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 19,
+    "book": "Mosiah",
+    "chapters": "Mosiah 9-11",
+    "date": "",
+    "title": "Mosiah 9-11",
+    "url": "https://x.com/i/spaces/1MKgNNwWgPMxL?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 20,
+    "book": "Mosiah",
+    "chapters": "Mosiah 12-15",
+    "date": "",
+    "title": "Mosiah 12-15",
+    "url": "https://x.com/i/spaces/1qJVmmEWdRpGB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 21,
+    "book": "Mosiah",
+    "chapters": "Mosiah 16-19",
+    "date": "",
+    "title": "Mosiah 16-19",
+    "url": "https://x.com/i/spaces/1YxNrrPgLyQxw?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 22,
+    "book": "Mosiah",
+    "chapters": "Mosiah 20-24",
+    "date": "",
+    "title": "Mosiah 20-24",
+    "url": "https://x.com/i/spaces/1qJVmmlvWRXGB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 23,
+    "book": "Mosiah",
+    "chapters": "Mosiah 25-29",
+    "date": "",
+    "title": "Mosiah 25-29",
+    "url": "https://x.com/i/spaces/1yGBeeNYQMzKN?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 24,
+    "book": "Alma",
+    "chapters": "Alma 1-4",
+    "date": "",
+    "title": "Alma 1-4",
+    "url": "https://x.com/i/spaces/1pJdRRwekXjKW?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 25,
+    "book": "Alma",
+    "chapters": "Alma 5 & 6",
+    "date": "",
+    "title": "Alma 5 & 6",
+    "url": "https://x.com/i/spaces/1wGWjjLovDMKQ?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 26,
+    "book": "Alma",
+    "chapters": "Alma 7-10",
+    "date": "",
+    "title": "Alma 7-10",
+    "url": "https://x.com/i/spaces/1wxWjjLLOBNJQ?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 27,
+    "book": "Alma",
+    "chapters": "Alma 11 & 12",
+    "date": "",
+    "title": "Alma 11 & 12",
+    "url": "https://x.com/i/spaces/1nJOLLBEpEVxR?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 28,
+    "book": "Alma",
+    "chapters": "Alma 13 & 14",
+    "date": "",
+    "title": "Alma 13 & 14",
+    "url": "https://x.com/i/spaces/1vJpPPoLkqmJE?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 29,
+    "book": "Alma",
+    "chapters": "Alma 15-17",
+    "date": "",
+    "title": "Alma 15-17",
+    "url": "https://x.com/i/spaces/1qKDzzqWYMBJV?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 30,
+    "book": "Alma",
+    "chapters": "Alma 18-20",
+    "date": "",
+    "title": "Alma 18-20",
+    "url": "https://x.com/i/spaces/1DxLddLedkkxm?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 31,
+    "book": "Alma",
+    "chapters": "Alma 21-25",
+    "date": "",
+    "title": "Alma 21-25",
+    "url": "https://x.com/i/spaces/1rGmqqaRWoMGy?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 32,
+    "book": "Alma",
+    "chapters": "Alma 26-29",
+    "date": "",
+    "title": "Alma 26-29",
+    "url": "https://x.com/i/spaces/1rGmqqkYoDLGy?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 33,
+    "book": "Alma",
+    "chapters": "Alma 30-32",
+    "date": "",
+    "title": "Alma 30-32",
+    "url": "https://x.com/i/spaces/1qGoNNDeBAjKv?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 34,
+    "book": "Alma",
+    "chapters": "Alma 33-35",
+    "date": "",
+    "title": "Alma 33-35",
+    "url": "https://x.com/i/spaces/1kKzDDjQrywJv?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 35,
+    "book": "Alma",
+    "chapters": "Alma 36-38",
+    "date": "",
+    "title": "Alma 36-38",
+    "url": "https://x.com/i/spaces/1AJEmmaBLZZJL?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 36,
+    "book": "Alma",
+    "chapters": "Alma 39-42",
+    "date": "",
+    "title": "Alma 39-42",
+    "url": "https://x.com/i/spaces/1oKMvvwZXQoGQ?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 37,
+    "book": "Alma",
+    "chapters": "Alma 43-45",
+    "date": "",
+    "title": "Alma 43-45",
+    "url": "https://x.com/i/spaces/1wxWjjNNlynJQ?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 38,
+    "book": "Alma",
+    "chapters": "Alma 46-50",
+    "date": "",
+    "title": "Alma 46-50",
+    "url": "https://x.com/i/spaces/1RJZzzYvXRVJB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 39,
+    "book": "Alma",
+    "chapters": "Alma 51-55",
+    "date": "",
+    "title": "Alma 51-55",
+    "url": "https://x.com/i/spaces/1qGoNNoakPBKv?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 40,
+    "book": "Alma",
+    "chapters": "Alma 56-59",
+    "date": "",
+    "title": "Alma 56-59",
+    "url": "https://x.com/i/spaces/1RKZzzYdqmVKB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 41,
+    "book": "Alma",
+    "chapters": "Alma 60-63",
+    "date": "",
+    "title": "Alma 60-63",
+    "url": "https://x.com/i/spaces/1DGLddBQXekGm?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 42,
+    "book": "Helaman",
+    "chapters": "Helaman 1-3",
+    "date": "",
+    "title": "Helaman 1-3",
+    "url": "https://x.com/i/spaces/1vJpPPMRpBQJE?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 43,
+    "book": "Helaman",
+    "chapters": "Helaman 4-6",
+    "date": "",
+    "title": "Helaman 4-6",
+    "url": "https://x.com/i/spaces/1oJMvNvRDOdxQ?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 44,
+    "book": "Helaman",
+    "chapters": "Helaman 7-10",
+    "date": "",
+    "title": "Helaman 7-10",
+    "url": "https://x.com/i/spaces/1kKzDPDeWdgJv?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 45,
+    "book": "Helaman",
+    "chapters": "Helaman 11-12",
+    "date": "",
+    "title": "Helaman 11-12",
+    "url": "https://x.com/i/spaces/1NxarooyeLNKj?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 46,
+    "book": "Helaman",
+    "chapters": "Helaman 13-15",
+    "date": "",
+    "title": "Helaman 13-15",
+    "url": "https://x.com/i/spaces/1RKZzBBPyNXKB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 47,
+    "book": "3 Nephi / Helaman",
+    "chapters": "Helaman 16, 3 Nephi 1-3",
+    "date": "",
+    "title": "Helaman 16, 3 Nephi 1-3",
+    "url": "https://x.com/i/spaces/1PKqrNQRdYLGb?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 48,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 4-5",
+    "date": "",
+    "title": "3 Nephi 4-5",
+    "url": "https://x.com/i/spaces/1lJQRWBMkvzxE?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 49,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 6-7",
+    "date": "",
+    "title": "3 Nephi 6-7",
+    "url": "https://x.com/i/spaces/1XxygwPYzeZGM?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 50,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 8-10",
+    "date": "",
+    "title": "3 Nephi 8-10",
+    "url": "https://x.com/i/spaces/1NxaroDNBdvKj?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 51,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 11",
+    "date": "",
+    "title": "3 Nephi 11",
+    "url": "https://x.com/i/spaces/1vJpPNzpOqXJE?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 52,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 12-15",
+    "date": "",
+    "title": "3 Nephi 12-15",
+    "url": "https://x.com/i/spaces/1aKbdEZzNAQJX?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 53,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 16-17",
+    "date": "",
+    "title": "3 Nephi 16-17",
+    "url": "https://x.com/i/spaces/1AKEmvoqQPOKL?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 54,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 18-20",
+    "date": "",
+    "title": "3 Nephi 18-20",
+    "url": "https://x.com/i/spaces/1YGNrbQoEDwGw?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 55,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 21-23",
+    "date": "",
+    "title": "3 Nephi 21-23",
+    "url": "https://x.com/i/spaces/1yxBePZOdyjJN?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 56,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 24-26 Pt. 1",
+    "date": "",
+    "title": "3 Nephi 24-26 Pt. 1",
+    "url": "https://x.com/i/spaces/1MKgNblLEWexL?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 57,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 24-26 Pt. 2",
+    "date": "",
+    "title": "3 Nephi 24-26 Pt. 2",
+    "url": "https://x.com/i/spaces/1yGBePlbQyyKN?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 58,
+    "book": "3 Nephi",
+    "chapters": "3 Nephi 27-30",
+    "date": "",
+    "title": "3 Nephi 27-30",
+    "url": "https://x.com/i/spaces/1AxRnZpEjzVxl?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 59,
+    "book": "4 Nephi",
+    "chapters": "4 Nephi",
+    "date": "",
+    "title": "4 Nephi",
+    "url": "https://x.com/i/spaces/1YGNrbBgNdpGw?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 60,
+    "book": "Mormon",
+    "chapters": "Mormon 1-2",
+    "date": "",
+    "title": "Mormon 1-2",
+    "url": "https://x.com/i/spaces/1DGleVkwwjzJL?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 61,
+    "book": "Mormon",
+    "chapters": "Mormon 3-5",
+    "date": "",
+    "title": "Mormon 3-5",
+    "url": "https://x.com/i/spaces/1aKbdEXoXZeJX?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 62,
+    "book": "Mormon",
+    "chapters": "Mormon 6-7",
+    "date": "",
+    "title": "Mormon 6-7",
+    "url": "https://x.com/i/spaces/1vKpPNqYXnOKE?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 63,
+    "book": "Mormon",
+    "chapters": "Mormon 8-9",
+    "date": "",
+    "title": "Mormon 8-9",
+    "url": "https://x.com/i/spaces/1qKVmyNMqkZxB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 64,
+    "book": "Ether",
+    "chapters": "Ether 1-3",
+    "date": "",
+    "title": "Ether 1-3",
+    "url": "https://x.com/i/spaces/1pKkOXqODNEKj?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 65,
+    "book": "Ether",
+    "chapters": "Ether 4-6",
+    "date": "",
+    "title": "Ether 4-6",
+    "url": "https://x.com/i/spaces/1qxoNYEQqmyJv?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 66,
+    "book": "Ether",
+    "chapters": "Ether 7",
+    "date": "",
+    "title": "Ether 7",
+    "url": "https://x.com/i/spaces/1AKEmvMYobvKL?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 67,
+    "book": "Ether",
+    "chapters": "Ether 8-9",
+    "date": "",
+    "title": "Ether 8-9",
+    "url": "https://x.com/i/spaces/1DGLdZjYkYwGm?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 68,
+    "book": "Ether",
+    "chapters": "Ether 10-11 Pt. 1",
+    "date": "",
+    "title": "Ether 10-11 Pt. 1",
+    "url": "https://x.com/i/spaces/1nKOLQjOoLQGR?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 69,
+    "book": "Ether",
+    "chapters": "Ether 10-11 Pt. 2",
+    "date": "",
+    "title": "Ether 10-11 Pt. 2",
+    "url": "https://x.com/i/spaces/1qJVmyRmywZGB?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 70,
+    "book": "Ether",
+    "chapters": "Ether 12-13",
+    "date": "",
+    "title": "Ether 12-13",
+    "url": "https://x.com/i/spaces/1YxNrbXWdNpxw?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 71,
+    "book": "Ether",
+    "chapters": "Ether 14-15",
+    "date": "",
+    "title": "Ether 14-15",
+    "url": "https://x.com/i/spaces/1dGYlaWvzkBKX?s=20",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 72,
     "book": "Moroni",
-    "chapters": "Moroni 1–6",
-    "date": "September 2026",
-    "title": "Moroni 1–6",
-    "url": "",
-    "note": "Reading known from the project chronology; paste the recording URL when recovered."
+    "chapters": "Moroni 1-6",
+    "date": "",
+    "title": "Moroni 1-6",
+    "url": "https://x.com/i/spaces/1wGWjloXVEqKQ?s=20",
+    "missing": false,
+    "note": ""
   }
 ]
