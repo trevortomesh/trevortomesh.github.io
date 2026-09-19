@@ -1,128 +1,147 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="An archive of A Catholic Reads the Book of Mormon with Dr. Trevor Tomesh.">
+<meta name="description" content="A Catholic Reads the Book of Mormon — reading archive and X Spaces recordings.">
+<meta name="theme-color" content="#07121d">
 <title>A Catholic Reads the Book of Mormon</title>
 <style>
 :root{
-  --wine:#651f2b;--wine-dark:#3f1019;--gold:#b78a42;--gold-soft:#d8bd83;
-  --ink:#2c241e;--muted:#75675c;--paper:#f5efe3;--card:#fffaf0;--line:#d9c8aa;
-  --shadow:0 12px 32px rgba(61,35,21,.10)
+ --bg:#f4efe5;--surface:#fffaf0;--surface2:#eee4d2;--ink:#2a211a;--muted:#75685d;
+ --line:#d7c5a6;--wine:#6c2030;--accent:#ad7d2c;--accent2:#7d581d;--hero:#0b1723;
+ --shadow:0 12px 32px rgba(49,31,20,.10);--header-overlay:linear-gradient(90deg,rgba(5,14,23,.18),rgba(5,14,23,.72) 56%,rgba(5,14,23,.94));
+}
+html[data-theme="dark"]{
+ --bg:#07111a;--surface:#0c1b28;--surface2:#102536;--ink:#f4ead7;--muted:#aeb7be;
+ --line:#294155;--wine:#e6bd68;--accent:#e6b955;--accent2:#ffd77f;--hero:#06101a;
+ --shadow:0 12px 32px rgba(0,0,0,.25);--header-overlay:linear-gradient(90deg,rgba(5,14,23,.05),rgba(5,14,23,.73) 54%,rgba(5,14,23,.96));
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:
-radial-gradient(circle at 15% 0%,rgba(183,138,66,.13),transparent 28rem),
-linear-gradient(#f8f2e8,#eee3d1);min-height:100vh}
-a{color:inherit}
-.hero{background:linear-gradient(135deg,var(--wine-dark),var(--wine));color:#fff;padding:70px 22px 60px;border-bottom:5px solid var(--gold)}
-.hero-inner,.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
-.eyebrow{text-transform:uppercase;letter-spacing:.18em;color:var(--gold-soft);font:700 .75rem system-ui,sans-serif}
-h1{font-size:clamp(2.5rem,7vw,5rem);line-height:.96;margin:.45rem 0 1rem;max-width:900px;font-weight:600}
-.subtitle{max-width:760px;font-size:1.15rem;line-height:1.7;color:#f1e6d7;margin:0}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:999px;text-decoration:none;font:700 .9rem system-ui,sans-serif;border:1px solid transparent;cursor:pointer}
-.btn-primary{background:var(--gold);color:#21150e}.btn-secondary{border-color:#cba969;color:#fff;background:transparent}
-.wrap{padding:38px 0 70px}
-.panel{background:rgba(255,250,240,.82);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px;margin-bottom:24px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat{text-align:center;padding:14px;border-right:1px solid var(--line)}
-.stat:last-child{border:0}.stat strong{display:block;color:var(--wine);font-size:1.7rem}.stat span{font:600 .75rem system-ui,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.controls{display:grid;grid-template-columns:1fr 240px;gap:12px}
-input,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;color:var(--ink);font:inherit}
-.archive-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:34px 0 15px}
-.archive-head h2{font-size:2rem;margin:0;color:var(--wine-dark)}
-#count{font:600 .85rem system-ui,sans-serif;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{display:flex;flex-direction:column;min-height:185px;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:14px;padding:19px;box-shadow:0 6px 18px rgba(61,35,21,.06)}
-.card.missing{border-top-color:#998c80;opacity:.76}
-.book{font:700 .72rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--wine)}
-.card h3{font-size:1.25rem;line-height:1.25;margin:9px 0 8px}
-.card .meta{font:500 .82rem system-ui,sans-serif;color:var(--muted);margin-bottom:15px}
-.card .listen{margin-top:auto;color:var(--wine);font:800 .85rem system-ui,sans-serif;text-decoration:none}
-.card .listen:hover{text-decoration:underline}
-.missing-text{margin-top:auto;color:var(--muted);font:700 .8rem system-ui,sans-serif}
-.disclaimer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;line-height:1.6}
-.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted)}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.hero{padding-top:48px}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;transition:background .2s,color .2s}
+a{color:inherit}.shell{width:min(1180px,calc(100% - 36px));margin:auto}
+.hero{min-height:520px;background-color:var(--hero);background-image:var(--header-overlay),url("header.jpg");background-size:cover;background-position:center;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.hero-content{width:52%;margin-left:auto;padding:64px 0;text-align:center;color:#fff;text-shadow:0 2px 16px #000}
+.kicker{font:700 .76rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.28em;color:#f0c96d}
+h1{font-size:clamp(2.7rem,5vw,5rem);line-height:.98;margin:15px 0 18px;font-weight:500}
+.hero p{font-size:1.12rem;line-height:1.65;color:#f1e9dc;margin:0 auto;max-width:650px}
+.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:9px;text-decoration:none;font:750 .88rem system-ui,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.gold{background:var(--accent);border-color:var(--accent);color:#171009}
+.btn.ghost{background:rgba(5,14,23,.58);color:#fff;border-color:#8d7955}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:62px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-size:1.05rem;font-weight:bold}.navlinks{display:flex;gap:22px;align-items:center;font:700 .84rem system-ui,sans-serif}
+.navlinks a{text-decoration:none;color:var(--muted)}.navlinks a:hover{color:var(--ink)}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 12px;cursor:pointer;font:700 .8rem system-ui,sans-serif}
+main{padding:30px 0 70px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.stat{padding:20px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border:0}
+.stat strong{display:block;color:var(--accent2);font-size:1.8rem}.stat span{font:700 .72rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.features{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin:20px 0 36px}
+.feature{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+.feature h2{margin:0 0 8px;font-size:1.55rem}.feature p{color:var(--muted);line-height:1.55;margin:0 0 18px}
+.archive-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}
+.archive-title h2{margin:0;font-size:2rem}.archive-title span{color:var(--muted);font:650 .8rem system-ui,sans-serif}
+.controls{display:grid;grid-template-columns:1fr 240px;gap:12px;margin-bottom:18px}
+input,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;min-height:175px;display:flex;flex-direction:column;box-shadow:0 5px 15px rgba(0,0,0,.06)}
+.card.missing{opacity:.68}.book{font:800 .7rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2)}
+.card h3{margin:9px 0 6px;font-size:1.2rem}.meta{font:500 .78rem system-ui,sans-serif;color:var(--muted)}
+.actions{display:flex;gap:8px;margin-top:auto;padding-top:18px}.actions a{flex:1;text-align:center;padding:9px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font:750 .76rem system-ui,sans-serif}
+.actions a:hover{border-color:var(--accent);color:var(--accent2)}
+.badge{margin-top:auto;padding-top:18px;color:var(--muted);font:750 .76rem system-ui,sans-serif}
+footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);font-size:.9rem;line-height:1.6}
+@media(max-width:850px){.hero{background-position:32% center}.hero-content{width:60%}.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:620px){.hero{min-height:620px;background-position:38% center;background-image:linear-gradient(rgba(4,12,20,.3),rgba(4,12,20,.93)),url("header.jpg");align-items:end}.hero-content{width:100%;padding:260px 0 42px}.navlinks{display:none}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)!important}.stat:last-child{border-bottom:0!important}}
 </style>
 </head>
 <body>
 <header class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">An interfaith reading project</div>
-    <h1>A Catholic Reads the Book of Mormon</h1>
-    <p class="subtitle">A Catholic reading of the Book of Mormon for understanding, dialogue, and charitable conversation. Browse the complete X Spaces archive below.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#archive">Browse readings</a>
-      <a class="btn btn-secondary" href="https://x.com/realDrTT" target="_blank" rel="noopener">@realDrTT on X</a>
-    </div>
-  </div>
+ <div class="shell"><div class="hero-content">
+  <div class="kicker">Faith · Dialogue · Charity · Christ</div>
+  <h1>A Catholic Reads the Book of Mormon</h1>
+  <p>A reading of the Book of Mormon from a Catholic perspective—seeking understanding, charitable conversation, and common ground centered on Jesus Christ.</p>
+  <div class="hero-actions"><a class="btn gold" href="#archive">Browse Readings</a><a class="btn ghost" href="https://x.com/realDrTT" target="_blank" rel="noopener">Follow @realDrTT</a></div>
+ </div></div>
 </header>
 
-<main class="wrap">
-  <section class="panel stats" aria-label="Archive statistics">
-    <div class="stat"><strong id="total">—</strong><span>Readings</span></div>
-    <div class="stat"><strong id="books">—</strong><span>Books represented</span></div>
-    <div class="stat"><strong id="available">—</strong><span>Recordings linked</span></div>
-  </section>
+<div class="topbar"><nav class="shell nav">
+ <div class="brand">A Catholic Reads</div>
+ <div class="navlinks"><a href="#read-along">Read Along</a><a href="#archive">Archive</a><a href="#about">About</a></div>
+ <button id="theme" class="theme" aria-label="Toggle color theme">☀ Light mode</button>
+</nav></div>
 
-  <section class="panel controls" aria-label="Archive controls">
-    <input id="search" type="search" placeholder="Search readings…">
-    <select id="filter"><option value="">All books</option></select>
-  </section>
+<main class="shell">
+ <section class="stats" aria-label="Archive statistics">
+  <div class="stat"><strong id="total">—</strong><span>Total readings</span></div>
+  <div class="stat"><strong id="available">—</strong><span>Recordings available</span></div>
+  <div class="stat"><strong id="missing">—</strong><span>Missing recordings</span></div>
+  <div class="stat"><strong id="books">—</strong><span>Books represented</span></div>
+ </section>
 
-  <section id="archive">
-    <div class="archive-head"><h2>Reading Archive</h2><div id="count"></div></div>
-    <div id="readings" class="grid"><div class="empty">Loading readings…</div></div>
-  </section>
+ <section class="features">
+  <article class="feature" id="read-along">
+   <h2>📖 Read Along</h2>
+   <p>Open the official online Book of Mormon text from The Church of Jesus Christ of Latter-day Saints and follow along with the readings.</p>
+   <a class="btn gold" href="https://www.churchofjesuschrist.org/study/scriptures/bofm?lang=eng" target="_blank" rel="noopener">Read the Book of Mormon →</a>
+  </article>
+  <article class="feature" id="about">
+   <h2>Why this project?</h2>
+   <p>This archive preserves the readings and conversations from the series. The aim is serious interfaith engagement: understanding what another faith actually teaches while discussing agreements and differences with charity.</p>
+  </article>
+ </section>
 
-  <p class="disclaimer"><strong>About this project:</strong> This is an independent interfaith project presenting a Catholic reading of the Book of Mormon for understanding and dialogue. It is not an endorsement of Latter-day Saint doctrine, and the Book of Mormon is not recognized as Scripture by the Catholic Church.</p>
+ <section id="archive">
+  <div class="archive-title"><h2>Reading Archive</h2><span id="count"></span></div>
+  <div class="controls"><input id="search" type="search" placeholder="Search readings (e.g., Alma 5, 3 Nephi)…"><select id="filter"><option value="">All books</option></select></div>
+  <div id="readings" class="grid"><div>Loading readings…</div></div>
+ </section>
 </main>
 
+<footer><div class="shell"><strong>A Catholic Reads the Book of Mormon</strong><br>
+This is an independent interfaith project presenting a Catholic reading of the Book of Mormon for understanding and dialogue. It is not an endorsement of Latter-day Saint doctrine, and the Book of Mormon is not recognized as Scripture by the Catholic Church.</div></footer>
+
 <script>
-const $=s=>document.querySelector(s);
+const $=s=>document.querySelector(s), root=document.documentElement;
+const saved=localStorage.getItem("theme");
+if(saved) root.dataset.theme=saved;
+function themeLabel(){ $("#theme").textContent=root.dataset.theme==="dark"?"☀ Light mode":"☾ Dark mode"; }
+themeLabel();
+$("#theme").onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);themeLabel();};
+
 let all=[];
+const bookNames=["1 Nephi","2 Nephi","Jacob","Enos","Jarom","Omni","Words of Mormon","Mosiah","Alma","Helaman","3 Nephi","4 Nephi","Mormon","Ether","Moroni"];
 function displayBook(x){
-  if(x.book) return x.book;
-  if(/^Intro/i.test(x.title)) return "Introduction";
-  return "Other";
+ if(x.book) return x.book;
+ for(const b of bookNames) if((x.title||"").toLowerCase().includes(b.toLowerCase())) return b;
+ return /^Intro/i.test(x.title||"")?"Introduction":"Other";
+}
+const slug={"1 Nephi":"1-ne","2 Nephi":"2-ne","Jacob":"jacob","Enos":"enos","Jarom":"jarom","Omni":"omni","Words of Mormon":"w-of-m","Mosiah":"mosiah","Alma":"alma","Helaman":"hel","3 Nephi":"3-ne","4 Nephi":"4-ne","Mormon":"morm","Ether":"ether","Moroni":"moro"};
+function readUrl(x){
+ const b=displayBook(x), s=slug[b];
+ if(!s) return "https://www.churchofjesuschrist.org/study/scriptures/bofm?lang=eng";
+ const title=x.title||"";
+ let m=title.match(new RegExp(b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+"\\s+(\\d+)","i"));
+ const ch=m?m[1]:"";
+ return `https://www.churchofjesuschrist.org/study/scriptures/bofm/${s}${ch?"/"+ch:""}?lang=eng`;
 }
 function render(){
-  const q=$("#search").value.trim().toLowerCase(), f=$("#filter").value;
-  const rows=all.filter(x=>{
-    const text=[x.title,x.book,x.chapters,x.note].join(" ").toLowerCase();
-    return (!q||text.includes(q))&&(!f||displayBook(x)===f);
-  });
-  $("#count").textContent=`${rows.length} of ${all.length} readings`;
-  $("#readings").innerHTML=rows.length?rows.map(x=>`
-    <article class="card ${x.missing?'missing':''}">
-      <div class="book">${displayBook(x)}</div>
-      <h3>${x.title}</h3>
-      <div class="meta">${x.date||`Reading ${x.order}`}</div>
-      ${x.missing?`<div class="missing-text">Recording marked missing</div>`:
-      `<a class="listen" href="${x.url}" target="_blank" rel="noopener">Listen on X →</a>`}
-    </article>`).join(""):`<div class="empty">No readings match your search.</div>`;
+ const q=$("#search").value.toLowerCase().trim(), f=$("#filter").value;
+ const rows=all.filter(x=>(!f||displayBook(x)===f)&&(!q||[x.title,x.book,x.chapters,x.note].join(" ").toLowerCase().includes(q)));
+ $("#count").textContent=`${rows.length} of ${all.length} readings`;
+ $("#readings").innerHTML=rows.map(x=>`<article class="card ${x.missing?"missing":""}">
+  <div class="book">${displayBook(x)}</div><h3>${x.title}</h3><div class="meta">${x.date||`Reading ${x.order}`}</div>
+  ${x.missing?`<div class="badge">Recording marked missing</div>`:`<div class="actions"><a href="${x.url}" target="_blank" rel="noopener">Listen on X →</a><a href="${readUrl(x)}" target="_blank" rel="noopener">Read Text →</a></div>`}
+ </article>`).join("")||"<p>No matching readings.</p>";
 }
-fetch("readings.json").then(r=>{
-  if(!r.ok) throw new Error("Could not load readings.json");
-  return r.json();
-}).then(data=>{
-  all=data;
-  $("#total").textContent=all.length;
-  $("#available").textContent=all.filter(x=>!x.missing&&x.url).length;
-  const books=[...new Set(all.map(displayBook))];
-  $("#books").textContent=books.filter(x=>!["Introduction","Other"].includes(x)).length;
-  $("#filter").innerHTML+=books.map(b=>`<option>${b}</option>`).join("");
-  render();
-}).catch(e=>{
-  $("#readings").innerHTML=`<div class="empty"><strong>Could not load readings.json.</strong><br>Run the folder through a local web server (for example: <code>python3 -m http.server 8000</code>).</div>`;
-});
-$("#search").addEventListener("input",render);
-$("#filter").addEventListener("change",render);
+fetch("readings.json").then(r=>r.json()).then(d=>{
+ all=d; $("#total").textContent=d.length; $("#available").textContent=d.filter(x=>x.url&&!x.missing).length; $("#missing").textContent=d.filter(x=>x.missing).length;
+ const bs=[...new Set(d.map(displayBook))]; $("#books").textContent=bs.filter(b=>bookNames.includes(b)).length;
+ $("#filter").innerHTML+=bs.map(b=>`<option value="${b}">${b}</option>`).join(""); render();
+}).catch(()=>$("#readings").innerHTML="<p>Could not load readings.json. Run this folder from a local web server.</p>");
+$("#search").oninput=render; $("#filter").onchange=render;
 </script>
-</body>
-</html>
+</body></html>
