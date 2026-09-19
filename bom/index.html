@@ -21,7 +21,7 @@ html[data-theme="dark"]{
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;transition:background .2s,color .2s}
 a{color:inherit}.shell{width:min(1180px,calc(100% - 36px));margin:auto}
-.hero{min-height:520px;background-color:var(--hero);background-image:var(--header-overlay),url("header.jpg");background-size:cover;background-position:center;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.hero{min-height:520px;background-color:var(--hero);background-image:var(--header-overlay),url("header.jpg");background-size:contain;background-repeat:no-repeat;background-position:left center;display:flex;align-items:center;border-bottom:1px solid var(--line)}
 .hero-content{width:52%;margin-left:auto;padding:64px 0;text-align:center;color:#fff;text-shadow:0 2px 16px #000}
 .kicker{font:700 .76rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.28em;color:#f0c96d}
 h1{font-size:clamp(2.7rem,5vw,5rem);line-height:.98;margin:15px 0 18px;font-weight:500}
@@ -54,8 +54,8 @@ input,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-ra
 .actions a:hover{border-color:var(--accent);color:var(--accent2)}
 .badge{margin-top:auto;padding-top:18px;color:var(--muted);font:750 .76rem system-ui,sans-serif}
 footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);font-size:.9rem;line-height:1.6}
-@media(max-width:850px){.hero{background-position:32% center}.hero-content{width:60%}.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
-@media(max-width:620px){.hero{min-height:620px;background-position:38% center;background-image:linear-gradient(rgba(4,12,20,.3),rgba(4,12,20,.93)),url("header.jpg");align-items:end}.hero-content{width:100%;padding:260px 0 42px}.navlinks{display:none}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)!important}.stat:last-child{border-bottom:0!important}}
+@media(max-width:850px){.hero{background-position:left center}.hero-content{width:60%}.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:620px){.hero{min-height:620px;background-size:cover;background-position:center;background-image:linear-gradient(rgba(4,12,20,.28),rgba(4,12,20,.92)),url("header.jpg");align-items:end}.hero-content{width:100%;padding:260px 0 42px}.navlinks{display:none}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)!important}.stat:last-child{border-bottom:0!important}}
 </style>
 </head>
 <body>
@@ -65,22 +65,12 @@ footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);f
   <h1>A Catholic Reads the Book of Mormon</h1>
   <p>A reading of the Book of Mormon from a Catholic perspective—seeking understanding, charitable conversation, and common ground centered on Jesus Christ.</p>
   <div class="hero-actions"><a class="btn gold" href="#archive">Browse Readings</a><a class="btn ghost" href="https://x.com/realDrTT" target="_blank" rel="noopener">Follow @realDrTT</a></div>
+  <button id="theme" class="theme" style="margin-top:14px" aria-label="Toggle color theme">☀ Light mode</button>
  </div></div>
 </header>
 
-<div class="topbar"><nav class="shell nav">
- <div class="brand">A Catholic Reads</div>
- <div class="navlinks"><a href="#read-along">Read Along</a><a href="#archive">Archive</a><a href="#about">About</a></div>
- <button id="theme" class="theme" aria-label="Toggle color theme">☀ Light mode</button>
-</nav></div>
 
 <main class="shell">
- <section class="stats" aria-label="Archive statistics">
-  <div class="stat"><strong id="total">—</strong><span>Total readings</span></div>
-  <div class="stat"><strong id="available">—</strong><span>Recordings available</span></div>
-  <div class="stat"><strong id="missing">—</strong><span>Missing recordings</span></div>
-  <div class="stat"><strong id="books">—</strong><span>Books represented</span></div>
- </section>
 
  <section class="features">
   <article class="feature" id="read-along">
@@ -138,9 +128,7 @@ function render(){
  </article>`).join("")||"<p>No matching readings.</p>";
 }
 fetch("readings.json").then(r=>r.json()).then(d=>{
- all=d; $("#total").textContent=d.length; $("#available").textContent=d.filter(x=>x.url&&!x.missing).length; $("#missing").textContent=d.filter(x=>x.missing).length;
- const bs=[...new Set(d.map(displayBook))]; $("#books").textContent=bs.filter(b=>bookNames.includes(b)).length;
- $("#filter").innerHTML+=bs.map(b=>`<option value="${b}">${b}</option>`).join(""); render();
+ all=d; const bs=[...new Set(d.map(displayBook))]; $("#filter").innerHTML+=bs.map(b=>`<option value="${b}">${b}</option>`).join(""); render();
 }).catch(()=>$("#readings").innerHTML="<p>Could not load readings.json. Run this folder from a local web server.</p>");
 $("#search").oninput=render; $("#filter").onchange=render;
 </script>
