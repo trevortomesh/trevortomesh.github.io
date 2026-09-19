@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="About Trevor Tomesh and A Catholic Reads the Book of Mormon.">
+<title>About Trevor | A Catholic Reads the Book of Mormon</title>
+<style>
+:root{--bg:#f4efe5;--surface:#fffaf0;--ink:#2a211a;--muted:#75685d;--line:#d7c5a6;--accent:#ad7d2c;--accent2:#7d581d;--hero:#06101a;--shadow:0 12px 32px rgba(49,31,20,.10)}
+html[data-theme="dark"]{--bg:#07111a;--surface:#0c1b28;--ink:#f4ead7;--muted:#aeb7be;--line:#294155;--accent:#e6b955;--accent2:#ffd77f;--hero:#06101a;--shadow:0 12px 32px rgba(0,0,0,.25)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif}a{color:inherit}.shell{width:min(960px,calc(100% - 36px));margin:auto}
+header{position:relative;isolation:isolate;overflow:hidden;min-height:330px;background:var(--hero);display:flex;align-items:center;border-bottom:1px solid var(--line)}
+header::before{content:"";position:absolute;inset:0;z-index:-2;background:url("header.jpg") left center/cover no-repeat}
+header::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,16,26,.08),rgba(6,16,26,.75) 48%,#06101a 88%)}
+.hero-copy{width:56%;margin-left:auto;padding:45px 0;color:#fff;text-align:center;text-shadow:0 2px 16px #000}.kicker{font:700 .72rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#f0c96d}h1{font-size:clamp(2.5rem,6vw,4.5rem);margin:10px 0 8px;font-weight:500}.hero-copy p{color:#eee3d4;line-height:1.6}
+nav{background:var(--hero);border-bottom:1px solid var(--line)}.nav{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:12px 0}.nav a{color:#f4ead7;text-decoration:none;font:750 .78rem system-ui,sans-serif}.nav a:hover{color:#ffd77f}
+main{padding:42px 0 70px}.bio{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(24px,5vw,48px);box-shadow:var(--shadow)}.bio h2{font-size:2rem;margin-top:0;color:var(--accent2)}.bio p{font-size:1.08rem;line-height:1.8}.bio .lead{font-size:1.3rem;line-height:1.65}.divider{width:70px;border:0;border-top:3px solid var(--accent);margin:28px 0}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;padding:10px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font:750 .8rem system-ui,sans-serif}.btn.gold{background:var(--accent);border-color:var(--accent);color:#171009}
+.theme{position:fixed;right:18px;bottom:18px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 13px;cursor:pointer;font:700 .78rem system-ui,sans-serif}
+footer{border-top:1px solid var(--line);padding:24px 0 36px;color:var(--muted);font-size:.88rem;line-height:1.55}
+@media(max-width:650px){header{min-height:480px;align-items:end}header::after{background:linear-gradient(180deg,rgba(6,16,26,.08),rgba(6,16,26,.94) 70%,#06101a)}.hero-copy{width:100%;padding:220px 0 35px}}
+</style>
+</head>
+<body>
+<header><div class="shell"><div class="hero-copy"><div class="kicker">About the Host</div><h1>Trevor Tomesh</h1><p>Catholic · Computer Scientist · Professor</p></div></div></header>
+<nav><div class="shell nav"><a href="index.html">Home</a><a href="index.html#archive">Readings</a><a href="index.html#itinerary">What to Expect</a><a href="https://trevortomesh.github.io/rosary/" target="_blank" rel="noopener">Pray the Rosary</a></div></nav>
+<main class="shell">
+<article class="bio">
+<div class="kicker">Biography</div>
+<h2>About Trevor</h2>
+<p class="lead">Trevor Tomesh was born and raised Catholic. After falling away from the faith for roughly twenty years, he returned to the Catholic Church.</p>
+<hr class="divider">
+<p>Trevor holds a PhD in Computer Science and is a university professor. His academic background shapes the way he approaches difficult questions: with curiosity, careful analysis, and a willingness to take ideas seriously on their own terms.</p>
+<p><em>A Catholic Reads the Book of Mormon</em> brings that approach into interfaith dialogue. The project is an effort to read the Book of Mormon seriously from a Catholic perspective, to understand what Latter-day Saints actually believe, and to create space for charitable discussion of both common ground and genuine theological differences.</p>
+<p>The goal is not to erase those differences. It is to demonstrate that people can disagree about matters of deep religious importance while still listening to one another, praying together where appropriate, asking sincere questions, and treating one another with Christian charity.</p>
+<div class="links"><a class="btn gold" href="index.html#archive">Browse the Reading Archive →</a><a class="btn" href="https://x.com/realDrTT" target="_blank" rel="noopener">Follow @realDrTT</a></div>
+</article>
+</main>
+<footer><div class="shell"><strong>A Catholic Reads the Book of Mormon</strong><br>This is an independent interfaith project presenting a Catholic reading of the Book of Mormon for understanding and dialogue. It is not an endorsement of Latter-day Saint doctrine, and the Book of Mormon is not recognized as Scripture by the Catholic Church.</div></footer>
+<button id="theme" class="theme">☀ Light mode</button>
+<script>
+const root=document.documentElement,b=document.getElementById("theme"),saved=localStorage.getItem("theme");if(saved)root.dataset.theme=saved;
+function label(){b.textContent=root.dataset.theme==="dark"?"☀ Light mode":"☾ Dark mode"}label();
+b.onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);label()};
+</script>
+</body></html>
