@@ -42,10 +42,16 @@ h1{font-size:clamp(2.7rem,5vw,5rem);line-height:.98;margin:15px 0 18px;font-weig
 .site-nav-inner{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:12px 0}
 .site-nav a{color:#f4ead7;text-decoration:none;font:750 .78rem system-ui,sans-serif;letter-spacing:.03em}
 .site-nav a:hover{color:#ffd77f}
-.itinerary{margin:0 0 38px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:var(--shadow)}
-.itinerary-head{text-align:center;max-width:720px;margin:0 auto 24px}
-.itinerary-head .info-label{margin-bottom:8px}.itinerary-head h2{font-size:2rem;margin:0 0 8px}
-.itinerary-head p{margin:0;color:var(--muted);line-height:1.55}
+.itinerary{margin:0 0 38px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.itinerary summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;user-select:none}
+.itinerary summary::-webkit-details-marker{display:none}
+.itinerary summary:hover{background:var(--surface2)}
+.itinerary-summary-text .info-label{margin-bottom:5px}
+.itinerary-summary-text h2{font-size:1.55rem;margin:0}
+.itinerary-summary-text p{margin:5px 0 0;color:var(--muted);font-size:.9rem}
+.itinerary-chevron{width:34px;height:34px;flex:0 0 34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--accent2);font:800 1rem system-ui,sans-serif;transition:transform .2s}
+.itinerary[open] .itinerary-chevron{transform:rotate(180deg)}
+.itinerary-content{padding:0 24px 24px;border-top:1px solid var(--line)}
 .itinerary-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;counter-reset:agenda;list-style:none;padding:0;margin:0}
 .itinerary-list li{counter-increment:agenda;position:relative;padding:14px 14px 14px 50px;border-top:1px solid var(--line);line-height:1.45}
 .itinerary-list li::before{content:counter(agenda);position:absolute;left:8px;top:12px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#171009;font:800 .75rem system-ui,sans-serif}
@@ -99,7 +105,6 @@ footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);f
     <a href="index.html#archive">Readings</a>
     <a href="index.html#itinerary">What to Expect</a>
     <a href="https://trevortomesh.github.io/rosary/" target="_blank" rel="noopener">Pray the Rosary</a>
-    <a href="about.html">About Trevor</a>
   </div>
 </nav>
 
@@ -130,22 +135,27 @@ footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);f
 
 
 
- <section class="itinerary" id="itinerary">
-   <div class="itinerary-head">
-     <div class="info-label">Trevor Tomesh Reads the Book of Mormon</div>
-     <h2>What to Expect</h2>
-     <p>Each X Space follows a simple rhythm of prayer, reading, conversation, and the Rosary.</p>
+ <details class="itinerary" id="itinerary">
+   <summary>
+     <div class="itinerary-summary-text">
+       <div class="info-label">Trevor Tomesh Reads the Book of Mormon</div>
+       <h2>What to Expect</h2>
+       <p>See the seven-part itinerary for each X Space.</p>
+     </div>
+     <span class="itinerary-chevron" aria-hidden="true">⌄</span>
+   </summary>
+   <div class="itinerary-content">
+     <ol class="itinerary-list">
+       <li><strong>Opening Prayer</strong><span>Begin the Space with a short prayer.</span></li>
+       <li><strong>Opening Discussion</strong><span>Casual discussion, introductions, updates, or thoughts related to the evening’s topic.</span></li>
+       <li><strong>Catholic Scripture/Spiritual Reading</strong><span>Trevor shares selected readings from Catholic scripture, tradition, or devotional material.</span></li>
+       <li><strong>Book of Mormon Reading</strong><span>Read the selected Book of Mormon chapter or chapters together.</span></li>
+       <li><strong>Chapter Discussion</strong><span>Between chapters, when appropriate, pause to discuss questions, observations, doctrine, similarities, differences, and reactions.</span></li>
+       <li><strong>The Rosary</strong><span>Pray the Rosary together. <a class="info-link" href="https://trevortomesh.github.io/rosary/" target="_blank" rel="noopener">Open the Rosary guide →</a></span></li>
+       <li><strong>Closing Prayer</strong><span>End the Space with a final prayer.</span></li>
+     </ol>
    </div>
-   <ol class="itinerary-list">
-     <li><strong>Opening Prayer</strong><span>Begin the Space with a short prayer.</span></li>
-     <li><strong>Opening Discussion</strong><span>Casual discussion, introductions, updates, or thoughts related to the evening’s topic.</span></li>
-     <li><strong>Catholic Scripture/Spiritual Reading</strong><span>Trevor shares selected readings from Catholic scripture, tradition, or devotional material.</span></li>
-     <li><strong>Book of Mormon Reading</strong><span>Read the selected Book of Mormon chapter or chapters together.</span></li>
-     <li><strong>Chapter Discussion</strong><span>Between chapters, when appropriate, pause to discuss questions, observations, doctrine, similarities, differences, and reactions.</span></li>
-     <li><strong>The Rosary</strong><span>Pray the Rosary together. <a class="info-link" href="https://trevortomesh.github.io/rosary/" target="_blank" rel="noopener">Open the Rosary guide →</a></span></li>
-     <li><strong>Closing Prayer</strong><span>End the Space with a final prayer.</span></li>
-   </ol>
- </section>
+ </details>
 
  <section id="archive">
   <div class="archive-title"><h2>Reading Archive</h2><span id="count"></span></div>
