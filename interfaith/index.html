@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A Catholic in dialogue with the Latter-day Saints — reading series, conversations, and resources.">
+<meta name="theme-color" content="#07121d">
+<title>A Catholic in Dialogue with the Latter-day Saints</title>
+<style>
+:root{
+ --bg:#f4efe5;--surface:#fffaf0;--surface2:#eee4d2;--ink:#2a211a;--muted:#75685d;
+ --line:#d7c5a6;--wine:#6c2030;--accent:#ad7d2c;--accent2:#7d581d;--hero:#0b1723;
+ --shadow:0 12px 32px rgba(49,31,20,.10);
+}
+html[data-theme="dark"]{
+ --bg:#07111a;--surface:#0c1b28;--surface2:#102536;--ink:#f4ead7;--muted:#aeb7be;
+ --line:#294155;--wine:#e6bd68;--accent:#e6b955;--accent2:#ffd77f;--hero:#06101a;
+ --shadow:0 12px 32px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;transition:background .2s,color .2s}
+a{color:inherit}.shell{width:min(1180px,calc(100% - 36px));margin:auto}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:520px;background:var(--hero);display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url("header.jpg") left center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,16,26,0) 0%,rgba(6,16,26,.10) 30%,rgba(6,16,26,.68) 53%,rgba(6,16,26,.94) 72%,#06101a 100%)}
+.hero-content{width:52%;margin-left:auto;padding:64px 0;text-align:center;color:#fff;text-shadow:0 2px 16px #000}
+.kicker{font:700 .76rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.28em;color:#f0c96d}
+h1{font-size:clamp(2.4rem,4.6vw,4.4rem);line-height:1.02;margin:15px 0 18px;font-weight:500}
+.hero p{font-size:1.12rem;line-height:1.65;color:#f1e9dc;margin:0 auto;max-width:650px}
+.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:9px;text-decoration:none;font:750 .88rem system-ui,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.gold{background:var(--accent);border-color:var(--accent);color:#171009}
+.btn.ghost{background:rgba(5,14,23,.58);color:#fff;border-color:#8d7955}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 12px;cursor:pointer;font:700 .8rem system-ui,sans-serif}
+
+.site-nav{background:var(--hero);border-bottom:1px solid var(--line)}
+.site-nav-inner{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:12px 0}
+.site-nav a{color:#f4ead7;text-decoration:none;font:750 .78rem system-ui,sans-serif;letter-spacing:.03em}
+.site-nav a:hover{color:#ffd77f}
+
+main{padding:30px 0 70px}
+.info-bar{background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.info-bar-inner{width:min(1180px,calc(100% - 36px));margin:auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.info-item{padding:18px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;min-height:145px}
+.info-item:first-child{padding-left:0}.info-item:last-child{border-right:0;padding-right:0}
+.info-label{font:800 .68rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.13em;color:var(--accent2);margin-bottom:5px}
+.info-item h2{font-size:1.15rem;margin:0 0 6px}.info-item p{font-size:.88rem;line-height:1.45;color:var(--muted);margin:0 0 10px}
+.info-link{font:800 .78rem system-ui,sans-serif;color:var(--accent2);text-decoration:none}.info-link:hover{text-decoration:underline}
+.info-handle{font:650 .72rem system-ui,sans-serif;color:var(--muted);margin-left:8px}
+
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:44px 0 18px}
+.section-title h2{margin:0;font-size:2rem}.section-title span{color:var(--muted);font:650 .8rem system-ui,sans-serif}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;min-height:190px;display:flex;flex-direction:column;box-shadow:0 5px 15px rgba(0,0,0,.06);text-decoration:none;transition:border-color .15s,transform .15s}
+a.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .book{font:800 .7rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2)}
+.card h3{margin:9px 0 6px;font-size:1.35rem}
+.card p{font-size:.92rem;line-height:1.55;color:var(--muted);margin:0 0 14px}
+.card .go{margin-top:auto;padding-top:14px;font:750 .8rem system-ui,sans-serif;color:var(--accent2)}
+
+.timeline{position:relative;margin:8px 0 0;padding:0;list-style:none}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.timeline li{position:relative;padding:0 0 28px 44px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:4px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.timeline .when{font:800 .72rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2)}
+.timeline h3{margin:6px 0 6px;font-size:1.25rem}
+.timeline p{margin:0;color:var(--muted);line-height:1.6;max-width:760px}
+
+footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);font-size:.9rem;line-height:1.6}
+@media(max-width:850px){.info-bar-inner{grid-template-columns:1fr}.info-item,.info-item:first-child,.info-item:last-child{padding:16px 0;border-right:0;border-bottom:1px solid var(--line);min-height:0}.info-item:last-child{border-bottom:0}.hero::before{background-position:30% center}.hero-content{width:60%}.grid{grid-template-columns:1fr}}
+@media(max-width:620px){.site-nav-inner{gap:16px}.hero{min-height:650px;align-items:end}.hero::before{background-position:center top}.hero::after{background:linear-gradient(180deg,rgba(6,16,26,.08) 0%,rgba(6,16,26,.28) 42%,rgba(6,16,26,.94) 72%,#06101a 100%)}.hero-content{width:100%;padding:260px 0 42px}}
+</style>
+</head>
+<body>
+<header class="hero">
+ <div class="shell"><div class="hero-content">
+  <div class="kicker">Faith · Dialogue · Charity · Christ</div>
+  <h1>A Catholic in Dialogue with the Latter-day Saints</h1>
+  <p>Reading, conversation, and friendship across the Catholic–Latter-day Saint divide — seeking understanding with charity, centered on Jesus Christ.</p>
+  <div class="hero-actions"><a class="btn gold" href="#projects">Explore the Projects</a><a class="btn ghost" href="https://x.com/realDrTT" target="_blank" rel="noopener">Follow @realDrTT</a></div>
+  <button id="theme" class="theme" style="margin-top:14px" aria-label="Toggle color theme">☀ Light mode</button>
+ </div></div>
+</header>
+
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="shell site-nav-inner">
+    <a href="index.html#projects">The Projects</a>
+    <a href="index.html#timeline">Timeline</a>
+    <a href="https://trevortomesh.github.io/bom/" target="_blank" rel="noopener">Book of Mormon</a>
+    <a href="https://trevortomesh.github.io/pgp/" target="_blank" rel="noopener">Pearl of Great Price</a>
+    <a href="https://trevortomesh.github.io/rosary/" target="_blank" rel="noopener">Pray the Rosary</a>
+  </div>
+</nav>
+
+<section class="info-bar" aria-label="Project information">
+ <div class="info-bar-inner">
+  <div class="info-item">
+   <div class="info-label">👋 New Here?</div>
+   <h2>Start with the story</h2>
+   <p>How a single post became nightly Scripture reading with thousands of Latter-day Saint friends.</p>
+   <a class="info-link" href="index.html#timeline">Read the timeline →</a>
+  </div>
+  <div class="info-item">
+   <div class="info-label">🎙️ Join Live</div>
+   <h2>Nightly on X Spaces</h2>
+   <p>Readings happen live most nights, followed by open discussion and the Rosary.</p>
+   <a class="info-link" href="https://x.com/realDrTT" target="_blank" rel="noopener">Follow @realDrTT →</a>
+  </div>
+  <div class="info-item">
+   <div class="info-label">Support the Project</div>
+   <h2>Help keep the conversation going</h2>
+   <p>If this work matters to you, you can contribute directly through Venmo.</p>
+   <div><a class="info-link" href="https://account.venmo.com/u/trevortomesh" target="_blank" rel="noopener noreferrer">Support via Venmo →</a><span class="info-handle">@trevortomesh</span></div>
+  </div>
+ </div>
+</section>
+
+<main class="shell">
+
+ <section id="projects">
+  <div class="section-title"><h2>The Projects</h2><span>Four doors into the conversation</span></div>
+  <div class="grid">
+   <a class="card" href="https://trevortomesh.github.io/bom/">
+    <div class="book">Reading Series</div><h3>A Catholic Reads the Book of Mormon</h3>
+    <p>A Catholic reading of the Book of Mormon, one chapter at a time — with charitable discussion of agreements and differences, and the Rosary to close each night. Full archive of readings and recordings.</p>
+    <div class="go">Open the archive →</div>
+   </a>
+   <a class="card" href="https://trevortomesh.github.io/pgp/">
+    <div class="book">Reading Series</div><h3>A Catholic Reads the Pearl of Great Price</h3>
+    <p>The next series: Moses, Abraham, Joseph Smith–Matthew, Joseph Smith–History, and the Articles of Faith — read together with the same charity and curiosity.</p>
+    <div class="go">Open the archive →</div>
+   </a>
+   <a class="card" href="https://trevortomesh.github.io/TrinityModel/lds-godhead.html">
+    <div class="book">Computational Theology</div><h3>The Godhead in Latter-day Saint Belief</h3>
+    <p>How do Latter-day Saints understand the Father, Son, and Holy Ghost — and how does that compare with the Catholic Trinity? A careful, model-driven comparison.</p>
+    <div class="go">Read the comparison →</div>
+   </a>
+   <a class="card" href="https://trevortomesh.github.io/rosary/">
+    <div class="book">Prayer</div><h3>Pray the Rosary</h3>
+    <p>The interactive Rosary guide prayed with the read-along community at the close of every Space — Catholics and Latter-day Saint friends together.</p>
+    <div class="go">Open the guide →</div>
+   </a>
+  </div>
+ </section>
+
+ <section id="timeline">
+  <div class="section-title"><h2>How It Started</h2><span>The story so far</span></div>
+  <ol class="timeline">
+   <li>
+    <div class="when">June 6, 2026</div><h3>A post and a question</h3>
+    <p>"Stop being dicks to Mormons" — 46,000+ views. Hours later, a question: should a Catholic read the Book of Mormon, in public, with charity? The answer became everything below.</p>
+   </li>
+   <li>
+    <div class="when">Summer 2026</div><h3>Nightly X Spaces read-along</h3>
+    <p>Night after night, the Book of Mormon read together — opening prayer, Catholic spiritual reading, the chapters, open discussion, and the Rosary to close. A community formed around it.</p>
+   </li>
+   <li>
+    <div class="when">October 2–4, 2026</div><h3>Salt Lake City</h3>
+    <p>General Conference weekend and an in-person meet-and-greet with the read-along community — online friendship made real.</p>
+   </li>
+   <li>
+    <div class="when">October 2026</div><h3>The Pearl of Great Price</h3>
+    <p>The next series begins: a Catholic reads the Pearl of Great Price, with the same format and the same charity.</p>
+   </li>
+  </ol>
+ </section>
+
+</main>
+
+<footer><div class="shell"><strong>A Catholic in Dialogue with the Latter-day Saints</strong><br>
+This is an independent interfaith project for understanding and dialogue. It is not an endorsement of Latter-day Saint doctrine, and Latter-day Saint scripture is not recognized as Scripture by the Catholic Church.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s), root=document.documentElement;
+const saved=localStorage.getItem("theme");
+if(saved) root.dataset.theme=saved;
+function themeLabel(){ $("#theme").textContent=root.dataset.theme==="dark"?"☀ Light mode":"☾ Dark mode"; }
+themeLabel();
+$("#theme").onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);themeLabel();};
+</script>
+</body></html>
