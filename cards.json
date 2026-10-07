@@ -401,6 +401,12 @@
     "text": "Older versions and archived experiments are collected here. <a href=\"./archive/\">Browse the archive</a>",
     "tags": ["archive", "experiment", "projects"],
     "image": "images/cards.png"
+  },
+  "interfaith-dialogue": {
+    "title": "A Catholic in Dialogue with the Latter-day Saints",
+    "image": "interfaith/header.jpg",
+    "text": "My LDS interfaith work in one place: reading series, conversations, and resources. <a href=\"./interfaith/\">Open the hub</a> · <a href=\"./bom/\">Book of Mormon</a> · <a href=\"./pgp/\">Pearl of Great Price</a>",
+    "tags": ["theology", "projects", "research"]
   }
 
 }
