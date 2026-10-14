@@ -1,0 +1,1168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#efede8">
+  <meta name="description" content="A calm, interactive single-decade rosary for browser and mobile prayer.">
+  <title>The Single Decade Rosary</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #282c35;
+      --muted: #6e737d;
+      --paper: #efede8;
+      --paper-deep: #dedbd4;
+      --card: rgba(250, 249, 246, .92);
+      --green: #405678;
+      --green-deep: #2b3f60;
+      --gold: #947849;
+      --gold-light: #cbb788;
+      --line: rgba(38, 43, 53, .15);
+      --shadow: 0 24px 60px rgba(35, 39, 48, .14);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --ink: #eeeae1;
+      --muted: #9ba1ac;
+      --paper: #090b10;
+      --paper-deep: #10131a;
+      --card: rgba(18, 22, 29, .95);
+      --green: #536f9d;
+      --green-deep: #3c547d;
+      --gold: #c2a772;
+      --gold-light: #e0c893;
+      --line: rgba(227, 231, 239, .13);
+      --shadow: 0 28px 70px rgba(0, 0, 0, .38);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-height: 100%; background: var(--paper); }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 5%, rgba(255,255,255,.9), transparent 28rem),
+        radial-gradient(circle at 90% 88%, rgba(64,86,120,.1), transparent 32rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html[data-theme="dark"] body {
+      background:
+        radial-gradient(circle at 12% 5%, rgba(70,91,128,.16), transparent 30rem),
+        radial-gradient(circle at 88% 90%, rgba(128,104,67,.08), transparent 34rem),
+        var(--paper);
+    }
+
+    button, select { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+    .shell {
+      width: min(1440px, 100%);
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 18px;
+    }
+
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 8px 4px;
+    }
+
+    .brand-kicker {
+      margin: 0 0 4px;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: .95;
+    }
+
+    .header-note {
+      max-width: 30rem;
+      margin: 0;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: .98rem;
+      font-style: italic;
+      text-align: right;
+    }
+
+    .header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 18px; }
+
+    .guide-link {
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 750;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .guide-link:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 4px; }
+    .guide-link:focus-visible { outline: 3px solid rgba(148,120,73,.35); outline-offset: 4px; border-radius: 3px; }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: var(--card);
+      box-shadow: 0 5px 18px rgba(38,54,47,.07);
+      font-size: .78rem;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover { border-color: var(--gold); }
+    .theme-toggle:focus-visible { outline: 3px solid rgba(182,139,67,.35); outline-offset: 2px; }
+    .theme-icon { font-size: 1rem; line-height: 1; }
+
+    main {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(470px, 1.15fr) minmax(350px, .85fr);
+      align-items: start;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .rosary-panel {
+      position: relative;
+      height: clamp(650px, calc(100dvh - 132px), 820px);
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 38%, rgba(255,255,255,.48), transparent 65%),
+        repeating-linear-gradient(112deg, transparent 0 26px, rgba(53,59,70,.018) 27px 28px),
+        #dedbd5;
+    }
+
+    html[data-theme="dark"] .panel { border-color: rgba(255,255,255,.08); }
+
+    html[data-theme="dark"] .rosary-panel {
+      background:
+        radial-gradient(ellipse at 50% 37%, rgba(72,88,116,.12), transparent 60%),
+        radial-gradient(ellipse at 50% 110%, rgba(0,0,0,.38), transparent 62%),
+        repeating-linear-gradient(112deg, transparent 0 27px, rgba(255,255,255,.012) 28px 29px),
+        #11141a;
+    }
+
+    .rosary-stage {
+      position: absolute;
+      inset: 20px;
+      user-select: none;
+    }
+
+    .rosary-stage::before {
+      content: none;
+    }
+
+    .bead, .marker {
+      position: absolute;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      color: transparent;
+      cursor: pointer;
+      transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(var(--bead-scale, 1));
+      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .bead {
+      width: clamp(12px, 1.6vw, 19px);
+      height: calc(clamp(12px, 1.6vw, 19px) * 1.08);
+      border: 1px solid rgba(12, 15, 20, .78);
+      border-radius: 48% 52% 46% 54%;
+      background:
+        radial-gradient(ellipse at var(--grain-x, 29%) 21%, rgba(255,255,255,.8) 0 5%, transparent 12%),
+        radial-gradient(ellipse at 38% 34%, #69717b 0%, #333840 23%, transparent 46%),
+        radial-gradient(ellipse at 65% 74%, transparent 28%, rgba(0,0,0,.55) 74%),
+        linear-gradient(138deg, #555c66 0%, #24282e 44%, #080a0d 100%);
+      box-shadow:
+        inset 1px 1px 2px rgba(255,255,255,.26),
+        inset -2px -3px 4px rgba(0,0,0,.52),
+        0 2px 2px rgba(0,0,0,.42),
+        0 5px 8px rgba(0,0,0,.2);
+    }
+
+    .bead.large {
+      width: clamp(19px, 2.2vw, 28px);
+      height: calc(clamp(19px, 2.2vw, 28px) * 1.08);
+      border-color: rgba(19, 28, 48, .85);
+      background:
+        radial-gradient(ellipse at var(--grain-x, 29%) 20%, rgba(225,232,247,.65) 0 5%, transparent 12%),
+        radial-gradient(circle at 35% 33%, rgba(113,137,178,.72), transparent 30%),
+        radial-gradient(ellipse at 65% 75%, transparent 24%, rgba(4,11,27,.62) 74%),
+        linear-gradient(140deg, #506b99 0%, #263d66 48%, #0d1930 100%);
+      box-shadow: inset 1px 1px 3px rgba(225,233,248,.24), inset -3px -4px 6px rgba(3,9,23,.5), 0 3px 3px rgba(0,0,0,.42), 0 7px 11px rgba(0,0,0,.2);
+    }
+
+    html[data-theme="dark"] .bead {
+      border-color: rgba(190, 199, 213, .5);
+      background:
+        radial-gradient(ellipse at var(--grain-x, 29%) 20%, rgba(255,255,255,.96) 0 5%, transparent 13%),
+        radial-gradient(ellipse at 37% 33%, #8893a1 0%, #4b535e 22%, transparent 47%),
+        radial-gradient(ellipse at 65% 74%, transparent 26%, rgba(0,0,0,.48) 74%),
+        linear-gradient(138deg, #697480 0%, #30363e 46%, #0c0f14 100%);
+      box-shadow:
+        inset 1px 1px 2px rgba(255,255,255,.36),
+        inset -2px -3px 4px rgba(0,0,0,.55),
+        0 0 0 1px rgba(181,194,212,.12),
+        0 3px 4px rgba(0,0,0,.72),
+        0 7px 11px rgba(0,0,0,.32);
+    }
+
+    html[data-theme="dark"] .bead.large {
+      border-color: rgba(129, 155, 200, .68);
+      background:
+        radial-gradient(ellipse at var(--grain-x, 29%) 20%, rgba(245,248,255,.9) 0 5%, transparent 13%),
+        radial-gradient(circle at 35% 32%, #8aa2ca 0%, #536f9f 24%, transparent 46%),
+        radial-gradient(ellipse at 65% 75%, transparent 24%, rgba(2,8,21,.58) 74%),
+        linear-gradient(140deg, #6c87b6 0%, #334e7e 48%, #101d37 100%);
+      box-shadow: inset 1px 1px 3px rgba(235,241,252,.33), inset -3px -4px 6px rgba(2,8,21,.54), 0 0 0 1px rgba(111,143,194,.18), 0 4px 5px rgba(0,0,0,.7), 0 8px 13px rgba(0,0,0,.3);
+    }
+
+    .bead::before, .marker::before {
+      content: "";
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+
+    .bead:hover { filter: brightness(1.08); transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(1.18); }
+    .bead:focus-visible, .marker:focus-visible { outline: 3px solid var(--green); outline-offset: 5px; }
+    .bead.completed { filter: none; opacity: 1; }
+    .bead.active {
+      z-index: 4;
+      filter: brightness(1.38) saturate(1.18);
+      transform: translate(-50%, -50%) scale(1.68);
+      box-shadow: 0 0 0 4px rgba(255,253,248,.92), 0 0 0 8px var(--gold), 0 0 24px rgba(194,167,114,.78), 0 8px 20px rgba(0,0,0,.42);
+      animation: selected-bead-pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes selected-bead-pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(255,253,248,.92), 0 0 0 8px var(--gold), 0 0 18px rgba(194,167,114,.58), 0 8px 20px rgba(0,0,0,.42); }
+      50% { box-shadow: 0 0 0 5px rgba(255,253,248,.96), 0 0 0 10px var(--gold), 0 0 30px rgba(194,167,114,.88), 0 8px 22px rgba(0,0,0,.48); }
+    }
+
+    .connector {
+      position: absolute;
+      z-index: 0;
+      height: 2px;
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(90deg, rgba(225,227,228,.95) 0 3px, rgba(93,98,106,.82) 3px 5px, transparent 5px 7px),
+        linear-gradient(transparent 35%, #777d86 36% 66%, transparent 67%);
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,.38));
+      transform-origin: 0 50%;
+      pointer-events: none;
+    }
+
+    html[data-theme="dark"] .connector { filter: brightness(1.12) drop-shadow(0 1px 1px rgba(0,0,0,.65)); }
+
+    .marker {
+      border: 1px solid #62666d;
+      background: linear-gradient(135deg, #f0eee8 0%, #aaaeb4 25%, #62666d 55%, #d7d6d1 78%, #777b82 100%);
+      color: #242932;
+      text-shadow: 0 1px rgba(255,255,255,.55);
+      box-shadow: inset 1px 1px 2px rgba(255,255,255,.72), inset -2px -2px 4px rgba(31,34,40,.38), 0 4px 9px rgba(0,0,0,.3);
+    }
+
+    .marker.medal {
+      width: 30px;
+      height: 38px;
+      border-radius: 50% 50% 46% 46%;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .marker.medal::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(47,52,61,.48);
+      border-radius: 50% 50% 46% 46%;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.23);
+    }
+
+    .marker.cross {
+      width: 38px;
+      height: 62px;
+      overflow: visible;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .marker.cross::after { content: none; }
+    .crucifix-svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 4px 4px rgba(0,0,0,.46)); pointer-events: none; }
+    .marker.active {
+      filter: brightness(1.08);
+      box-shadow: 0 0 0 5px rgba(255,253,248,.86), 0 0 0 8px var(--gold), 0 7px 18px rgba(60,44,18,.3);
+    }
+
+    .marker.cross.active { filter: none; box-shadow: none; }
+    .marker.cross.active .crucifix-svg { filter: drop-shadow(0 0 3px var(--gold)) drop-shadow(0 5px 5px rgba(0,0,0,.6)); }
+
+    .decade-label {
+      position: absolute;
+      left: 71%;
+      top: 45%;
+      z-index: 1;
+      width: 33%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .decade-label span {
+      display: block;
+      color: var(--gold);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .decade-label strong {
+      display: block;
+      margin-top: 7px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .decade-label small { display: block; margin-top: 8px; color: var(--muted); }
+
+    .prayer-panel {
+      min-height: 650px;
+      padding: clamp(22px, 4vw, 42px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .select-wrap label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: .67rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    select {
+      width: min(240px, 52vw);
+      padding: 0 28px 0 0;
+      border: 0;
+      color: var(--ink);
+      background: transparent;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      cursor: pointer;
+    }
+
+    .counter { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+
+    .progress-track {
+      height: 3px;
+      margin: 18px 0 0;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(64,86,120,.12);
+    }
+
+    .progress-bar { width: 0; height: 100%; background: var(--gold); transition: width .3s ease; }
+
+    .prayer-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px 0;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .3s ease, transform .34s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .prayer-card.text-waiting {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: none;
+    }
+
+    .step-eyebrow {
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .prayer-title {
+      margin: 0 0 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.15rem, 5vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: .98;
+    }
+
+    .prayer-text {
+      max-width: 36rem;
+      margin: 0;
+      color: #435048;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.05rem, 2vw, 1.27rem);
+      line-height: 1.62;
+      white-space: pre-line;
+    }
+
+    html[data-theme="dark"] .prayer-text { color: #d3d0c8; }
+    html[data-theme="dark"] .mystery-note { color: #c9c1b1; }
+
+    .mystery-note {
+      display: none;
+      margin: 0 0 18px;
+      padding: 13px 15px;
+      border-left: 3px solid var(--gold);
+      background: rgba(182,139,67,.08);
+      color: #5d614f;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.4;
+    }
+
+    .mystery-note.visible { display: block; }
+
+    .controls { display: grid; grid-template-columns: 1fr 1.5fr; gap: 10px; }
+
+    .control-btn {
+      min-height: 54px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      color: var(--ink);
+      background: transparent;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease;
+    }
+
+    .control-btn:hover { transform: translateY(-1px); background: rgba(64,86,120,.08); }
+    .control-btn:focus-visible { outline: 3px solid rgba(64,86,120,.32); outline-offset: 2px; }
+    .control-btn.primary { border-color: var(--green); color: #fff; background: var(--green); }
+    .control-btn.primary:hover { background: var(--green-deep); }
+
+    .hints {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: .72rem;
+    }
+
+    .reset-btn { padding: 0; border: 0; color: var(--muted); background: none; text-decoration: underline; cursor: pointer; }
+
+    @media (max-width: 900px) {
+      .shell { padding: 16px; }
+      header { align-items: center; }
+      .header-note { display: none; }
+      main { grid-template-columns: 1fr; }
+      .rosary-panel { width: 100%; height: min(710px, 88vh); min-height: 570px; }
+      .prayer-panel { min-height: auto; }
+      .prayer-card { min-height: 390px; }
+      .bead { width: clamp(10px, 2.3vw, 18px); }
+      .bead.large { width: clamp(17px, 3.2vw, 26px); }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: 100%; max-width: 100vw; min-width: 0; padding: 12px; gap: 12px; overflow: hidden; }
+      header { min-width: 0; padding: 6px 3px; gap: 10px; }
+      .header-actions { min-width: 0; gap: 8px; }
+      .guide-link { font-size: .7rem; }
+      .theme-toggle { width: 40px; min-height: 40px; padding: 7px; justify-content: center; }
+      #themeLabel { display: none; }
+      main { width: 100%; min-width: 0; margin-top: 46px; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; overflow: visible; }
+      main > * { width: 100%; max-width: 100%; min-width: 0; }
+      .panel { border-radius: 22px; }
+      .rosary-panel,
+      .prayer-panel {
+        grid-column: 1;
+        grid-row: 1;
+        height: max(620px, calc(100dvh - 105px));
+        max-height: 800px;
+        min-height: 620px;
+      }
+      .rosary-panel { z-index: 0; }
+      .rosary-stage { inset: 8px; }
+      .rosary-stage::before { width: 80%; height: 52%; top: 32%; }
+      .decade-label { left: 50%; top: 8.5%; width: 86%; }
+      .bead { width: 12px; }
+      .bead.large { width: 20px; }
+      .prayer-panel {
+        position: relative;
+        z-index: 5;
+        min-height: 620px;
+        padding: 14px;
+        overflow: hidden;
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        pointer-events: none;
+      }
+      .toolbar {
+        position: absolute;
+        top: -44px;
+        left: 50%;
+        z-index: 8;
+        width: auto;
+        min-width: 0;
+        align-self: center;
+        justify-content: center;
+        padding: 7px 11px;
+        border: 1px solid rgba(255,255,255,.32);
+        border-radius: 999px;
+        background: rgba(250,249,246,.48);
+        box-shadow: 0 3px 12px rgba(18,22,29,.09);
+        backdrop-filter: blur(6px);
+        pointer-events: auto;
+        transform: translateX(-50%);
+      }
+      html[data-theme="dark"] .toolbar {
+        border-color: rgba(225,231,241,.15);
+        background: rgba(12,15,21,.42);
+      }
+      .select-wrap { min-width: 0; display: flex; align-items: center; }
+      .select-wrap label {
+        display: block;
+        margin: 0 8px 0 0;
+        color: var(--gold);
+        font-size: .61rem;
+        letter-spacing: .1em;
+        white-space: nowrap;
+      }
+      .counter { display: none; }
+      select { width: min(182px, 50vw); max-width: 100%; padding-right: 20px; font-size: .94rem; text-align: center; }
+      .progress-track { display: none; }
+      .prayer-card {
+        min-height: 0;
+        width: 88%;
+        margin: 10px auto;
+        padding: 22px 10px;
+        overflow-y: auto;
+        border: 0;
+        background: radial-gradient(ellipse at center, rgba(250,249,246,.82) 0%, rgba(250,249,246,.68) 48%, rgba(250,249,246,.2) 72%, transparent 84%);
+        box-shadow: none;
+        backdrop-filter: none;
+        justify-content: center;
+        pointer-events: none;
+        scrollbar-width: thin;
+      }
+      .prayer-card.long-prayer {
+        justify-content: flex-start;
+        padding-top: 28px;
+        padding-bottom: 84px;
+        pointer-events: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      html[data-theme="dark"] .prayer-card {
+        border-color: transparent;
+        background: radial-gradient(ellipse at center, rgba(9,11,16,.78) 0%, rgba(9,11,16,.65) 48%, rgba(9,11,16,.2) 72%, transparent 84%);
+        box-shadow: none;
+      }
+      .prayer-title { margin-bottom: 14px; font-size: clamp(2rem, 10vw, 2.65rem); text-shadow: 0 1px 12px rgba(250,249,246,.95), 0 0 4px rgba(250,249,246,.9); }
+      .prayer-text { font-size: 1rem; line-height: 1.48; text-shadow: 0 1px 10px rgba(250,249,246,.95), 0 0 4px rgba(250,249,246,.92); }
+      html[data-theme="dark"] .prayer-title,
+      html[data-theme="dark"] .prayer-text { text-shadow: 0 2px 10px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1); }
+      .mystery-note { margin-bottom: 12px; background: rgba(148,120,73,.13); }
+      .controls {
+        position: absolute;
+        z-index: 2;
+        right: 14px;
+        bottom: 16px;
+        left: 14px;
+        width: auto;
+        min-width: 0;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+      }
+      .controls, .control-btn, select, .reset-btn, .theme-toggle, .guide-link { touch-action: manipulation; }
+      .control-btn {
+        width: auto;
+        min-width: 102px;
+        min-height: 44px;
+        padding: 8px 10px;
+        border-color: rgba(69,77,91,.2);
+        color: var(--muted);
+        background: rgba(250,249,246,.56);
+        box-shadow: 0 3px 10px rgba(18,22,29,.1);
+        backdrop-filter: blur(7px);
+        font-size: .78rem;
+        font-weight: 650;
+        pointer-events: auto;
+      }
+      .control-btn:active { transform: scale(.97); }
+      .control-btn.primary { border-color: rgba(64,86,120,.3); color: var(--ink); background: rgba(64,86,120,.16); }
+      html[data-theme="dark"] .control-btn { border-color: rgba(225,231,241,.1); color: var(--muted); background: rgba(18,23,32,.54); }
+      html[data-theme="dark"] .control-btn.primary { border-color: rgba(111,143,194,.25); color: #d9dee7; background: rgba(83,111,157,.2); }
+      .hints { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .prayer-card.text-waiting { opacity: 1; transform: none; }
+      .bead.active { animation: none; }
+    }
+
+    .today-note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: .88rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .toolbar select { width: min(190px, 40vw); }
+
+    @media (max-width: 560px) {
+      .today-note { display: none; }
+      .toolbar .select-wrap select { width: min(120px, 30vw); font-size: .88rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div>
+        <p class="brand-kicker">One decade · One mystery</p>
+        <h1>The Single Decade</h1>
+      </div>
+      <div class="header-actions">
+        <p class="header-note">“The Rosary is the prayer of the humble and of the saints.”</p>
+        <a class="guide-link" href="../">Full rosary</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+          <span class="theme-icon" id="themeIcon" aria-hidden="true">☾</span>
+          <span id="themeLabel">Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel rosary-panel" aria-label="Interactive rosary">
+        <div class="rosary-stage" id="rosaryStage">
+          <div class="decade-label" aria-hidden="true">
+            <span id="centerKicker">Begin in prayer</span>
+            <strong id="centerTitle">Make the Sign of the Cross</strong>
+            <small id="centerCount">Opening prayers</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prayer-panel" aria-live="polite">
+        <div class="toolbar">
+          <div class="select-wrap">
+            <label for="mysterySelect">Mysteries</label>
+            <select id="mysterySelect" aria-label="Choose a set of mysteries"></select>
+          </div>
+          <div class="select-wrap">
+            <label for="mysteryPick">Mystery</label>
+            <select id="mysteryPick" aria-label="Choose a mystery"></select>
+          </div>
+          <span class="counter" id="counter">1 of 18</span>
+        </div>
+        <p class="today-note" id="todayNote"></p>
+        <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+        <article class="prayer-card">
+          <p class="step-eyebrow" id="stepEyebrow">On the crucifix</p>
+          <h2 class="prayer-title" id="prayerTitle">Sign of the Cross</h2>
+          <p class="mystery-note" id="mysteryNote"></p>
+          <p class="prayer-text" id="prayerText"></p>
+        </article>
+
+        <div class="controls">
+          <button class="control-btn" id="previousBtn" type="button" aria-label="Previous bead">← Previous</button>
+          <button class="control-btn primary" id="nextBtn" type="button" aria-label="Next bead">Next bead →</button>
+        </div>
+        <div class="hints">
+          <span>Use ← → keys to move between beads</span>
+          <button class="reset-btn" id="resetBtn" type="button">Start over</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeLabel = document.getElementById("themeLabel");
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    const darkPreference = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function setTheme(theme, save = false) {
+      document.documentElement.dataset.theme = theme;
+      const isDark = theme === "dark";
+      themeIcon.textContent = isDark ? "☀" : "☾";
+      themeLabel.textContent = isDark ? "Light" : "Dark";
+      themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
+      themeColor.content = isDark ? "#090b10" : "#efede8";
+      if (save) localStorage.setItem("rosary-theme", theme);
+    }
+
+    const savedTheme = localStorage.getItem("rosary-theme");
+    setTheme(savedTheme || (darkPreference.matches ? "dark" : "light"));
+    themeToggle.addEventListener("click", () => {
+      setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark", true);
+    });
+    darkPreference.addEventListener("change", event => {
+      if (!localStorage.getItem("rosary-theme")) setTheme(event.matches ? "dark" : "light");
+    });
+
+    const PRAYERS = {
+      cross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+      creed: "I believe in God, the Father almighty, Creator of heaven and earth, and in Jesus Christ, his only Son, our Lord, who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died and was buried; he descended into hell; on the third day he rose again from the dead; he ascended into heaven, and is seated at the right hand of God the Father almighty; from there he will come to judge the living and the dead. I believe in the Holy Spirit, the holy catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.",
+      ourFather: "Our Father, who art in heaven, hallowed be thy name; thy kingdom come; thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen.",
+      hailMary: "Hail Mary, full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.",
+      glory: "Glory be to the Father, and to the Son, and to the Holy Spirit, as it was in the beginning, is now, and ever shall be, world without end. Amen.",
+      fatima: "O my Jesus, forgive us our sins, save us from the fires of hell. Lead all souls to heaven, especially those most in need of thy mercy.",
+      hailHolyQueen: "Hail, holy Queen, Mother of mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.",
+      final: "O God, whose only-begotten Son, by his life, death and resurrection, has purchased for us the rewards of eternal life; grant, we beseech thee, that by meditating upon these mysteries of the most holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen."
+    };
+
+    const MYSTERIES = {
+      joyful: {
+        label: "Joyful Mysteries",
+        days: "Monday & Saturday",
+        items: ["The Annunciation", "The Visitation", "The Nativity", "The Presentation", "The Finding in the Temple"]
+      },
+      sorrowful: {
+        label: "Sorrowful Mysteries",
+        days: "Tuesday & Friday",
+        items: ["The Agony in the Garden", "The Scourging at the Pillar", "The Crowning with Thorns", "The Carrying of the Cross", "The Crucifixion"]
+      },
+      glorious: {
+        label: "Glorious Mysteries",
+        days: "Wednesday & Sunday",
+        items: ["The Resurrection", "The Ascension", "The Descent of the Holy Spirit", "The Assumption", "The Coronation of Mary"]
+      },
+      luminous: {
+        label: "Luminous Mysteries",
+        days: "Thursday",
+        items: ["The Baptism of Jesus", "The Wedding at Cana", "The Proclamation of the Kingdom", "The Transfiguration", "The Institution of the Eucharist"]
+      }
+    };
+
+    const stage = document.getElementById("rosaryStage");
+    const nodes = [];
+    const steps = [];
+    const connectorPairs = [];
+
+    function addStep(node, prayer, title, eyebrow, options = {}) {
+      const step = { node, prayer, title, eyebrow, ...options };
+      steps.push(step);
+      if (node) node.dataset.step = steps.length - 1;
+      return step;
+    }
+
+    function createNode(type, x, y, label, extraClass = "") {
+      const node = document.createElement("button");
+      node.type = "button";
+      node.className = `${type} ${extraClass}`.trim();
+      node.style.left = `${x}%`;
+      node.style.top = `${y}%`;
+      if (type === "bead") {
+        const seed = nodes.length + 1;
+        node.style.setProperty("--tilt", `${((seed * 17) % 13) - 6}deg`);
+        node.style.setProperty("--bead-scale", (0.94 + ((seed * 7) % 9) / 100).toFixed(2));
+        node.style.setProperty("--grain-x", `${24 + ((seed * 11) % 13)}%`);
+      }
+      node.setAttribute("aria-label", label);
+      node.title = label;
+      stage.appendChild(node);
+      nodes.push({ node, x, y });
+      return node;
+    }
+
+    function connect(a, b) {
+      const line = document.createElement("span");
+      line.className = "connector";
+      stage.insertBefore(line, stage.firstChild);
+      connectorPairs.push({ line, a, b });
+      positionConnector({ line, a, b });
+    }
+
+    function positionConnector({ line, a, b }) {
+      const width = stage.clientWidth;
+      const height = stage.clientHeight;
+      const x1 = a.x * width / 100;
+      const y1 = a.y * height / 100;
+      const dx = (b.x - a.x) * width / 100;
+      const dy = (b.y - a.y) * height / 100;
+      line.style.left = `${x1}px`;
+      line.style.top = `${y1}px`;
+      line.style.width = `${Math.hypot(dx, dy)}px`;
+      line.style.transform = `rotate(${Math.atan2(dy, dx)}rad)`;
+    }
+
+    // A single straight strand — a tenner: the centerpiece medal at the
+    // top, ten Hail Mary beads in a line below it, the Our Father bead,
+    // then the crucifix at the bottom. On narrow screens the strand
+    // starts lower so the decade label can sit above it.
+    const mobile = window.matchMedia("(max-width: 560px)");
+    const strand = mobile.matches
+      ? { medal: 21.5, firstBead: 28.5, beadStep: 5.3, of: 82.5, cross: 92.5 }
+      : { medal: 8, firstBead: 17, beadStep: 6, of: 79, cross: 91 };
+
+    // The crucifix and opening strand.
+    const cross = createNode("marker", 49.6, strand.cross, "Crucifix", "cross");
+    cross.style.setProperty("--tilt", "-2deg");
+    cross.innerHTML = `
+      <svg class="crucifix-svg" viewBox="0 0 46 76" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="crossMetal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f4f3ef"/>
+            <stop offset=".22" stop-color="#aeb3ba"/>
+            <stop offset=".5" stop-color="#555b64"/>
+            <stop offset=".74" stop-color="#d7d8d5"/>
+            <stop offset="1" stop-color="#6c727b"/>
+          </linearGradient>
+          <linearGradient id="corpusMetal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e2d6c3"/>
+            <stop offset=".48" stop-color="#a79780"/>
+            <stop offset="1" stop-color="#665e53"/>
+          </linearGradient>
+        </defs>
+        <path d="M18 1h10v18h15v12H28v44H18V31H3V19h15Z" fill="url(#crossMetal)" stroke="#454a52" stroke-width="1.2"/>
+        <rect x="15" y="5" width="16" height="7" rx="1.2" fill="#d9d8d3" stroke="#5c6169" stroke-width=".8"/>
+        <text x="23" y="10.2" text-anchor="middle" font-family="Georgia,serif" font-size="4.7" font-weight="700" fill="#3d424a">INRI</text>
+        <ellipse cx="23" cy="19" rx="3.7" ry="4.2" fill="url(#corpusMetal)" stroke="#5d554b" stroke-width=".7"/>
+        <path d="M20.1 18.2c.9-3.1 5-3.4 6-.3-.9-.8-1.9-1.1-3.1-1.1-1.1 0-2.1.5-2.9 1.4Z" fill="#554e46"/>
+        <path d="M21.7 23c-2 1.2-2.9 4.5-2.6 8.5l1.2 10.7h5.5l1.1-10.7c.3-4-1-7.4-2.8-8.5Z" fill="url(#corpusMetal)" stroke="#5d554b" stroke-width=".8"/>
+        <path d="M20.4 26.2c-4.4 1.1-8.5.1-13-2.4M25.6 26.2c4.4 1.1 8.5.1 13-2.4" fill="none" stroke="url(#corpusMetal)" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="6.7" cy="23.5" r="1.5" fill="#8f816f"/><circle cx="39.3" cy="23.5" r="1.5" fill="#8f816f"/>
+        <path d="M19.4 40.2c2.3-1.3 4.8-1.3 7.2 0l-1 5.1h-5.2Z" fill="#d0c4b2" stroke="#665e53" stroke-width=".7"/>
+        <path d="M21.3 45c-.1 7.1 1.2 11.8 1.7 17.9M24.7 45c.1 6.8-1.1 11.8-1.7 17.9" fill="none" stroke="url(#corpusMetal)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M20.8 62.2c1.2.9 3.1 1.1 4.5.1" fill="none" stroke="#6c6256" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="23" cy="63" r="1" fill="#474b52"/>
+      </svg>`;
+    addStep(cross, "cross", "Sign of the Cross", "On the crucifix");
+    addStep(cross, "creed", "The Apostles’ Creed", "Still on the crucifix");
+
+    const ofBead = createNode("bead", 50, strand.of, "Our Father bead", "large");
+    addStep(ofBead, "ourFather", "Our Father", "On the large bead", { announce: true, inDecade: true });
+
+    const medal = createNode("marker", 50, strand.medal, "Centerpiece", "medal");
+    medal.style.setProperty("--tilt", "2deg");
+    medal.textContent = "M";
+
+    // Ten Hail Mary beads in a straight vertical line: the whole rosary
+    // is this one decade. They are created top-first for the connector
+    // chain, but prayed from the Our Father bead upward: bead 1 is the
+    // bead nearest the Our Father bead, bead 10 the one nearest the medal.
+    const beadNodes = [];
+    for (let i = 0; i < 10; i++) {
+      beadNodes.push(createNode("bead", 50, strand.firstBead + strand.beadStep * i, `Hail Mary bead ${10 - i}`));
+    }
+
+    for (let count = 1; count <= 10; count++) {
+      addStep(beadNodes[10 - count], "hailMary", "Hail Mary", `Bead ${count} of 10`, { inDecade: true });
+    }
+    addStep(medal, "glory", "Glory Be", "At the centerpiece", { inDecade: true });
+    addStep(medal, "fatima", "Fatima Prayer", "At the centerpiece", { inDecade: true });
+    addStep(medal, "hailHolyQueen", "Hail, Holy Queen", "Returning to the centerpiece");
+    addStep(cross, "final", "Concluding Prayer", "At the crucifix");
+    addStep(cross, "cross", "Sign of the Cross", "The Rosary is complete", { complete: true });
+
+    function nodePos(node) { return nodes.find(p => p.node === node); }
+    // One chain along the strand: medal → bead 10 → … → bead 1 → Our
+    // Father bead → crucifix (12 links).
+    const strandOrder = [medal, ...beadNodes, ofBead, cross];
+    strandOrder.slice(0, -1).forEach((node, i) => {
+      connect(nodePos(node), nodePos(strandOrder[i + 1]));
+    });
+
+    let connectorFrame;
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(connectorFrame);
+      connectorFrame = requestAnimationFrame(() => connectorPairs.forEach(positionConnector));
+    });
+
+    // --- The day's mystery, chosen by the Church's calendar ---
+    function startOfDay(date) { const d = new Date(date); d.setHours(0, 0, 0, 0); return d; }
+    function addDays(date, days) { const d = startOfDay(date); d.setDate(d.getDate() + days); return d; }
+    function daysBetween(from, to) { return Math.round((startOfDay(to) - startOfDay(from)) / 86400000); }
+    function sundayOnOrBefore(date) { const d = startOfDay(date); return addDays(d, -d.getDay()); }
+
+    function easterSunday(year) {
+      // Computus (Gregorian).
+      const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+      const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
+      const h = (19 * a + b - d - g + 15) % 30;
+      const i = Math.floor(c / 4), k = c % 4;
+      const l = (32 + 2 * e + 2 * i - h - k) % 7;
+      const m = Math.floor((a + 11 * h + 22 * l) / 451);
+      const month = Math.floor((h + l - 7 * m + 114) / 31);
+      const day = ((h + l - 7 * m + 114) % 31) + 1;
+      return new Date(year, month - 1, day);
+    }
+
+    function adventSunday(year) {
+      // The Sunday nearest November 30.
+      const nov30 = new Date(year, 10, 30);
+      const back = nov30.getDay();
+      const forward = (7 - back) % 7;
+      return addDays(nov30, back <= forward ? -back : forward);
+    }
+
+    function baptismOfTheLord(year) {
+      // The Sunday after Epiphany (January 6).
+      const jan6 = new Date(year, 0, 6);
+      let delta = (7 - jan6.getDay()) % 7;
+      if (delta === 0) delta = 7;
+      return addDays(jan6, delta);
+    }
+
+    function ordinalShort(number) {
+      const suffixes = ["th", "st", "nd", "rd"];
+      const v = number % 100;
+      return number + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+    }
+
+    function liturgicalWeek(date) {
+      const d = startOfDay(date);
+      const year = d.getFullYear();
+      const easter = easterSunday(year);
+      const ashWednesday = addDays(easter, -46);
+      const pentecost = addDays(easter, 49);
+      const advent = adventSunday(year);
+      const christmasDay = new Date(year, 11, 25);
+      let season, week;
+
+      if (d >= advent && d < christmasDay) {
+        season = "Advent";
+        week = 1 + Math.floor(daysBetween(advent, d) / 7);
+      } else if (d >= christmasDay) {
+        season = "Christmas";
+        week = 1 + Math.floor(daysBetween(christmasDay, d) / 7);
+      } else if (d <= baptismOfTheLord(year)) {
+        season = "Christmas";
+        week = 1 + Math.floor(daysBetween(new Date(year - 1, 11, 25), d) / 7);
+      } else if (d >= ashWednesday && d < easter) {
+        season = "Lent";
+        const firstSunday = addDays(ashWednesday, (7 - ashWednesday.getDay()) % 7 || 7);
+        week = d < firstSunday ? 1 : 1 + Math.floor(daysBetween(firstSunday, d) / 7);
+      } else if (d >= easter && d <= pentecost) {
+        season = "Easter";
+        week = 1 + Math.floor(daysBetween(easter, d) / 7);
+      } else if (d < ashWednesday) {
+        // Ordinary Time before Lent: count forward from the Baptism of the Lord (week 1).
+        season = "Ordinary Time";
+        week = 1 + daysBetween(baptismOfTheLord(year), sundayOnOrBefore(d)) / 7;
+      } else {
+        // Ordinary Time after Pentecost: count backward from the 34th Sunday (Christ the King).
+        season = "Ordinary Time";
+        week = 34 - daysBetween(sundayOnOrBefore(d), addDays(advent, -7)) / 7;
+      }
+
+      const label = season === "Ordinary Time"
+        ? `${ordinalShort(week)} Week in Ordinary Time`
+        : season === "Christmas"
+          ? "the Christmas Season"
+          : `${ordinalShort(week)} Week of ${season}`;
+      return { season, week, label };
+    }
+
+    const mysterySelect = document.getElementById("mysterySelect");
+    const mysteryPick = document.getElementById("mysteryPick");
+    const todayNote = document.getElementById("todayNote");
+    const now = new Date();
+    const liturgy = liturgicalWeek(now);
+    let suggested = ["glorious", "joyful", "sorrowful", "glorious", "luminous", "sorrowful", "joyful"][now.getDay()];
+    if (now.getDay() === 0 && liturgy.season === "Christmas") suggested = "joyful";
+    if (now.getDay() === 0 && liturgy.season === "Lent") suggested = "sorrowful";
+    const suggestedMystery = ((liturgy.week - 1) % 5 + 5) % 5;
+    Object.entries(MYSTERIES).forEach(([key, value]) => {
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent = value.label;
+      mysterySelect.appendChild(option);
+    });
+
+    function fillMysteryOptions(setKey, selectedIndex) {
+      mysteryPick.innerHTML = "";
+      MYSTERIES[setKey].items.forEach((name, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = name;
+        mysteryPick.appendChild(option);
+      });
+      mysteryPick.value = String(selectedIndex);
+    }
+
+    const savedSet = localStorage.getItem("decade-set");
+    mysterySelect.value = savedSet && MYSTERIES[savedSet] ? savedSet : suggested;
+    const savedMysteryRaw = localStorage.getItem("decade-mystery");
+    const savedMystery = savedMysteryRaw ? Number(savedMysteryRaw) : NaN;
+    fillMysteryOptions(mysterySelect.value, Number.isInteger(savedMystery) && savedMystery >= 0 && savedMystery < 5 ? savedMystery : suggestedMystery);
+    todayNote.textContent = `Today: ${MYSTERIES[suggested].items[suggestedMystery]} · ${ordinalShort(suggestedMystery + 1)} ${MYSTERIES[suggested].label.replace(" Mysteries", "")} Mystery · ${liturgy.label}`;
+
+    const titleEl = document.getElementById("prayerTitle");
+    const textEl = document.getElementById("prayerText");
+    const eyebrowEl = document.getElementById("stepEyebrow");
+    const noteEl = document.getElementById("mysteryNote");
+    const counterEl = document.getElementById("counter");
+    const progressEl = document.getElementById("progressBar");
+    const centerKicker = document.getElementById("centerKicker");
+    const centerTitle = document.getElementById("centerTitle");
+    const centerCount = document.getElementById("centerCount");
+    const prayerCard = document.querySelector(".prayer-card");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let prayerRevealTimer;
+    let current = Math.min(Number(localStorage.getItem("decade-step")) || 0, steps.length - 1);
+
+    function render(options = {}) {
+      const step = steps[current];
+      const mysterySet = MYSTERIES[mysterySelect.value];
+      const mysteryIndex = Number(mysteryPick.value) || 0;
+      clearTimeout(prayerRevealTimer);
+      prayerCard.classList.add("text-waiting");
+      prayerCard.classList.toggle("long-prayer", ["creed", "hailHolyQueen", "final"].includes(step.prayer));
+      prayerCard.scrollTop = 0;
+      document.querySelectorAll(".active").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll("[aria-current='step']").forEach(el => el.removeAttribute("aria-current"));
+      document.querySelectorAll(".completed").forEach(el => el.classList.remove("completed"));
+      step.node.classList.add("active");
+      step.node.setAttribute("aria-current", "step");
+
+      const visited = new Set(steps.slice(0, current).map(item => item.node));
+      visited.forEach(node => node.classList.add("completed"));
+
+      titleEl.textContent = step.title;
+      textEl.textContent = PRAYERS[step.prayer];
+      eyebrowEl.textContent = step.eyebrow;
+      counterEl.textContent = `${current + 1} of ${steps.length}`;
+      progressEl.style.width = `${((current + 1) / steps.length) * 100}%`;
+      noteEl.classList.toggle("visible", Boolean(step.announce));
+      noteEl.textContent = step.announce ? `The ${ordinal(mysteryIndex + 1)} ${mysterySet.label.replace(" Mysteries", "")} Mystery: ${mysterySet.items[mysteryIndex]}` : "";
+
+      if (step.inDecade) {
+        centerKicker.textContent = "Single decade";
+        centerTitle.textContent = mysterySet.items[mysteryIndex];
+        centerCount.textContent = mysterySet.label;
+      } else if (step.complete) {
+        centerKicker.textContent = "Rosary complete";
+        centerTitle.textContent = "Go in peace";
+        centerCount.textContent = "Amen";
+      } else {
+        centerKicker.textContent = "Opening prayers";
+        centerTitle.textContent = step.title;
+        centerCount.textContent = mysterySet.label;
+      }
+
+      document.getElementById("previousBtn").disabled = current === 0;
+      document.getElementById("nextBtn").textContent = current === steps.length - 1 ? "Begin again ↻" : "Next bead →";
+      localStorage.setItem("decade-step", current);
+      if (options.focus) step.node.focus({ preventScroll: true });
+      if (reducedMotion.matches) {
+        prayerCard.classList.remove("text-waiting");
+      } else {
+        prayerRevealTimer = setTimeout(() => prayerCard.classList.remove("text-waiting"), 220);
+      }
+    }
+
+    function ordinal(number) { return ["First", "Second", "Third", "Fourth", "Fifth"][number - 1]; }
+    function goTo(index, focus = false) { current = Math.max(0, Math.min(index, steps.length - 1)); render({ focus }); }
+    function next() { goTo(current === steps.length - 1 ? 0 : current + 1); }
+    function previous() { goTo(current - 1); }
+    function haptic(duration = 8) {
+      if ("vibrate" in navigator) navigator.vibrate(duration);
+    }
+
+    stage.addEventListener("click", event => {
+      const target = event.target.closest("[data-step]");
+      if (!target) return;
+      haptic();
+      const matching = steps.map((step, index) => ({step, index})).filter(item => item.step.node === target);
+      const nextMatch = matching.find(item => item.index >= current) || matching[0];
+      goTo(nextMatch.index);
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => { haptic(); next(); });
+    document.getElementById("previousBtn").addEventListener("click", () => { haptic(); previous(); });
+    document.getElementById("resetBtn").addEventListener("click", () => { haptic(12); goTo(0); });
+    mysterySelect.addEventListener("change", () => {
+      localStorage.setItem("decade-set", mysterySelect.value);
+      fillMysteryOptions(mysterySelect.value, Number(mysteryPick.value) || 0);
+      render();
+    });
+    mysteryPick.addEventListener("change", () => {
+      localStorage.setItem("decade-mystery", mysteryPick.value);
+      render();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.target.matches("select")) return;
+      if (["ArrowRight", "ArrowDown"].includes(event.key)) { event.preventDefault(); next(); }
+      if (["ArrowLeft", "ArrowUp"].includes(event.key)) { event.preventDefault(); previous(); }
+      if (event.key === "Home") { event.preventDefault(); goTo(0); }
+      if (event.key === "End") { event.preventDefault(); goTo(steps.length - 1); }
+    });
+
+    render();
+  </script>
+</body>
+</html>
