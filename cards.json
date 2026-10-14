@@ -384,7 +384,7 @@
 
   "waypoint-resources": {
     "title": "The Way Point Resources",
-    "text": "Related pages for The Way Point: <a href=\"./TheWayPoint/resources.html\">Resources</a> · <a href=\"./TheWayPoint/theological-computing.html\">Theological Computing</a> · <a href=\"./TheWayPoint/rosary.html\">Rosary</a> · <a href=\"./TheWayPoint/about.html\">About</a>",
+    "text": "Related pages for The Way Point: <a href=\"./TheWayPoint/resources.html\">Resources</a> · <a href=\"./TheWayPoint/theological-computing.html\">Theological Computing</a> · <a href=\"./TheWayPoint/rosary.html\">Rosary</a> · <a href=\"./rosary/single-decade/\">Single Decade</a> · <a href=\"./TheWayPoint/about.html\">About</a>",
     "tags": ["research", "tools", "theology", "projects"],
     "image": "images/arrow.png"
   },
