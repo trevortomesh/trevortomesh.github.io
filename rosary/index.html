@@ -70,7 +70,7 @@
       margin: 0 auto;
       padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto auto 1fr;
       gap: 18px;
     }
 
@@ -122,6 +122,26 @@
 
     .guide-link:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 4px; }
     .guide-link:focus-visible { outline: 3px solid rgba(148,120,73,.35); outline-offset: 4px; border-radius: 3px; }
+
+    .decade-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 14px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 18px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .decade-banner:hover { border-color: var(--green); }
+    .decade-banner:focus-visible { outline: 3px solid rgba(148,120,73,.35); outline-offset: 3px; }
+    .decade-banner-text { font-family: Georgia, "Times New Roman", serif; font-size: .98rem; }
+    .decade-banner-cta { color: var(--gold); font-size: .82rem; font-weight: 800; letter-spacing: .04em; white-space: nowrap; }
 
     .theme-toggle {
       display: inline-flex;
@@ -685,6 +705,11 @@
         </button>
       </div>
     </header>
+
+    <a class="decade-banner" href="single-decade/">
+      <span class="decade-banner-text"><strong>Praying a single decade?</strong> One mystery, ten beads — about five minutes.</span>
+      <span class="decade-banner-cta">Open the Single Decade →</span>
+    </a>
 
     <main>
       <section class="panel rosary-panel" aria-label="Interactive rosary">
