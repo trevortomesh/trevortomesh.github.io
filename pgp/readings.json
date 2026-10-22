@@ -177,13 +177,24 @@
   },
   {
     "order": 17,
+    "book": "Joseph Smith—History",
+    "chapters": "Joseph Smith—History Pt. 2",
+    "chapter": "1",
+    "date": "October 21, 2026",
+    "title": "Joseph Smith—History Pt. 2",
+    "url": "https://x.com/realDrTT/status/2113071895323037857",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 18,
     "book": "Articles of Faith",
     "chapters": "Articles of Faith",
     "chapter": "",
-    "date": "October 21, 2026",
+    "date": "",
     "title": "Articles of Faith",
-    "url": "https://x.com/realDrtt/status/2113071895323037857",
-    "missing": false,
+    "url": "",
+    "missing": true,
     "note": ""
   }
 ]
