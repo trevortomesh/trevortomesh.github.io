@@ -200,12 +200,23 @@
   {
     "order": 19,
     "book": "Articles of Faith",
-    "chapters": "Articles of Faith",
+    "chapters": "Articles of Faith Pt. 1",
     "chapter": "",
-    "date": "",
-    "title": "Articles of Faith",
-    "url": "",
-    "missing": true,
+    "date": "October 23, 2026",
+    "title": "Articles of Faith Pt. 1",
+    "url": "https://x.com/realDrTT/status/2113796571775250487",
+    "missing": false,
+    "note": ""
+  },
+  {
+    "order": 20,
+    "book": "Articles of Faith",
+    "chapters": "Articles of Faith Pt. 2",
+    "chapter": "",
+    "date": "October 23, 2026",
+    "title": "Articles of Faith Pt. 2",
+    "url": "https://x.com/realDrTT/status/2113802027868242024",
+    "missing": false,
     "note": ""
   }
 ]
