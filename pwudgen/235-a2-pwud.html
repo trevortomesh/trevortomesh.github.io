@@ -70,10 +70,11 @@
 <body>
 <h1>Battle Arena Simulation</h1>
 <h2>Program Writeup Document Tool</h2>
+<p style="text-align:center;">Do not enter your real name anywhere in this form. Identify yourself and your classmates by class alias only.</p>
 
 <form id="writeupForm">
-    <label>Student Name</label>
-    <input type="text" name="StudentName" placeholder="Enter your full name">
+    <label>Your Alias</label>
+    <input type="text" name="StudentName" placeholder="Enter the alias you use for this class — not your real name">
 
     <label>1. BattleCreature Class – Code</label>
     <textarea name="BattleCreatureAttributes" placeholder="Paste your full BattleCreature class code here, including attributes and constructor."></textarea>
@@ -85,7 +86,7 @@
     <textarea name="GetDescriptionMethod" placeholder="Paste only the getDescription() method code here."></textarea>
 
     <label>2a. getDescription() Method – Notes</label>
-    <textarea name="GetDescriptionMethodDesc" placeholder="What does the method return? How does it meet the requirement of including the OC?"></textarea>
+    <textarea name="GetDescriptionMethodDesc" placeholder="What does the method return? How does it meet the requirement of including the OC (the creator's alias)?"></textarea>
 
     <label>3. Arena Class – Code</label>
     <textarea name="ArenaClass" placeholder="Paste your full Arena class code here."></textarea>
@@ -100,10 +101,10 @@
     <textarea name="MainClassDesc" placeholder="Describe how you create your creature, borrow another, add both to the arena, and start a battle."></textarea>
 
     <label>5. Borrowed Creature Details</label>
-    <textarea name="BorrowedCreature" placeholder="List all required details: classmate's name, nickname, species, type, description, OC, level, HP."></textarea>
+    <textarea name="BorrowedCreature" placeholder="List all required details: creator alias (OC), nickname, species, type, description, level, HP. Use the creator's alias — never anyone's real name."></textarea>
 
     <label>6. Acknowledgment Statement</label>
-    <textarea name="Acknowledgment" placeholder="Write a short thank-you paragraph to your classmate and explain how their creature contributed to your project."></textarea>
+    <textarea name="Acknowledgment" placeholder="Write a short thank-you paragraph to the creature's creator, addressed by their alias (not their real name), and explain how their creature contributed to your project."></textarea>
 
     <label>7. Object-Oriented Programming Reflection</label>
     <textarea name="OOPExplanation" placeholder="How does your program demonstrate principles like encapsulation, abstraction, modularity, and reusability?"></textarea>
@@ -121,7 +122,7 @@
     <textarea name="Conclusion" placeholder="Reflect on your experience: What did you learn? What challenges did you face? What worked well?"></textarea>
 
     <label>12. References and Sources</label>
-    <textarea name="References" placeholder="List any tutorials, websites, peers, or books you consulted while working on this project."></textarea>
+    <textarea name="References" placeholder="List any tutorials, websites, or books you consulted while working on this project. If you mention a classmate, use their alias."></textarea>
 
     <button type="button" onclick="generatePDF()">Generate PDF</button>
 </form>
@@ -142,13 +143,13 @@
         // Header
         doc.setFontSize(16);
         doc.setFont("helvetica", "bold");
-        const studentName = form.StudentName.value || "[Student Name Not Provided]";
+        const studentAlias = form.StudentName.value || "[Alias Not Provided]";
         doc.text("Battle Arena Simulation - Program Writeup Document", margin, y);
         y += 20;
 
         doc.setFontSize(12);
         doc.setFont("helvetica", "normal");
-        doc.text("Student Name: " + studentName, margin, y);
+        doc.text("Student Alias: " + studentAlias, margin, y);
         y += 20;
 
         // Process each textarea
