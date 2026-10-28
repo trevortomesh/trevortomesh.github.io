@@ -199,22 +199,22 @@
   },
   {
     "order": 19,
-    "book": "Articles of Faith",
-    "chapters": "Articles of Faith Pt. 1",
-    "chapter": "",
+    "book": "Joseph Smith—History",
+    "chapters": "Joseph Smith—History Pt. 4",
+    "chapter": "1",
     "date": "October 23, 2026",
-    "title": "Articles of Faith Pt. 1",
+    "title": "Joseph Smith—History Pt. 4",
     "url": "https://x.com/realDrTT/status/2113796571775250487",
     "missing": false,
     "note": ""
   },
   {
     "order": 20,
-    "book": "Articles of Faith",
-    "chapters": "Articles of Faith Pt. 2",
-    "chapter": "",
+    "book": "Joseph Smith—History",
+    "chapters": "Joseph Smith—History Pt. 4 (Part 2)",
+    "chapter": "1",
     "date": "October 23, 2026",
-    "title": "Articles of Faith Pt. 2",
+    "title": "Joseph Smith—History Pt. 4 (Part 2)",
     "url": "https://x.com/realDrTT/status/2113802027868242024",
     "missing": false,
     "note": ""
@@ -229,5 +229,16 @@
     "url": "https://x.com/realDrTT/status/2114883722394931295",
     "missing": false,
     "note": ""
+  },
+  {
+    "order": 22,
+    "book": "Articles of Faith",
+    "chapters": "Articles of Faith",
+    "chapter": "",
+    "date": "October 27, 2026",
+    "title": "Articles of Faith",
+    "url": "https://x.com/realDrTT/status/2115246513408586152",
+    "missing": false,
+    "note": "Final installment — completes the Pearl of Great Price"
   }
 ]
