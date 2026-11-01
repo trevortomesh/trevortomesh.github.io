@@ -193,7 +193,7 @@ themeLabel();
 $("#theme").onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);themeLabel();};
 
 let all=[];
-const bookOrder=["Introduction","Doctrine and Covenants","Official Declarations"];
+const bookOrder=["Introduction","Doctrine and Covenants","Official Declarations","Specials"];
 
 function displayBook(x){ return x.book || "Introduction"; }
 function readUrl(x){
@@ -208,7 +208,7 @@ function render(){
  $("#count").textContent=`${rows.length} of ${all.length} readings`;
  $("#readings").innerHTML=rows.map(x=>`<article class="card ${x.missing?"missing":""}">
   <div class="book">${displayBook(x)}</div><h3>${x.title}</h3><div class="meta">${x.date||`Reading ${x.order}`}</div>
-  ${x.missing?`<div class="badge">Recording marked missing</div>`:`<div class="actions"><a href="${x.url}" target="_blank" rel="noopener">Listen on X →</a><a href="${readUrl(x)}" target="_blank" rel="noopener">Read Text →</a></div>`}
+  ${x.missing?`<div class="badge">Recording marked missing</div>`:`<div class="actions"><a href="${x.url}" target="_blank" rel="noopener">Listen on X →</a>${displayBook(x)==="Specials"?"":`<a href="${readUrl(x)}" target="_blank" rel="noopener">Read Text →</a>`}</div>`}
  </article>`).join("")||(all.length?"<p>No matching readings.</p>":"<p>No readings yet — the series premieres Wednesday, October 28, 2026, at 8 PM Central, live on X Spaces.</p>");
 }
 fetch("readings.json").then(r=>r.json()).then(d=>{
