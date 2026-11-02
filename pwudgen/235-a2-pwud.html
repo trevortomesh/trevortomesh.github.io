@@ -76,6 +76,11 @@
     <label>Your Alias</label>
     <input type="text" name="StudentName" placeholder="Enter the alias you use for this class — not your real name">
 
+    <label style="display: flex; align-items: flex-start; gap: 0.6rem; border: 1px solid #888; border-radius: 8px; padding: 0.75rem; background-color: #23233a; cursor: pointer;">
+        <input type="checkbox" id="aiOptOut" style="width: 1.2rem; height: 1.2rem; margin-top: 0.15rem; flex-shrink: 0;">
+        <span><strong>Opt out of AI-assisted grading (optional).</strong> Check this box if you do not consent to AI-assisted grading. The line "I DO NOT CONSENT TO AI ASSISTED GRADING" will be placed at the very top of your write-up PDF, and your submission will be graded by hand instead. There is no penalty for opting out.</span>
+    </label>
+
     <label>1. BattleCreature Class – Code</label>
     <textarea name="BattleCreatureAttributes" placeholder="Paste your full BattleCreature class code here, including attributes and constructor."></textarea>
 
@@ -139,6 +144,14 @@
         const lineHeight = 8;
         const pageHeight = doc.internal.pageSize.height;
         const textWidth = doc.internal.pageSize.width - 2 * margin;
+
+        // AI-grading opt-out: when selected, this line must be the very first line of the document
+        if (document.getElementById("aiOptOut").checked) {
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text("I DO NOT CONSENT TO AI ASSISTED GRADING", margin, y);
+            y += 15;
+        }
 
         // Header
         doc.setFontSize(16);
