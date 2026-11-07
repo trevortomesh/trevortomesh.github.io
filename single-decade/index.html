@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="How I choose the mystery for my daily single-decade Rosary: the weekday gives the set, the liturgical week gives the number — ((week − 1) mod 5) + 1. Includes a calculator for any date.">
+<meta name="theme-color" content="#07121d">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<title>Which Mystery Today? The Single-Decade Method — A Catholic Reads</title>
+<style>
+:root{
+ --bg:#f4efe5;--surface:#fffaf0;--surface2:#eee4d2;--ink:#2a211a;--muted:#75685d;
+ --line:#d7c5a6;--wine:#6c2030;--accent:#ad7d2c;--accent2:#7d581d;--hero:#0b1723;
+ --shadow:0 12px 32px rgba(49,31,20,.10);
+}
+html[data-theme="dark"]{
+ --bg:#07111a;--surface:#0c1b28;--surface2:#102536;--ink:#f4ead7;--muted:#aeb7be;
+ --line:#294155;--wine:#e6bd68;--accent:#e6b955;--accent2:#ffd77f;--hero:#06101a;
+ --shadow:0 12px 32px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;transition:background .2s,color .2s}
+a{color:inherit}.shell{width:min(1180px,calc(100% - 36px));margin:auto}
+.narrow{width:min(820px,calc(100% - 36px));margin:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:9px;text-decoration:none;font:750 .88rem system-ui,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.gold{background:var(--accent);border-color:var(--accent);color:#171009}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 12px;cursor:pointer;font:700 .8rem system-ui,sans-serif}
+.site-nav{background:var(--hero);border-bottom:1px solid var(--line)}
+.site-nav-inner{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:12px 0}
+.site-nav a{color:#f4ead7;text-decoration:none;font:750 .78rem system-ui,sans-serif;letter-spacing:.03em}
+.site-nav a:hover{color:#ffd77f}
+.page-hero{background:var(--hero);color:#f4ead7;padding:56px 0 48px;text-align:center;border-bottom:1px solid var(--line)}
+.page-hero .site-logo{width:76px;height:76px;border-radius:20px;box-shadow:0 10px 28px rgba(0,0,0,.45)}
+.kicker{font:700 .76rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.28em;color:#f0c96d;margin-top:18px}
+.page-hero h1{font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.05;margin:14px 0 14px;font-weight:500;color:#fff}
+.page-hero p{font-size:1.06rem;line-height:1.65;color:#e9e1cf;margin:0 auto;max-width:640px}
+main{padding:38px 0 70px}
+h2.sec{font-size:1.7rem;margin:40px 0 12px}
+h2.sec:first-child{margin-top:0}
+p.body{line-height:1.75;font-size:1.02rem;margin:0 0 14px}
+.formula-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px 26px;margin:22px 0;text-align:center}
+.formula-box .formula{font-size:clamp(1.3rem,3.4vw,1.8rem);letter-spacing:.01em;margin:0}
+.formula-box .formula-note{color:var(--muted);font:650 .85rem system-ui,sans-serif;margin-top:10px}
+table.ref{width:100%;border-collapse:collapse;margin:16px 0 22px;font-size:.98rem}
+table.ref th,table.ref td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+table.ref th{background:var(--surface2);font:800 .78rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+table.ref td{line-height:1.5}
+.step-tag{display:inline-block;font:800 .7rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.13em;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;margin-bottom:8px;background:var(--surface)}
+.example{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:0 0 14px;box-shadow:0 5px 15px rgba(0,0,0,.05)}
+.example .ex-date{font:800 .78rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2)}
+.example .ex-work{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92rem;line-height:1.7;margin:8px 0}
+.example .ex-result{font-size:1.08rem;margin:0}
+.week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin:16px 0 22px}
+.week-cell{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:650 .85rem system-ui,sans-serif}
+.week-cell strong{display:block;font-size:1rem;color:var(--accent2)}
+.calc-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px;margin-top:18px}
+.calc-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.calc-row label{font:750 .85rem system-ui,sans-serif}
+input[type="date"]{font:600 1rem system-ui,sans-serif;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--surface2);color:var(--ink)}
+.calc-out{border-top:1px solid var(--line);padding-top:18px}
+.calc-out .calc-date{font:800 .78rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2)}
+.calc-formula{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.8;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:12px 0;overflow-x:auto}
+.calc-mystery{font-size:1.5rem;margin:6px 0 4px}
+.calc-set{color:var(--muted);font:650 .9rem system-ui,sans-serif}
+.set-list{list-style:none;padding:0;margin:14px 0 0}
+.set-list li{padding:7px 12px;border:1px solid var(--line);border-radius:9px;margin-bottom:6px;font-size:.98rem;background:var(--surface)}
+.set-list li.chosen{border-color:var(--accent);background:var(--surface2);font-weight:700}
+footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);font-size:.9rem;line-height:1.6}
+@media(max-width:620px){.site-nav-inner{gap:16px}.calc-box{padding:20px 16px}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="shell site-nav-inner">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#projects">The Projects</a>
+    <a href="https://trevortomesh.github.io/bom/" target="_blank" rel="noopener">Book of Mormon</a>
+    <a href="https://trevortomesh.github.io/pgp/" target="_blank" rel="noopener">Pearl of Great Price</a>
+    <a href="https://trevortomesh.github.io/rosary/" target="_blank" rel="noopener">Pray the Rosary</a>
+    <a href="../surrender-novena/">The Surrender Novena</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+ <div class="narrow">
+  <img class="site-logo" src="../logo-header.png" alt="A Catholic Reads — lamp, book and cross emblem" width="76" height="76">
+  <div class="kicker">Prayer · Method</div>
+  <h1>Which Mystery Today?</h1>
+  <p>How I choose the one mystery for my daily single decade of the Rosary — the weekday picks the set, the Church's calendar picks the number, and one small formula does the rest.</p>
+  <button id="theme" class="theme" style="margin-top:18px" aria-label="Toggle color theme">☀ Light mode</button>
+ </div>
+</header>
+
+<main class="narrow">
+
+ <h2 class="sec">One decade, one mystery</h2>
+ <p class="body">Most days I pray a single decade of the Rosary — ten Hail Marys on one mystery — rather than all five decades. A single decade is prayed on <em>one</em> mystery; that is the traditional form of the devotion (splitting all five mysteries across one decade is a modern adaptation). But which mystery? I don't choose by mood, and I don't start over at the first mystery every week. I let the Church's calendar choose, using a simple two-step rule — and because it's a rule, it can be computed for any day of the year.</p>
+
+ <h2 class="sec">Step 1 — The weekday picks the set</h2>
+ <span class="step-tag">Which family of mysteries?</span>
+ <p class="body">The Rosary's four sets of mysteries are assigned to days of the week in <em>Rosarium Virginis Mariae</em>, the apostolic letter of St. John Paul II. That assignment is the first half of the rule:</p>
+ <table class="ref">
+  <tr><th>Day of the week</th><th>Set of mysteries</th></tr>
+  <tr><td>Monday</td><td>Joyful</td></tr>
+  <tr><td>Tuesday</td><td>Sorrowful</td></tr>
+  <tr><td>Wednesday</td><td>Glorious</td></tr>
+  <tr><td>Thursday</td><td>Luminous</td></tr>
+  <tr><td>Friday</td><td>Sorrowful</td></tr>
+  <tr><td>Saturday</td><td>Joyful</td></tr>
+  <tr><td>Sunday</td><td>Glorious — with two seasonal exceptions below</td></tr>
+ </table>
+ <p class="body"><strong>The Sunday exceptions</strong> (also from <em>Rosarium Virginis Mariae</em>, which leaves Sundays to the season): on Sundays in the <strong>Christmas season</strong>, pray the <strong>Joyful</strong> mysteries; on Sundays in <strong>Lent</strong>, pray the <strong>Sorrowful</strong> mysteries. Every other Sunday is Glorious.</p>
+
+ <h2 class="sec">Step 2 — The liturgical week picks the number</h2>
+ <span class="step-tag">Which of the five?</span>
+ <p class="body">Every day of the Church's year belongs to a numbered week — you can see it in the title of the day's Mass readings: "Friday of the <strong>Twenty-eighth Week</strong> in Ordinary Time," "Second Week of Advent," and so on. That week number is the second input. The Church counts the weeks of each season like this:</p>
+ <table class="ref">
+  <tr><th>Season</th><th>How the weeks are counted</th></tr>
+  <tr><td>Advent</td><td>Week 1 begins on the First Sunday of Advent (the Sunday nearest November 30).</td></tr>
+  <tr><td>Christmas</td><td>Week 1 begins on Christmas Day.</td></tr>
+  <tr><td>Lent</td><td>Week 1 begins on the First Sunday of Lent (the days from Ash Wednesday belong to week 1).</td></tr>
+  <tr><td>Easter</td><td>Week 1 begins on Easter Sunday; the season runs to Pentecost.</td></tr>
+  <tr><td>Ordinary Time</td><td>Counted from both ends so the year always fits: forward from the Baptism of the Lord (its Sunday opens week 1) until Lent, then backward after Pentecost — the last week is always the 34th, ending the Saturday before Advent begins.</td></tr>
+ </table>
+ <p class="body">Take that week number — call it <strong>W</strong> — and run it through one formula:</p>
+ <div class="formula-box">
+  <p class="formula">Mystery number = ((W − 1) mod 5) + 1</p>
+  <div class="formula-note">"mod 5" means: the remainder after dividing by 5</div>
+ </div>
+ <p class="body">Why the subtraction and addition? They shift the count so the cycle lines up: subtract 1, take the remainder when divided by 5, then add the 1 back. The effect is a simple rotation that wraps every five weeks — weeks 1–5 give mysteries 1–5, week 6 starts again at 1, week 7 gives 2, and so on, all year long, through every season. No mystery is tied to a particular week; the calendar keeps dealing them out in turn. Here is the whole rotation:</p>
+ <div class="week-grid" id="weekGrid"></div>
+
+ <h2 class="sec">Worked examples</h2>
+
+ <div class="example">
+  <div class="ex-date">Friday, October 16, 2026 — today</div>
+  <div class="ex-work">Friday → Sorrowful set · 28th Week in Ordinary Time, W = 28<br>((28 − 1) mod 5) + 1 = (27 mod 5) + 1 = 2 + 1 = 3</div>
+  <p class="ex-result">3rd Sorrowful Mystery: <strong>The Crowning with Thorns</strong></p>
+ </div>
+
+ <div class="example">
+  <div class="ex-date">Thursday, October 15, 2026</div>
+  <div class="ex-work">Thursday → Luminous set · 28th Week in Ordinary Time, W = 28<br>((28 − 1) mod 5) + 1 = 3</div>
+  <p class="ex-result">3rd Luminous Mystery: <strong>The Proclamation of the Kingdom</strong></p>
+ </div>
+
+ <div class="example">
+  <div class="ex-date">Sunday, December 6, 2026</div>
+  <div class="ex-work">Sunday in Advent → Glorious set (no exception applies) · 2nd Week of Advent, W = 2<br>((2 − 1) mod 5) + 1 = 2</div>
+  <p class="ex-result">2nd Glorious Mystery: <strong>The Ascension</strong></p>
+ </div>
+
+ <div class="example">
+  <div class="ex-date">Sunday, December 27, 2026 — the Sunday exception</div>
+  <div class="ex-work">Sunday in the Christmas season → Joyful set (exception) · W = 1<br>((1 − 1) mod 5) + 1 = 1</div>
+  <p class="ex-result">1st Joyful Mystery: <strong>The Annunciation</strong></p>
+ </div>
+
+ <div class="example">
+  <div class="ex-date">Monday, June 15, 2026 — the wrap-around</div>
+  <div class="ex-work">Monday → Joyful set · 11th Week in Ordinary Time, W = 11<br>((11 − 1) mod 5) + 1 = (10 mod 5) + 1 = 0 + 1 = 1</div>
+  <p class="ex-result">1st Joyful Mystery: <strong>The Annunciation</strong> — week 11 wraps back around to mystery 1</p>
+ </div>
+
+ <div class="example">
+  <div class="ex-date">Tuesday, March 23, 2027 — Holy Week</div>
+  <div class="ex-work">Tuesday → Sorrowful set · 6th Week of Lent, W = 6<br>((6 − 1) mod 5) + 1 = (5 mod 5) + 1 = 1</div>
+  <p class="ex-result">1st Sorrowful Mystery: <strong>The Agony in the Garden</strong></p>
+ </div>
+
+ <h2 class="sec">Try it — the calculator</h2>
+ <p class="body">Pick any date and the calculator runs the whole method: it works out the season and liturgical week from the calendar, applies the weekday rule (Sunday exceptions included), and shows every step of the arithmetic. This is the same calculation behind my <a href="https://trevortomesh.github.io/rosary/single-decade/" target="_blank" rel="noopener">single-decade Rosary page</a>, which opens on today's mystery automatically.</p>
+
+ <div class="calc-box">
+  <div class="calc-row">
+   <label for="dateInput">Date:</label>
+   <input type="date" id="dateInput">
+   <button class="btn gold" id="todayBtn" type="button">Today</button>
+   <a class="btn" href="https://trevortomesh.github.io/rosary/single-decade/" target="_blank" rel="noopener">Pray this decade →</a>
+  </div>
+  <div class="calc-out" id="calcOut"></div>
+ </div>
+
+ <h2 class="sec">The four sets</h2>
+ <p class="body">For reference, the five mysteries of each set, in order:</p>
+ <table class="ref">
+  <tr><th>Set</th><th>The five mysteries</th></tr>
+  <tr><td><strong>Joyful</strong></td><td>1. The Annunciation · 2. The Visitation · 3. The Nativity · 4. The Presentation in the Temple · 5. The Finding of Jesus in the Temple</td></tr>
+  <tr><td><strong>Sorrowful</strong></td><td>1. The Agony in the Garden · 2. The Scourging at the Pillar · 3. The Crowning with Thorns · 4. The Carrying of the Cross · 5. The Crucifixion</td></tr>
+  <tr><td><strong>Glorious</strong></td><td>1. The Resurrection · 2. The Ascension · 3. The Descent of the Holy Spirit · 4. The Assumption of Mary · 5. The Coronation of Mary</td></tr>
+  <tr><td><strong>Luminous</strong></td><td>1. The Baptism in the Jordan · 2. The Wedding at Cana · 3. The Proclamation of the Kingdom · 4. The Transfiguration · 5. The Institution of the Eucharist</td></tr>
+ </table>
+ <p class="body">That's the whole method: <strong>weekday → set, liturgical week → number, ((W − 1) mod 5) + 1</strong>. One decade a day, and over the weeks the whole Rosary unfolds in the Church's own order of time.</p>
+
+</main>
+
+<footer><div class="narrow"><strong>A Catholic Reads</strong> — a Catholic in dialogue with the Latter-day Saints<br>
+Pray it here: <a href="https://trevortomesh.github.io/rosary/single-decade/" target="_blank" rel="noopener">the single-decade Rosary</a> · <a href="../surrender-novena/">The Surrender Novena</a> · <a href="../index.html">Back to the homepage</a>.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s), root=document.documentElement;
+const savedTheme=localStorage.getItem("theme");
+if(savedTheme) root.dataset.theme=savedTheme;
+function themeLabel(){ $("#theme").textContent=root.dataset.theme==="dark"?"☀ Light mode":"☾ Dark mode"; }
+themeLabel();
+$("#theme").onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);themeLabel();};
+
+// --- Week rotation grid (weeks 1-34) ---
+(function(){
+  const grid=$("#weekGrid"); if(!grid) return;
+  let html="";
+  for(let w=1; w<=34; w++){
+    const m=((w-1)%5)+1;
+    const ord=["1st","2nd","3rd","4th","5th"][m-1];
+    html+='<div class="week-cell">Week '+w+"<strong>"+ord+" mystery</strong></div>";
+  }
+  grid.innerHTML=html;
+})();
+
+// --- Liturgical calendar (the same computation as the single-decade Rosary page) ---
+function startOfDay(date){ const d=new Date(date); d.setHours(0,0,0,0); return d; }
+function addDays(date,days){ const d=startOfDay(date); d.setDate(d.getDate()+days); return d; }
+function daysBetween(from,to){ return Math.round((startOfDay(to)-startOfDay(from))/86400000); }
+function sundayOnOrBefore(date){ const d=startOfDay(date); return addDays(d,-d.getDay()); }
+function easterSunday(year){
+  const a=year%19,b=Math.floor(year/100),c=year%100;
+  const d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3);
+  const h=(19*a+b-d-g+15)%30;
+  const i=Math.floor(c/4),k=c%4;
+  const l=(32+2*e+2*i-h-k)%7;
+  const m=Math.floor((a+11*h+22*l)/451);
+  const month=Math.floor((h+l-7*m+114)/31);
+  const day=((h+l-7*m+114)%31)+1;
+  return new Date(year,month-1,day);
+}
+function adventSunday(year){
+  const nov30=new Date(year,10,30);
+  const back=nov30.getDay();
+  const forward=(7-back)%7;
+  return addDays(nov30, back<=forward ? -back : forward);
+}
+function baptismOfTheLord(year){
+  const jan6=new Date(year,0,6);
+  let delta=(7-jan6.getDay())%7;
+  if(delta===0) delta=7;
+  return addDays(jan6,delta);
+}
+function ordinalShort(number){
+  const suffixes=["th","st","nd","rd"];
+  const v=number%100;
+  return number+(suffixes[(v-20)%10]||suffixes[v]||suffixes[0]);
+}
+function ordinalWord(n){ return ["First","Second","Third","Fourth","Fifth"][n-1]; }
+function ordinal(n){ return ["1st","2nd","3rd","4th","5th"][n-1]; }
+
+function liturgicalWeek(date){
+  const d=startOfDay(date);
+  const year=d.getFullYear();
+  const easter=easterSunday(year);
+  const ashWednesday=addDays(easter,-46);
+  const pentecost=addDays(easter,49);
+  const advent=adventSunday(year);
+  const christmasDay=new Date(year,11,25);
+  let season,week;
+  if(d>=advent && d<christmasDay){
+    season="Advent";
+    week=1+Math.floor(daysBetween(advent,d)/7);
+  } else if(d>=christmasDay){
+    season="Christmas";
+    week=1+Math.floor(daysBetween(christmasDay,d)/7);
+  } else if(d<=baptismOfTheLord(year)){
+    season="Christmas";
+    week=1+Math.floor(daysBetween(new Date(year-1,11,25),d)/7);
+  } else if(d>=ashWednesday && d<easter){
+    season="Lent";
+    const firstSunday=addDays(ashWednesday,(7-ashWednesday.getDay())%7||7);
+    week=d<firstSunday ? 1 : 1+Math.floor(daysBetween(firstSunday,d)/7);
+  } else if(d>=easter && d<=pentecost){
+    season="Easter";
+    week=1+Math.floor(daysBetween(easter,d)/7);
+  } else if(d<ashWednesday){
+    season="Ordinary Time";
+    week=1+daysBetween(baptismOfTheLord(year),sundayOnOrBefore(d))/7;
+  } else {
+    season="Ordinary Time";
+    week=34-daysBetween(sundayOnOrBefore(d),addDays(advent,-7))/7;
+  }
+  const label= season==="Ordinary Time" ? ordinalShort(week)+" Week in Ordinary Time"
+    : season==="Christmas" ? "the Christmas Season"
+    : ordinalShort(week)+" Week of "+season;
+  return {season,week,label};
+}
+
+const MYSTERIES={
+  joyful:{label:"Joyful",items:["The Annunciation","The Visitation","The Nativity","The Presentation in the Temple","The Finding of Jesus in the Temple"]},
+  sorrowful:{label:"Sorrowful",items:["The Agony in the Garden","The Scourging at the Pillar","The Crowning with Thorns","The Carrying of the Cross","The Crucifixion"]},
+  glorious:{label:"Glorious",items:["The Resurrection","The Ascension","The Descent of the Holy Spirit","The Assumption of Mary","The Coronation of Mary"]},
+  luminous:{label:"Luminous",items:["The Baptism in the Jordan","The Wedding at Cana","The Proclamation of the Kingdom","The Transfiguration","The Institution of the Eucharist"]}
+};
+const WEEKDAY_NAMES=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const MONTH_NAMES=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+function setForDay(date,liturgy){
+  let key=["glorious","joyful","sorrowful","glorious","luminous","sorrowful","joyful"][date.getDay()];
+  let note="";
+  if(date.getDay()===0 && liturgy.season==="Christmas"){ key="joyful"; note="Sunday exception: Sundays in the Christmas season take the Joyful set."; }
+  if(date.getDay()===0 && liturgy.season==="Lent"){ key="sorrowful"; note="Sunday exception: Sundays in Lent take the Sorrowful set."; }
+  return {key,note};
+}
+
+function computeFor(date){
+  const lit=liturgicalWeek(date);
+  const s=setForDay(date,lit);
+  const set=MYSTERIES[s.key];
+  const idx=((lit.week-1)%5+5)%5;
+  const num=idx+1;
+  return {lit,set,setKey:s.key,note:s.note,num,mystery:set.items[idx]};
+}
+
+function renderCalc(date){
+  const r=computeFor(date);
+  const dateStr=WEEKDAY_NAMES[date.getDay()]+", "+MONTH_NAMES[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
+  const steps=
+    "Weekday: "+WEEKDAY_NAMES[date.getDay()]+" → the "+r.set.label+" Mysteries\n"+
+    "Liturgical week: "+r.lit.label+" → W = "+r.lit.week+"\n"+
+    "(("+r.lit.week+" − 1) mod 5) + 1 = (("+(r.lit.week-1)+" mod 5) + 1 = "+(r.lit.week-1)%5+" + 1 = "+r.num;
+  const list=r.set.items.map((m,i)=>'<li class="'+(i===r.num-1?"chosen":"")+'">'+(i+1)+". "+m+(i===r.num-1?" ← today's mystery":"")+"</li>").join("");
+  $("#calcOut").innerHTML=
+    '<div class="calc-date">'+dateStr+" · "+(r.lit.season==="Christmas"?"Christmas Season":r.lit.label)+"</div>"+
+    '<div class="calc-formula">'+steps.replace(/\n/g,"<br>")+"</div>"+
+    (r.note?'<p class="body" style="font-style:italic">'+r.note+"</p>":"")+
+    '<div class="calc-mystery">The '+ordinal(r.num)+" "+r.set.label+" Mystery: <strong>"+r.mystery+"</strong></div>"+
+    '<div class="calc-set">The '+r.set.label+' Mysteries, in order:</div>'+
+    '<ul class="set-list">'+list+"</ul>";
+}
+
+const dateInput=$("#dateInput");
+function toISO(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function fromISO(v){ const p=v.split("-"); return new Date(parseInt(p[0],10),parseInt(p[1],10)-1,parseInt(p[2],10)); }
+const today=new Date();
+dateInput.value=toISO(today);
+renderCalc(today);
+dateInput.addEventListener("change",()=>{ if(dateInput.value) renderCalc(fromISO(dateInput.value)); });
+$("#todayBtn").onclick=()=>{ const t=new Date(); dateInput.value=toISO(t); renderCalc(t); };
+</script>
+</body></html>
