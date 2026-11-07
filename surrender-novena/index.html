@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Surrender Novena of Don Dolindo Ruotolo — nine days of abandoning yourself to Jesus: 'O Jesus, I surrender myself to You, take care of everything!' Includes an interactive pray-along.">
+<meta name="theme-color" content="#07121d">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<title>The Surrender Novena — A Catholic Reads</title>
+<style>
+:root{
+ --bg:#f4efe5;--surface:#fffaf0;--surface2:#eee4d2;--ink:#2a211a;--muted:#75685d;
+ --line:#d7c5a6;--wine:#6c2030;--accent:#ad7d2c;--accent2:#7d581d;--hero:#0b1723;
+ --shadow:0 12px 32px rgba(49,31,20,.10);
+}
+html[data-theme="dark"]{
+ --bg:#07111a;--surface:#0c1b28;--surface2:#102536;--ink:#f4ead7;--muted:#aeb7be;
+ --line:#294155;--wine:#e6bd68;--accent:#e6b955;--accent2:#ffd77f;--hero:#06101a;
+ --shadow:0 12px 32px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;transition:background .2s,color .2s}
+a{color:inherit}.shell{width:min(1180px,calc(100% - 36px));margin:auto}
+.narrow{width:min(820px,calc(100% - 36px));margin:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:9px;text-decoration:none;font:750 .88rem system-ui,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.gold{background:var(--accent);border-color:var(--accent);color:#171009}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 12px;cursor:pointer;font:700 .8rem system-ui,sans-serif}
+.site-nav{background:var(--hero);border-bottom:1px solid var(--line)}
+.site-nav-inner{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:12px 0}
+.site-nav a{color:#f4ead7;text-decoration:none;font:750 .78rem system-ui,sans-serif;letter-spacing:.03em}
+.site-nav a:hover{color:#ffd77f}
+.page-hero{background:var(--hero);color:#f4ead7;padding:56px 0 48px;text-align:center;border-bottom:1px solid var(--line)}
+.page-hero .site-logo{width:76px;height:76px;border-radius:20px;box-shadow:0 10px 28px rgba(0,0,0,.45)}
+.kicker{font:700 .76rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.28em;color:#f0c96d;margin-top:18px}
+.page-hero h1{font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.05;margin:14px 0 14px;font-weight:500;color:#fff}
+.page-hero p{font-size:1.06rem;line-height:1.65;color:#e9e1cf;margin:0 auto;max-width:640px}
+main{padding:38px 0 70px}
+h2.sec{font-size:1.7rem;margin:40px 0 12px}
+h2.sec:first-child{margin-top:0}
+p.body{line-height:1.75;font-size:1.02rem;margin:0 0 14px}
+.refrain-quote{border-left:3px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;padding:18px 22px;margin:22px 0;box-shadow:var(--shadow)}
+.refrain-quote .q{font-size:1.25rem;font-style:italic;line-height:1.5;margin:0}
+.refrain-quote .attr{color:var(--muted);font:650 .8rem system-ui,sans-serif;margin-top:8px}
+ol.howto{line-height:1.75;font-size:1.02rem;padding-left:22px;margin:0 0 8px}
+ol.howto li{margin-bottom:8px}
+.pray-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px;margin-top:18px}
+.day-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.day-tab{border:1px solid var(--line);background:var(--surface2);color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer;font:750 .82rem system-ui,sans-serif}
+.day-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#171009}
+.day-tab .done-mark{color:var(--wine);font-weight:900}
+.day-title{font-size:1.45rem;margin:0 0 4px}
+.day-theme{font:750 .78rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:12px}
+.day-text{line-height:1.75;font-size:1.02rem}
+.day-text p{margin:0 0 12px}
+.refrain-stage{border-top:1px solid var(--line);margin-top:20px;padding-top:20px;text-align:center}
+.refrain-big{font-size:clamp(1.15rem,2.6vw,1.45rem);font-style:italic;line-height:1.5;margin:0 auto 6px;max-width:560px}
+.refrain-count{font:750 .8rem system-ui,sans-serif;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.beads{display:flex;justify-content:center;gap:9px;margin:0 auto 20px;flex-wrap:wrap}
+.bead{width:26px;height:26px;border-radius:50%;border:2px solid var(--accent);background:transparent;padding:0;cursor:pointer;transition:background .15s,transform .1s}
+.bead:hover{transform:scale(1.12)}
+.bead.filled{background:var(--accent)}
+.pray-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.link-btn{background:none;border:0;color:var(--accent2);font:750 .85rem system-ui,sans-serif;cursor:pointer;text-decoration:underline;padding:6px}
+.closing{display:none;border-top:1px solid var(--line);margin-top:22px;padding-top:20px}
+.closing.show{display:block}
+.closing h3{margin:0 0 10px;font-size:1.2rem}
+.closing p{line-height:1.75;margin:0 0 12px}
+.complete-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
+.complete-note{font:650 .85rem system-ui,sans-serif;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);font-size:.9rem;line-height:1.6}
+@media(max-width:620px){.site-nav-inner{gap:16px}.pray-box{padding:20px 16px}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="shell site-nav-inner">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#projects">The Projects</a>
+    <a href="https://trevortomesh.github.io/bom/" target="_blank" rel="noopener">Book of Mormon</a>
+    <a href="https://trevortomesh.github.io/pgp/" target="_blank" rel="noopener">Pearl of Great Price</a>
+    <a href="https://trevortomesh.github.io/rosary/" target="_blank" rel="noopener">Pray the Rosary</a>
+    <a href="../single-decade/">The Single-Decade Method</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+ <div class="narrow">
+  <img class="site-logo" src="../logo-header.png" alt="A Catholic Reads — lamp, book and cross emblem" width="76" height="76">
+  <div class="kicker">Prayer</div>
+  <h1>The Surrender Novena</h1>
+  <p>Nine days of handing everything back to Jesus — your plans, your worries, the things you cannot fix — and resting in His care.</p>
+  <button id="theme" class="theme" style="margin-top:18px" aria-label="Toggle color theme">☀ Light mode</button>
+ </div>
+</header>
+
+<main class="narrow">
+
+ <h2 class="sec">What is the Surrender Novena?</h2>
+ <p class="body">The Surrender Novena comes from Don Dolindo Ruotolo (1882–1970), a priest of Naples, Italy, whose cause for canonization is underway. In 1940, in prayer, Don Dolindo received words he attributed to Jesus — an invitation not to strain, scheme, and worry our way through our troubles, but to abandon ourselves to Him completely. Padre Pio is reported to have sent his own penitents from Naples back home with the words: "Go to Don Dolindo — he is a saint."</p>
+ <p class="body">The heart of the novena is a single sentence, prayed again and again across nine days. It is not a magic formula and it is not passivity: it is the deliberate, repeated act of entrusting to Jesus the very things your anxiety keeps trying to manage for Him.</p>
+ <div class="refrain-quote">
+  <p class="q">"O Jesus, I surrender myself to You, take care of everything!"</p>
+  <div class="attr">The refrain of the novena — prayed ten times each day</div>
+ </div>
+
+ <h2 class="sec">How to pray it</h2>
+ <ol class="howto">
+  <li><strong>Pick your nine days.</strong> Pray one day of the novena each day for nine consecutive days, ideally for a particular intention you want to entrust to Jesus.</li>
+  <li><strong>Read the day's meditation slowly.</strong> The short reflections below follow the themes of Don Dolindo's text for each day.</li>
+  <li><strong>Pray the refrain ten times.</strong> After the meditation, say "O Jesus, I surrender myself to You, take care of everything!" ten times — slowly, meaning it a little more each time. The pray-along below counts them with you.</li>
+  <li><strong>Close with the Hail Mary</strong> and the short prayer to Our Lady provided at the end of each day.</li>
+  <li><strong>Then stop.</strong> The discipline of the novena is what you do after you pray: leave the matter with Him instead of picking it back up.</li>
+ </ol>
+
+ <h2 class="sec">Pray along</h2>
+ <p class="body">Choose a day, read its meditation, then tap the beads (or the "Pray the refrain" button) to count your ten repetitions. Your completed days are remembered on this device.</p>
+
+ <div class="pray-box" id="prayBox">
+  <div class="day-tabs" id="dayTabs" role="tablist" aria-label="Novena days"></div>
+  <div id="dayPanel"></div>
+ </div>
+
+</main>
+
+<footer><div class="narrow"><strong>A Catholic Reads</strong> — a Catholic in dialogue with the Latter-day Saints<br>
+The day meditations above are original summaries of the themes of Don Dolindo Ruotolo's Surrender Novena, offered to help you pray it. <a href="../index.html">Back to the homepage</a>.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s), root=document.documentElement;
+const savedTheme=localStorage.getItem("theme");
+if(savedTheme) root.dataset.theme=savedTheme;
+function themeLabel(){ $("#theme").textContent=root.dataset.theme==="dark"?"☀ Light mode":"☾ Dark mode"; }
+themeLabel();
+$("#theme").onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);themeLabel();};
+
+const REFRAIN="O Jesus, I surrender myself to You, take care of everything!";
+const HAIL_MARY="Hail Mary, full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.";
+const TO_MARY="O Mary, Mother of God and my mother, keep me close to your Son. Teach me to surrender as you surrendered — to trust that He will take care of everything. Amen.";
+
+const DAYS=[
+ {title:"Day One",theme:"Let go of the worry",
+  text:["Why do you trouble yourself so much? Your anxiety is not solving the problem — it is only wearing you down. Jesus asks you to leave your cares with Him: what you hand over to Him, He will act on; what you insist on managing yourself, you keep away from His hands.",
+        "Today, name the thing you keep turning over in your mind. Then pray the refrain over it, ten times, and let it stay surrendered."]},
+ {title:"Day Two",theme:"Trust like a child",
+  text:["Surrender is not giving up, and it is not fatalism. It is trust — the way a child trusts a parent who can do what the child cannot. When you stop straining to fix everything by your own strength, you make room for a strength far greater than yours.",
+        "Ask yourself honestly: have I really entrusted this to Jesus, or am I still carrying it alone? Pray the refrain, and put the weight down."]},
+ {title:"Day Three",theme:"Stop taking it back",
+  text:["Restlessness undoes surrender. Every time you hand something to Jesus and then snatch it back to worry over it again, nothing has actually been entrusted. A door you keep reopening is not a door you have closed.",
+        "Today the invitation is simple: leave with Him what you gave Him. When the worry returns, do not argue with it — just pray the refrain again."]},
+ {title:"Day Four",theme:"Let Him lead",
+  text:["There are stretches of the road where you cannot see the way at all. A blind person does not stop walking — he takes the arm of someone who can see. Jesus sees what you cannot: the whole road, not just the step in front of you.",
+        "Close your eyes, so to speak, and let Him lead. Pray the refrain over the part of your life that feels darkest today."]},
+ {title:"Day Five",theme:"His timing, not yours",
+  text:["“I will take care of it” does not mean “I will take care of it instantly, on your schedule.” Impatience is another way of staying in control — demanding that God work at your pace, in your way, by your deadline.",
+        "Let Him work in His own time. The refrain is a prayer of patience as much as of trust."]},
+ {title:"Day Six",theme:"Stop driving the train",
+  text:["A small child on a journey does not need to know the route, drive the train, or worry about the destination — the child's whole job is to be carried, and to rest. You are not the conductor of your life. You never were.",
+        "Today, give up the driver's seat. Pray the refrain, and consent to be a passenger — alert, grateful, and at peace."]},
+ {title:"Day Seven",theme:"Surrender in the darkness",
+  text:["It is easy to trust when things are going well. The deepest surrender happens in the hardest moments — when you feel helpless, when nothing you do seems to change anything. That is precisely where Jesus wants to work, because that is where His strength is made perfect in your weakness.",
+        "Bring Him the worst of it today, not the polished version. Pray the refrain from inside the difficulty, not after it."]},
+ {title:"Day Eight",theme:"Trust is not arithmetic",
+  text:["We like to calculate: if I do this, God will do that; if I pray this much, I will get that much. But trust is not arithmetic, and grace is not a transaction. The more complete your abandonment, the more freely Jesus can act — not because He is keeping score, but because your hands are finally open.",
+        "Stop keeping accounts today. Pray the refrain with open hands and no conditions attached."]},
+ {title:"Day Nine",theme:"Rest in His care",
+  text:["The novena ends where it began — but you are not where you began. Nine days of handing things over builds a habit of the heart: pray always in readiness to surrender, and expect that the greatest graces are tied to the completeness of that surrender.",
+        "Jesus will take care of everything. That was His word on the first day, and it is His word on the last. Pray the refrain one final time today — and then, as an act of faith, rest."]}
+];
+
+const tabsEl=$("#dayTabs"), panelEl=$("#dayPanel");
+let currentDay=0, count=0;
+let doneDays=new Set(JSON.parse(localStorage.getItem("surrender-done")||"[]"));
+
+function saveDone(){ localStorage.setItem("surrender-done",JSON.stringify([...doneDays])); }
+
+function renderTabs(){
+  tabsEl.innerHTML="";
+  DAYS.forEach((d,i)=>{
+    const b=document.createElement("button");
+    b.className="day-tab"; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected", i===currentDay ? "true":"false");
+    b.innerHTML="Day "+(i+1)+(doneDays.has(i)?' <span class="done-mark" aria-label="completed">✓</span>':"");
+    b.onclick=()=>{ selectDay(i); };
+    tabsEl.appendChild(b);
+  });
+}
+
+function renderPanel(){
+  const d=DAYS[currentDay];
+  const paras=d.text.map(p=>"<p>"+p+"</p>").join("");
+  const beads=Array.from({length:10},(_,i)=>'<button class="bead" data-i="'+i+'" aria-label="Refrain '+(i+1)+' of 10"></button>').join("");
+  panelEl.innerHTML=
+    '<h3 class="day-title">'+d.title+'</h3>'+
+    '<div class="day-theme">'+d.theme+'</div>'+
+    '<div class="day-text">'+paras+'</div>'+
+    '<div class="refrain-stage">'+
+      '<p class="refrain-big">&ldquo;'+REFRAIN+'&rdquo;</p>'+
+      '<div class="refrain-count" id="refrainCount">Refrain 0 of 10</div>'+
+      '<div class="beads" id="beads">'+beads+'</div>'+
+      '<div class="pray-actions">'+
+        '<button class="btn gold" id="prayBtn">Pray the refrain</button>'+
+        '<button class="link-btn" id="resetCount">Start this day over</button>'+
+      '</div>'+
+    '</div>'+
+    '<div class="closing" id="closing">'+
+      '<h3>Closing prayers</h3>'+
+      '<p>'+HAIL_MARY+'</p>'+
+      '<p>'+TO_MARY+'</p>'+
+      '<div class="complete-row">'+
+        '<button class="btn" id="markDone">'+(doneDays.has(currentDay)?"✓ Day complete":"Mark this day complete")+'</button>'+
+        (currentDay<8?'<button class="link-btn" id="nextDay">Go to Day '+(currentDay+2)+' →</button>':"")+
+        '<span class="complete-note" id="doneNote">'+(doneDays.has(currentDay)?"You have completed this day.":"")+'</span>'+
+      '</div>'+
+    '</div>';
+  panelEl.querySelectorAll(".bead").forEach(b=>{
+    b.onclick=()=>{ setCount(parseInt(b.dataset.i,10)+1); };
+  });
+  $("#prayBtn").onclick=()=>{ setCount(Math.min(10,count+1)); };
+  $("#resetCount").onclick=()=>{ setCount(0); };
+  $("#markDone").onclick=()=>{
+    if(doneDays.has(currentDay)){ doneDays.delete(currentDay); } else { doneDays.add(currentDay); }
+    saveDone(); renderTabs(); renderPanel(); if(count===10) $("#closing").classList.add("show");
+    if(count===10) updateCount();
+  };
+  const nd=$("#nextDay"); if(nd) nd.onclick=()=>{ selectDay(currentDay+1); };
+  updateCount();
+}
+
+function updateCount(){
+  const c=$("#refrainCount"); if(!c) return;
+  c.textContent="Refrain "+count+" of 10";
+  panelEl.querySelectorAll(".bead").forEach((b,i)=>{ b.classList.toggle("filled", i<count); });
+  if(count===10){ $("#closing").classList.add("show"); }
+  else { $("#closing").classList.remove("show"); }
+}
+function setCount(n){ count=n; updateCount(); }
+function selectDay(i){ currentDay=i; count=0; renderTabs(); renderPanel(); $("#prayBox").scrollIntoView({behavior:"smooth",block:"start"}); }
+
+renderTabs(); renderPanel();
+</script>
+</body></html>
