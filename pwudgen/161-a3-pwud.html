@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe - Program Write-Up Tool</title>
+    <title>Egg Tracker - Program Write-Up Tool</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         body {
@@ -72,7 +72,7 @@
     </style>
 </head>
 <body>
-<h1>Pokémon Battle Simulation</h1>
+<h1>Egg Tracker</h1>
 <h2>Program Write-Up Document Tool</h2>
 
 <form id="writeupForm">
@@ -127,7 +127,7 @@
         }
 
         const studentName = form.StudentName.value || "[Student Name Not Provided]";
-        doc.text("Pokémon Battle Simulation - Program Write-Up Document", margin, y);
+        doc.text("Egg Tracker - Program Write-Up Document", margin, y);
         y += 10;
         doc.setFontSize(12);
         doc.text("Student Name: " + studentName, margin, y);
@@ -159,7 +159,7 @@
             y += 4; // space after each section
         });
 
-        doc.save("Tic_Tac_Toe_WriteUp.pdf");
+        doc.save("Egg_Tracker_WriteUp.pdf");
     }
 </script>
 </body>
